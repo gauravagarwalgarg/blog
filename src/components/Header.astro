@@ -2,26 +2,22 @@
 import { SITE_TITLE } from '../consts';
 import HeaderLink from './HeaderLink.astro';
 
-// Dynamically extracts the '/Blog' base path from your config
+// Safe extraction of base URL path
 const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+// Pre-compute pure string paths to prevent MDX property processing loops
+const homePath = `${baseUrl}/`;
+const blogPath = `${baseUrl}/blog`;
+const aboutPath = `${baseUrl}/about`;
 ---
 
 <header>
 	<nav>
-		<h2><a href={`${baseUrl}/`}>{SITE_TITLE}</a></h2>
+		<h2><a href={homePath}>{SITE_TITLE}</a></h2>
 		<div class="internal-links">
-			<!-- Main Sections -->
-			<HeaderLink href={`${baseUrl}/`}>Home</HeaderLink>
-			<HeaderLink href={`${baseUrl}/blog`}>Blog</HeaderLink>
-			<HeaderLink href={`${baseUrl}/about`}>About Me</HeaderLink>
-
-			{/* 
-			  FUTURE CATEGORIES SECTION:
-			  When you want to add categories later, you can uncomment this block 
-			  or turn it into a dropdown component.
-			  
-			  <HeaderLink href={`${baseUrl}/blog/categories`}>Categories</HeaderLink>
-			*/}
+			<HeaderLink href={homePath}>Home</HeaderLink>
+			<HeaderLink href={blogPath}>Blog</HeaderLink>
+			<HeaderLink href={aboutPath}>About Me</HeaderLink>
 		</div>
 		<div class="social-links">
 			<a href="https://webtoo.ls" target="_blank">
@@ -65,9 +61,7 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 		margin: 0;
 		font-size: 1em;
 	}
-
-	h2 a,
-	h2 a.active {
+	h2 a, h2 a.active {
 		text-decoration: none;
 	}
 	nav {
@@ -85,8 +79,7 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 		text-decoration: none;
 		border-bottom-color: var(--accent);
 	}
-	.social-links,
-	.social-links a {
+	.social-links, .social-links a {
 		display: flex;
 	}
 	@media (max-width: 720px) {
