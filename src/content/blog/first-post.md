@@ -1,16 +1,35 @@
 ---
-title: 'First post'
-description: 'Lorem ipsum dolor sit amet'
-pubDate: 'Jul 08 2022'
-heroImage: '../../assets/blog-placeholder-3.jpg'
+title: 'My First Post'
+description: ' The Garden City's Concrete Heat Island Effect. '
+pubDate: 'May 16 2026'
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
+# Remember the good old days
 
-Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc. Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra massa massa ultricies mi.
+Back in 2013, when I moved from Jamshedpur to Bangalore, I thought I’d landed on a different planet. In Jamshedpur, summers were not just hot; they were a punishment. I vividly recall the $45^\circ\text{C}$ scorching sun in 2013, a heat wave so intense it felt like the earth was trying to bake your face. 
 
-Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
+Then I came to Bangalore. It was a wonderland. I needed a light jacket in April! It was overwhelming, it was lovely, it was simply #TheBengalore people talked about.
 
-Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id cursus metus aliquam eleifend mi.
+Fast forward to May 2026. If you are reading this and thinking of packing a jacket to Bangalore, well, don't. Pack some aloe vera instead, because the Garden City has decided it would rather be a Desert City. 
 
-Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
+# The "45-Degree" Nostalgia 
+
+I used to avoid travelling to my hometown during summers. Not much has changed there, it’s still hitting those brutal $42-48^\circ\text{C}$ levels, a predictable, honest-to-god heat. But Bangalore? Bangalore is breaking bad. 
+
+We are officially living in a "heat island". My daily view isn't of leafy trees, flowery roads anymore; it's a breathtaking panorama of concrete, high-rises, and construction dust that is currently creating a delightful $37^\circ\text{C}$ in early April-May, Wondering if it will rain today is a classic way to wake up now a days.
+
+# The "Cool" New Monsoon Trends 
+
+The weather pattern hasn't just changed; it has done a full 180-degree flip. 
+
+- `2013`: Light drizzle, romantic, pleasant, "I need a scarf!" 
+- `2026`: March end brings dry westerly winds that make the place feel like a pressrure cooker, followed by a sudden hailstorm on April 29th that makes it look like Ooty for 10 minutes, just to confuse us all whether we need buy air conditioner or not?
+
+You wake up to a sky so clear and a sun so harsh you start packing cottons and prepping for a \(38^{\circ }\text{C}\) heatwave. By 3:00 PM, without any prior warning or atmospheric consultation, the sky turns the color of bruised charcoal. Within ten minutes, it’s raining sideways, accompanied by hailstones large enough to dent a scooter. 
+
+Naturally, the one day I forget my umbrella is the day the universe conspires to render ride-sharing apps useless, cancel my plans, and force me into a pathetic, half-hearted, and entirely drenched walk of shame.
+
+# Despite the chaos!
+
+
+
