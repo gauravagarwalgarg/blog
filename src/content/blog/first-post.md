@@ -1,6 +1,6 @@
 ---
 title: 'My First Post'
-description: ' The Garden City's Concrete Heat Island Effect. '
+description: "The Garden City's Concrete Heat Island Effect."
 pubDate: 'May 16 2026'
 ---
 

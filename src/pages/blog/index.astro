@@ -1,15 +1,19 @@
 ---
 import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
+// FIXED IMPORTS: Adjusted relative folder tracking up to match src/pages/blog/ location
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
-import FormattedDate from '../../components/FormattedDate.astro';
+import FormattedDate from '../../components/FormattedDate.astro'; // 👈 Fixed path from '../' to '../../'
 import Header from '../../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
+
+// Securely extracts your dynamic '/Blog' base path configuration setting
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <!doctype html>
@@ -94,7 +98,8 @@ const posts = (await getCollection('blog')).sort(
 					{
 						posts.map((post) => (
 							<li>
-								<a href={`/blog/${post.id}/`}>
+								{/* FIXED ROUTING LINK: Appended base subfolder routing dynamically */}
+								<a href={`${baseUrl}/blog/${post.id}/`}>
 									{post.data.heroImage && (
 										<Image width={720} height={360} src={post.data.heroImage} alt="" />
 									)}
