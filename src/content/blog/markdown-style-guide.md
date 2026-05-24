@@ -1,214 +1,107 @@
 ---
-title: 'Markdown Style Guide'
-description: 'Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.'
-pubDate: 'Jun 19 2024'
-heroImage: '../../assets/blog-placeholder-1.jpg'
+title: 'Markdown & MDX Style Guide'
+description: 'A reference for all Markdown and MDX syntax supported in this blog — headings, code blocks, tables, images, and embedded components.'
+pubDate: 2024-06-19
+category: 'software-engineering'
+tags: ['markdown', 'mdx', 'astro', 'reference']
+draft: false
 ---
 
-Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.
+A quick reference for all the Markdown syntax supported in this blog. Useful when writing posts.
 
 ## Headings
 
-The following HTML `<h1>`—`<h6>` elements represent six levels of section headings. `<h1>` is the highest section level while `<h6>` is the lowest.
-
-# H1
-
-## H2
-
-### H3
-
-#### H4
-
-##### H5
-
-###### H6
-
-## Paragraph
-
-Xerum, quo qui aut unt expliquam qui dolut labo. Aque venitatiusda cum, voluptionse latur sitiae dolessi aut parist aut dollo enim qui voluptate ma dolestendit peritin re plis aut quas inctum laceat est volestemque commosa as cus endigna tectur, offic to cor sequas etum rerum idem sintibus eiur? Quianimin porecus evelectur, cum que nis nust voloribus ratem aut omnimi, sitatur? Quiatem. Nam, omnis sum am facea corem alique molestrunt et eos evelece arcillit ut aut eos eos nus, sin conecerem erum fuga. Ri oditatquam, ad quibus unda veliamenimin cusam et facea ipsamus es exerum sitate dolores editium rerore eost, temped molorro ratiae volorro te reribus dolorer sperchicium faceata tiustia prat.
-
-Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sapicia is sinveli squiatum, core et que aut hariosam ex eat.
-
-## Images
-
-### Syntax
-
 ```markdown
-![Alt text](./full/or/relative/path/of/image)
+## H2 — Section heading
+### H3 — Subsection
+#### H4 — Minor heading
 ```
 
-### Output
+## Text Formatting
 
-![blog placeholder](../../assets/blog-placeholder-about.jpg)
+**Bold text**, *italic text*, ~~strikethrough~~, and `inline code`.
 
-## Blockquotes
-
-The blockquote element represents content that is quoted from another source, optionally with a citation which must be within a `footer` or `cite` element, and optionally with in-line changes such as annotations and abbreviations.
-
-### Blockquote without attribution
-
-#### Syntax
+## Links & Images
 
 ```markdown
-> Tiam, ad mint andaepu dandae nostion secatur sequo quae.  
-> **Note** that you can use _Markdown syntax_ within a blockquote.
+[Link text](https://example.com)
+![Alt text](../../assets/my-image.jpg)
 ```
 
-#### Output
-
-> Tiam, ad mint andaepu dandae nostion secatur sequo quae.  
-> **Note** that you can use _Markdown syntax_ within a blockquote.
-
-### Blockquote with attribution
-
-#### Syntax
-
-```markdown
-> Don't communicate by sharing memory, share memory by communicating.<br>
-> <cite>Rob Pike[^1]</cite>
-```
-
-#### Output
-
-> Don't communicate by sharing memory, share memory by communicating.<br>
-> <cite>Rob Pike[^1]</cite>
-
-[^1]: The above quote is excerpted from Rob Pike's [talk](https://www.youtube.com/watch?v=PAAkCSZUG1c) during Gopherfest, November 18, 2015.
-
-## Tables
-
-### Syntax
-
-```markdown
-| Italics   | Bold     | Code   |
-| --------- | -------- | ------ |
-| _italics_ | **bold** | `code` |
-```
-
-### Output
-
-| Italics   | Bold     | Code   |
-| --------- | -------- | ------ |
-| _italics_ | **bold** | `code` |
+Images placed in `src/assets/` are automatically optimized (WebP, responsive sizes, lazy-loaded).
 
 ## Code Blocks
 
-### Syntax
+Fenced code blocks with language-specific syntax highlighting (powered by Shiki):
 
-we can use 3 backticks ``` in new line and write snippet and close with 3 backticks on new line and to highlight language specific syntax, write one word of language name after first 3 backticks, for eg. html, javascript, css, markdown, typescript, txt, bash
-
-````markdown
-```html
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Example HTML5 Document</title>
-  </head>
-  <body>
-    <p>Test</p>
-  </body>
-</html>
-```
-````
-
-### Output
-
-```html
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Example HTML5 Document</title>
-  </head>
-  <body>
-    <p>Test</p>
-  </body>
-</html>
+```rust
+fn main() {
+    println!("Hello from the blog!");
+}
 ```
 
-## List Types
-
-### Ordered List
-
-#### Syntax
-
-```markdown
-1. First item
-2. Second item
-3. Third item
+```python
+def fibonacci(n: int) -> int:
+    if n <= 1:
+        return n
+    return fibonacci(n - 1) + fibonacci(n - 2)
 ```
 
-#### Output
+```typescript
+const greet = (name: string): string => `Hello, ${name}!`;
+```
 
+## Blockquotes
+
+> Don't communicate by sharing memory, share memory by communicating.
+> — Rob Pike
+
+## Tables
+
+| Feature | Status | Notes |
+|---------|--------|-------|
+| Content Collections | ✅ | Type-safe schemas |
+| View Transitions | ✅ | SPA-like navigation |
+| Islands | ✅ | Partial hydration |
+| Image Optimization | ✅ | Sharp at build time |
+
+## Lists
+
+### Ordered
 1. First item
 2. Second item
 3. Third item
 
-### Unordered List
+### Unordered
+- Bullet point
+- Another point
+  - Nested item
+  - Another nested item
 
-#### Syntax
+## Horizontal Rule
 
-```markdown
-- List item
-- Another item
-- And another item
+---
+
+## MDX Components
+
+In `.mdx` files, you can import and embed components:
+
+```mdx
+import MyChart from '../../components/MyChart.astro';
+
+<MyChart data={[1, 2, 3]} client:visible />
 ```
 
-#### Output
+The `client:visible` directive means the component only loads JavaScript when scrolled into view (Islands Architecture).
 
-- List item
-- Another item
-- And another item
+## Keyboard & Abbreviations
 
-### Nested list
+Press <kbd>Ctrl</kbd> + <kbd>K</kbd> to open search.
 
-#### Syntax
+<abbr title="Application Programming Interface">API</abbr> calls should be cached.
 
-```markdown
-- Fruit
-  - Apple
-  - Orange
-  - Banana
-- Dairy
-  - Milk
-  - Cheese
-```
+## Footnotes
 
-#### Output
+Here's a statement with a footnote[^1].
 
-- Fruit
-  - Apple
-  - Orange
-  - Banana
-- Dairy
-  - Milk
-  - Cheese
-
-## Other Elements abbr, sub, sup, kbd, mark
-
-### Syntax
-
-```markdown
-<abbr title="Graphics Interchange Format">GIF</abbr> is a bitmap image format.
-
-H<sub>2</sub>O
-
-X<sup>n</sup> + Y<sup>n</sup> = Z<sup>n</sup>
-
-Press <kbd>CTRL</kbd> + <kbd>ALT</kbd> + <kbd>Delete</kbd> to end the session.
-
-Most <mark>salamanders</mark> are nocturnal, and hunt for insects, worms, and other small creatures.
-```
-
-### Output
-
-<abbr title="Graphics Interchange Format">GIF</abbr> is a bitmap image format.
-
-H<sub>2</sub>O
-
-X<sup>n</sup> + Y<sup>n</sup> = Z<sup>n</sup>
-
-Press <kbd>CTRL</kbd> + <kbd>ALT</kbd> + <kbd>Delete</kbd> to end the session.
-
-Most <mark>salamanders</mark> are nocturnal, and hunt for insects, worms, and other small creatures.
+[^1]: This is the footnote content.
