@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 import type { ImageMetadata } from 'astro';
 import FallbackImage from '../assets/blog-placeholder-1.jpg';
@@ -34,7 +34,7 @@ const { title, description, image = FallbackImage } = Astro.props;
 <Font cssVariable="--font-atkinson" preload />
 
 <!-- View Transitions (SPA-like navigation without JS framework) -->
-<ViewTransitions />
+<ClientRouter />
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
