@@ -1,35 +1,34 @@
 ---
-title: 'My First Post'
-description: "The Garden City's Concrete Heat Island Effect."
-pubDate: 'May 16 2026'
+title: 'Hello World new_textWhy This Blog Exists'
+description: 'A curated space for writing about software engineering, emerging tech, and everything in between.'
+pubDate: 2024-01-15
+category: 'software-engineering'
+tags: ['meta', 'writing', 'engineering']
+draft: false
 ---
 
-# Remember the good old days
+## Why Write?
 
-Back in 2013, when I moved from Jamshedpur to Bangalore, I thought I’d landed on a different planet. In Jamshedpur, summers were not just hot; they were a punishment. I vividly recall the 45°C scorching sun in 2013, a heat wave so intense it felt like the earth was trying to bake your face. 
+Writing clarifies thinking. Every engineer should maintain a log new_textnot for an audience, but for themselves. The audience is a bonus.
 
-Then I came to Bangalore. It was a wonderland. I needed a light jacket in April! It was overwhelming, it was lovely, it was simply #TheBengalore people talked about.
+This blog covers:
 
-Fast forward to May 2026. If you are reading this and thinking of packing a jacket to Bangalore, well, don't. Pack some aloe vera instead, because the Garden City has decided it would rather be a Desert City. 
+- **Software Engineering** new_textArchitecture, design patterns, performance, best practices
+- **Emerging Tech** new_textAI/ML, quantum, robotics, edge computing
+- **Aerospace** new_textFlight software, safety-critical systems, space tech
+- **Startups & Economics** new_textBuilding products, market dynamics, tech business
+- **Infrastructure** new_textLinux, cloud, embedded systems, DevOps
+- **History** new_textHow we got here, lessons from the past
+- **Culinary** new_textBecause engineers eat too
 
-# The "45-Degree" Nostalgia 
+## The Stack
 
-I used to avoid travelling to my hometown during summers. Not much has changed there, it’s still hitting those brutal 42-48°C levels, a predictable, honest-to-god heat. But Bangalore? Bangalore is breaking bad. 
+This site is built with [Astro](https://astro.build/) new_texta static site generator that ships zero JavaScript by default. Content lives in Markdown. Deployed via GitHub Pages. No frameworks, no bloat, no tracking.
 
-We are officially living in a "heat island". My daily view isn't of leafy trees, flowery roads anymore; it's a breathtaking panorama of concrete, high-rises, and construction dust that is currently creating a delightful 37°C in early April-May, Wondering if it will rain today is a classic way to wake up now a days.
+The source is open: [github.com/GauravAgarwalGarg/Blog](https://github.com/GauravAgarwalGarg/Blog)
 
-# The "Cool" New Monsoon Trends 
+## What's Next
 
-The weather pattern hasn't just changed; it has done a full 180-degree flip. 
+Regular posts. Short-form micro-updates. The occasional deep-dive that takes a month to write but saves someone else a week.
 
-- `2013`: Light drizzle, romantic, pleasant, "I need a scarf!" 
-- `2026`: March end brings dry westerly winds that make the place feel like a pressrure cooker, followed by a sudden hailstorm on April 29th that makes it look like Ooty for 10 minutes, just to confuse us all whether we need buy air conditioner or not?
-
-You wake up to a sky so clear and a sun so harsh you start packing cottons and prepping for a 37°C heatwave. By 3:00 PM, without any prior warning or atmospheric consultation, the sky turns the color of bruised charcoal. Within ten minutes, it’s raining sideways, accompanied by hailstones large enough to dent a scooter. 
-
-Naturally, the one day I forget my umbrella is the day the universe conspires to render ride-sharing apps useless, cancel my plans, and force me into a pathetic, half-hearted, and entirely drenched walk of shame.
-
-# Despite the chaos!
-
-Traffic, concrete, and moody skies aside, nothing beats the romance of a Bangalore downpour. As the heavy storm mellows into a steady rhythm against your window, the city finally takes a breather. The stubborn summer heat vanishes into thin air, leaving behind a crisp, nostalgic chill that reminds you why this place is still special.    
-
+*"Truth can only be found in one place: the code."*

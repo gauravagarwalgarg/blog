@@ -9,6 +9,22 @@ export default defineConfig({
 	site: 'https://gauravagarwalgarg.github.io',
 	base: '/Blog',
 	integrations: [mdx(), sitemap()],
+	markdown: {
+		shikiConfig: {
+			themes: {
+				light: 'github-light',
+				dark: 'github-dark',
+			},
+		},
+	},
+	image: {
+		// Sharp handles WebP/AVIF conversion at build time
+		service: { entrypoint: 'astro/assets/services/sharp' },
+	},
+	prefetch: {
+		prefetchAll: true,
+		defaultStrategy: 'viewport',
+	},
 	fonts: [
 		{
 			provider: fontProviders.local(),

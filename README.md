@@ -1,67 +1,141 @@
-# Blog
+# 📝 Blog
 
-A curated blog repository covering software engineering, emerging technology, aerospace, health-tech, startups, economics, infrastructure, history, and culinary adventures.
+> A curated blog covering software engineering, emerging technology, aerospace, health-tech, startups, economics, infrastructure, history, and culinary adventures.
 
-## Astro Starter Kit: Blog
+**Live**: [gauravagarwalgarg.github.io/Blog](https://gauravagarwalgarg.github.io/Blog)
 
-```sh
-npm create astro@latest -- --template blog
+---
+
+## ✨ Features
+
+- 🌙 Dark mode (system preference + toggle)
+- 📱 Mobile-first, responsive design
+- ⚡ 100/100 Lighthouse performance target
+- 🔍 SEO: canonical URLs, OpenGraph, Twitter cards
+- 📡 RSS feed + Sitemap
+- ✍️ Markdown & MDX support
+- 🎨 Syntax highlighting (Shiki)
+- 🖼️ Image optimization (Sharp)
+- 📑 Table of contents (via MDX)
+- 🏷️ Category filtering
+- � Micro-blogging (short-form posts)
+- 🚀 Static deploy via GitHub Pages (future: self-hosted dynamic)
+
+---
+
+## 🏗️ Tech Stack
+
+| Layer | Tool |
+|-------|------|
+| Framework | [Astro 6](https://astro.build/) |
+| Content | Markdown / MDX |
+| Styling | Vanilla CSS (no framework overhead) |
+| Fonts | Atkinson Hyperlegible (local, no CLS) |
+| Images | Sharp (build-time optimization) |
+| Deploy | GitHub Actions → GitHub Pages |
+| Future | Docker + Caddy/Nginx (self-hosted) |
+
+---
+
+## 📂 Structure
+
+```
+src/
+├── components/       # Reusable UI (Header, Footer, PostCard, etc.)
+├── content/
+│   ├── blog/         # Long-form posts (Markdown/MDX)
+│   └── micro/        # Short-form micro-posts
+├── layouts/          # Page layouts (BlogPost)
+├── pages/            # Routes (index, blog, projects, about)
+├── styles/           # Global CSS (dark mode, typography)
+└── consts.ts         # Site config, categories, projects, nav
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+---
 
-Features:
+## 🚀 Development
 
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and Open Graph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-├── public/
-├── src/
-│   ├── assets/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
+```bash
+npm install
+npm run dev       # http://localhost:4321
+npm run build     # Production build
+npm run preview   # Preview production build
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+---
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## ✍️ Writing a Post
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+Create `src/content/blog/my-post.md`:
 
-Any static assets, like images, can be placed in the `public/` directory.
+```markdown
+---
+title: "My Post Title"
+description: "A brief description for SEO and cards."
+pubDate: 2024-06-15
+category: "software-engineering"
+tags: ["rust", "systems", "performance"]
+draft: false
+---
 
-## 🧞 Commands
+Your content here. Supports full Markdown + code blocks.
+```
 
-All commands are run from the root of the project, from a terminal:
+### Categories
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+`software-engineering` · `emerging-tech` · `aerospace` · `health-tech` · `startups` · `economics` · `infrastructure` · `history` · `culinary` · `micro`
 
-## 👀 Want to learn more?
+---
 
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## 🐳 Future: Self-Hosted Dynamic Deployment
 
-## Credit
+When ready to move off GitHub Pages:
 
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+```dockerfile
+# Dockerfile
+FROM node:22-alpine AS build
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
+
+FROM nginx:alpine
+COPY --from=build /app/dist /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/nginx.conf
+EXPOSE 80
+```
+
+```yaml
+# docker-compose.yml
+services:
+  blog:
+    build: .
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./certs:/etc/nginx/certs
+    restart: unless-stopped
+```
+
+Switch Astro to SSR mode when needed:
+```js
+// astro.config.mjs
+output: 'server',
+adapter: node({ mode: 'standalone' }),
+```
+
+---
+
+## 📋 Design Principles
+
+1. **Content-first** new_textNo visual noise. Words and code are the product.
+2. **Performance** new_textNo JS frameworks on the client. Static HTML + minimal CSS.
+3. **Accessible** new_textSemantic HTML, proper contrast, keyboard navigable.
+4. **Progressive** new_textWorks without JS. Dark mode via CSS + localStorage.
+5. **Portable** new_textStatic output. Deploy anywhere (Pages, S3, Nginx, Caddy).
+
+---
+
+*Inspired by [Firebase Blog](https://firebase.blog/), [Astrofy](https://astrofy-template.netlify.app/), and [OpenBlog](https://astro.build/themes/details/openblog/).*
