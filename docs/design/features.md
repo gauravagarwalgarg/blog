@@ -1,4 +1,4 @@
-# 🧩 Feature Reference — Astro Features in Use
+# 🧩 Feature Reference new_textAstro Features in Use
 
 > Every Astro feature leveraged in this blog, how it's implemented, and why.
 
@@ -31,7 +31,7 @@ const blog = defineCollection({
 ```
 
 **Why this matters**:
-- If you forget a `title` or misspell `category`, the **build fails** — not the user's browser
+- If you forget a `title` or misspell `category`, the **build fails** new_textnot the user's browser
 - TypeScript autocompletion for frontmatter fields
 - Image references are validated at build time
 - Default values reduce boilerplate in every post
@@ -76,9 +76,9 @@ import { ViewTransitions } from 'astro:transitions';
 **What**: Render pages as static HTML, hydrate only interactive components ("islands") with JavaScript.
 
 **Where implemented**:
-- Search component: [`src/components/Search.astro`](../../src/components/Search.astro) — hydrated in Header
-- Dark mode toggle: [`src/components/Header.astro`](../../src/components/Header.astro) — inline script
-- Table of Contents: [`src/components/TableOfContents.astro`](../../src/components/TableOfContents.astro) — scroll observer
+- Search component: [`src/components/Search.astro`](../../src/components/Search.astro) new_texthydrated in Header
+- Dark mode toggle: [`src/components/Header.astro`](../../src/components/Header.astro) new_textinline script
+- Table of Contents: [`src/components/TableOfContents.astro`](../../src/components/TableOfContents.astro) new_textscroll observer
 
 **Hydration directives used**:
 | Directive | Used For | Behavior |
@@ -88,9 +88,9 @@ import { ViewTransitions } from 'astro:transitions';
 | `client:idle` | (Future: analytics) | Hydrate when browser is idle |
 
 **Why this matters**:
-- A blog is 95% static content — no reason to ship a full framework
+- A blog is 95% static content new_textno reason to ship a full framework
 - Only ~2KB of JS for search + dark mode toggle
-- Each island is independent — one failing doesn't break the page
+- Each island is independent new_textone failing doesn't break the page
 - Lighthouse TBT (Total Blocking Time) stays at 0ms for most pages
 
 **Astro docs**: [Islands Architecture](https://docs.astro.build/en/concepts/islands/)
@@ -99,7 +99,7 @@ import { ViewTransitions } from 'astro:transitions';
 
 ## 4. Image Optimization (`astro:assets`)
 
-**What**: Build-time image processing via Sharp — converts, resizes, and optimizes images automatically.
+**What**: Build-time image processing via Sharp new_textconverts, resizes, and optimizes images automatically.
 
 **Where implemented**:
 - Blog post hero images: [`src/layouts/BlogPost.astro`](../../src/layouts/BlogPost.astro)
@@ -119,9 +119,9 @@ import { Image } from 'astro:assets';
 5. Outputs optimized file to `dist/`
 
 **Why this matters**:
-- Perfect CLS (Cumulative Layout Shift) score — dimensions are known at build time
+- Perfect CLS (Cumulative Layout Shift) score new_textdimensions are known at build time
 - 40-70% smaller file sizes vs unoptimized JPEG/PNG
-- No runtime processing — all done at build
+- No runtime processing new_textall done at build
 - No external image CDN needed (Cloudinary, imgix, etc.)
 
 **Astro docs**: [Images](https://docs.astro.build/en/guides/images/)
@@ -130,7 +130,7 @@ import { Image } from 'astro:assets';
 
 ## 5. MDX Integration
 
-**What**: Write Markdown with embedded JSX components — interactive content inside blog posts.
+**What**: Write Markdown with embedded JSX components new_textinteractive content inside blog posts.
 
 **Where implemented**:
 - Config: [`astro.config.mjs`](../../astro.config.mjs) → `integrations: [mdx()]`
@@ -152,7 +152,7 @@ Back to regular Markdown.
 
 **Why this matters**:
 - Embed interactive charts, code playgrounds, polls directly in posts
-- Components are Islands — only hydrated when needed
+- Components are Islands new_textonly hydrated when needed
 - Full Markdown syntax still works (no compromise)
 - Import any Astro, React, Vue, or Svelte component
 
@@ -188,7 +188,7 @@ prefetch: {
 
 ## 7. Local Fonts (Zero CLS)
 
-**What**: Self-hosted fonts loaded via Astro's font system — no external requests, no layout shift.
+**What**: Self-hosted fonts loaded via Astro's font system new_textno external requests, no layout shift.
 
 **Where implemented**: [`astro.config.mjs`](../../astro.config.mjs) → `fonts` config
 
@@ -225,7 +225,7 @@ fonts: [{
 **Why this matters**:
 - Search engines discover all pages via sitemap
 - RSS readers can subscribe to your blog
-- Both generated at build time — zero runtime cost
+- Both generated at build time new_textzero runtime cost
 
 ---
 
@@ -281,7 +281,7 @@ fonts: [{
 **Why this matters**:
 - Increases time on site
 - Helps readers discover related content
-- Fully static — computed at build time, no client JS
+- Fully static new_textcomputed at build time, no client JS
 
 ---
 

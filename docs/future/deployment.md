@@ -1,6 +1,6 @@
 # 🚀 Deployment Guide & Cost Analysis
 
-> How to deploy, maintain, and scale this blog — from free to self-hosted.
+> How to deploy, maintain, and scale this blog new_textfrom free to self-hosted.
 
 ---
 
@@ -241,9 +241,9 @@ CMD ["node", "./dist/server/entry.mjs"]
 ## Recommended Path
 
 ```
-Phase 1 (Now):     GitHub Pages — $0, zero maintenance
-Phase 2 (Growth):  Cloudflare Pages — $0, better CDN, analytics
-Phase 3 (Dynamic): Hetzner VPS + Docker — €6/mo, full control
+Phase 1 (Now):     GitHub Pages new_text$0, zero maintenance
+Phase 2 (Growth):  Cloudflare Pages new_text$0, better CDN, analytics
+Phase 3 (Dynamic): Hetzner VPS + Docker new_text€6/mo, full control
 ```
 
 **Don't move to Phase 2 until**: You want custom headers, redirects, or global edge performance.

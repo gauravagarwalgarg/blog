@@ -65,12 +65,12 @@ Every feature has a cost: complexity, maintenance, bundle size, or cognitive loa
 **Why not now**:
 - Requires email service (cost at scale)
 - GDPR compliance (consent, unsubscribe, data deletion)
-- Subscribers expect regular content — don't start until you can deliver
+- Subscribers expect regular content new_textdon't start until you can deliver
 
 **When to add**: After 3 months of consistent weekly publishing.
 
 **Best approach**:
-- [Buttondown](https://buttondown.email/) — Free up to 100 subscribers, Markdown-native
+- [Buttondown](https://buttondown.email/) new_textFree up to 100 subscribers, Markdown-native
 - Embed as static HTML form (no Island needed, no client JS)
 - Or [Resend](https://resend.com/) for custom transactional emails
 
@@ -90,8 +90,8 @@ Every feature has a cost: complexity, maintenance, bundle size, or cognitive loa
 **When to add**: When you want data-driven content decisions (which topics resonate).
 
 **Best approach**:
-- [Plausible](https://plausible.io/) — 1KB script, GDPR-compliant, no cookies
-- Or [Umami](https://umami.is/) — Self-hosted, free, open source
+- [Plausible](https://plausible.io/) new_text1KB script, GDPR-compliant, no cookies
+- Or [Umami](https://umami.is/) new_textSelf-hosted, free, open source
 - Add as `<script>` in BaseHead (no Island needed)
 
 **Cost**: Plausible $9/month. Umami self-hosted = $0.
@@ -123,7 +123,7 @@ Every feature has a cost: complexity, maintenance, bundle size, or cognitive loa
 - VS Code + Astro extension = best editing experience
 - Version control for free (git history)
 
-**If needed later**: [Tina CMS](https://tina.io/) or [Decap CMS](https://decapcms.org/) — both work with Git-based content.
+**If needed later**: [Tina CMS](https://tina.io/) or [Decap CMS](https://decapcms.org/) new_textboth work with Git-based content.
 
 ---
 
