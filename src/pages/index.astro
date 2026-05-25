@@ -4,14 +4,30 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import PostCard from '../components/PostCard.astro';
-import { SITE_TITLE, SITE_DESCRIPTION, PROJECTS } from '../consts';
+import FormattedDate from '../components/FormattedDate.astro';
+import { SITE_TITLE, SITE_DESCRIPTION, PROJECTS, CATEGORIES, CATEGORY_LABELS, SOCIAL_LINKS } from '../consts';
+import type { Category } from '../consts';
 
 const posts = (await getCollection('blog'))
   .filter(p => !p.data.draft)
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-const recentPosts = posts.slice(0, 6);
+const latestPosts = posts.slice(0, 5);
+const featuredPost = posts[0];
 const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+// Get unique tags from all posts
+const allTags = [...new Set(posts.flatMap(p => p.data.tags))].slice(0, 12);
+
+// Get category counts
+const categoryCounts = CATEGORIES
+  .filter(c => c !== 'micro')
+  .map(cat => ({
+    slug: cat,
+    label: CATEGORY_LABELS[cat],
+    count: posts.filter(p => p.data.category === cat).length,
+  }))
+  .filter(c => c.count > 0);
 ---
 
 <!doctype html>
@@ -22,20 +38,41 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 <body>
   <Header />
   <main class="container">
+
     <!-- Hero -->
     <section class="hero">
       <h1>Devices to Cloud.<br/><span class="accent">Write Everything Software.</span></h1>
-      <p class="hero-sub">Software engineering, emerging tech, aerospace, startups, and the occasional recipe. Thoughts from the intersection of hardware and cloud.</p>
+      <p class="hero-sub">Software engineering, emerging tech, aerospace, startups, and the occasional poem. Thoughts from the intersection of hardware and cloud.</p>
+      <div class="hero-actions">
+        <a href={`${baseUrl}/blog`} class="btn btn-primary">Read the Blog</a>
+        <a href={`${baseUrl}/about`} class="btn btn-secondary">About Me</a>
+      </div>
     </section>
 
-    <!-- Recent Posts -->
+    <!-- Featured / Highlight Post -->
+    {featuredPost && (
+      <section class="highlight">
+        <div class="highlight-badge">Latest</div>
+        <a href={`${baseUrl}/blog/${featuredPost.id}/`} class="highlight-card">
+          <div class="highlight-meta">
+            <span class="tag">{CATEGORY_LABELS[featuredPost.data.category as Category] || featuredPost.data.category}</span>
+            <FormattedDate date={featuredPost.data.pubDate} />
+          </div>
+          <h2>{featuredPost.data.title}</h2>
+          <p>{featuredPost.data.description}</p>
+          <span class="highlight-link">Read the article →</span>
+        </a>
+      </section>
+    )}
+
+    <!-- Latest Posts -->
     <section class="section">
       <div class="section-header">
-        <h2>Recent Posts</h2>
+        <h2>Latest Posts</h2>
         <a href={`${baseUrl}/blog`} class="view-all">View all →</a>
       </div>
       <div class="posts-list">
-        {recentPosts.map((post, i) => (
+        {latestPosts.slice(1).map((post) => (
           <PostCard
             title={post.data.title}
             description={post.data.description}
@@ -43,13 +80,57 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
             category={post.data.category}
             tags={post.data.tags}
             href={`${baseUrl}/blog/${post.id}/`}
-            featured={i === 0}
           />
         ))}
       </div>
     </section>
 
-    <!-- Projects -->
+    <!-- Categories -->
+    {categoryCounts.length > 0 && (
+      <section class="section">
+        <div class="section-header">
+          <h2>Categories</h2>
+        </div>
+        <div class="categories-grid">
+          {categoryCounts.map(cat => (
+            <a href={`${baseUrl}/blog/category/${cat.slug}`} class="category-pill">
+              <span class="category-name">{cat.label}</span>
+              <span class="category-count">{cat.count}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- Tags Cloud -->
+    {allTags.length > 0 && (
+      <section class="section">
+        <div class="section-header">
+          <h2>Tags</h2>
+        </div>
+        <div class="tags-cloud">
+          {allTags.map(tag => (
+            <span class="tag">{`#${tag}`}</span>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- RSS Subscribe -->
+    <section class="section subscribe-section">
+      <div class="subscribe-card">
+        <div class="subscribe-content">
+          <h3>Stay Updated</h3>
+          <p>Subscribe via RSS to get new posts delivered to your reader. No spam, no tracking, just content.</p>
+        </div>
+        <a href={`${baseUrl}${SOCIAL_LINKS.rss}`} class="btn btn-primary rss-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/></svg>
+          Subscribe via RSS
+        </a>
+      </div>
+    </section>
+
+    <!-- Projects Preview -->
     <section class="section">
       <div class="section-header">
         <h2>Projects</h2>
@@ -61,18 +142,20 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
             <h3>{project.title}</h3>
             <p>{project.description}</p>
             <div class="project-tags">
-              {project.tags.map(tag => <span class="tag">{tag}</span>)}
+              {project.tags.slice(0, 3).map(tag => <span class="tag">{tag}</span>)}
             </div>
           </a>
         ))}
       </div>
     </section>
+
   </main>
   <Footer />
 </body>
 </html>
 
 <style>
+  /* Hero */
   .hero {
     padding: 4rem 0 3rem;
     max-width: 640px;
@@ -87,16 +170,109 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
     font-size: 1.1rem;
     color: var(--text-secondary);
     line-height: 1.6;
-    margin: 0;
+    margin: 0 0 1.5rem;
   }
+  .hero-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.25rem;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: white;
+  }
+  .btn-primary:hover {
+    background: var(--accent-hover);
+    color: white;
+  }
+  .btn-secondary {
+    background: var(--bg-secondary);
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+  .btn-secondary:hover {
+    background: var(--border);
+  }
+
+  /* Highlight / Featured */
+  .highlight {
+    position: relative;
+    margin-bottom: 1rem;
+  }
+  .highlight-badge {
+    position: absolute;
+    top: -0.5rem;
+    left: 1.5rem;
+    background: var(--accent);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    z-index: 1;
+  }
+  .highlight-card {
+    display: block;
+    padding: 2rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .highlight-card:hover {
+    box-shadow: var(--card-shadow-hover);
+    transform: translateY(-2px);
+  }
+  .highlight-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+  .highlight-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+  }
+  .highlight-card p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+  .highlight-link {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--accent);
+  }
+
+  /* Sections */
   .section {
-    padding: 2rem 0;
+    padding: 2.5rem 0;
   }
   .section-header {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
   }
   .section-header h2 {
     font-size: 1.25rem;
@@ -110,9 +286,84 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
     display: flex;
     flex-direction: column;
   }
+
+  /* Categories */
+  .categories-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .category-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+  .category-pill:hover {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+  }
+  .category-pill:hover .category-count {
+    background: rgba(255,255,255,0.2);
+    color: white;
+  }
+  .category-count {
+    background: var(--border);
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    padding: 0.1rem 0.4rem;
+    border-radius: 100px;
+    transition: all 0.2s;
+  }
+
+  /* Tags Cloud */
+  .tags-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  /* Subscribe */
+  .subscribe-section {
+    padding: 1.5rem 0;
+  }
+  .subscribe-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 1.5rem 2rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+  .subscribe-content h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+  }
+  .subscribe-content p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+  .rss-btn {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* Projects */
   .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 1rem;
   }
   .project-card {
@@ -124,7 +375,7 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
     margin-bottom: 0.5rem;
   }
   .project-card p {
-    font-size: 0.875rem;
+    font-size: 0.85rem;
     color: var(--text-secondary);
     margin-bottom: 0.75rem;
     line-height: 1.5;
@@ -134,9 +385,18 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
     gap: 0.5rem;
     flex-wrap: wrap;
   }
+
+  /* Responsive */
   @media (max-width: 768px) {
     .hero { padding: 2rem 0; }
     .hero h1 { font-size: 1.75rem; }
     .projects-grid { grid-template-columns: 1fr; }
+    .subscribe-card {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.25rem;
+    }
+    .highlight-card { padding: 1.5rem; }
+    .highlight-card h2 { font-size: 1.25rem; }
   }
 </style>

@@ -1,6 +1,6 @@
 ---
 title: 'Markdown & MDX Style Guide'
-description: 'A reference for all Markdown and MDX syntax supported in this blog — headings, code blocks, tables, images, and embedded components.'
+description: 'A reference for all Markdown and MDX syntax supported in this blog new_textheadings, code blocks, tables, images, and embedded components.'
 pubDate: 2024-06-19
 category: 'software-engineering'
 tags: ['markdown', 'mdx', 'astro', 'reference']
@@ -12,9 +12,9 @@ A quick reference for all the Markdown syntax supported in this blog. Useful whe
 ## Headings
 
 ```markdown
-## H2 — Section heading
-### H3 — Subsection
-#### H4 — Minor heading
+## H2 new_textSection heading
+### H3 new_textSubsection
+#### H4 new_textMinor heading
 ```
 
 ## Text Formatting
@@ -54,7 +54,7 @@ const greet = (name: string): string => `Hello, ${name}!`;
 ## Blockquotes
 
 > Don't communicate by sharing memory, share memory by communicating.
-> — Rob Pike
+> new_textRob Pike
 
 ## Tables
 

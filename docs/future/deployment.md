@@ -1,112 +1,183 @@
-# 🚀 Deployment Guide & Cost Analysis
+# 🚀 Deployment Guide new_textCheapest to Best
 
-> How to deploy, maintain, and scale this blog new_textfrom free to self-hosted.
+> Self-hosting options ranked from free to premium, with clear tradeoffs.
 
 ---
 
-## Current Setup: GitHub Pages (Free)
+## TL;DR new_textPick Your Tier
+
+| Tier | Provider | Monthly Cost | Best For |
+|------|----------|-------------|----------|
+| 🆓 Free | GitHub Pages | $0 | Starting out, zero maintenance |
+| 🆓 Free+ | Cloudflare Pages | $0 | Better CDN, custom headers |
+| 🆓 Free+ | Vercel | $0 | Edge functions, analytics |
+| 💰 Budget | Oracle Cloud Free | $0 | Full VPS control (if available) |
+| 💰 Budget | Fly.io | $0-5/mo | Container-native, global |
+| 💰 Value | Hetzner CX22 | €4.50/mo | Best price/performance in EU |
+| 💰 Value | DigitalOcean | $6/mo | Good docs, US/EU regions |
+| 💰 Pro | Railway | $5-20/mo | Zero-config Docker deploys |
+| 💰 Pro | Render | $7-25/mo | Managed, auto-scaling |
+
+---
+
+## Tier 1: Free Static Hosting (Current)
+
+### GitHub Pages ⭐ Current Setup
 
 ```
 Push to main → GitHub Actions → Astro Build → Deploy to Pages
 ```
 
-**Workflow**: [`.github/workflows/deploy.yml`](../../.github/workflows/deploy.yml)
-
 | Metric | Value |
 |--------|-------|
-| Cost | $0 |
-| Build time | ~30s |
-| CDN | GitHub's CDN (Fastly) |
-| Custom domain | Supported (free) |
-| HTTPS | Automatic (Let's Encrypt) |
-| Bandwidth | 100GB/month (soft limit) |
-| Build minutes | 2000/month (free tier) |
+| Cost | **$0** |
+| CDN | GitHub's CDN (Fastly, single region) |
+| Custom domain | ✅ Free |
+| HTTPS | ✅ Automatic |
+| Bandwidth | 100GB/month |
+| Build minutes | 2000/month |
+| Deploy time | ~45s |
 
-**Limitations**:
-- Static only (no server-side rendering)
-- No custom response headers
-- No edge functions
-- Rate-limited API (1000 requests/hour for Actions)
-- Single region (no global edge)
+**Limitations**: Static only, no custom headers, no edge functions, single region.
 
-**Best for**: Personal blogs with < 100K monthly pageviews.
+**Verdict**: Perfect for starting. Don't move until you have a reason.
 
 ---
 
-## Option 2: Cloudflare Pages (Free, Better CDN)
+### Cloudflare Pages ⭐ Recommended Upgrade
 
 ```
 Push to main → Cloudflare builds → Deploy to 300+ edge locations
 ```
 
-**Migration steps**:
-1. Sign up at [pages.cloudflare.com](https://pages.cloudflare.com)
-2. Connect GitHub repository
-3. Set build command: `npm run build`
-4. Set output directory: `dist`
-5. Deploy
-
 | Metric | Value |
 |--------|-------|
-| Cost | $0 |
-| Build time | ~20s |
+| Cost | **$0** |
 | CDN | 300+ PoPs globally |
-| Custom domain | Supported (free) |
-| HTTPS | Automatic |
-| Bandwidth | Unlimited |
-| Builds | 500/month (free), unlimited (paid $20/mo) |
+| Custom domain | ✅ Free |
+| Bandwidth | **Unlimited** |
+| Builds | 500/month (free) |
+| Deploy time | ~20s |
+| Web Analytics | ✅ Free, privacy-friendly |
+
+**Migration** (5 minutes):
+1. Sign up at [pages.cloudflare.com](https://pages.cloudflare.com)
+2. Connect GitHub repo
+3. Build command: `npm run build`
+4. Output directory: `dist`
+5. Done
 
 **Gains over GitHub Pages**:
-- Faster globally (edge network)
-- Custom headers (`_headers` file)
-- Redirects (`_redirects` file)
-- Edge functions (Workers) if needed later
-- Web Analytics (free, privacy-friendly)
+- 10x faster globally (edge network)
+- Custom headers via `_headers` file
+- Redirects via `_redirects` file
+- Free web analytics (no JS, server-side)
+- Edge functions (Workers) when needed
 
-**Best for**: Blogs wanting better global performance without cost.
+**Verdict**: Best free option. Move here when you want speed + analytics.
 
 ---
 
-## Option 3: Vercel (Free Tier)
-
-```
-Push to main → Vercel builds → Deploy to edge
-```
+### Vercel
 
 | Metric | Value |
 |--------|-------|
-| Cost | $0 (hobby) / $20/mo (pro) |
+| Cost | **$0** (hobby) / $20/mo (pro) |
+| CDN | Global edge |
 | Bandwidth | 100GB/month (free) |
 | Builds | Unlimited |
-| Edge functions | Supported |
-| Analytics | $0 (basic) |
+| Edge functions | ✅ |
+| Analytics | ✅ Basic free |
 
-**When to choose**: If you want serverless functions or ISR (Incremental Static Regeneration) later.
+**When to choose**: If you want serverless functions or ISR later.
+
+**Verdict**: Good but Cloudflare is better for pure static (unlimited bandwidth).
 
 ---
 
-## Option 4: Self-Hosted VPS (Full Control)
+## Tier 2: Free VPS (Full Control)
 
-```
-Push to main → CI builds Docker image → Deploy to VPS
+### Oracle Cloud Free Tier
+
+| Metric | Value |
+|--------|-------|
+| Cost | **$0 forever** |
+| Specs | 4 OCPU, 24GB RAM (ARM Ampere) |
+| Storage | 200GB |
+| Bandwidth | 10TB/month |
+| Region | Limited availability |
+
+**Catch**: Instances are hard to get (high demand). You may need to retry for weeks.
+
+**Setup**: Docker + Caddy (see Tier 3 setup below).
+
+**Verdict**: Unbeatable if you can get an instance. Full VPS for $0.
+
+---
+
+### Fly.io
+
+| Metric | Value |
+|--------|-------|
+| Cost | **$0-5/mo** |
+| Specs | 3 shared VMs free (256MB each) |
+| Global | ✅ Deploy to multiple regions |
+| Docker | ✅ Native |
+| Auto-scaling | ✅ Scale to zero |
+
+**Deploy**:
+```bash
+fly launch    # One-time setup
+fly deploy    # Push updates
 ```
 
-### Architecture
+**Verdict**: Great for containers. Scale-to-zero means you only pay when there's traffic.
+
+---
+
+## Tier 3: Budget VPS (Self-Hosted)
+
+### Hetzner CX22 ⭐ Best Value
+
+| Metric | Value |
+|--------|-------|
+| Cost | **€4.50/month** (~$5) |
+| Specs | 2 vCPU, 4GB RAM, 40GB NVMe |
+| Bandwidth | 20TB/month |
+| Location | Germany, Finland, US |
+| Backups | +€1.50/month |
+
+**Why Hetzner**: Cheapest quality VPS in Europe. German data privacy. NVMe storage. Excellent uptime.
+
+### DigitalOcean Basic
+
+| Metric | Value |
+|--------|-------|
+| Cost | **$6/month** |
+| Specs | 1 vCPU, 1GB RAM, 25GB SSD |
+| Bandwidth | 1TB/month |
+| Location | US, EU, Asia |
+
+**Why DO**: Better docs, more regions, $200 free credit for new accounts.
+
+---
+
+### Self-Hosted Architecture
 
 ```
 ┌─────────────────────────────────────────┐
 │  Caddy (reverse proxy + auto-HTTPS)     │
 ├─────────────────────────────────────────┤
-│  Astro (static files served by Caddy)   │
-│  OR Astro SSR (Node.js standalone)      │
+│  Astro Static (served by Caddy)         │
+│  OR Astro SSR (Node.js)                 │
 ├─────────────────────────────────────────┤
 │  Docker Compose                         │
 ├─────────────────────────────────────────┤
-│  VPS (Hetzner / DigitalOcean / Oracle)  │
+│  VPS (Hetzner / DO / Oracle)            │
 └─────────────────────────────────────────┘
 ```
 
-### Static Deployment (Current)
+### Static Deploy (Recommended)
 
 ```dockerfile
 FROM node:22-alpine AS build
@@ -129,29 +200,37 @@ blog.yourdomain.dev {
     file_server
     encode gzip zstd
 
-    # SPA fallback for View Transitions
-    try_files {path} {path}/ /index.html
-
-    # Cache static assets aggressively
     @static path *.js *.css *.woff *.woff2 *.webp *.avif *.jpg *.png *.svg
     header @static Cache-Control "public, max-age=31536000, immutable"
 
-    # Security headers
     header {
         X-Content-Type-Options "nosniff"
         X-Frame-Options "DENY"
         Referrer-Policy "strict-origin-when-cross-origin"
-        Permissions-Policy "camera=(), microphone=(), geolocation=()"
     }
 }
 ```
 
-### SSR Deployment (Future)
+```yaml
+# docker-compose.yml
+services:
+  blog:
+    build: .
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - caddy_data:/data
+    restart: unless-stopped
 
-When you need server-side features:
+volumes:
+  caddy_data:
+```
+
+### SSR Deploy (When Dynamic Needed)
 
 ```javascript
-// astro.config.mjs
+// astro.config.mjs new_textflip to SSR
 import node from '@astrojs/node';
 
 export default defineConfig({
@@ -180,75 +259,75 @@ CMD ["node", "./dist/server/entry.mjs"]
 
 ---
 
-## Cost Comparison
+## Tier 4: Managed / Pro
 
-### Free Tier Options
+### Railway
 
-| Provider | Cost | Bandwidth | Builds | Global CDN |
-|----------|------|-----------|--------|-----------|
-| GitHub Pages | $0 | 100GB/mo | 2000 min/mo | ❌ (single region) |
-| Cloudflare Pages | $0 | Unlimited | 500/mo | ✅ (300+ PoPs) |
-| Vercel | $0 | 100GB/mo | Unlimited | ✅ |
-| Netlify | $0 | 100GB/mo | 300 min/mo | ✅ |
+| Metric | Value |
+|--------|-------|
+| Cost | **$5/mo** + usage |
+| Deploy | Push to deploy (Docker or Nixpacks) |
+| Scaling | Auto |
+| Databases | ✅ Postgres, Redis, MySQL |
 
-### Self-Hosted Options
+**When**: You want managed infra without managing servers.
 
-| Provider | Monthly | Specs | Notes |
-|----------|---------|-------|-------|
-| Hetzner CX22 | €4.50 | 2 vCPU, 4GB RAM, 40GB SSD | Best value in EU |
-| DigitalOcean Basic | $6 | 1 vCPU, 1GB RAM, 25GB SSD | Good docs, US/EU |
-| Oracle Cloud Free | $0 | 4 OCPU, 24GB RAM (ARM) | Free forever (if available) |
-| Fly.io | $0-5 | 3 shared VMs free | Good for containers |
-| Railway | $5 | Usage-based | Easy Docker deploys |
+### Render
 
-### Total Cost Scenarios
-
-| Scenario | Annual Cost |
-|----------|-------------|
-| GitHub Pages + custom domain | $12/year |
-| Cloudflare Pages + domain | $12/year |
-| Hetzner VPS + domain + backups | ~$80/year |
-| VPS + Plausible + Newsletter | ~$280/year |
-| Oracle Free + domain | $12/year |
+| Metric | Value |
+|--------|-------|
+| Cost | **$7/mo** (static free, services $7+) |
+| Deploy | Git push |
+| Auto-scaling | ✅ |
+| Managed TLS | ✅ |
 
 ---
 
-## Maintenance Checklist
+## Cost Summary (Annual)
 
-### Weekly
-- [ ] Check GitHub Actions for failed builds
-- [ ] Review Lighthouse scores (should stay 100/100)
-
-### Monthly
-- [ ] Update dependencies (`npm update`)
-- [ ] Check for Astro major version updates
-- [ ] Review analytics (if enabled)
-- [ ] Backup content (git handles this)
-
-### Quarterly
-- [ ] Audit dependencies for vulnerabilities (`npm audit`)
-- [ ] Review and prune unused images in `src/assets/`
-- [ ] Check broken links
-- [ ] Review SEO (Search Console)
-
-### Yearly
-- [ ] Renew domain
-- [ ] Review hosting costs vs alternatives
-- [ ] Consider feature additions from [deferred list](./deferred-features.md)
+| Setup | Annual Cost | What You Get |
+|-------|-------------|-------------|
+| GitHub Pages | **$0** | Static, single region |
+| GitHub Pages + domain | **$12** | Custom domain |
+| Cloudflare Pages + domain | **$12** | Global CDN, unlimited BW |
+| Oracle Free + domain | **$12** | Full VPS, Docker, SSR |
+| Fly.io + domain | **$12-72** | Global containers |
+| Hetzner + domain + backups | **~$85** | Full control, EU privacy |
+| Hetzner + analytics + newsletter | **~$280** | Full stack blog |
 
 ---
 
 ## Recommended Path
 
 ```
-Phase 1 (Now):     GitHub Pages new_text$0, zero maintenance
-Phase 2 (Growth):  Cloudflare Pages new_text$0, better CDN, analytics
-Phase 3 (Dynamic): Hetzner VPS + Docker new_text€6/mo, full control
+Phase 1 (Now):      GitHub Pages new_text$0, zero maintenance
+                    ↓ (when you want speed + analytics)
+Phase 2 (Growth):   Cloudflare Pages new_text$0, global CDN
+                    ↓ (when you need SSR, API routes, or full control)
+Phase 3 (Dynamic):  Hetzner VPS + Docker new_text€6/mo
 ```
 
-**Don't move to Phase 2 until**: You want custom headers, redirects, or global edge performance.
+**Rule of thumb**: Don't self-host until the free tier limits you. When it does, Hetzner + Caddy + Docker is the sweet spot for a personal blog.
 
-**Don't move to Phase 3 until**: You need SSR, API routes, or server-side features.
+---
+
+## Maintenance Checklist
+
+### Monthly
+- [ ] `npm update` new_textkeep dependencies fresh
+- [ ] Check Lighthouse scores (target: 100/100)
+- [ ] Review build logs for warnings
+
+### Quarterly
+- [ ] `npm audit` new_textsecurity check
+- [ ] Prune unused images in `src/assets/`
+- [ ] Check for Astro major version updates
+
+### If Self-Hosted
+- [ ] `apt update && apt upgrade` new_textOS patches
+- [ ] Check disk usage
+- [ ] Verify backups are running
+- [ ] Renew domain (annual)
 
 ---
 
