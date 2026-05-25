@@ -1,5 +1,5 @@
 /* =============================================================================
-   Global Styles — Minimal, Firebase Blog-inspired, Dark Mode Support
+   Global Styles new_textMinimal, Firebase Blog-inspired, Dark Mode Support
    ============================================================================= */
 
 :root {
@@ -23,7 +23,7 @@
   --tag-text: #1a73e8;
 }
 
-/* Dark theme — explicit toggle */
+/* Dark theme new_textexplicit toggle */
 [data-theme="dark"] {
   --bg: #0f1117;
   --bg-secondary: #1a1d2e;
@@ -41,7 +41,7 @@
   --tag-text: #60a5fa;
 }
 
-/* System preference fallback — only applies when JS hasn't set data-theme yet */
+/* System preference fallback new_textonly applies when JS hasn't set data-theme yet */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
     --bg: #0f1117;
@@ -233,4 +233,56 @@ img {
   h2 { font-size: 1.5rem; }
   body { font-size: 0.9375rem; }
   .container { padding: 0 1rem; }
+
+  /* Tables scroll horizontally on mobile */
+  table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Code blocks don't overflow */
+  pre {
+    font-size: 0.8rem;
+    padding: 1rem;
+  }
+
+  /* Cards reduce padding */
+  .card {
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  /* Prose adjustments */
+  .prose {
+    font-size: 0.9375rem;
+  }
+  .prose h2 { margin-top: 2em; }
+  .prose h3 { margin-top: 1.5em; }
+  .prose blockquote {
+    padding-left: 1rem;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.25rem; }
+  .container { padding: 0 0.75rem; }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  /* Larger tap targets on touch devices */
+  a, button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Disable hover effects that feel wrong on touch */
+  .card:hover {
+    transform: none;
+  }
 }

@@ -84,7 +84,7 @@
     resultsContainer.innerHTML = results
       .map(
         (post, i) => `
-        <a href="${base}/blog/${post.slug}/" class="search-result" role="option" data-index="${i}">
+        <a href="${base}/posts/${post.slug}/" class="search-result" role="option" data-index="${i}">
           <span class="result-title">${post.title}</span>
           <span class="result-meta">${post.category} · ${new Date(post.pubDate).toLocaleDateString('en-us', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
         </a>`

@@ -41,7 +41,7 @@ const related = scored
     <h3>Related Posts</h3>
     <div class="related-grid">
       {related.map(post => (
-        <a href={`${baseUrl}/blog/${post.id}/`} class="related-card">
+        <a href={`${baseUrl}/posts/${post.id}/`} class="related-card">
           <span class="related-category tag">{post.data.category}</span>
           <h4>{post.data.title}</h4>
           <span class="related-date"><FormattedDate date={post.data.pubDate} /></span>

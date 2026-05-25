@@ -44,7 +44,7 @@ const categoryCounts = CATEGORIES
       <h1>Devices to Cloud.<br/><span class="accent">Write Everything Software.</span></h1>
       <p class="hero-sub">Software engineering, emerging tech, aerospace, startups, and the occasional poem. Thoughts from the intersection of hardware and cloud.</p>
       <div class="hero-actions">
-        <a href={`${baseUrl}/blog`} class="btn btn-primary">Read the Blog</a>
+        <a href={`${baseUrl}/posts`} class="btn btn-primary">Read the Blog</a>
         <a href={`${baseUrl}/about`} class="btn btn-secondary">About Me</a>
       </div>
     </section>
@@ -53,7 +53,7 @@ const categoryCounts = CATEGORIES
     {featuredPost && (
       <section class="highlight">
         <div class="highlight-badge">Latest</div>
-        <a href={`${baseUrl}/blog/${featuredPost.id}/`} class="highlight-card">
+        <a href={`${baseUrl}/posts/${featuredPost.id}/`} class="highlight-card">
           <div class="highlight-meta">
             <span class="tag">{CATEGORY_LABELS[featuredPost.data.category as Category] || featuredPost.data.category}</span>
             <FormattedDate date={featuredPost.data.pubDate} />
@@ -69,7 +69,7 @@ const categoryCounts = CATEGORIES
     <section class="section">
       <div class="section-header">
         <h2>Latest Posts</h2>
-        <a href={`${baseUrl}/blog`} class="view-all">View all →</a>
+        <a href={`${baseUrl}/posts`} class="view-all">View all →</a>
       </div>
       <div class="posts-list">
         {latestPosts.slice(1).map((post) => (
@@ -79,7 +79,7 @@ const categoryCounts = CATEGORIES
             pubDate={post.data.pubDate}
             category={post.data.category}
             tags={post.data.tags}
-            href={`${baseUrl}/blog/${post.id}/`}
+            href={`${baseUrl}/posts/${post.id}/`}
           />
         ))}
       </div>
@@ -93,7 +93,7 @@ const categoryCounts = CATEGORIES
         </div>
         <div class="categories-grid">
           {categoryCounts.map(cat => (
-            <a href={`${baseUrl}/blog/category/${cat.slug}`} class="category-pill">
+            <a href={`${baseUrl}/posts/category/${cat.slug}`} class="category-pill">
               <span class="category-name">{cat.label}</span>
               <span class="category-count">{cat.count}</span>
             </a>
@@ -388,15 +388,37 @@ const categoryCounts = CATEGORIES
 
   /* Responsive */
   @media (max-width: 768px) {
-    .hero { padding: 2rem 0; }
+    .hero { padding: 2rem 0 1.5rem; }
     .hero h1 { font-size: 1.75rem; }
+    .hero-sub { font-size: 1rem; }
     .projects-grid { grid-template-columns: 1fr; }
     .subscribe-card {
       flex-direction: column;
       align-items: flex-start;
       padding: 1.25rem;
+      gap: 1rem;
     }
-    .highlight-card { padding: 1.5rem; }
+    .highlight-card { padding: 1.25rem; }
     .highlight-card h2 { font-size: 1.25rem; }
+    .highlight-badge { left: 1.25rem; }
+    .section { padding: 1.5rem 0; }
+    .category-pill {
+      padding: 0.4rem 0.75rem;
+      font-size: 0.8rem;
+    }
+    .btn {
+      padding: 0.5rem 1rem;
+      font-size: 0.8rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero { padding: 1.5rem 0 1rem; }
+    .hero h1 { font-size: 1.5rem; }
+    .hero-actions { flex-direction: column; }
+    .hero-actions .btn { width: 100%; justify-content: center; }
+    .highlight-card h2 { font-size: 1.1rem; }
+    .subscribe-card { padding: 1rem; }
+    .rss-btn { width: 100%; justify-content: center; }
   }
 </style>

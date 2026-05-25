@@ -35,12 +35,11 @@ const posts = (await getCollection('blog'))
       <p>{posts.length} post{posts.length !== 1 ? 's' : ''} in this category.</p>
     </section>
 
-    <!-- Category Filter -->
     <nav class="categories" aria-label="Filter by category">
-      <a href={`${baseUrl}/blog`} class="cat-link">All</a>
+      <a href={`${baseUrl}/posts`} class="cat-link">All</a>
       {CATEGORIES.filter(c => c !== 'micro').map(cat => (
         <a
-          href={`${baseUrl}/blog/category/${cat}`}
+          href={`${baseUrl}/posts/category/${cat}`}
           class:list={['cat-link', { active: cat === category }]}
         >
           {CATEGORY_LABELS[cat as Category]}
@@ -48,7 +47,6 @@ const posts = (await getCollection('blog'))
       ))}
     </nav>
 
-    <!-- Posts -->
     <div class="posts-list">
       {posts.map((post, i) => (
         <PostCard
@@ -57,7 +55,7 @@ const posts = (await getCollection('blog'))
           pubDate={post.data.pubDate}
           category={post.data.category}
           tags={post.data.tags}
-          href={`${baseUrl}/blog/${post.id}/`}
+          href={`${baseUrl}/posts/${post.id}/`}
           featured={i === 0}
         />
       ))}
@@ -72,9 +70,7 @@ const posts = (await getCollection('blog'))
 </html>
 
 <style>
-  .blog-header {
-    padding: 3rem 0 1rem;
-  }
+  .blog-header { padding: 3rem 0 1rem; }
   .blog-header h1 { margin-bottom: 0.25rem; }
   .blog-header p { color: var(--text-secondary); margin: 0; }
   .categories {

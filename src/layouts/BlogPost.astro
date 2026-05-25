@@ -132,4 +132,18 @@ const readingTime = Math.max(1, Math.ceil(words / 200));
   }
   .updated { font-style: italic; }
   hr { margin: 2rem 0; }
+
+  @media (max-width: 768px) {
+    .article { padding: 1rem 0; }
+    .article-header h1 { font-size: 1.5rem; }
+    .article-desc { font-size: 1rem; }
+    .article-meta {
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+    }
+    .article-tags { gap: 0.5rem; }
+    .hero-image { margin-bottom: 1.5rem; }
+    .hero-image img { border-radius: 8px; }
+  }
 </style>

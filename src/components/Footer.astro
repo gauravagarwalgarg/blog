@@ -40,4 +40,13 @@ import { SITE_AUTHOR, SOCIAL_LINKS } from '../consts';
     color: var(--text-secondary);
   }
   .footer-links a:hover { color: var(--accent); }
+
+  @media (max-width: 768px) {
+    .footer-inner {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .footer-links { gap: 1rem; }
+  }
 </style>

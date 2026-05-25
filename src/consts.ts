@@ -1,17 +1,18 @@
 export const SITE_TITLE = "Gaurav's Engineering Log";
-export const SITE_DESCRIPTION = 'Devices to Cloud new_textsoftware engineering, emerging tech, aerospace, startups, and the occasional poem.';
+export const SITE_DESCRIPTION = 'Devices to Cloud new_textsoftware engineering, electronics, aerospace, and the occasional poem.';
 export const SITE_AUTHOR = 'Gaurav Agarwal';
 
+// Ordered categories
 export const CATEGORIES = [
   'software-engineering',
-  'emerging-tech',
+  'electronics',
+  'tech-tips',
+  'personal-finance',
   'aerospace',
-  'health-tech',
-  'startups',
-  'economics',
   'infrastructure',
   'history',
   'culinary',
+  'reviews',
   'poems',
   'micro',
 ] as const;
@@ -20,21 +21,21 @@ export type Category = typeof CATEGORIES[number];
 
 export const CATEGORY_LABELS: Record<Category, string> = {
   'software-engineering': 'Software Engineering',
-  'emerging-tech': 'Emerging Tech',
+  'electronics': 'Electronics',
+  'tech-tips': 'Tech Tips',
+  'personal-finance': 'Personal Finance',
   'aerospace': 'Aerospace',
-  'health-tech': 'Health Tech',
-  'startups': 'Startups',
-  'economics': 'Economics',
   'infrastructure': 'Infrastructure',
   'history': 'History',
   'culinary': 'Culinary',
+  'reviews': 'Reviews',
   'poems': 'Poems',
   'micro': 'Micro',
 };
 
 export const NAV_LINKS = [
   { href: '/', label: 'Home' },
-  { href: '/blog', label: 'Posts' },
+  { href: '/posts', label: 'Posts' },
   { href: '/projects', label: 'Projects' },
   { href: '/about', label: 'About' },
 ] as const;
@@ -66,7 +67,6 @@ export const PROJECT_CATEGORY_LABELS: Record<ProjectCategory, string> = {
 };
 
 export const PROJECTS: Project[] = [
-  // Tools & Automation
   {
     title: 'Linux Scripts',
     description: 'Post-install automation for Ubuntu LTS. Modular, idempotent, role-based profiles.',
@@ -81,7 +81,6 @@ export const PROJECTS: Project[] = [
     tags: ['vim', 'neovim', 'developer-tools', 'productivity'],
     category: 'tools',
   },
-  // Learning & Resources
   {
     title: 'CourseHub',
     description: 'Curated free courses, conferences & engineering blogs new_textfrom fundamentals to frontier research.',
@@ -110,7 +109,6 @@ export const PROJECTS: Project[] = [
     tags: ['polyglot', 'experiments', 'learning'],
     category: 'learning',
   },
-  // Finance & Data
   {
     title: 'AngelOne Dashboard',
     description: 'Stock market dashboard with real-time data, screeners, and technical indicators.',
@@ -118,7 +116,6 @@ export const PROJECTS: Project[] = [
     tags: ['finance', 'python', 'react', 'real-time'],
     category: 'finance',
   },
-  // Creative & Web
   {
     title: 'This Blog',
     description: 'Astro-powered static blog with Islands Architecture, MDX, View Transitions, and zero JS by default.',

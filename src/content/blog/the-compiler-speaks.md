@@ -1,9 +1,9 @@
 ---
 title: 'The Compiler Speaks'
 description: 'A poem about the silent conversation between programmer and machine.'
-pubDate: 2024-06-20
+pubDate: 2024-07-01
 category: 'poems'
-tags: ['poetry', 'code', 'creative']
+tags: ['poetry', 'code', 'creative-writing']
 draft: false
 ---
 
@@ -30,7 +30,5 @@ as it truly is.
 
 Ship it.
 ```
-
----
 
 *Written at 2 AM after a particularly stubborn linker error.*
