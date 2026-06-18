@@ -1,64 +1,52 @@
 /* =============================================================================
-   Global Styles new_textMinimal, Firebase Blog-inspired, Dark Mode Support
+   Global Styles rk-first, abhik.ai inspired
    ============================================================================= */
 
 :root {
   --font-body: var(--font-atkinson), system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
-  /* Light theme (default) */
+  /* Dark theme (default tching abhik.ai) */
+  --bg: #0a0a0f;
+  --bg-secondary: #111118;
+  --bg-card: #151520;
+  --text: #e4e4e7;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+  --border: #1e1e2a;
+  --border-hover: #2a2a3a;
+  --accent: #10b981;
+  --accent-hover: #34d399;
+  --accent-dim: rgba(16, 185, 129, 0.1);
+  --card-bg: #111118;
+  --card-shadow: none;
+  --card-shadow-hover: 0 0 0 1px var(--border-hover);
+  --code-bg: #1a1a2e;
+  --tag-bg: rgba(16, 185, 129, 0.12);
+  --tag-text: #10b981;
+  --hero-gradient: linear-gradient(135deg, #0f172a 0%, #1a1a2e 50%, #0f2027 100%);
+}
+
+/* Light theme override */
+[data-theme="light"] {
   --bg: #ffffff;
   --bg-secondary: #f8f9fa;
+  --bg-card: #ffffff;
   --text: #1a1a2e;
   --text-secondary: #6b7280;
   --text-muted: #9ca3af;
   --border: #e5e7eb;
-  --accent: #1a73e8;
-  --accent-hover: #1557b0;
+  --border-hover: #d1d5db;
+  --accent: #059669;
+  --accent-hover: #047857;
+  --accent-dim: rgba(5, 150, 105, 0.08);
   --card-bg: #ffffff;
-  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
   --card-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.1);
   --code-bg: #f3f4f6;
-  --tag-bg: #e8f0fe;
-  --tag-text: #1a73e8;
-}
-
-/* Dark theme new_textexplicit toggle */
-[data-theme="dark"] {
-  --bg: #0f1117;
-  --bg-secondary: #1a1d2e;
-  --text: #e4e4e7;
-  --text-secondary: #a1a1aa;
-  --text-muted: #71717a;
-  --border: #27272a;
-  --accent: #60a5fa;
-  --accent-hover: #93c5fd;
-  --card-bg: #1a1d2e;
-  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-  --card-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.4);
-  --code-bg: #1e293b;
-  --tag-bg: #1e3a5f;
-  --tag-text: #60a5fa;
-}
-
-/* System preference fallback new_textonly applies when JS hasn't set data-theme yet */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme]) {
-    --bg: #0f1117;
-    --bg-secondary: #1a1d2e;
-    --text: #e4e4e7;
-    --text-secondary: #a1a1aa;
-    --text-muted: #71717a;
-    --border: #27272a;
-    --accent: #60a5fa;
-    --accent-hover: #93c5fd;
-    --card-bg: #1a1d2e;
-    --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-    --card-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.4);
-    --code-bg: #1e293b;
-    --tag-bg: #1e3a5f;
-    --tag-text: #60a5fa;
-  }
+  --tag-bg: #ecfdf5;
+  --tag-text: #059669;
+  --hero-gradient: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 50%, #f0f9ff 100%);
 }
 
 /* Reset */
@@ -110,7 +98,7 @@ strong { color: var(--text); }
 /* Layout */
 .container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
@@ -165,12 +153,12 @@ pre > code {
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 1.5rem;
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card:hover {
+  border-color: var(--border-hover);
   box-shadow: var(--card-shadow-hover);
-  transform: translateY(-2px);
 }
 
 /* Tags */
@@ -178,11 +166,10 @@ pre > code {
   display: inline-block;
   background: var(--tag-bg);
   color: var(--tag-text);
-  padding: 0.25em 0.75em;
-  border-radius: 100px;
+  padding: 0.2em 0.6em;
+  border-radius: 4px;
   font-size: 0.75rem;
   font-weight: 500;
-  text-transform: lowercase;
 }
 
 /* Table */
@@ -234,26 +221,22 @@ img {
   body { font-size: 0.9375rem; }
   .container { padding: 0 1rem; }
 
-  /* Tables scroll horizontally on mobile */
   table {
     display: block;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
 
-  /* Code blocks don't overflow */
   pre {
     font-size: 0.8rem;
     padding: 1rem;
   }
 
-  /* Cards reduce padding */
   .card {
     padding: 1rem;
     border-radius: 8px;
   }
 
-  /* Prose adjustments */
   .prose {
     font-size: 0.9375rem;
   }
@@ -266,22 +249,17 @@ img {
   }
 }
 
-/* Small phones */
 @media (max-width: 480px) {
   h1 { font-size: 1.5rem; }
   h2 { font-size: 1.25rem; }
   .container { padding: 0 0.75rem; }
 }
 
-/* Touch device optimizations */
 @media (hover: none) and (pointer: coarse) {
-  /* Larger tap targets on touch devices */
   a, button {
     min-height: 44px;
     min-width: 44px;
   }
-
-  /* Disable hover effects that feel wrong on touch */
   .card:hover {
     transform: none;
   }

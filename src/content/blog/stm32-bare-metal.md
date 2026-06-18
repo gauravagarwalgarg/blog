@@ -2,7 +2,7 @@
 title: 'STM32 Bare Metal new_textBeyond the HAL'
 description: 'Why understanding register-level programming matters even when you use HAL, and how to debug when abstractions leak.'
 pubDate: 2024-03-05
-category: 'electronics'
+category: 'embedded-systems'
 tags: ['embedded-systems', 'stm32', 'bare-metal', 'arm', 'registers']
 draft: false
 ---

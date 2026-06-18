@@ -14,7 +14,7 @@ Every semicolon a heartbeat,
 every brace a door.
 
 You write in hope,
-I answer in errors —
+I answer in errors 
 not cruelty, but clarity.
 Line 42: undefined.
 

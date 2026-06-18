@@ -1,10 +1,16 @@
 export const SITE_TITLE = "Gaurav's Engineering Log";
-export const SITE_DESCRIPTION = 'Devices to Cloud new_textsoftware engineering, electronics, aerospace, and the occasional poem.';
+export const SITE_DESCRIPTION = 'Devices to Cloud ftware engineering, embedded systems, machine learning, and the occasional poem.';
 export const SITE_AUTHOR = 'Gaurav Agarwal';
+export const SITE_TAGLINE = 'Building from Silicon to Cloud';
+export const SITE_BIO = 'Gaurav Agarwal is a software engineer with expertise spanning embedded systems, cloud infrastructure, and machine learning. From bare-metal firmware to distributed systems, bridging the gap between hardware and software.';
 
 // Ordered categories
 export const CATEGORIES = [
   'software-engineering',
+  'embedded-systems',
+  'machine-learning',
+  'computer-science',
+  'python',
   'electronics',
   'tech-tips',
   'personal-finance',
@@ -21,6 +27,10 @@ export type Category = typeof CATEGORIES[number];
 
 export const CATEGORY_LABELS: Record<Category, string> = {
   'software-engineering': 'Software Engineering',
+  'embedded-systems': 'Embedded Systems',
+  'machine-learning': 'Machine Learning',
+  'computer-science': 'Computer Science',
+  'python': 'Python',
   'electronics': 'Electronics',
   'tech-tips': 'Tech Tips',
   'personal-finance': 'Personal Finance',
@@ -33,11 +43,35 @@ export const CATEGORY_LABELS: Record<Category, string> = {
   'micro': 'Micro',
 };
 
+export const CATEGORY_DESCRIPTIONS: Partial<Record<Category, string>> = {
+  'software-engineering': 'System design, distributed systems, and software architecture patterns.',
+  'embedded-systems': 'Bare-metal programming, RTOS, STM32, ARM, and firmware development.',
+  'machine-learning': 'Deep learning, neural networks, transformers, and ML infrastructure.',
+  'computer-science': 'Algorithms, data structures, compilers, and CS fundamentals.',
+  'python': 'Python internals, frameworks, performance, and best practices.',
+  'electronics': 'Circuit design, PCBs, signal processing, and hardware hacking.',
+  'infrastructure': 'Linux, kernel, DevOps, containers, and cloud infrastructure.',
+  'aerospace': 'DO-178C, avionics, safety-critical systems, and flight software.',
+};
+
+export const CATEGORY_ICONS: Partial<Record<Category, string>> = {
+  'software-engineering': 'SE',
+  'embedded-systems': 'EM',
+  'machine-learning': 'ML',
+  'computer-science': 'CS',
+  'python': 'PY',
+  'electronics': 'EL',
+  'infrastructure': 'IF',
+  'aerospace': 'AE',
+};
+
 export const NAV_LINKS = [
-  { href: '/', label: 'Home' },
-  { href: '/posts', label: 'Posts' },
-  { href: '/projects', label: 'Projects' },
   { href: '/about', label: 'About' },
+  { href: '/posts', label: 'Articles' },
+  { href: '/concepts', label: 'Concepts' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/posts/category/embedded-systems', label: 'Embedded' },
+  { href: '/posts/category/machine-learning', label: 'ML' },
 ] as const;
 
 export const SOCIAL_LINKS = {
@@ -46,6 +80,49 @@ export const SOCIAL_LINKS = {
   twitter: 'https://x.com/gauravaggarg',
   rss: '/rss.xml',
 } as const;
+
+// Work experience for homepage sidebar
+export interface WorkEntry {
+  company: string;
+  role: string;
+  period: string;
+  logo?: string;
+}
+
+export const WORK_EXPERIENCE: WorkEntry[] = [
+  {
+    company: 'Current Company',
+    role: 'Software Engineer',
+    period: '2022 esent',
+  },
+  {
+    company: 'Previous Company',
+    role: 'Embedded Software Engineer',
+    period: '2020 22',
+  },
+];
+
+// Bookmarks for homepage sidebar
+export interface Bookmark {
+  title: string;
+  author: string;
+  url?: string;
+}
+
+export const BOOKMARKS: Bookmark[] = [
+  {
+    title: 'Making Embedded Systems',
+    author: 'Elecia White',
+  },
+  {
+    title: 'Designing Data-Intensive Applications',
+    author: 'Martin Kleppmann',
+  },
+  {
+    title: 'The Attention Mechanism Paper',
+    author: 'Vaswani et al.',
+  },
+];
 
 // Project categories for broader grouping
 export type ProjectCategory = 'tools' | 'learning' | 'finance' | 'creative' | 'systems';
@@ -83,28 +160,28 @@ export const PROJECTS: Project[] = [
   },
   {
     title: 'CourseHub',
-    description: 'Curated free courses, conferences & engineering blogs new_textfrom fundamentals to frontier research.',
+    description: 'Curated free courses, conferences & engineering blogs om fundamentals to frontier research.',
     url: 'https://github.com/GauravAgarwalGarg/CourseHub',
     tags: ['education', 'open-source', 'curated', 'engineering'],
     category: 'learning',
   },
   {
     title: 'A Modern C++ Playground',
-    description: 'Everything C++ new_textmodern standards (C++11 through C++23), patterns, and idioms.',
+    description: 'Everything C++ dern standards (C++11 through C++23), patterns, and idioms.',
     url: 'https://github.com/GauravAgarwalGarg/AModernCppPlayground',
     tags: ['c++', 'modern-cpp', 'learning', 'systems'],
     category: 'learning',
   },
   {
     title: 'Giggle With Python',
-    description: 'Complete tutorials and preparation material for Python new_textsnippets, frameworks, and best practices.',
+    description: 'Complete tutorials and preparation material for Python ippets, frameworks, and best practices.',
     url: 'https://github.com/GauravAgarwalGarg/GiggleWithPython',
     tags: ['python', 'tutorials', 'learning'],
     category: 'learning',
   },
   {
     title: 'Playground',
-    description: 'Multi-language experimental lab new_textC, C++, Python, Java, Go, Rust. Proof of concepts that mature into real projects.',
+    description: 'Multi-language experimental lab  C++, Python, Java, Go, Rust. Proof of concepts that mature into real projects.',
     url: 'https://github.com/GauravAgarwalGarg/Playground',
     tags: ['polyglot', 'experiments', 'learning'],
     category: 'learning',
@@ -125,7 +202,7 @@ export const PROJECTS: Project[] = [
   },
   {
     title: 'Voyager',
-    description: 'Image sharing platform with random facts new_texta creative side project.',
+    description: 'Image sharing platform with random facts creative side project.',
     url: 'https://github.com/GauravAgarwalGarg/voyager',
     tags: ['web', 'images', 'creative'],
     category: 'creative',
