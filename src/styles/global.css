@@ -1,12 +1,30 @@
 /* =============================================================================
-   Global Styles rk-first, abhik.ai inspired
+   Global Styles dark-first, inspired
    ============================================================================= */
 
+/* Font face declarations */
+@font-face {
+  font-family: 'Atkinson';
+  src: url('/Blog/fonts/atkinson-regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Atkinson';
+  src: url('/Blog/fonts/atkinson-bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
+  --font-atkinson: 'Atkinson';
   --font-body: var(--font-atkinson), system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
-  /* Dark theme (default tching abhik.ai) */
+  /* Dark theme (default tching .ai) */
   --bg: #0a0a0f;
   --bg-secondary: #111118;
   --bg-card: #151520;
