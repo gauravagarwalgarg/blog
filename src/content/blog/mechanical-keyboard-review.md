@@ -1,6 +1,6 @@
 ---
-title: 'Keychron Q1 Pro new_text6 Months Later'
-description: 'A long-term review of the Keychron Q1 Pro as a daily driver for software development new_textbuild quality, typing feel, and QMK/VIA.'
+title: 'Keychron Q1 Pro 6 Months Later'
+description: 'A long-term review of the Keychron Q1 Pro as a daily driver for software development build quality, typing feel, and QMK/VIA.'
 pubDate: 2024-06-20
 category: 'reviews'
 tags: ['mechanical-keyboard', 'keychron', 'developer-tools', 'review']
@@ -17,11 +17,11 @@ Full aluminum CNC-machined case. 1.7kg. It doesn't move on the desk. The gasket 
 
 ## Typing Feel
 
-Running Gateron Pro Brown switches (tactile, 55g). The bump is noticeable but not fatiguing. After 6 months, the switches are smoother than day one new_textthey've broken in nicely.
+Running Gateron Pro Brown switches (tactile, 55g). The bump is noticeable but not fatiguing. After 6 months, the switches are smoother than day one they've broken in nicely.
 
 ## QMK/VIA
 
-The killer feature. Remap any key, create layers, add macros new_textall through a web UI (VIA) or compile custom firmware (QMK). My setup:
+The killer feature. Remap any key, create layers, add macros all through a web UI (VIA) or compile custom firmware (QMK). My setup:
 
 - Layer 0: Standard QWERTY
 - Layer 1: Vim-style arrows on HJKL, media controls

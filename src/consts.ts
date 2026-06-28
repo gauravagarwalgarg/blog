@@ -1,5 +1,5 @@
 export const SITE_TITLE = "Gaurav's Engineering Log";
-export const SITE_DESCRIPTION = 'Devices to Cloud ftware engineering, embedded systems, machine learning, and the occasional poem.';
+export const SITE_DESCRIPTION = 'Devices to Cloud software engineering, embedded systems, machine learning, and the occasional poem.';
 export const SITE_AUTHOR = 'Gaurav Agarwal';
 export const SITE_TAGLINE = 'Building from Silicon to Cloud';
 export const SITE_BIO = 'Gaurav Agarwal is a software engineer with expertise spanning embedded systems, cloud infrastructure, and machine learning. From bare-metal firmware to distributed systems, bridging the gap between hardware and software.';
@@ -93,12 +93,12 @@ export const WORK_EXPERIENCE: WorkEntry[] = [
   {
     company: 'Current Company',
     role: 'Software Engineer',
-    period: '2022 esent',
+    period: '2022 – Present',
   },
   {
     company: 'Previous Company',
     role: 'Embedded Software Engineer',
-    period: '2020 22',
+    period: '2020 – 2022',
   },
 ];
 
@@ -160,28 +160,28 @@ export const PROJECTS: Project[] = [
   },
   {
     title: 'CourseHub',
-    description: 'Curated free courses, conferences & engineering blogs om fundamentals to frontier research.',
+    description: 'Curated free courses, conferences & engineering blogs from fundamentals to frontier research.',
     url: 'https://github.com/GauravAgarwalGarg/CourseHub',
     tags: ['education', 'open-source', 'curated', 'engineering'],
     category: 'learning',
   },
   {
     title: 'A Modern C++ Playground',
-    description: 'Everything C++ dern standards (C++11 through C++23), patterns, and idioms.',
+    description: 'Everything C++ modern standards (C++11 through C++23), patterns, and idioms.',
     url: 'https://github.com/GauravAgarwalGarg/AModernCppPlayground',
     tags: ['c++', 'modern-cpp', 'learning', 'systems'],
     category: 'learning',
   },
   {
     title: 'Giggle With Python',
-    description: 'Complete tutorials and preparation material for Python ippets, frameworks, and best practices.',
+    description: 'Complete tutorials and preparation material for Python snippets, frameworks, and best practices.',
     url: 'https://github.com/GauravAgarwalGarg/GiggleWithPython',
     tags: ['python', 'tutorials', 'learning'],
     category: 'learning',
   },
   {
     title: 'Playground',
-    description: 'Multi-language experimental lab  C++, Python, Java, Go, Rust. Proof of concepts that mature into real projects.',
+    description: 'Multi-language experimental lab C++, Python, Java, Go, Rust. Proof of concepts that mature into real projects.',
     url: 'https://github.com/GauravAgarwalGarg/Playground',
     tags: ['polyglot', 'experiments', 'learning'],
     category: 'learning',
@@ -202,7 +202,7 @@ export const PROJECTS: Project[] = [
   },
   {
     title: 'Voyager',
-    description: 'Image sharing platform with random facts creative side project.',
+    description: 'Image sharing platform with random facts a creative side project.',
     url: 'https://github.com/GauravAgarwalGarg/voyager',
     tags: ['web', 'images', 'creative'],
     category: 'creative',

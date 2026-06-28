@@ -1,6 +1,6 @@
 ---
 title: 'Writing Your First Linux Kernel Module'
-description: 'A practical guide to writing, building, and loading a Linux kernel module new_textfrom hello world to character devices.'
+description: 'A practical guide to writing, building, and loading a Linux kernel module from hello world to character devices.'
 pubDate: 2024-03-20
 category: 'infrastructure'
 tags: ['linux-kernel', 'kernel-modules', 'device-drivers', 'systems-programming']
@@ -9,7 +9,7 @@ draft: false
 
 ## Why Kernel Modules?
 
-Kernel modules let you extend Linux without recompiling the entire kernel. Device drivers, filesystems, network protocols new_textall loadable at runtime.
+Kernel modules let you extend Linux without recompiling the entire kernel. Device drivers, filesystems, network protocols all loadable at runtime.
 
 ## Hello Kernel
 
@@ -44,5 +44,5 @@ sudo rmmod hello
 
 - **No libc**: You're in kernel space. Use `printk`, `kmalloc`, `copy_to_user`
 - **No floating point**: Kernel doesn't save FPU state
-- **Concurrency**: Multiple CPUs, interrupts, preemption new_textuse spinlocks, mutexes
+- **Concurrency**: Multiple CPUs, interrupts, preemption use spinlocks, mutexes
 - **One bug = kernel panic**: Test in a VM first

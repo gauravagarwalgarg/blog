@@ -16,7 +16,7 @@ const grouped = Object.entries(PROJECT_CATEGORY_LABELS).map(([key, label]) => ({
 <!doctype html>
 <html lang="en" data-theme="dark">
 <head>
-  <BaseHead title={`Projects SITE_TITLE}`} description="Open source projects, tools, and learning resources." />
+  <BaseHead title={`Projects | ${SITE_TITLE}`} description="Open source projects, tools, and learning resources." />
 </head>
 <body>
   <Header />
@@ -63,7 +63,7 @@ const grouped = Object.entries(PROJECT_CATEGORY_LABELS).map(([key, label]) => ({
   }
   .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 1.25rem;
   }
   .project-card {
@@ -82,5 +82,15 @@ const grouped = Object.entries(PROJECT_CATEGORY_LABELS).map(([key, label]) => ({
   }
   .project-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
   .project-link { font-size: 0.8rem; font-weight: 500; color: var(--accent); }
-  @media (max-width: 768px) { .projects-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 768px) {
+    .projects-grid { grid-template-columns: 1fr; }
+    .page-header { padding: 2rem 0 1.5rem; }
+    .page-header h1 { font-size: 1.5rem; }
+    .project-card h3 { font-size: 0.95rem; }
+  }
+  @media (max-width: 480px) {
+    .page-header { padding: 1.5rem 0 1rem; }
+    .page-header h1 { font-size: 1.25rem; }
+    .project-card p { font-size: 0.8rem; }
+  }
 </style>

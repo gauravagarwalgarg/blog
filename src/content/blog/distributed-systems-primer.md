@@ -1,5 +1,5 @@
 ---
-title: 'Distributed Systems new_textWhat I Wish I Knew Earlier'
+title: 'Distributed Systems What I Wish I Knew Earlier'
 description: 'Key concepts every engineer should understand before building distributed systems: CAP theorem, consensus, and failure modes.'
 pubDate: 2024-02-10
 category: 'software-engineering'
@@ -22,10 +22,10 @@ Every distributed system eventually teaches you the [eight fallacies](https://en
 
 ## CAP Theorem in Practice
 
-You can't have all three: Consistency, Availability, Partition tolerance. In practice, partitions happen new_textso you're choosing between CP and AP.
+You can't have all three: Consistency, Availability, Partition tolerance. In practice, partitions happen so you're choosing between CP and AP.
 
-- **CP systems**: ZooKeeper, etcd, Consul new_textstrong consistency, may reject writes during partitions
-- **AP systems**: Cassandra, DynamoDB new_textalways available, eventually consistent
+- **CP systems**: ZooKeeper, etcd, Consul strong consistency, may reject writes during partitions
+- **AP systems**: Cassandra, DynamoDB always available, eventually consistent
 
 ## Consensus is Hard
 

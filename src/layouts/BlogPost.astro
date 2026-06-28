@@ -68,7 +68,7 @@ const readingTime = Math.max(1, Math.ceil(words / 200));
         )}
       </header>
 
-      {/* Table of Contents new_textonly shown for posts with 3+ headings */}
+      {/* Table of Contents only shown for posts with 3+ headings */}
       {headings.length >= 3 && (
         <TableOfContents headings={headings} />
       )}
@@ -78,7 +78,7 @@ const readingTime = Math.max(1, Math.ceil(words / 200));
         <slot />
       </div>
 
-      {/* Related Posts new_textscored by category + tag overlap */}
+      {/* Related Posts scored by category + tag overlap */}
       <RelatedPosts currentSlug={slug} category={category} tags={tags} />
     </article>
   </main>

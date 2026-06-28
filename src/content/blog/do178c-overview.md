@@ -1,5 +1,5 @@
 ---
-title: 'DO-178C new_textSoftware in the Sky'
+title: 'DO-178C Software in the Sky'
 description: 'An overview of DO-178C certification for airborne software: what it requires, why it matters, and how it shapes how we write code.'
 pubDate: 2024-04-12
 category: 'aerospace'
@@ -23,7 +23,7 @@ DO-178C is the standard for developing airborne software. If your code runs on a
 
 ## What It Means in Practice
 
-- **100% MC/DC coverage** at Level A new_textevery boolean condition tested independently
+- **100% MC/DC coverage** at Level A every boolean condition tested independently
 - **Traceability**: Requirements → Design → Code → Tests (bidirectional)
 - **No dead code**: Every line must be justified
 - **Formal reviews**: Code reviews aren't optional, they're auditable artifacts

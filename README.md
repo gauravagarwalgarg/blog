@@ -130,11 +130,11 @@ adapter: node({ mode: 'standalone' }),
 
 ## 📋 Design Principles
 
-1. **Content-first** new_textNo visual noise. Words and code are the product.
-2. **Performance** new_textNo JS frameworks on the client. Static HTML + minimal CSS.
-3. **Accessible** new_textSemantic HTML, proper contrast, keyboard navigable.
-4. **Progressive** new_textWorks without JS. Dark mode via CSS + localStorage.
-5. **Portable** new_textStatic output. Deploy anywhere (Pages, S3, Nginx, Caddy).
+1. **Content-first** No visual noise. Words and code are the product.
+2. **Performance** No JS frameworks on the client. Static HTML + minimal CSS.
+3. **Accessible** Semantic HTML, proper contrast, keyboard navigable.
+4. **Progressive** Works without JS. Dark mode via CSS + localStorage.
+5. **Portable** Static output. Deploy anywhere (Pages, S3, Nginx, Caddy).
 
 ---
 

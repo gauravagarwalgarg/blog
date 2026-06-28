@@ -1,5 +1,5 @@
 ---
-title: 'The Perfect Dal Makhani new_textSlow and Low'
+title: 'The Perfect Dal Makhani Slow and Low'
 description: 'A recipe for restaurant-style dal makhani that requires patience, whole spices, and 6 hours of slow cooking.'
 pubDate: 2024-06-10
 category: 'culinary'
@@ -35,4 +35,4 @@ There is no shortcut. Real dal makhani needs time. The lentils break down, the f
 
 ## The Test
 
-When you can't distinguish individual lentils anymore new_textwhen it's a creamy, dark, unified mass new_textit's ready.
+When you can't distinguish individual lentils anymore when it's a creamy, dark, unified mass it's ready.

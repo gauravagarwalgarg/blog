@@ -8,7 +8,7 @@ import { SITE_TITLE, SITE_AUTHOR, SOCIAL_LINKS } from '../consts';
 <!doctype html>
 <html lang="en" data-theme="dark">
 <head>
-  <BaseHead title={`About SITE_TITLE}`} description="About Gaurav Agarwal Soware Engineer, Devices to Cloud." />
+  <BaseHead title={`About | ${SITE_TITLE}`} description="About Gaurav Agarwal Software Engineer, Devices to Cloud." />
 </head>
 <body>
   <Header />
@@ -17,11 +17,11 @@ import { SITE_TITLE, SITE_AUTHOR, SOCIAL_LINKS } from '../consts';
       <h1>About</h1>
 
       <p>
-        I'm <strong>{SITE_AUTHOR}</strong> new_texta software engineer working across the full spectrum from embedded firmware to cloud-native systems. Currently building <strong>safety-critical avionics software</strong> where a segfault isn't a bug, it's a liability.
+        I'm <strong>{SITE_AUTHOR}</strong> a software engineer working across the full spectrum from embedded firmware to cloud-native systems. Currently building <strong>safety-critical avionics software</strong> where a segfault isn't a bug, it's a liability.
       </p>
 
       <p>
-        My domain spans from <strong>Devices to Cloud</strong> new_textcloud-native services, application software, hosted system software, kernel drivers, and BSP bring-up. I'm perpetually exploring the boundary between distributed systems and bare-metal registers.
+        My domain spans from <strong>Devices to Cloud</strong> cloud-native services, application software, hosted system software, kernel drivers, and BSP bring-up. I'm perpetually exploring the boundary between distributed systems and bare-metal registers.
       </p>
 
       <blockquote>
@@ -34,7 +34,7 @@ import { SITE_TITLE, SITE_AUTHOR, SOCIAL_LINKS } from '../consts';
       <p>C, C++, Python, Go, Rust, Java, TypeScript, Bash, PowerShell, MATLAB</p>
 
       <h3>Embedded & Hardware</h3>
-      <p>STM32, Texas Instruments, Xilinx Zynq, NVIDIA Jetson, ESP32, Raspberry Pi, BeagleBone, Arduino new_textFreeRTOS, Zephyr, Yocto, Buildroot, Device Tree, U-Boot, GDB, OpenOCD</p>
+      <p>STM32, Texas Instruments, Xilinx Zynq, NVIDIA Jetson, ESP32, Raspberry Pi, BeagleBone, Arduino FreeRTOS, Zephyr, Yocto, Buildroot, Device Tree, U-Boot, GDB, OpenOCD</p>
 
       <h3>Cloud & Infrastructure</h3>
       <p>AWS, GCP, Docker, Kubernetes, Terraform, Helm, Ansible, Prometheus, Grafana, Nginx</p>
@@ -47,10 +47,10 @@ import { SITE_TITLE, SITE_AUTHOR, SOCIAL_LINKS } from '../consts';
 
       <h2>Open Source</h2>
       <ul>
-        <li><a href="https://github.com/GauravAgarwalGarg/CourseHub">CourseHub</a> new_textCurated free courses, conferences & engineering blogs</li>
-        <li><a href="https://github.com/GauravAgarwalGarg/LinuxPostInstallScripts">Linux Scripts</a> new_textPost-install automation for Ubuntu LTS</li>
-        <li><a href="https://github.com/GauravAgarwalGarg/dotvim">dotvim</a> new_textModern IDE-grade Vim configuration</li>
-        <li><a href="https://github.com/GauravAgarwalGarg/AngelOneDashboard">AngelOne Dashboard</a> new_textStock market dashboard with real-time data & screeners</li>
+        <li><a href="https://github.com/GauravAgarwalGarg/CourseHub">CourseHub</a> Curated free courses, conferences & engineering blogs</li>
+        <li><a href="https://github.com/GauravAgarwalGarg/LinuxPostInstallScripts">Linux Scripts</a> Post-install automation for Ubuntu LTS</li>
+        <li><a href="https://github.com/GauravAgarwalGarg/dotvim">dotvim</a> Modern IDE-grade Vim configuration</li>
+        <li><a href="https://github.com/GauravAgarwalGarg/AngelOneDashboard">AngelOne Dashboard</a> Stock market dashboard with real-time data & screeners</li>
       </ul>
 
       <h2>Connect</h2>
@@ -74,4 +74,15 @@ import { SITE_TITLE, SITE_AUTHOR, SOCIAL_LINKS } from '../consts';
   .about h1 { margin-bottom: 1.5rem; }
   .about h2 { margin-top: 2.5rem; }
   .about h3 { margin-top: 1.5rem; font-size: 1rem; }
+
+  @media (max-width: 768px) {
+    .about { padding: 1.5rem 0; }
+    .about h1 { font-size: 1.5rem; }
+    .about h2 { margin-top: 2rem; }
+  }
+  @media (max-width: 480px) {
+    .about { padding: 1rem 0; }
+    .about h1 { font-size: 1.25rem; }
+    .about h3 { font-size: 0.9rem; }
+  }
 </style>

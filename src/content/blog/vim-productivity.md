@@ -1,6 +1,6 @@
 ---
 title: '10 Vim Tricks That Changed How I Code'
-description: 'Practical Vim tips that compound over time new_textmacros, text objects, registers, and the dot command.'
+description: 'Practical Vim tips that compound over time macros, text objects, registers, and the dot command.'
 pubDate: 2024-05-01
 category: 'tech-tips'
 tags: ['vim', 'productivity', 'developer-tools', 'workflow']
@@ -13,7 +13,7 @@ draft: false
 
 ## 2. Text Objects
 
-`ci"` new_textchange inside quotes. `da(` new_textdelete around parentheses. `vip` new_textselect inner paragraph. Think in objects, not characters.
+`ci"` change inside quotes. `da(` delete around parentheses. `vip` select inner paragraph. Think in objects, not characters.
 
 ## 3. Macros
 
@@ -21,7 +21,7 @@ draft: false
 
 ## 4. Registers
 
-`"ayy` new_textyank to register a. `"ap` new_textpaste from register a. `"+y` new_textyank to system clipboard.
+`"ayy` yank to register a. `"ap` paste from register a. `"+y` yank to system clipboard.
 
 ## 5. `:g/pattern/command`
 
@@ -31,7 +31,7 @@ Global command. `:g/TODO/d` deletes all TODO lines. `:g/^$/d` removes blank line
 
 Increment/decrement numbers under cursor. Works on hex too.
 
-## 7. `gf` new_textGo to File
+## 7. `gf` Go to File
 
 Cursor on a filename? `gf` opens it. Works with relative paths.
 

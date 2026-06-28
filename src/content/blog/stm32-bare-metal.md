@@ -1,5 +1,5 @@
 ---
-title: 'STM32 Bare Metal new_textBeyond the HAL'
+title: 'STM32 Bare Metal Beyond the HAL'
 description: 'Why understanding register-level programming matters even when you use HAL, and how to debug when abstractions leak.'
 pubDate: 2024-03-05
 category: 'embedded-systems'
@@ -9,7 +9,7 @@ draft: false
 
 ## Why Bare Metal?
 
-The HAL is convenient until it isn't. When your DMA transfer hangs, when your timer interrupt fires at the wrong frequency, when your SPI peripheral sends garbage new_textyou need to read the reference manual and poke registers.
+The HAL is convenient until it isn't. When your DMA transfer hangs, when your timer interrupt fires at the wrong frequency, when your SPI peripheral sends garbage you need to read the reference manual and poke registers.
 
 ## The Minimum Viable Blink
 
