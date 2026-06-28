@@ -13,7 +13,7 @@
 **When to add**: When you have 30+ posts and category filtering isn't enough.
 
 **Best approach**:
-- [Pagefind](https://pagefind.app/) new_textRuns at build time, generates a static search index. ~5KB client JS. No server needed.
+- [Pagefind](https://pagefind.app/) Runs at build time, generates a static search index. ~5KB client JS. No server needed.
 - Add as an Astro Island: `<Search client:idle />`
 
 **Estimated effort**: 2 hours.
@@ -27,7 +27,7 @@
 **When to add**: When posts get traffic and you want engagement.
 
 **Best approach**:
-- [Giscus](https://giscus.app/) new_textGitHub Discussions-backed. Free. No database.
+- [Giscus](https://giscus.app/) GitHub Discussions-backed. Free. No database.
 - Add as Island: `<Comments client:visible />`
 - Alternative: [Utterances](https://utteranc.es/) (GitHub Issues-backed)
 
@@ -42,7 +42,7 @@
 **When to add**: When you have consistent publishing cadence (weekly/biweekly).
 
 **Best approach**:
-- [Buttondown](https://buttondown.email/) new_textFree up to 100 subscribers. Markdown-native.
+- [Buttondown](https://buttondown.email/) Free up to 100 subscribers. Markdown-native.
 - Or [Resend](https://resend.com/) + custom form (100 emails/day free)
 - Embed form as static HTML (no Island needed)
 
@@ -57,8 +57,8 @@
 **When to add**: When you want to know what resonates.
 
 **Best approach**:
-- [Plausible](https://plausible.io/) new_textPrivacy-friendly, GDPR-compliant, 1KB script
-- Or [Umami](https://umami.is/) new_textSelf-hosted, free, open source
+- [Plausible](https://plausible.io/) Privacy-friendly, GDPR-compliant, 1KB script
+- Or [Umami](https://umami.is/) Self-hosted, free, open source
 - Add as `<script>` in BaseHead (no Island needed)
 
 **Cost**: Plausible $9/month. Umami self-hosted = free.
@@ -113,7 +113,7 @@ const readingTime = Math.ceil(content.split(/\s+/).length / wordsPerMinute);
 
 ## 🐳 Self-Hosting Strategy
 
-### Phase 1: Current (GitHub Pages new_textFree)
+### Phase 1: Current (GitHub Pages Free)
 
 ```
 Push to main → GitHub Actions → Build → Deploy to Pages
@@ -122,7 +122,7 @@ Push to main → GitHub Actions → Build → Deploy to Pages
 **Cost**: $0
 **Limitations**: Static only. No server-side features. No custom headers. Rate-limited.
 
-### Phase 2: Static + CDN (Cloudflare Pages new_textFree)
+### Phase 2: Static + CDN (Cloudflare Pages Free)
 
 ```
 Push to main → Cloudflare builds → Deploy to edge (300+ PoPs)

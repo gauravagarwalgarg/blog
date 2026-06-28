@@ -1,10 +1,10 @@
-# 🚀 Deployment Guide new_textCheapest to Best
+# 🚀 Deployment Guide Cheapest to Best
 
 > Self-hosting options ranked from free to premium, with clear tradeoffs.
 
 ---
 
-## TL;DR new_textPick Your Tier
+## TL;DR Pick Your Tier
 
 | Tier | Provider | Monthly Cost | Best For |
 |------|----------|-------------|----------|
@@ -230,7 +230,7 @@ volumes:
 ### SSR Deploy (When Dynamic Needed)
 
 ```javascript
-// astro.config.mjs new_textflip to SSR
+// astro.config.mjs flip to SSR
 import node from '@astrojs/node';
 
 export default defineConfig({
@@ -300,11 +300,11 @@ CMD ["node", "./dist/server/entry.mjs"]
 ## Recommended Path
 
 ```
-Phase 1 (Now):      GitHub Pages new_text$0, zero maintenance
+Phase 1 (Now):      GitHub Pages $0, zero maintenance
                     ↓ (when you want speed + analytics)
-Phase 2 (Growth):   Cloudflare Pages new_text$0, global CDN
+Phase 2 (Growth):   Cloudflare Pages $0, global CDN
                     ↓ (when you need SSR, API routes, or full control)
-Phase 3 (Dynamic):  Hetzner VPS + Docker new_text€6/mo
+Phase 3 (Dynamic):  Hetzner VPS + Docker €6/mo
 ```
 
 **Rule of thumb**: Don't self-host until the free tier limits you. When it does, Hetzner + Caddy + Docker is the sweet spot for a personal blog.
@@ -314,17 +314,17 @@ Phase 3 (Dynamic):  Hetzner VPS + Docker new_text€6/mo
 ## Maintenance Checklist
 
 ### Monthly
-- [ ] `npm update` new_textkeep dependencies fresh
+- [ ] `npm update` keep dependencies fresh
 - [ ] Check Lighthouse scores (target: 100/100)
 - [ ] Review build logs for warnings
 
 ### Quarterly
-- [ ] `npm audit` new_textsecurity check
+- [ ] `npm audit` security check
 - [ ] Prune unused images in `src/assets/`
 - [ ] Check for Astro major version updates
 
 ### If Self-Hosted
-- [ ] `apt update && apt upgrade` new_textOS patches
+- [ ] `apt update && apt upgrade` OS patches
 - [ ] Check disk usage
 - [ ] Verify backups are running
 - [ ] Renew domain (annual)

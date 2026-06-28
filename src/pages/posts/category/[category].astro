@@ -305,4 +305,11 @@ const posts = (await getCollection('blog'))
     .filter-nav { gap: 0.35rem; }
     .filter-link { padding: 0.35rem 0.7rem; font-size: 0.75rem; }
   }
+  @media (max-width: 480px) {
+    .category-hero { padding: 1.25rem; border-radius: 12px; }
+    .category-hero h1 { font-size: 1.25rem; }
+    .category-hero p { font-size: 0.85rem; }
+    .article-card { padding: 1rem; border-radius: 8px; }
+    .article-card-desc { font-size: 0.8rem; }
+  }
 </style>

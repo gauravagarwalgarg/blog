@@ -1,4 +1,4 @@
-# 🚀 Getting Started new_textLearn, Build, Iterate
+# 🚀 Getting Started Learn, Build, Iterate
 
 > From zero Astro knowledge to publishing your first post in 30 minutes.
 
@@ -108,7 +108,7 @@ tags: ['rust', 'til']
 TIL: Rust's `?` operator is just syntactic sugar for early return on `Err`. But it makes error handling feel natural instead of painful.
 ```
 
-Micro-posts are short-form new_textno title, no description. Just a thought and a date.
+Micro-posts are short-form no title, no description. Just a thought and a date.
 
 ---
 

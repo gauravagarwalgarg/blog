@@ -13,8 +13,8 @@
 | Markdown blogging | Content Collections with TypeScript schema validation |
 | SEO | Static HTML = crawlable. Built-in sitemap + RSS. |
 | Image optimization | `astro:assets` → Sharp → WebP/AVIF at build time |
-| Interactive components | Islands Architecture new_texthydrate only what needs JS |
-| SPA-like navigation | View Transitions API new_textno framework, native browser |
+| Interactive components | Islands Architecture hydrate only what needs JS |
+| SPA-like navigation | View Transitions API no framework, native browser |
 | MDX | Embed React/Svelte components inside blog posts |
 | Fast builds | Vite under the hood. Incremental builds. |
 | Future SSR | Flip one config flag. Same codebase. |
@@ -43,10 +43,10 @@ src/content/
 └── micro/         # Short-form updates (.md)
 ```
 
-**Why**: Type-safe frontmatter. If you forget a `title` or misspell `category`, the build fails new_textnot the user's browser.
+**Why**: Type-safe frontmatter. If you forget a `title` or misspell `category`, the build fails not the user's browser.
 
 ```typescript
-// content.config.ts new_textschema enforces structure
+// content.config.ts schema enforces structure
 schema: z.object({
   title: z.string(),
   description: z.string(),
@@ -68,7 +68,7 @@ schema: z.object({
 
 **Why**: SPA-like page transitions (fade, slide) without shipping a router or framework. The browser's native View Transitions API handles it. Pages feel instant.
 
-**How it works**: Astro intercepts link clicks, fetches the next page, diffs the DOM, and animates the transition new_textall with zero client JS bundle.
+**How it works**: Astro intercepts link clicks, fetches the next page, diffs the DOM, and animates the transition all with zero client JS bundle.
 
 → See: [Astro View Transitions Docs](https://docs.astro.build/en/guides/view-transitions/)
 
@@ -83,10 +83,10 @@ schema: z.object({
 **Why**: A blog is 95% static content. Only interactive widgets (search, toggles, comments) need JavaScript. Islands let you hydrate just those pieces.
 
 **Directives**:
-- `client:load` new_textHydrate immediately (dark mode toggle)
-- `client:visible` new_textHydrate when scrolled into view (comments, search)
-- `client:idle` new_textHydrate when browser is idle (analytics)
-- `client:media` new_textHydrate on media query match (mobile menu)
+- `client:load` Hydrate immediately (dark mode toggle)
+- `client:visible` Hydrate when scrolled into view (comments, search)
+- `client:idle` Hydrate when browser is idle (analytics)
+- `client:media` Hydrate on media query match (mobile menu)
 
 → See: [Astro Islands Docs](https://docs.astro.build/en/concepts/islands/)
 
