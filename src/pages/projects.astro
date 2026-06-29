@@ -1,0 +1,112 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, PROJECTS, PROJECT_CATEGORY_LABELS } from '../consts';
+import type { ProjectCategory } from '../consts';
+
+// Group projects by category
+const grouped = Object.entries(PROJECT_CATEGORY_LABELS).map(([key, label]) => ({
+  key: key as ProjectCategory,
+  label,
+  projects: PROJECTS.filter(p => p.category === key),
+})).filter(g => g.projects.length > 0);
+---
+
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <BaseHead title={`Projects | ${SITE_TITLE}`} description="Open source projects, tools, and learning resources." />
+</head>
+<body>
+  <Header />
+  <main class="container">
+    <section class="page-header">
+      <h1>Projects</h1>
+      <p>Open source knowledge base every repo has live documentation.</p>
+    </section>
+
+    {grouped.map(group => (
+      <section class="project-group">
+        <h2 class="group-title">{group.label}</h2>
+        <div class="projects-grid">
+          {group.projects.map(project => (
+            <a href={project.url} target="_blank" rel="noopener" class="project-card card">
+              <h3>{project.title}</h3>
+              <p>{project.description}</p>
+              <div class="project-tags">
+                {project.tags.map(tag => <span class="tag">{tag}</span>)}
+              </div>
+              <div class="project-links">
+                <span class="project-link">GitHub →</span>
+                {project.docs && <a href={project.docs} target="_blank" rel="noopener" class="docs-link" onclick="event.stopPropagation()">📖 Docs</a>}
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    ))}
+  </main>
+  <Footer />
+</body>
+</html>
+
+<style>
+  .page-header { padding: 3rem 0 2rem; }
+  .page-header h1 { margin-bottom: 0.25rem; }
+  .page-header p { color: var(--text-secondary); margin: 0; }
+  .project-group {
+    margin-bottom: 2.5rem;
+  }
+  .group-title {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.25rem;
+  }
+  .project-card {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+  }
+  .project-card h3 { font-size: 1.05rem; margin-bottom: 0.5rem; }
+  .project-card p {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    flex: 1;
+    line-height: 1.5;
+  }
+  .project-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+  .project-links {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  .project-link { font-size: 0.8rem; font-weight: 500; color: var(--accent); }
+  .docs-link {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+  }
+  .docs-link:hover { color: var(--accent); }
+
+  @media (max-width: 768px) {
+    .projects-grid { grid-template-columns: 1fr; }
+    .page-header { padding: 2rem 0 1.5rem; }
+    .page-header h1 { font-size: 1.5rem; }
+    .project-card h3 { font-size: 0.95rem; }
+  }
+  @media (max-width: 480px) {
+    .page-header { padding: 1.5rem 0 1rem; }
+    .page-header h1 { font-size: 1.25rem; }
+    .project-card p { font-size: 0.8rem; }
+  }
+</style>

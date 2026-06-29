@@ -1,0 +1,222 @@
+---
+/**
+ * Search Island Astro Islands Architecture Demo
+ * 
+ * This component is hydrated client-side using `client:visible` directive.
+ * It only loads JavaScript when the user scrolls it into view.
+ * 
+ * Uses Fuse.js for lightweight fuzzy search over blog posts.
+ * The search index is built at page load from a JSON endpoint.
+ */
+---
+
+<div class="search-island" id="search-island">
+  <div class="search-wrapper">
+    <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="11" cy="11" r="8"></circle>
+      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+    </svg>
+    <input
+      type="search"
+      id="search-input"
+      placeholder="Search posts..."
+      aria-label="Search blog posts"
+      autocomplete="off"
+    />
+    <kbd class="search-kbd">⌘K</kbd>
+  </div>
+  <div id="search-results" class="search-results" aria-live="polite" role="listbox"></div>
+</div>
+
+<script>
+  // Search Island only runs when hydrated (client:visible)
+  const input = document.getElementById('search-input') as HTMLInputElement;
+  const resultsContainer = document.getElementById('search-results') as HTMLDivElement;
+  const island = document.getElementById('search-island') as HTMLDivElement;
+
+  interface SearchPost {
+    title: string;
+    description: string;
+    slug: string;
+    category: string;
+    tags: string[];
+    pubDate: string;
+  }
+
+  let posts: SearchPost[] = [];
+  let isLoaded = false;
+
+  // Lazy-load the search index
+  async function loadSearchIndex() {
+    if (isLoaded) return;
+    try {
+      const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+      const response = await fetch(`${base}/search-index.json`);
+      posts = await response.json();
+      isLoaded = true;
+    } catch (e) {
+      console.error('Failed to load search index:', e);
+    }
+  }
+
+  // Simple fuzzy search (no external dependency)
+  function search(query: string): SearchPost[] {
+    if (!query.trim()) return [];
+    const terms = query.toLowerCase().split(/\s+/);
+    return posts
+      .filter(post => {
+        const searchable = `${post.title} ${post.description} ${post.category} ${post.tags.join(' ')}`.toLowerCase();
+        return terms.every(term => searchable.includes(term));
+      })
+      .slice(0, 5);
+  }
+
+  function renderResults(results: SearchPost[]) {
+    if (results.length === 0) {
+      resultsContainer.innerHTML = input.value.trim()
+        ? '<div class="search-empty">No posts found.</div>'
+        : '';
+      resultsContainer.classList.toggle('visible', !!input.value.trim());
+      return;
+    }
+
+    const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+    resultsContainer.innerHTML = results
+      .map(
+        (post, i) => `
+        <a href="${base}/posts/${post.slug}/" class="search-result" role="option" data-index="${i}">
+          <span class="result-title">${post.title}</span>
+          <span class="result-meta">${post.category} · ${new Date(post.pubDate).toLocaleDateString('en-us', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+        </a>`
+      )
+      .join('');
+    resultsContainer.classList.add('visible');
+  }
+
+  // Event listeners
+  input.addEventListener('focus', loadSearchIndex);
+  input.addEventListener('input', () => {
+    const results = search(input.value);
+    renderResults(results);
+  });
+
+  // Close on click outside
+  document.addEventListener('click', (e) => {
+    if (!island.contains(e.target as Node)) {
+      resultsContainer.classList.remove('visible');
+      resultsContainer.innerHTML = '';
+    }
+  });
+
+  // Keyboard shortcut: Cmd/Ctrl + K
+  document.addEventListener('keydown', (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      e.preventDefault();
+      input.focus();
+      loadSearchIndex();
+    }
+    if (e.key === 'Escape') {
+      input.blur();
+      resultsContainer.classList.remove('visible');
+    }
+  });
+</script>
+
+<style>
+  .search-island {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+  }
+  .search-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.5rem 0.75rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .search-wrapper:focus-within {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.1);
+  }
+  .search-icon {
+    color: var(--text-muted);
+    flex-shrink: 0;
+  }
+  #search-input {
+    flex: 1;
+    border: none;
+    background: none;
+    color: var(--text);
+    font-size: 0.875rem;
+    outline: none;
+    font-family: inherit;
+  }
+  #search-input::placeholder {
+    color: var(--text-muted);
+  }
+  .search-kbd {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    font-family: inherit;
+  }
+  .search-results {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    right: 0;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: var(--card-shadow-hover);
+    display: none;
+    z-index: 200;
+    overflow: hidden;
+  }
+  .search-results.visible {
+    display: block;
+  }
+  .search-result {
+    display: block;
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+    color: inherit;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+  }
+  .search-result:last-child {
+    border-bottom: none;
+  }
+  .search-result:hover {
+    background: var(--bg-secondary);
+  }
+  .result-title {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text);
+  }
+  .result-meta {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 0.25rem;
+  }
+  .search-empty {
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+  @media (max-width: 768px) {
+    .search-island { max-width: 100%; }
+    .search-kbd { display: none; }
+  }
+</style>

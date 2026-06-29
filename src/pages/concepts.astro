@@ -1,0 +1,285 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import { SITE_TITLE, CATEGORIES, CATEGORY_LABELS, CATEGORY_DESCRIPTIONS, CATEGORY_ICONS } from '../consts';
+import type { Category } from '../consts';
+
+const posts = (await getCollection('blog'))
+  .filter(p => !p.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+// Build category data
+const categoriesWithContent = CATEGORIES
+  .filter(c => c !== 'micro')
+  .map(cat => ({
+    slug: cat,
+    label: CATEGORY_LABELS[cat],
+    description: CATEGORY_DESCRIPTIONS[cat] || `Articles about ${CATEGORY_LABELS[cat].toLowerCase()}.`,
+    icon: CATEGORY_ICONS[cat] || cat.slice(0, 2).toUpperCase(),
+    count: posts.filter(p => p.data.category === cat).length,
+    // Get unique tags for this category
+    tags: [...new Set(posts.filter(p => p.data.category === cat).flatMap(p => p.data.tags))].slice(0, 6),
+  }))
+  .filter(c => c.count > 0);
+
+// Recent posts for the "Recent Concepts" section
+const recentPosts = posts.slice(0, 6);
+---
+
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <BaseHead title={`Concepts | ${SITE_TITLE}`} description="Technical concepts grouped by domain. Start with a category." />
+</head>
+<body>
+  <Header />
+  <main class="container">
+
+    <!-- Hero -->
+    <section class="concepts-hero">
+      <h1>Technical Concepts</h1>
+      <p>Clear explanations grouped by domain. Start with a category.</p>
+      <div class="hero-stats">
+        <span class="stat-pill">{posts.length} articles</span>
+        <span class="stat-pill">{categoriesWithContent.length} categories</span>
+        <span class="stat-pill">{[...new Set(posts.flatMap(p => p.data.tags))].length} topics</span>
+      </div>
+    </section>
+
+    <!-- Browse by Category -->
+    <section class="section">
+      <div class="section-header">
+        <h2>Browse by Category</h2>
+      </div>
+      <div class="categories-grid">
+        {categoriesWithContent.map((cat) => (
+          <a href={`${baseUrl}/posts/category/${cat.slug}`} class="category-card">
+            <div class="category-card-header">
+              <span class="category-badge">{cat.icon}</span>
+              <span class="category-count">{cat.count} articles</span>
+            </div>
+            <h3 class="category-card-title">{cat.label}</h3>
+            <p class="category-card-desc">{cat.description}</p>
+            <span class="category-card-link">Explore articles →</span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Recent Concepts / Articles -->
+    <section class="section">
+      <div class="section-header">
+        <h2>Recent Articles</h2>
+        <a href={`${baseUrl}/posts`} class="view-all">View all →</a>
+      </div>
+      <div class="recent-grid">
+        {recentPosts.map((post) => (
+          <a href={`${baseUrl}/posts/${post.id}/`} class="recent-card">
+            <div class="recent-card-meta">
+              <FormattedDate date={post.data.pubDate} />
+            </div>
+            <h3 class="recent-card-title">{post.data.title}</h3>
+            <p class="recent-card-desc">{post.data.description}</p>
+            <div class="recent-card-tags">
+              {post.data.tags.slice(0, 3).map(tag => (
+                <span class="tag">{tag}</span>
+              ))}
+              {post.data.tags.length > 3 && (
+                <span class="tag-more">+{post.data.tags.length - 3}</span>
+              )}
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</body>
+</html>
+
+<style>
+  /* Hero */
+  .concepts-hero {
+    background: var(--hero-gradient);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2.5rem;
+    margin: 2rem 0;
+  }
+  .concepts-hero h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+  }
+  .concepts-hero p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin: 0 0 1rem;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .stat-pill {
+    display: inline-block;
+    padding: 0.3rem 0.75rem;
+    background: var(--accent-dim);
+    color: var(--accent);
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  /* Sections */
+  .section {
+    padding: 2rem 0;
+  }
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-header h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0;
+  }
+  .view-all {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--accent);
+  }
+
+  /* Categories Grid */
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+  .category-card {
+    display: block;
+    padding: 1.25rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s;
+  }
+  .category-card:hover {
+    border-color: var(--accent);
+  }
+  .category-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+  }
+  .category-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: var(--accent-dim);
+    color: var(--accent);
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 700;
+  }
+  .category-count {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+  .category-card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    color: var(--text);
+  }
+  .category-card-desc {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin: 0 0 0.75rem;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .category-card-link {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--accent);
+  }
+
+  /* Recent articles grid */
+  .recent-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+  .recent-card {
+    display: block;
+    padding: 1.25rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s;
+  }
+  .recent-card:hover {
+    border-color: var(--border-hover);
+  }
+  .recent-card-meta {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+  }
+  .recent-card-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    color: var(--text);
+  }
+  .recent-card-desc {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin: 0 0 0.75rem;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .recent-card-tags {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+  .tag-more {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    padding: 0.2em 0.5em;
+    background: var(--bg-secondary);
+    border-radius: 4px;
+  }
+
+  @media (max-width: 768px) {
+    .concepts-hero { padding: 1.5rem; margin: 1rem 0; }
+    .concepts-hero h1 { font-size: 1.5rem; }
+    .categories-grid { grid-template-columns: 1fr; }
+    .recent-grid { grid-template-columns: 1fr; }
+  }
+</style>

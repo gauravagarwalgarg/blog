@@ -1,0 +1,103 @@
+---
+/**
+ * Table of Contents Auto-generated from headings
+ * 
+ * Astro Island: Uses `client:visible` to only hydrate when scrolled into view.
+ * Highlights the current section as the user scrolls (IntersectionObserver).
+ */
+interface Props {
+  headings: { depth: number; slug: string; text: string }[];
+}
+
+const { headings } = Astro.props;
+const filteredHeadings = headings.filter(h => h.depth >= 2 && h.depth <= 3);
+---
+
+{filteredHeadings.length > 0 && (
+  <nav class="toc" aria-label="Table of Contents">
+    <h4 class="toc-title">On this page</h4>
+    <ul class="toc-list">
+      {filteredHeadings.map(heading => (
+        <li class:list={['toc-item', { 'toc-sub': heading.depth === 3 }]}>
+          <a href={`#${heading.slug}`} class="toc-link" data-heading={heading.slug}>
+            {heading.text}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+)}
+
+<script>
+  // Highlight active heading on scroll
+  const links = document.querySelectorAll('.toc-link');
+  const headings = Array.from(links).map(link => {
+    const id = link.getAttribute('data-heading');
+    return id ? document.getElementById(id) : null;
+  }).filter(Boolean) as HTMLElement[];
+
+  if (headings.length > 0) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            links.forEach(l => l.classList.remove('active'));
+            const activeLink = document.querySelector(`.toc-link[data-heading="${entry.target.id}"]`);
+            activeLink?.classList.add('active');
+          }
+        }
+      },
+      { rootMargin: '-80px 0px -70% 0px', threshold: 0 }
+    );
+
+    headings.forEach(h => observer.observe(h));
+  }
+</script>
+
+<style>
+  .toc {
+    padding: 1.25rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+  .toc-title {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+  }
+  .toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .toc-item {
+    margin-bottom: 0.25rem;
+  }
+  .toc-item.toc-sub {
+    padding-left: 1rem;
+  }
+  .toc-link {
+    display: block;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.825rem;
+    color: var(--text-secondary);
+    border-radius: 4px;
+    border-left: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
+    text-decoration: none;
+  }
+  .toc-link:hover {
+    color: var(--text);
+    background: var(--bg);
+  }
+  .toc-link.active {
+    color: var(--accent);
+    border-left-color: var(--accent);
+    background: var(--bg);
+  }
+</style>
