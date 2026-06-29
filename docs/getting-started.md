@@ -9,10 +9,23 @@
 | Git | Any | System package manager |
 
 ```bash
+# Install nvm (one-time)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+
+# Load nvm in current session (required after fresh install)
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+# Install Node 22
+nvm install 22
+nvm use 22
+
 # Verify
 node --version   # v22.x.x
 npm --version    # 10.x.x
 ```
+
+> Future terminals will auto-load nvm from `~/.bashrc`. Only the current session needs the manual `export` + source.
 
 ## Local Development
 

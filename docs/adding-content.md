@@ -23,7 +23,7 @@ draft: false
 
 ### 3. Write content
 
-Start with the thesis — no intro fluff. Use H2/H3 for structure, code blocks for examples, tables for comparisons.
+Start with the thesis no intro fluff. Use H2/H3 for structure, code blocks for examples, tables for comparisons.
 
 ### 4. Preview locally
 
@@ -36,7 +36,7 @@ npm run dev
 
 ```bash
 git add src/content/blog/your-post-slug.md
-git commit -m "feat: add post — Your Title Here"
+git commit -m "feat: add post Your Title Here"
 git push
 ```
 

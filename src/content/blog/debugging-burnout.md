@@ -1,13 +1,13 @@
 ---
 title: 'Debugging Burnout: Applying Systems Thinking to Cognitive Fatigue'
-description: 'Burnout is not a character flaw — it is a systems failure. Here is a structured framework for diagnosing, preventing, and recovering from engineering burnout.'
+description: 'Burnout is not a character flaw it is a systems failure. Here is a structured framework for diagnosing, preventing, and recovering from engineering burnout.'
 pubDate: 2024-07-05
 category: 'developer-wellness'
 tags: ['burnout', 'productivity', 'mental-models', 'systems-thinking']
 draft: false
 ---
 
-Burnout doesn't announce itself. It accumulates like technical debt — invisible until the system crashes. One day you're shipping features, the next you can't muster the energy to open your IDE. The problem isn't willpower. The problem is that you've been running your cognitive system without monitoring, alerting, or capacity planning.
+Burnout doesn't announce itself. It accumulates like technical debt invisible until the system crashes. One day you're shipping features, the next you can't muster the energy to open your IDE. The problem isn't willpower. The problem is that you've been running your cognitive system without monitoring, alerting, or capacity planning.
 
 ## Burnout as a Systems Problem
 
@@ -18,7 +18,7 @@ Your brain is a compute resource with hard constraints:
 - **Disk I/O (Recovery)**: Sleep, exercise, boredom. Non-negotiable. Skip these and throughput degrades exponentially.
 - **Interrupt Handler (Notifications)**: Every Slack ping, every email, every "quick question" triggers a 23-minute recovery to deep focus.
 
-Burnout occurs when **sustained load exceeds recovery capacity** over weeks or months. It's not one bad sprint — it's a chronically overloaded system without maintenance windows.
+Burnout occurs when **sustained load exceeds recovery capacity** over weeks or months. It's not one bad sprint it's a chronically overloaded system without maintenance windows.
 
 ## The Three Failure Modes
 
@@ -28,7 +28,7 @@ Burnout occurs when **sustained load exceeds recovery capacity** over weeks or m
 
 **Root cause**: Sustained high load without adequate recovery cycles.
 
-**Fix**: Enforce hard boundaries. No work after 7 PM. No Slack on weekends. These aren't "nice to haves" — they're your SLA with yourself.
+**Fix**: Enforce hard boundaries. No work after 7 PM. No Slack on weekends. These aren't "nice to haves" they're your SLA with yourself.
 
 ### 2. Cynicism (Memory Corruption)
 
@@ -44,7 +44,7 @@ Burnout occurs when **sustained load exceeds recovery capacity** over weeks or m
 
 **Root cause**: Operating in a domain beyond current skill without support. Or: skill stagnation creating boredom misinterpreted as incompetence.
 
-**Fix**: Deliberate practice in a controlled environment. Side projects. New language. Teach something you know well — teaching reveals mastery.
+**Fix**: Deliberate practice in a controlled environment. Side projects. New language. Teach something you know well teaching reveals mastery.
 
 ## The Prevention Stack
 
@@ -64,6 +64,6 @@ Think of this as your personal SRE practice:
 - **4 hours of deep work is your ceiling.** Plan around it. Everything after is administrative, collaborative, or recovery.
 - **Context switches are expensive.** Batch meetings. Protect mornings. Turn off notifications during focus blocks.
 - **Recovery is not optional.** Sleep, exercise, and boredom are your disk I/O. Starve them and the system degrades.
-- **Monitor yourself like you monitor production.** Weekly check-ins with yourself are not self-indulgent — they're operational discipline.
+- **Monitor yourself like you monitor production.** Weekly check-ins with yourself are not self-indulgent they're operational discipline.
 
 The engineers who sustain 20+ year careers at high output aren't the ones who grind hardest in their 20s. They're the ones who built sustainable systems around themselves early.
