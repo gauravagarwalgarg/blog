@@ -17,7 +17,7 @@ Push to GitHub → Cloudflare detects change → Builds with Node 22
 # Install nvm if you don't have it
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 
-# Load nvm in your current session (required — don't skip this)
+# Load nvm in your current session (required don't skip this)
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
