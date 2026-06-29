@@ -1,18 +1,20 @@
-# 🚀 Getting Started Learn, Build, Iterate
-
-> From zero Astro knowledge to publishing your first post in 30 minutes.
-
----
+# Getting Started
 
 ## Prerequisites
 
-- Node.js 22+ (`node --version`)
-- Git
-- A text editor (VS Code recommended for Astro extension)
+| Tool | Version | Install |
+|------|---------|---------|
+| Node.js | ≥ 22.12.0 | `nvm install 22` |
+| npm | ≥ 10 | Comes with Node |
+| Git | Any | System package manager |
 
----
+```bash
+# Verify
+node --version   # v22.x.x
+npm --version    # 10.x.x
+```
 
-## 1. Clone & Run (5 minutes)
+## Local Development
 
 ```bash
 git clone https://github.com/GauravAgarwalGarg/Blog.git
@@ -21,217 +23,95 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:4321/Blog](http://localhost:4321/Blog). You're running.
+Open `http://localhost:4321`. Hot-reload active save any file and the browser updates.
 
----
+## Production Build (Local Preview)
 
-## 2. Write Your First Post (10 minutes)
+```bash
+npm run build      # Outputs static site to ./dist
+npm run preview    # Serve ./dist locally for testing
+```
 
-Create `src/content/blog/my-first-post.md`:
+Verify everything works at `http://localhost:4321` before deploying.
+
+## Deploy to Cloudflare Workers
+
+The blog deploys as a static asset Worker on Cloudflare's edge network.
+
+### First-Time Setup
+
+1. Push your code to GitHub
+2. Go to [Cloudflare Dashboard](https://dash.cloudflare.com) → Workers & Pages → Create
+3. Connect your GitHub repo (`gauravagarwalgarg/Blog`)
+4. Configure:
+
+| Setting | Value |
+|---------|-------|
+| Project name | `blog` |
+| Build command | `npm run build` |
+| Deploy command | `npx wrangler deploy` |
+| Path | `/` |
+| Environment variable | `NODE_VERSION` = `22` |
+
+5. Deploy site goes live at `blog.<account>.workers.dev`
+
+### How It Works
+
+```
+Push to GitHub → Cloudflare detects change → npm run build (Node 22)
+→ npx wrangler deploy → Static assets served from 300+ edge PoPs
+```
+
+The `wrangler.toml` in the repo root tells Wrangler to serve `./dist` as static assets:
+
+```toml
+name = "blog"
+compatibility_date = "2024-12-01"
+[assets]
+directory = "./dist"
+```
+
+### Custom Domain (Optional)
+
+1. Cloudflare Dashboard → your Worker → Settings → Custom Domains
+2. Add your domain (must be on Cloudflare DNS)
+3. HTTPS is automatic
+
+## Project Structure
+
+```
+src/
+├── components/       # Header, Footer, Search, ToC, PostCard
+├── content/
+│   ├── blog/         # Long-form technical articles (Markdown)
+│   └── micro/        # Short-form posts
+├── layouts/          # BlogPost layout
+├── pages/            # Routes (Articles, Concepts, Projects, Essays, Summary, About)
+├── styles/           # global.css (dark-first, no framework)
+└── consts.ts         # Site config, nav, categories, projects
+```
+
+## Writing a Post
+
+Create `src/content/blog/my-post.md`:
 
 ```markdown
 ---
-title: "My First Post"
-description: "A short description for SEO and social cards."
+title: "Descriptive Title Here"
+description: "One-line hook for SEO and social cards (< 160 chars)."
 pubDate: 2024-06-15
 category: "software-engineering"
-tags: ["learning", "astro"]
+tags: ["distributed-systems", "architecture"]
 draft: false
 ---
 
-## Hello World
-
-This is my first blog post. It supports:
-
-- **Bold** and *italic*
-- [Links](https://example.com)
-- Code blocks with syntax highlighting
-
-```python
-def hello():
-    print("Hello from my blog!")
+Content starts here. No intro fluff state the thesis immediately.
 ```
 
-> Blockquotes look like this.
+## Available Scripts
 
-That's it. Save the file and it's live on your dev server.
-```
-
-### Frontmatter Fields
-
-| Field | Required | Type | Description |
-|-------|----------|------|-------------|
-| `title` | ✅ | string | Post title |
-| `description` | ✅ | string | SEO description (< 160 chars) |
-| `pubDate` | ✅ | date | Publication date (YYYY-MM-DD) |
-| `category` | ❌ | string | One of the defined categories |
-| `tags` | ❌ | string[] | Searchable tags |
-| `draft` | ❌ | boolean | `true` = hidden from listings |
-| `heroImage` | ❌ | image | Hero image (auto-optimized) |
-| `updatedDate` | ❌ | date | Last update date |
-
-### Available Categories
-
-`software-engineering` · `emerging-tech` · `aerospace` · `health-tech` · `startups` · `economics` · `infrastructure` · `history` · `culinary` · `micro`
-
----
-
-## 3. Add a Hero Image (5 minutes)
-
-Place an image in `src/assets/`:
-
-```markdown
----
-title: "Post With Image"
-heroImage: "../../assets/my-image.jpg"
----
-```
-
-Astro automatically:
-- Converts to WebP/AVIF
-- Generates responsive sizes
-- Adds width/height (no CLS)
-- Lazy-loads below the fold
-
----
-
-## 4. Write a Micro-Post (2 minutes)
-
-Create `src/content/micro/quick-thought.md`:
-
-```markdown
----
-pubDate: 2024-06-16
-tags: ['rust', 'til']
----
-
-TIL: Rust's `?` operator is just syntactic sugar for early return on `Err`. But it makes error handling feel natural instead of painful.
-```
-
-Micro-posts are short-form no title, no description. Just a thought and a date.
-
----
-
-## 5. Use MDX for Interactive Posts (10 minutes)
-
-Create `src/content/blog/interactive-post.mdx`:
-
-```mdx
----
-title: "Interactive Post"
-description: "A post with embedded components."
-pubDate: 2024-06-17
-category: "emerging-tech"
-tags: ["mdx", "interactive"]
----
-
-import Counter from '../../components/Counter.astro';
-
-Regular Markdown works here.
-
-## But you can also embed components:
-
-<Counter client:visible />
-
-And then continue with regular Markdown.
-```
-
-The `client:visible` directive means the component only loads JavaScript when scrolled into view (Island Architecture).
-
----
-
-## 6. Build & Deploy (5 minutes)
-
-```bash
-# Build for production
-npm run build
-
-# Preview the build locally
-npm run preview
-
-# Deploy: just push to main
-git add .
-git commit -m "feat: add new post"
-git push origin main
-```
-
-GitHub Actions automatically builds and deploys to Pages.
-
----
-
-## 7. Customize
-
-### Change Site Info
-
-Edit `src/consts.ts`:
-- Site title, description, author
-- Navigation links
-- Social links
-- Projects list
-- Categories
-
-### Change Theme Colors
-
-Edit `src/styles/global.css`:
-- Light theme: `:root { ... }`
-- Dark theme: `[data-theme="dark"] { ... }`
-
-### Add a New Page
-
-Create `src/pages/my-page.astro`:
-```astro
----
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
----
-<html lang="en">
-<head><BaseHead title="My Page" description="..." /></head>
-<body>
-  <Header />
-  <main class="container">
-    <h1>My Page</h1>
-  </main>
-  <Footer />
-</body>
-</html>
-```
-
-It's automatically available at `/Blog/my-page`.
-
----
-
-## Learning Astro
-
-| Resource | Link |
-|----------|------|
-| Astro Docs (official) | [docs.astro.build](https://docs.astro.build/) |
-| Astro Tutorial (build a blog) | [docs.astro.build/en/tutorial](https://docs.astro.build/en/tutorial/0-introduction/) |
-| Astro Discord | [astro.build/chat](https://astro.build/chat) |
-| Astro YouTube | [youtube.com/@astaborrodotbuild](https://www.youtube.com/@astrodotbuild) |
-| Content Collections Guide | [docs.astro.build/en/guides/content-collections](https://docs.astro.build/en/guides/content-collections/) |
-| View Transitions Guide | [docs.astro.build/en/guides/view-transitions](https://docs.astro.build/en/guides/view-transitions/) |
-| Islands Architecture | [docs.astro.build/en/concepts/islands](https://docs.astro.build/en/concepts/islands/) |
-
----
-
-## Iteration Cycle
-
-```
-1. Write content (Markdown/MDX)
-2. Preview locally (npm run dev)
-3. Commit & push (auto-deploys)
-4. Check Lighthouse score (should be 100/100)
-5. Repeat
-```
-
-### Weekly Rhythm
-
-- **Monday**: Write one long-form post (draft)
-- **Wednesday**: Edit and publish
-- **Friday**: 2-3 micro-posts (quick thoughts, links)
-- **Weekend**: Read, research, collect ideas for next week
-
----
-
-*Cross-references: [Architecture](design/architecture.md) · [Feature Reference](design/features.md) · [Future Plans](future/roadmap.md) · [Deferred Features](future/deferred-features.md) · [Deployment](future/deployment.md) · [README](../README.md)*
+| Command | Action |
+|---------|--------|
+| `npm run dev` | Dev server at localhost:4321 |
+| `npm run build` | Production build to `./dist` |
+| `npm run preview` | Preview production build locally |

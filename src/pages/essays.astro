@@ -1,0 +1,65 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <BaseHead title={`Essays | ${SITE_TITLE}`} description="Long-form essays on engineering philosophy, career, industry observations, and thinking frameworks." />
+</head>
+<body>
+  <Header />
+  <main class="container">
+    <section class="page-header">
+      <h1>Essays</h1>
+      <p>Long-form thinking on engineering philosophy, career decisions, industry patterns, and mental models that compound over time.</p>
+    </section>
+
+    <div class="essays-list">
+      <article class="essay-card">
+        <span class="essay-date">Coming Soon</span>
+        <h3>Why Every Engineer Should Write</h3>
+        <p>Writing is not documentation it's a thinking tool. The act of structuring an argument reveals gaps in understanding that no amount of "knowing" can fix.</p>
+      </article>
+      <article class="essay-card">
+        <span class="essay-date">Coming Soon</span>
+        <h3>The Devices-to-Cloud Career Ladder</h3>
+        <p>Navigating a career that spans firmware, system software, and cloud infrastructure. The T-shaped engineer in a world that rewards depth.</p>
+      </article>
+      <article class="essay-card">
+        <span class="essay-date">Coming Soon</span>
+        <h3>Open Source as a Portfolio</h3>
+        <p>Your GitHub is your resume. But most engineers do it wrong forking tutorials instead of solving real problems in public.</p>
+      </article>
+    </div>
+  </main>
+  <Footer />
+</body>
+</html>
+
+<style>
+  .page-header { padding: 3rem 0 2rem; }
+  .page-header h1 { margin-bottom: 0.5rem; }
+  .page-header p { color: var(--text-secondary); margin: 0; max-width: 560px; line-height: 1.6; }
+  .essays-list { display: flex; flex-direction: column; gap: 1.5rem; padding: 1rem 0; }
+  .essay-card {
+    padding: 1.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: border-color 0.2s;
+  }
+  .essay-card:hover { border-color: var(--border-hover); }
+  .essay-date { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+  .essay-card h3 { font-size: 1.1rem; margin: 0.5rem 0; }
+  .essay-card p { font-size: 0.875rem; color: var(--text-secondary); margin: 0; line-height: 1.6; }
+
+  @media (max-width: 768px) {
+    .page-header { padding: 2rem 0 1.5rem; }
+    .page-header h1 { font-size: 1.5rem; }
+    .essay-card { padding: 1.25rem; }
+  }
+</style>

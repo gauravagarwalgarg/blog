@@ -23,7 +23,7 @@ const grouped = Object.entries(PROJECT_CATEGORY_LABELS).map(([key, label]) => ({
   <main class="container">
     <section class="page-header">
       <h1>Projects</h1>
-      <p>Open source knowledge base every repo has live documentation.</p>
+      <p>Open source knowledge base — every repo has live documentation.</p>
     </section>
 
     {grouped.map(group => (
@@ -31,17 +31,17 @@ const grouped = Object.entries(PROJECT_CATEGORY_LABELS).map(([key, label]) => ({
         <h2 class="group-title">{group.label}</h2>
         <div class="projects-grid">
           {group.projects.map(project => (
-            <a href={project.url} target="_blank" rel="noopener" class="project-card card">
+            <div class="project-card card">
               <h3>{project.title}</h3>
               <p>{project.description}</p>
               <div class="project-tags">
                 {project.tags.map(tag => <span class="tag">{tag}</span>)}
               </div>
               <div class="project-links">
-                <span class="project-link">GitHub →</span>
-                {project.docs && <a href={project.docs} target="_blank" rel="noopener" class="docs-link" onclick="event.stopPropagation()">📖 Docs</a>}
+                <a href={project.url} target="_blank" rel="noopener" class="project-link">GitHub →</a>
+                {project.docs && <a href={project.docs} target="_blank" rel="noopener" class="docs-link">📖 Docs</a>}
               </div>
-            </a>
+            </div>
           ))}
         </div>
       </section>
@@ -55,9 +55,7 @@ const grouped = Object.entries(PROJECT_CATEGORY_LABELS).map(([key, label]) => ({
   .page-header { padding: 3rem 0 2rem; }
   .page-header h1 { margin-bottom: 0.25rem; }
   .page-header p { color: var(--text-secondary); margin: 0; }
-  .project-group {
-    margin-bottom: 2.5rem;
-  }
+  .project-group { margin-bottom: 2.5rem; }
   .group-title {
     font-size: 1.1rem;
     margin-bottom: 1rem;
@@ -66,12 +64,10 @@ const grouped = Object.entries(PROJECT_CATEGORY_LABELS).map(([key, label]) => ({
   }
   .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1.25rem;
   }
   .project-card {
-    text-decoration: none;
-    color: inherit;
     display: flex;
     flex-direction: column;
   }
@@ -88,8 +84,17 @@ const grouped = Object.entries(PROJECT_CATEGORY_LABELS).map(([key, label]) => ({
     display: flex;
     gap: 1rem;
     align-items: center;
+    margin-top: auto;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border);
   }
-  .project-link { font-size: 0.8rem; font-weight: 500; color: var(--accent); }
+  .project-link {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .project-link:hover { color: var(--accent-hover); }
   .docs-link {
     font-size: 0.8rem;
     font-weight: 500;
@@ -102,7 +107,6 @@ const grouped = Object.entries(PROJECT_CATEGORY_LABELS).map(([key, label]) => ({
     .projects-grid { grid-template-columns: 1fr; }
     .page-header { padding: 2rem 0 1.5rem; }
     .page-header h1 { font-size: 1.5rem; }
-    .project-card h3 { font-size: 0.95rem; }
   }
   @media (max-width: 480px) {
     .page-header { padding: 1.5rem 0 1rem; }

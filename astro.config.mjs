@@ -6,8 +6,8 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://gauravagarwalgarg.github.io',
-	base: '/blog',
+	site: 'https://blog.pages.dev',
+	base: '/',
 	integrations: [mdx(), sitemap()],
 	markdown: {
 		shikiConfig: {

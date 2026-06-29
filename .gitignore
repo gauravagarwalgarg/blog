@@ -28,3 +28,6 @@ pnpm-debug.log*
 # Hosting-specific (if applicable)
 .netlify/
 .vercel/
+
+# Cloudflare Wrangler
+.wrangler/
