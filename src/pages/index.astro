@@ -4,14 +4,14 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
-import { SITE_TITLE, SITE_DESCRIPTION, SITE_TAGLINE, SITE_BIO, SOCIAL_LINKS, WORK_EXPERIENCE, BOOKMARKS, CATEGORIES, CATEGORY_LABELS, CATEGORY_DESCRIPTIONS, CATEGORY_ICONS } from '../consts';
+import { SITE_TITLE, SITE_DESCRIPTION, SITE_TAGLINE, SITE_BIO, SOCIAL_LINKS, CATEGORIES, CATEGORY_LABELS, CATEGORY_DESCRIPTIONS, CATEGORY_ICONS } from '../consts';
 import type { Category } from '../consts';
 
 const posts = (await getCollection('blog'))
   .filter(p => !p.data.draft)
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-const latestPosts = posts.slice(0, 5);
+const latestPosts = posts.slice(0, 6);
 const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 // Get categories with content
@@ -44,7 +44,7 @@ const categoriesWithContent = CATEGORIES
         <a href={`${baseUrl}/about`} class="hero-cta">Read more about me →</a>
       </div>
       <div class="hero-social">
-        <a href={SOCIAL_LINKS.twitter} target="_blank" rel="noopener" aria-label="Twitter">
+        <a href={SOCIAL_LINKS.twitter} target="_blank" rel="noopener" aria-label="X / Twitter">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
         </a>
         <a href={SOCIAL_LINKS.github} target="_blank" rel="noopener" aria-label="GitHub">
@@ -56,107 +56,49 @@ const categoriesWithContent = CATEGORIES
       </div>
     </section>
 
-    <!-- Main two-column layout -->
-    <div class="home-grid">
-
-      <!-- Left column: Articles -->
-      <section class="articles-column">
-        <div class="section-title-row">
-          <span class="section-icon">📄</span>
-          <h2>Articles</h2>
-        </div>
-        <div class="articles-list">
-          {latestPosts.map((post) => (
-            <article class="article-item">
-              <div class="article-date-bar">
-                <FormattedDate date={post.data.pubDate} />
-              </div>
-              <h3 class="article-title">
-                <a href={`${baseUrl}/posts/${post.id}/`}>{post.data.title}</a>
-              </h3>
-              <p class="article-desc">{post.data.description}</p>
-              <a href={`${baseUrl}/posts/${post.id}/`} class="article-link">Read article →</a>
-            </article>
-          ))}
-        </div>
-        <a href={`${baseUrl}/posts`} class="view-all-link">View all articles →</a>
-      </section>
-
-      <!-- Right column: Sidebar -->
-      <aside class="sidebar-column">
-
-        <!-- Work -->
-        <div class="sidebar-card">
-          <div class="sidebar-card-title">
-            <span class="sidebar-icon">💼</span>
-            <h3>Work</h3>
-          </div>
-          <div class="work-list">
-            {WORK_EXPERIENCE.map((job) => (
-              <div class="work-item">
-                <div class="work-info">
-                  <span class="work-company">{job.company}</span>
-                  <span class="work-role">{job.role}</span>
-                </div>
-                <span class="work-period">{job.period}</span>
-              </div>
-            ))}
-          </div>
-          <a href={SOCIAL_LINKS.linkedin} target="_blank" rel="noopener" class="sidebar-link">More on LinkedIn →</a>
-        </div>
-
-        <!-- Bookmarks -->
-        <div class="sidebar-card">
-          <div class="sidebar-card-title">
-            <span class="sidebar-icon">🔖</span>
-            <h3>Bookmarks</h3>
-          </div>
-          <p class="sidebar-card-desc">Resources I find valuable and recommend to anyone interested in systems and engineering.</p>
-          <div class="bookmark-list">
-            {BOOKMARKS.map((bm) => (
-              <div class="bookmark-item">
-                <span class="bookmark-title">{bm.title}</span>
-                <span class="bookmark-author">{bm.author}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <!-- Stay up to date -->
-        <div class="sidebar-card">
-          <div class="sidebar-card-title">
-            <span class="sidebar-icon">📬</span>
-            <h3>Stay up to date</h3>
-          </div>
-          <p class="sidebar-card-desc">Get notified when I publish something new, and unsubscribe at any time.</p>
-          <a href={`${baseUrl}${SOCIAL_LINKS.rss}`} class="rss-btn">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/></svg>
-            Subscribe via RSS
-          </a>
-        </div>
-
-      </aside>
-    </div>
-
-    <!-- Browse by Category section (like Concepts page) -->
-    <section class="categories-section">
+    <!-- Latest Articles -->
+    <section class="articles-section">
       <div class="section-title-row">
-        <h2>Browse by Category</h2>
+        <h2>Latest Articles</h2>
+        <a href={`${baseUrl}/posts`} class="view-all-link">View all →</a>
       </div>
-      <div class="categories-grid">
-        {categoriesWithContent.map((cat) => (
-          <a href={`${baseUrl}/posts/category/${cat.slug}`} class="category-card">
-            <div class="category-card-header">
-              <span class="category-badge">{cat.icon}</span>
-              <span class="category-count">{cat.count} articles</span>
+      <div class="articles-list">
+        {latestPosts.map((post) => (
+          <article class="article-item">
+            <div class="article-date-bar">
+              <FormattedDate date={post.data.pubDate} />
             </div>
-            <h3 class="category-card-title">{cat.label}</h3>
-            {cat.description && <p class="category-card-desc">{cat.description}</p>}
-            <span class="category-card-link">Explore articles →</span>
-          </a>
+            <h3 class="article-title">
+              <a href={`${baseUrl}/posts/${post.id}/`}>{post.data.title}</a>
+            </h3>
+            <p class="article-desc">{post.data.description}</p>
+            <a href={`${baseUrl}/posts/${post.id}/`} class="article-link">Read article →</a>
+          </article>
         ))}
       </div>
     </section>
+
+    <!-- Browse by Category -->
+    {categoriesWithContent.length > 0 && (
+      <section class="categories-section">
+        <div class="section-title-row">
+          <h2>Browse by Category</h2>
+        </div>
+        <div class="categories-grid">
+          {categoriesWithContent.map((cat) => (
+            <a href={`${baseUrl}/posts/category/${cat.slug}`} class="category-card">
+              <div class="category-card-header">
+                <span class="category-badge">{cat.icon}</span>
+                <span class="category-count">{cat.count} articles</span>
+              </div>
+              <h3 class="category-card-title">{cat.label}</h3>
+              {cat.description && <p class="category-card-desc">{cat.description}</p>}
+              <span class="category-card-link">Explore →</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
 
   </main>
   <Footer />
@@ -177,11 +119,11 @@ const categoriesWithContent = CATEGORIES
     color: var(--text);
   }
   .hero-bio {
-    font-size: 1rem;
+    font-size: 1.05rem;
     color: var(--text-secondary);
     line-height: 1.7;
     max-width: 640px;
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
   }
   .hero-cta {
     display: inline-block;
@@ -219,28 +161,26 @@ const categoriesWithContent = CATEGORIES
     background: var(--bg-secondary);
   }
 
-  /* Two-column grid */
-  .home-grid {
-    display: grid;
-    grid-template-columns: 1fr 340px;
-    gap: 2.5rem;
-    align-items: start;
+  /* Articles section */
+  .articles-section {
+    margin-bottom: 3rem;
   }
-
-  /* Articles column */
   .section-title-row {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    justify-content: space-between;
+    gap: 1rem;
     margin-bottom: 1.5rem;
   }
   .section-title-row h2 {
-    font-size: 1.1rem;
-    font-weight: 600;
+    font-size: 1.25rem;
+    font-weight: 700;
     margin: 0;
   }
-  .section-icon {
-    font-size: 1rem;
+  .view-all-link {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--accent);
   }
 
   .articles-list {
@@ -289,132 +229,15 @@ const categoriesWithContent = CATEGORIES
     font-weight: 500;
     color: var(--accent);
   }
-  .view-all-link {
-    display: inline-block;
-    margin-top: 1.5rem;
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: var(--accent);
-  }
-
-  /* Sidebar */
-  .sidebar-column {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-  }
-  .sidebar-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.25rem;
-  }
-  .sidebar-card-title {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-  }
-  .sidebar-card-title h3 {
-    font-size: 0.95rem;
-    font-weight: 600;
-    margin: 0;
-  }
-  .sidebar-icon {
-    font-size: 0.9rem;
-  }
-  .sidebar-card-desc {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    margin: 0 0 1rem;
-    line-height: 1.5;
-  }
-  .sidebar-link {
-    display: block;
-    margin-top: 1rem;
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: var(--accent);
-  }
-
-  /* Work list */
-  .work-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-  .work-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 0.75rem;
-  }
-  .work-info {
-    display: flex;
-    flex-direction: column;
-  }
-  .work-company {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--text);
-  }
-  .work-role {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-  }
-  .work-period {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    white-space: nowrap;
-  }
-
-  /* Bookmarks */
-  .bookmark-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-  .bookmark-item {
-    display: flex;
-    flex-direction: column;
-  }
-  .bookmark-title {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--text);
-  }
-  .bookmark-author {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-  }
-
-  /* RSS Button */
-  .rss-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    background: var(--accent);
-    color: white;
-    border-radius: 6px;
-    font-size: 0.8rem;
-    font-weight: 500;
-    transition: background 0.2s;
-  }
-  .rss-btn:hover {
-    background: var(--accent-hover);
-    color: white;
-  }
 
   /* Categories section */
   .categories-section {
-    margin-top: 3rem;
     padding-top: 2.5rem;
     border-top: 1px solid var(--border);
   }
   .categories-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 1rem;
   }
   .category-card {
@@ -471,22 +294,10 @@ const categoriesWithContent = CATEGORIES
   }
 
   /* Responsive */
-  @media (max-width: 900px) {
-    .home-grid {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-    .sidebar-column {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1rem;
-    }
-  }
   @media (max-width: 768px) {
     .hero { padding: 2rem 0 2rem; }
     .hero-title { font-size: 1.75rem; }
     .categories-grid { grid-template-columns: 1fr; }
-    .sidebar-column { grid-template-columns: 1fr; }
   }
   @media (max-width: 480px) {
     .hero-title { font-size: 1.5rem; }

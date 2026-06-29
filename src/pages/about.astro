@@ -17,16 +17,16 @@ import { SITE_TITLE, SITE_AUTHOR, SOCIAL_LINKS } from '../consts';
       <h1>About</h1>
 
       <p>
-        I'm <strong>{SITE_AUTHOR}</strong> a software engineer working across the full spectrum from embedded firmware to cloud-native systems. Currently building <strong>safety-critical avionics software</strong> where a segfault isn't a bug, it's a liability.
-      </p>
-
-      <p>
-        My domain spans from <strong>Devices to Cloud</strong> cloud-native services, application software, hosted system software, kernel drivers, and BSP bring-up. I'm perpetually exploring the boundary between distributed systems and bare-metal registers.
+        I'm <strong>{SITE_AUTHOR}</strong> a software engineer working across the full spectrum from silicon to cloud. My domain spans cloud-native services, application software, hosted system software, kernel drivers, and BSP bring-up.
       </p>
 
       <blockquote>
         "Truth can only be found in one place: the code."
       </blockquote>
+
+      <p>
+        I'm perpetually exploring the boundary between distributed systems and bare-metal registers. Open to collaborating on products that bridge cloud-scale ambitions with hardware constraints.
+      </p>
 
       <h2>What I Work With</h2>
 
@@ -34,23 +34,27 @@ import { SITE_TITLE, SITE_AUTHOR, SOCIAL_LINKS } from '../consts';
       <p>C, C++, Python, Go, Rust, Java, TypeScript, Bash, PowerShell, MATLAB</p>
 
       <h3>Embedded & Hardware</h3>
-      <p>STM32, Texas Instruments, Xilinx Zynq, NVIDIA Jetson, ESP32, Raspberry Pi, BeagleBone, Arduino FreeRTOS, Zephyr, Yocto, Buildroot, Device Tree, U-Boot, GDB, OpenOCD</p>
+      <p>STM32, Texas Instruments, Xilinx Zynq, NVIDIA Jetson, ESP32, Raspberry Pi, BeagleBone FreeRTOS, Zephyr, Yocto, Buildroot, Device Tree, U-Boot, GDB, OpenOCD</p>
 
       <h3>Cloud & Infrastructure</h3>
       <p>AWS, GCP, Docker, Kubernetes, Terraform, Helm, Ansible, Prometheus, Grafana, Nginx</p>
+
+      <h3>Protocols & Networking</h3>
+      <p>ARINC 429/664, UART, SPI, CAN, I2C, CCSDS, TCP/UDP, gRPC, MQTT</p>
 
       <h3>DevOps & CI/CD</h3>
       <p>Git, GitHub Actions, GitLab CI, Jenkins, ArgoCD, CMake, Conan, Make</p>
 
       <h3>Tools</h3>
-      <p>Vim/Neovim, VS Code, CLion, PyCharm, Wireshark, Valgrind, Doxygen, Postman</p>
+      <p>Vim/Neovim, VS Code, CLion, PyCharm, Wireshark, Valgrind, Doxygen, Postman, Jupyter</p>
 
-      <h2>Open Source</h2>
+      <h2>Philosophy</h2>
       <ul>
-        <li><a href="https://github.com/GauravAgarwalGarg/CourseHub">CourseHub</a> Curated free courses, conferences & engineering blogs</li>
-        <li><a href="https://github.com/GauravAgarwalGarg/LinuxPostInstallScripts">Linux Scripts</a> Post-install automation for Ubuntu LTS</li>
-        <li><a href="https://github.com/GauravAgarwalGarg/dotvim">dotvim</a> Modern IDE-grade Vim configuration</li>
-        <li><a href="https://github.com/GauravAgarwalGarg/AngelOneDashboard">AngelOne Dashboard</a> Stock market dashboard with real-time data & screeners</li>
+        <li>Write everything <strong>software</strong></li>
+        <li>Anything <strong>open source</strong></li>
+        <li>From <strong>silicon</strong> to <strong>cloud</strong></li>
+        <li>Ship fast, break nothing</li>
+        <li>Automate everything, always</li>
       </ul>
 
       <h2>Connect</h2>
@@ -58,8 +62,9 @@ import { SITE_TITLE, SITE_AUTHOR, SOCIAL_LINKS } from '../consts';
         <a href={SOCIAL_LINKS.github}>GitHub</a> ·
         <a href={SOCIAL_LINKS.linkedin}>LinkedIn</a> ·
         <a href={SOCIAL_LINKS.twitter}>X</a> ·
-        <a href="https://stackoverflow.com/users/6194954/gaurav-agarwal-garg" target="_blank" rel="noopener">Stack Overflow</a> ·
-        <a href="https://leetcode.com/gauravagarwalgarg/" target="_blank" rel="noopener">LeetCode</a>
+        <a href={SOCIAL_LINKS.stackoverflow}>Stack Overflow</a> ·
+        <a href={SOCIAL_LINKS.leetcode}>LeetCode</a> ·
+        <a href="mailto:gauravagarwalgarg@gmail.com">Email</a>
       </p>
     </article>
   </main>

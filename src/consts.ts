@@ -1,8 +1,8 @@
 export const SITE_TITLE = "Gaurav's Engineering Log";
-export const SITE_DESCRIPTION = 'Devices to Cloud software engineering, embedded systems, machine learning, and the occasional poem.';
+export const SITE_DESCRIPTION = 'Devices to Cloud software engineering, embedded systems, and everything in between.';
 export const SITE_AUTHOR = 'Gaurav Agarwal';
 export const SITE_TAGLINE = 'Building from Silicon to Cloud';
-export const SITE_BIO = 'Gaurav Agarwal is a software engineer with expertise spanning embedded systems, cloud infrastructure, and machine learning. From bare-metal firmware to distributed systems, bridging the gap between hardware and software.';
+export const SITE_BIO = 'Software engineer spanning the full spectrum from bare-metal firmware and kernel drivers to cloud-native distributed systems. Perpetually exploring the boundary between hardware registers and microservices.';
 
 // Ordered categories
 export const CATEGORIES = [
@@ -70,141 +70,162 @@ export const NAV_LINKS = [
   { href: '/posts', label: 'Articles' },
   { href: '/concepts', label: 'Concepts' },
   { href: '/projects', label: 'Projects' },
-  { href: '/posts/category/embedded-systems', label: 'Embedded' },
-  { href: '/posts/category/machine-learning', label: 'ML' },
+  { href: '/talks', label: 'Talks' },
 ] as const;
 
 export const SOCIAL_LINKS = {
   github: 'https://github.com/GauravAgarwalGarg',
   linkedin: 'https://www.linkedin.com/in/gauravagarwalgarg/',
   twitter: 'https://x.com/gauravaggarg',
+  stackoverflow: 'https://stackoverflow.com/users/6194954/gaurav-agarwal-garg',
+  leetcode: 'https://leetcode.com/gauravagarwalgarg/',
   rss: '/rss.xml',
 } as const;
 
-// Work experience for homepage sidebar
-export interface WorkEntry {
-  company: string;
-  role: string;
-  period: string;
-  logo?: string;
-}
-
-export const WORK_EXPERIENCE: WorkEntry[] = [
-  {
-    company: 'Current Company',
-    role: 'Software Engineer',
-    period: '2022 – Present',
-  },
-  {
-    company: 'Previous Company',
-    role: 'Embedded Software Engineer',
-    period: '2020 – 2022',
-  },
-];
-
-// Bookmarks for homepage sidebar
-export interface Bookmark {
-  title: string;
-  author: string;
-  url?: string;
-}
-
-export const BOOKMARKS: Bookmark[] = [
-  {
-    title: 'Making Embedded Systems',
-    author: 'Elecia White',
-  },
-  {
-    title: 'Designing Data-Intensive Applications',
-    author: 'Martin Kleppmann',
-  },
-  {
-    title: 'The Attention Mechanism Paper',
-    author: 'Vaswani et al.',
-  },
-];
-
 // Project categories for broader grouping
-export type ProjectCategory = 'tools' | 'learning' | 'finance' | 'creative' | 'systems';
+export type ProjectCategory = 'interview' | 'languages' | 'systems' | 'tools' | 'learning' | 'apps';
 
 export interface Project {
   title: string;
   description: string;
   url: string;
+  docs?: string;
   tags: string[];
   category: ProjectCategory;
 }
 
 export const PROJECT_CATEGORY_LABELS: Record<ProjectCategory, string> = {
-  tools: '🛠️ Tools & Automation',
-  learning: '📚 Learning & Resources',
-  finance: '📈 Finance & Data',
-  creative: '🎨 Creative & Web',
-  systems: '⚙️ Systems & Low-Level',
+  interview: '🎯 Interview & DSA',
+  languages: '💻 Language Playgrounds',
+  systems: '⚙️ Systems & Protocols',
+  tools: '🛠️ Developer Tools',
+  learning: '🎓 Learning & Reference',
+  apps: '🚀 Applications',
 };
 
 export const PROJECTS: Project[] = [
+  // Interview & DSA
+  {
+    title: 'Tech Interview OS',
+    description: '250+ questions: DSA, LLD, HLD, CI/CD, Architecture with rubrics for SDE 1→4.',
+    url: 'https://github.com/GauravAgarwalGarg/tech-interview-os',
+    docs: 'https://gauravagarwalgarg.github.io/tech-interview-os/',
+    tags: ['dsa', 'system-design', 'interviews', 'architecture'],
+    category: 'interview',
+  },
+  {
+    title: 'Playground',
+    description: 'Coding interview patterns 101 problems in C++, Python, Go.',
+    url: 'https://github.com/GauravAgarwalGarg/Playground',
+    docs: 'https://gauravagarwalgarg.github.io/playground/',
+    tags: ['algorithms', 'c++', 'python', 'go'],
+    category: 'interview',
+  },
+  // Language Playgrounds
+  {
+    title: 'Modern C++ Playground',
+    description: 'Move semantics, RAII, lock-free, HFT, CRTP, custom allocators 63 compilable files.',
+    url: 'https://github.com/GauravAgarwalGarg/modern-cpp-playground',
+    docs: 'https://gauravagarwalgarg.github.io/modern-cpp-playground/',
+    tags: ['c++', 'modern-cpp', 'performance', 'systems'],
+    category: 'languages',
+  },
+  {
+    title: 'Giggle With Python',
+    description: 'Python end-to-end: fundamentals, data analytics, frameworks, automation, testing.',
+    url: 'https://github.com/GauravAgarwalGarg/giggle-with-python',
+    docs: 'https://gauravagarwalgarg.github.io/giggle-with-python/',
+    tags: ['python', 'analytics', 'automation', 'testing'],
+    category: 'languages',
+  },
+  {
+    title: 'Grin With Golang',
+    description: 'The Ultimate Go Playbook: concurrency, GMP scheduler, system design 62 source files.',
+    url: 'https://github.com/GauravAgarwalGarg/grin-with-golang',
+    docs: 'https://gauravagarwalgarg.github.io/grin-with-golang/',
+    tags: ['go', 'concurrency', 'system-design'],
+    category: 'languages',
+  },
+  {
+    title: 'PrototypeSTL',
+    description: 'High-performance, embedded-friendly C++ standard library alternative.',
+    url: 'https://github.com/GauravAgarwalGarg/prototype-stl',
+    docs: 'https://gauravagarwalgarg.github.io/prototype-stl/',
+    tags: ['c++', 'stl', 'embedded', 'performance'],
+    category: 'languages',
+  },
+  // Systems & Protocols
+  {
+    title: 'Protocols',
+    description: 'Low-latency networking, aerospace (ARINC 429/664), embedded (UART/SPI/CAN), satellite (CCSDS).',
+    url: 'https://github.com/GauravAgarwalGarg/protocols',
+    docs: 'https://gauravagarwalgarg.github.io/protocols/',
+    tags: ['networking', 'aerospace', 'embedded', 'protocols'],
+    category: 'systems',
+  },
+  {
+    title: 'Yocto Playground',
+    description: 'Embedded Linux build system recipes, layers, QEMU, BSP.',
+    url: 'https://github.com/GauravAgarwalGarg/yocto-playground',
+    docs: 'https://gauravagarwalgarg.github.io/yocto-playground/',
+    tags: ['yocto', 'embedded-linux', 'bsp', 'qemu'],
+    category: 'systems',
+  },
   {
     title: 'Linux Scripts',
-    description: 'Post-install automation for Ubuntu LTS. Modular, idempotent, role-based profiles.',
-    url: 'https://github.com/GauravAgarwalGarg/LinuxPostInstallScripts',
-    tags: ['linux', 'automation', 'bash', 'devops'],
+    description: 'Shell scripts for sysadmin, monitoring, automation, containers.',
+    url: 'https://github.com/GauravAgarwalGarg/linux-scripts',
+    docs: 'https://gauravagarwalgarg.github.io/linux-scripts/',
+    tags: ['linux', 'bash', 'automation', 'devops'],
+    category: 'systems',
+  },
+  // Developer Tools
+  {
+    title: 'void-filter',
+    description: 'Enterprise git hooks framework format, lint, secrets scan, AI-fix for all languages.',
+    url: 'https://github.com/GauravAgarwalGarg/void-filter',
+    docs: 'https://gauravagarwalgarg.github.io/void-filter/',
+    tags: ['git-hooks', 'linting', 'security', 'developer-tools'],
     category: 'tools',
   },
   {
     title: 'dotvim',
-    description: 'Modern IDE-grade Vim configuration. LSP, fuzzy finding, git integration, floating terminal.',
+    description: 'IDE-grade Vim config LSP, fuzzy find, git, 30+ plugins, Google style.',
     url: 'https://github.com/GauravAgarwalGarg/dotvim',
+    docs: 'https://gauravagarwalgarg.github.io/dotvim/',
     tags: ['vim', 'neovim', 'developer-tools', 'productivity'],
     category: 'tools',
   },
+  // Learning & Reference
   {
-    title: 'CourseHub',
-    description: 'Curated free courses, conferences & engineering blogs from fundamentals to frontier research.',
-    url: 'https://github.com/GauravAgarwalGarg/CourseHub',
-    tags: ['education', 'open-source', 'curated', 'engineering'],
+    title: 'SW Course Hub',
+    description: '500+ free CS courses from MIT, Stanford, CMU, NPTEL organized by career stage.',
+    url: 'https://github.com/GauravAgarwalGarg/sw-course-hub',
+    docs: 'https://gauravagarwalgarg.github.io/sw-course-hub/',
+    tags: ['education', 'courses', 'curated', 'cs'],
     category: 'learning',
   },
   {
-    title: 'A Modern C++ Playground',
-    description: 'Everything C++ modern standards (C++11 through C++23), patterns, and idioms.',
-    url: 'https://github.com/GauravAgarwalGarg/AModernCppPlayground',
-    tags: ['c++', 'modern-cpp', 'learning', 'systems'],
+    title: 'Autonomy Loops',
+    description: 'Loop Engineering Library control systems and autonomy patterns.',
+    url: 'https://github.com/GauravAgarwalGarg/autonomy-loops',
+    docs: 'https://gauravagarwalgarg.github.io/autonomy-loops/',
+    tags: ['control-systems', 'autonomy', 'engineering'],
     category: 'learning',
   },
-  {
-    title: 'Giggle With Python',
-    description: 'Complete tutorials and preparation material for Python snippets, frameworks, and best practices.',
-    url: 'https://github.com/GauravAgarwalGarg/GiggleWithPython',
-    tags: ['python', 'tutorials', 'learning'],
-    category: 'learning',
-  },
-  {
-    title: 'Playground',
-    description: 'Multi-language experimental lab C++, Python, Java, Go, Rust. Proof of concepts that mature into real projects.',
-    url: 'https://github.com/GauravAgarwalGarg/Playground',
-    tags: ['polyglot', 'experiments', 'learning'],
-    category: 'learning',
-  },
+  // Applications
   {
     title: 'AngelOne Dashboard',
-    description: 'Stock market dashboard with real-time data, screeners, and technical indicators.',
-    url: 'https://github.com/GauravAgarwalGarg/AngelOneDashboard',
-    tags: ['finance', 'python', 'react', 'real-time'],
-    category: 'finance',
+    description: 'Stock trading dashboard FastAPI backend + React frontend.',
+    url: 'https://github.com/GauravAgarwalGarg/angel-one-dashboard',
+    tags: ['finance', 'fastapi', 'react', 'real-time'],
+    category: 'apps',
   },
   {
     title: 'This Blog',
-    description: 'Astro-powered static blog with Islands Architecture, MDX, View Transitions, and zero JS by default.',
+    description: 'Astro-powered static blog Islands Architecture, MDX, View Transitions, zero JS by default.',
     url: 'https://github.com/GauravAgarwalGarg/Blog',
     tags: ['astro', 'blog', 'typescript', 'static-site'],
-    category: 'creative',
-  },
-  {
-    title: 'Voyager',
-    description: 'Image sharing platform with random facts a creative side project.',
-    url: 'https://github.com/GauravAgarwalGarg/voyager',
-    tags: ['web', 'images', 'creative'],
-    category: 'creative',
+    category: 'apps',
   },
 ];

@@ -24,7 +24,7 @@
   --font-body: var(--font-atkinson), system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
-  /* Dark theme (default tching .ai) */
+  /* Dark theme (default) */
   --bg: #0a0a0f;
   --bg-secondary: #111118;
   --bg-card: #151520;
