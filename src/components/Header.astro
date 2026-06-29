@@ -10,7 +10,7 @@ const currentPath = Astro.url.pathname;
   <div class="container header-inner">
     <!-- Avatar / Logo -->
     <a href={`${baseUrl}/`} class="logo-link" aria-label="Home">
-      <span class="logo-avatar">GA</span>
+      <span class="logo-avatar">🚀</span>
     </a>
 
     <!-- Desktop nav -->
@@ -148,12 +148,8 @@ const currentPath = Astro.url.pathname;
     justify-content: center;
     width: 32px;
     height: 32px;
-    background: var(--accent-dim);
-    color: var(--accent);
-    border-radius: 50%;
-    font-size: 0.7rem;
-    font-weight: 700;
-    border: 1px solid var(--accent);
+    font-size: 1.2rem;
+    line-height: 1;
   }
 
   /* Desktop nav */
@@ -186,19 +182,22 @@ const currentPath = Astro.url.pathname;
     display: flex;
     align-items: center;
     gap: 0.25rem;
+    z-index: 101;
+    position: relative;
   }
   .theme-btn, .menu-btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 34px;
-    height: 34px;
+    width: 40px;
+    height: 40px;
     border-radius: 8px;
     color: var(--text-secondary);
     transition: background 0.2s, color 0.2s;
     border: none;
     background: none;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
   }
   .theme-btn:hover, .menu-btn:hover {
     background: var(--bg-secondary);
@@ -226,7 +225,7 @@ const currentPath = Astro.url.pathname;
     bottom: 0;
     background: var(--bg);
     padding: 1.5rem;
-    z-index: 99;
+    z-index: 200;
     overflow-y: auto;
     transform: translateY(-100%);
     opacity: 0;
