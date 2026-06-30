@@ -1,5 +1,12 @@
 # 📝 Blog
 
+[![CI](https://github.com/gauravagarwalgarg/blog/actions/workflows/ci.yml/badge.svg)](https://github.com/gauravagarwalgarg/blog/actions/workflows/ci.yml) [![Docs](https://img.shields.io/badge/docs-live-blue?logo=github)](https://gauravagarwalgarg.github.io/blog/) ![MkDocs](https://img.shields.io/badge/MkDocs-Material-blue?logo=materialformkdocs&logoColor=white) [![License](https://img.shields.io/github/license/gauravagarwalgarg/blog)](https://github.com/gauravagarwalgarg/blog/blob/main/LICENSE)
+
+> 📖 **Documentation**: [https://gauravagarwalgarg.github.io/blog/](https://gauravagarwalgarg.github.io/blog/)
+>
+> 📦 **Repository**: [GitHub](https://github.com/gauravagarwalgarg/blog)
+
+
 > A curated blog covering software engineering, emerging technology, aerospace, health-tech, startups, economics, infrastructure, history, and culinary adventures.
 
 **Live**: [gauravagarwalgarg.github.io/Blog](https://gauravagarwalgarg.github.io/Blog)
