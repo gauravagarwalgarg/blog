@@ -1,144 +1,99 @@
-# 🔮 Future Roadmap & Self-Hosting Plan
+# Roadmap
 
-> Features intentionally deferred, deployment strategy, and cost estimation.
-
----
-
-## Features Intentionally Not Added (Yet)
-
-### 1. Search (Full-Text)
-
-**Why deferred**: Static sites can't do server-side search. Client-side search (Pagefind, Fuse.js) adds JS weight.
-
-**When to add**: When you have 30+ posts and category filtering isn't enough.
-
-**Best approach**:
-- [Pagefind](https://pagefind.app/) Runs at build time, generates a static search index. ~5KB client JS. No server needed.
-- Add as an Astro Island: `<Search client:idle />`
-
-**Estimated effort**: 2 hours.
+What's built, what's next, and cost estimates for scaling.
 
 ---
 
-### 2. Comments System
+## Deployment Architecture
 
-**Why deferred**: Adds external dependency and moderation overhead.
-
-**When to add**: When posts get traffic and you want engagement.
-
-**Best approach**:
-- [Giscus](https://giscus.app/) GitHub Discussions-backed. Free. No database.
-- Add as Island: `<Comments client:visible />`
-- Alternative: [Utterances](https://utteranc.es/) (GitHub Issues-backed)
-
-**Estimated effort**: 1 hour.
+| What | Where | Trigger | Cost |
+|------|-------|---------|------|
+| Blog (Astro) | Cloudflare Pages → `gauravagarwal.pages.dev` | Auto on push | $0 |
+| Docs (MkDocs Material) | GitHub Pages → `gauravagarwalgarg.github.io/blog/` | Auto on push (docs/) | $0 |
 
 ---
 
-### 3. Newsletter / Email Subscription
+## ✅ Implemented
 
-**Why deferred**: Requires email service (cost) and GDPR compliance.
-
-**When to add**: When you have consistent publishing cadence (weekly/biweekly).
-
-**Best approach**:
-- [Buttondown](https://buttondown.email/) Free up to 100 subscribers. Markdown-native.
-- Or [Resend](https://resend.com/) + custom form (100 emails/day free)
-- Embed form as static HTML (no Island needed)
-
-**Cost**: Free → $9/month at scale.
-
----
-
-### 4. Analytics
-
-**Why deferred**: Privacy-first. No tracking by default.
-
-**When to add**: When you want to know what resonates.
-
-**Best approach**:
-- [Plausible](https://plausible.io/) Privacy-friendly, GDPR-compliant, 1KB script
-- Or [Umami](https://umami.is/) Self-hosted, free, open source
-- Add as `<script>` in BaseHead (no Island needed)
-
-**Cost**: Plausible $9/month. Umami self-hosted = free.
-
----
-
-### 5. Table of Contents (Auto-Generated)
-
-**Why deferred**: Needs rehype plugin or custom component.
-
-**When to add**: When posts exceed 2000 words regularly.
-
-**Best approach**:
-```bash
-npm install rehype-toc rehype-slug
-```
-```javascript
-// astro.config.mjs
-markdown: {
-  rehypePlugins: [rehypeSlug, rehypeToc],
-}
-```
-
-**Estimated effort**: 30 minutes.
+| Feature | Location | Added |
+|---------|----------|-------|
+| Dark/Light mode toggle | `Header.astro` | v1 |
+| Content Collections (type-safe) | `content.config.ts` | v1 |
+| View Transitions (SPA-like nav) | `BaseHead.astro` | v1 |
+| Client-side search (⌘K) | `Search.astro` + `search-index.json.ts` | v1 |
+| Table of Contents (auto-generated) | `TableOfContents.astro` | v1 |
+| Related Posts (tag/category scoring) | `RelatedPosts.astro` | v1 |
+| Reading Time estimation | `BlogPost.astro` | v1 |
+| Image optimization (Sharp) | `astro.config.mjs` | v1 |
+| RSS feed | `rss.xml.js` | v1 |
+| Sitemap | `@astrojs/sitemap` | v1 |
+| Category filtering + archive pages | `[category].astro` | v1 |
+| Micro-blogging | `content/micro/` | v1 |
+| Mobile-responsive (hamburger menu) | All components | v1 |
+| Prefetching | `astro.config.mjs` | v1 |
+| MDX support | `@astrojs/mdx` | v1 |
+| SEO (OpenGraph, Twitter cards, JSON-LD) | `BaseHead.astro` | v1 |
+| Security headers | `public/_headers` | v2 |
+| AI crawler blocking | `public/robots.txt` | v2 |
+| Cloudflare Pages deploy | Auto on push | v2 |
+| MkDocs docs site | GitHub Pages | v2 |
+| Monthly Summary page | `summary.astro` | v2 |
+| Essays section | `essays.astro` | v2 |
 
 ---
 
-### 6. Reading Time Estimation
+## 🔜 Next Up
 
-**Why deferred**: Nice-to-have, not critical.
-
-**Best approach**:
-```typescript
-// In content.config.ts or a utility
-const wordsPerMinute = 200;
-const readingTime = Math.ceil(content.split(/\s+/).length / wordsPerMinute);
-```
-
-**Estimated effort**: 15 minutes.
+| Feature | Trigger | Approach | Effort |
+|---------|---------|----------|--------|
+| Comments (Giscus) | Posts get regular traffic | GitHub Discussions, `client:visible` | 1 hour |
+| Newsletter | 3 months consistent publishing | Buttondown free tier | 30 min |
+| Analytics | Need data decisions | Plausible or self-hosted Umami | 15 min |
+| Pagefind upgrade | 50+ posts | Replace JSON search with WASM index | 2 hours |
+| Custom domain | After 1 year habit | `gauravagarwalgarg.dev` via Cloudflare | 10 min |
 
 ---
 
-### 7. Related Posts
+## 💰 Cost Estimates
 
-**Why deferred**: Needs enough posts to be meaningful.
+### Current (Phase 1 $0/year)
 
-**When to add**: When you have 15+ posts.
+| Service | Cost | Notes |
+|---------|------|-------|
+| Cloudflare Pages | $0 | Unlimited bandwidth, 500 builds/month |
+| GitHub Pages (docs) | $0 | MkDocs hosting |
+| GitHub repo | $0 | Source code + CI/CD |
+| **Total** | **$0** | |
 
-**Best approach**: Match by category + tags. Sort by overlap count. Show 3 at bottom of each post.
+### Growth (Phase 2 ~$12/year)
 
----
+| Service | Cost | Notes |
+|---------|------|-------|
+| Custom domain (.dev) | $12/year | Via Cloudflare Registrar |
+| Cloudflare Pages | $0 | Still free |
+| **Total** | **~$12/year** | |
 
-## 🐳 Self-Hosting Strategy
+### Full Stack (Phase 3 ~$120–280/year)
 
-### Phase 1: Current (GitHub Pages Free)
+| Service | Cost | Notes |
+|---------|------|-------|
+| Domain | $12/year | |
+| Plausible Analytics | $9/month | Or Umami self-hosted for $0 |
+| Buttondown Newsletter | $0–9/month | Free up to 100 subs |
+| **Total** | **$120–280/year** | |
 
-```
-Push to main → GitHub Actions → Build → Deploy to Pages
-```
+### Self-Hosted Dynamic (Phase 4 ~$80/year)
 
-**Cost**: $0
-**Limitations**: Static only. No server-side features. No custom headers. Rate-limited.
+For when SSR, API routes, or full control is needed:
 
-### Phase 2: Static + CDN (Cloudflare Pages Free)
+| Service | Cost | Notes |
+|---------|------|-------|
+| Hetzner CX22 VPS | €4.50/month | 2 vCPU, 4GB RAM, 40GB NVMe |
+| Domain | $12/year | |
+| Backups | €1.50/month | Hetzner snapshots |
+| **Total** | **~$80/year** | |
 
-```
-Push to main → Cloudflare builds → Deploy to edge (300+ PoPs)
-```
-
-**Cost**: $0 (free tier: unlimited bandwidth, 500 builds/month)
-**Gains**: Faster globally, custom headers, redirects, edge functions if needed.
-**Migration**: Change deploy target. Same static output.
-
-### Phase 3: Self-Hosted Dynamic (VPS + Docker)
-
-```
-Push to main → CI builds Docker image → Deploy to VPS
-```
-
-**Architecture**:
+**Architecture** (Phase 4):
 ```
 ┌─────────────────────────────────────────┐
 │  Caddy (reverse proxy + auto-HTTPS)     │
@@ -147,8 +102,17 @@ Push to main → CI builds Docker image → Deploy to VPS
 ├─────────────────────────────────────────┤
 │  Docker Compose                         │
 ├─────────────────────────────────────────┤
-│  VPS (Hetzner / DigitalOcean / Oracle)  │
+│  VPS (Hetzner CX22)                     │
 └─────────────────────────────────────────┘
+```
+
+**Astro SSR config** (when ready):
+```javascript
+import node from '@astrojs/node';
+export default defineConfig({
+  output: 'hybrid',  // Static default, SSR for specific routes
+  adapter: node({ mode: 'standalone' }),
+});
 ```
 
 **Dockerfile**:
@@ -156,7 +120,7 @@ Push to main → CI builds Docker image → Deploy to VPS
 FROM node:22-alpine AS build
 WORKDIR /app
 COPY package*.json ./
-RUN npm ci --production=false
+RUN npm ci
 COPY . .
 RUN npm run build
 
@@ -197,75 +161,58 @@ volumes:
 
 **Caddyfile**:
 ```
-blog.gauravagarwal.dev {
+blog.yourdomain.dev {
     reverse_proxy blog:4321
     encode gzip zstd
+    header {
+        X-Content-Type-Options "nosniff"
+        X-Frame-Options "DENY"
+        Referrer-Policy "strict-origin-when-cross-origin"
+    }
 }
 ```
 
-**Astro config change for SSR**:
-```javascript
-import node from '@astrojs/node';
+---
 
-export default defineConfig({
-  output: 'server',  // or 'hybrid' for mix of static + dynamic
-  adapter: node({ mode: 'standalone' }),
-});
-```
+## Alternative Free Hosting (If Cloudflare Changes)
+
+| Provider | Cost | Notes |
+|----------|------|-------|
+| Vercel | $0 (hobby) | 100GB bandwidth, edge functions |
+| Netlify | $0 (starter) | 100GB bandwidth, forms |
+| Render | $0 (static) | Auto-deploy from Git |
+| Fly.io | $0 (3 VMs) | Container-native, scale-to-zero |
+| Oracle Cloud Free | $0 forever | 4 OCPU, 24GB RAM (if available) |
 
 ---
 
-## 💰 Cost Estimation
+## Maintenance Cadence
 
-### Static (Current & Near-Future)
+### Monthly
+- `npm update` keep dependencies fresh
+- Check Lighthouse scores (target: 100/100)
+- Review build logs for warnings
 
-| Service | Cost | Notes |
-|---------|------|-------|
-| GitHub Pages | $0 | Current setup |
-| Cloudflare Pages | $0 | Better CDN, same static |
-| Domain (.dev) | $12/year | Optional |
-| **Total** | **$0-12/year** | |
+### Quarterly
+- `npm audit` security check
+- Prune unused images in `src/assets/`
+- Check for Astro major version updates
 
-### Self-Hosted (When Dynamic Needed)
-
-| Service | Cost | Notes |
-|---------|------|-------|
-| Hetzner VPS (CX22) | €4.5/month | 2 vCPU, 4GB RAM, 40GB SSD |
-| Domain (.dev) | $12/year | |
-| Backups | €1.5/month | Hetzner snapshots |
-| **Total** | **~$80/year** | |
-
-### Self-Hosted + Extras
-
-| Service | Cost | Notes |
-|---------|------|-------|
-| VPS | €4.5/month | |
-| Plausible Analytics | $9/month | Or self-host Umami for $0 |
-| Buttondown Newsletter | $0-9/month | Free up to 100 subs |
-| Domain | $12/year | |
-| **Total** | **$80-280/year** | |
-
-### Alternative: Oracle Cloud Free Tier
-
-| Service | Cost | Notes |
-|---------|------|-------|
-| Oracle ARM VPS | $0 | 4 OCPU, 24GB RAM (free forever) |
-| Domain | $12/year | |
-| **Total** | **$12/year** | If you can get an instance (limited availability) |
+### If Self-Hosted (Phase 4)
+- `apt update && apt upgrade` OS patches
+- Check disk usage
+- Verify backups running
+- Renew domain (annual)
 
 ---
 
-## 🎯 When to Move Off GitHub Pages
+## When to Move Off Cloudflare Pages
 
 Move when you need ANY of:
 - Server-side rendering (personalization, auth)
-- API routes (contact form, newsletter signup)
+- API routes (contact form, newsletter signup backend)
 - Edge functions (A/B testing, geo-routing)
-- Custom response headers (security, caching)
 - WebSocket connections (live updates)
+- Custom response headers beyond `_headers` file
 
-**Until then**: GitHub Pages is free, fast, and zero-maintenance. Don't over-engineer.
-
----
-
-*Cross-references: [Architecture](../design/architecture.md) · [Feature Reference](../design/features.md) · [Deferred Features](./deferred-features.md) · [Deployment](./deployment.md) · [Getting Started](../getting-started.md) · [README](../../README.md)*
+**Until then**: Cloudflare Pages is free, fast, and zero-maintenance. Don't over-engineer.

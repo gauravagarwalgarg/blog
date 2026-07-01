@@ -220,4 +220,4 @@ src/
 
 ---
 
-*Cross-references: [Feature Reference](./features.md) · [Future Plans](../future/roadmap.md) · [Deferred Features](../future/deferred-features.md) · [Deployment](../future/deployment.md) · [Getting Started](../getting-started.md) · [README](../../README.md)*
+*Cross-references: [Feature Reference](./features.md) · [Roadmap](../future/roadmap.md) · [Deferred Features](../future/deferred-features.md) · [Deployment](../deployment.md) · [Getting Started](../getting-started.md)*

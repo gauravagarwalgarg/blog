@@ -1,33 +1,28 @@
-name: Deploy to GitHub Pages
+name: Deploy Docs to GitHub Pages
 
 on:
-  # Manual trigger only primary deploy is via Cloudflare (auto on push)
+  push:
+    branches: [main, feature/first-blog-page-with-astro]
+    paths:
+      - 'docs/**'
+      - 'mkdocs.yml'
   workflow_dispatch:
 
-# Allow this job to clone the repo and create a page deployment
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 jobs:
-  build:
+  deploy-docs:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout your repository using git
-        uses: actions/checkout@v6
-      - name: Install, build, and upload your site
-        uses: withastro/action@v6
-        with:
-          node-version: 22
+      - uses: actions/checkout@v5
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install MkDocs Material
+        run: pip install mkdocs-material
+
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v5
+        run: mkdocs gh-deploy --force

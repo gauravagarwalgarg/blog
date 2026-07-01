@@ -31,3 +31,6 @@ pnpm-debug.log*
 
 # Cloudflare Wrangler
 .wrangler/
+
+# MkDocs build output
+site/

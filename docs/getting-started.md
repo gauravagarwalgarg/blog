@@ -47,48 +47,15 @@ npm run preview    # Serve ./dist locally for testing
 
 Verify everything works at `http://localhost:4321` before deploying.
 
-## Deploy to Cloudflare Workers
+## Deploy to Cloudflare Pages
 
-The blog deploys as a static asset Worker on Cloudflare's edge network.
+See [Deployment Guide](deployment.md) for full setup instructions.
 
-### First-Time Setup
-
-1. Push your code to GitHub
-2. Go to [Cloudflare Dashboard](https://dash.cloudflare.com) → Workers & Pages → Create
-3. Connect your GitHub repo (`gauravagarwalgarg/Blog`)
-4. Configure:
-
-| Setting | Value |
-|---------|-------|
-| Project name | `blog` |
-| Build command | `npm run build` |
-| Deploy command | `npx wrangler deploy` |
-| Path | `/` |
-| Environment variable | `NODE_VERSION` = `22` |
-
-5. Deploy site goes live at `blog.<account>.workers.dev`
-
-### How It Works
-
-```
-Push to GitHub → Cloudflare detects change → npm run build (Node 22)
-→ npx wrangler deploy → Static assets served from 300+ edge PoPs
-```
-
-The `wrangler.toml` in the repo root tells Wrangler to serve `./dist` as static assets:
-
-```toml
-name = "blog"
-compatibility_date = "2024-12-01"
-[assets]
-directory = "./dist"
-```
-
-### Custom Domain (Optional)
-
-1. Cloudflare Dashboard → your Worker → Settings → Custom Domains
-2. Add your domain (must be on Cloudflare DNS)
-3. HTTPS is automatic
+Quick version:
+1. Push to GitHub
+2. Cloudflare Dashboard → Pages → Connect repo
+3. Build: `npm run build`, output: `dist`, env: `NODE_VERSION=22`
+4. Live at `your-project.pages.dev`
 
 ## Project Structure
 

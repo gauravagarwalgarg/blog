@@ -20,4 +20,4 @@ Disallow: /
 User-agent: ClaudeBot
 Disallow: /
 
-Sitemap: https://gauravagarwalgarg.pages.dev/sitemap-index.xml
+Sitemap: https://gauravagarwal.pages.dev/sitemap-index.xml

@@ -9,7 +9,7 @@
 **What**: Astro's built-in system for managing structured content with TypeScript schema validation.
 
 **Where implemented**: 
-- Schema: [`src/content.config.ts`](../../src/content.config.ts)
+- Schema: [`src/content.config.ts`](https://github.com/gauravagarwalgarg/blog/blob/main/src/content.config.ts)
 - Blog posts: `src/content/blog/*.md` / `*.mdx`
 - Micro posts: `src/content/micro/*.md`
 
@@ -44,7 +44,7 @@ const blog = defineCollection({
 
 **What**: Native browser View Transitions for seamless page navigation without a JavaScript framework.
 
-**Where implemented**: [`src/components/BaseHead.astro`](../../src/components/BaseHead.astro)
+**Where implemented**: [`src/components/BaseHead.astro`](https://github.com/gauravagarwalgarg/blog/blob/main/src/components/BaseHead.astro)
 
 **How it works**:
 ```astro
@@ -76,9 +76,9 @@ import { ViewTransitions } from 'astro:transitions';
 **What**: Render pages as static HTML, hydrate only interactive components ("islands") with JavaScript.
 
 **Where implemented**:
-- Search component: [`src/components/Search.astro`](../../src/components/Search.astro) hydrated in Header
-- Dark mode toggle: [`src/components/Header.astro`](../../src/components/Header.astro) inline script
-- Table of Contents: [`src/components/TableOfContents.astro`](../../src/components/TableOfContents.astro) scroll observer
+- Search component: [`src/components/Search.astro`](https://github.com/gauravagarwalgarg/blog/blob/main/src/components/Search.astro) hydrated in Header
+- Dark mode toggle: [`src/components/Header.astro`](https://github.com/gauravagarwalgarg/blog/blob/main/src/components/Header.astro) inline script
+- Table of Contents: [`src/components/TableOfContents.astro`](https://github.com/gauravagarwalgarg/blog/blob/main/src/components/TableOfContents.astro) scroll observer
 
 **Hydration directives used**:
 | Directive | Used For | Behavior |
@@ -102,8 +102,8 @@ import { ViewTransitions } from 'astro:transitions';
 **What**: Build-time image processing via Sharp converts, resizes, and optimizes images automatically.
 
 **Where implemented**:
-- Blog post hero images: [`src/layouts/BlogPost.astro`](../../src/layouts/BlogPost.astro)
-- Config: [`astro.config.mjs`](../../astro.config.mjs) → `image.service`
+- Blog post hero images: [`src/layouts/BlogPost.astro`](https://github.com/gauravagarwalgarg/blog/blob/main/src/layouts/BlogPost.astro)
+- Config: [`astro.config.mjs`](https://github.com/gauravagarwalgarg/blog/blob/main/astro.config.mjs) → `image.service`
 
 **How it works**:
 ```astro
@@ -133,8 +133,8 @@ import { Image } from 'astro:assets';
 **What**: Write Markdown with embedded JSX components interactive content inside blog posts.
 
 **Where implemented**:
-- Config: [`astro.config.mjs`](../../astro.config.mjs) → `integrations: [mdx()]`
-- Example post: [`src/content/blog/using-mdx.mdx`](../../src/content/blog/using-mdx.mdx)
+- Config: [`astro.config.mjs`](https://github.com/gauravagarwalgarg/blog/blob/main/astro.config.mjs) → `integrations: [mdx()]`
+- Example post: [`src/content/blog/using-mdx.mdx`](https://github.com/gauravagarwalgarg/blog/blob/main/src/content/blog/using-mdx.mdx)
 
 **How it works**:
 ```mdx
@@ -164,7 +164,7 @@ Back to regular Markdown.
 
 **What**: Automatically prefetch links in the viewport for instant navigation.
 
-**Where implemented**: [`astro.config.mjs`](../../astro.config.mjs)
+**Where implemented**: [`astro.config.mjs`](https://github.com/gauravagarwalgarg/blog/blob/main/astro.config.mjs)
 
 ```javascript
 prefetch: {
@@ -190,7 +190,7 @@ prefetch: {
 
 **What**: Self-hosted fonts loaded via Astro's font system no external requests, no layout shift.
 
-**Where implemented**: [`astro.config.mjs`](../../astro.config.mjs) → `fonts` config
+**Where implemented**: [`astro.config.mjs`](https://github.com/gauravagarwalgarg/blog/blob/main/astro.config.mjs) → `fonts` config
 
 ```javascript
 fonts: [{
@@ -220,7 +220,7 @@ fonts: [{
 
 **Where implemented**:
 - Sitemap: `@astrojs/sitemap` integration (auto-generates from pages)
-- RSS: [`src/pages/rss.xml.js`](../../src/pages/rss.xml.js)
+- RSS: [`src/pages/rss.xml.js`](https://github.com/gauravagarwalgarg/blog/blob/main/src/pages/rss.xml.js)
 
 **Why this matters**:
 - Search engines discover all pages via sitemap
@@ -234,8 +234,8 @@ fonts: [{
 **What**: Fuzzy search over all blog posts, loaded as an Astro Island.
 
 **Where implemented**:
-- Component: [`src/components/Search.astro`](../../src/components/Search.astro)
-- Index endpoint: [`src/pages/search-index.json.ts`](../../src/pages/search-index.json.ts)
+- Component: [`src/components/Search.astro`](https://github.com/gauravagarwalgarg/blog/blob/main/src/components/Search.astro)
+- Index endpoint: [`src/pages/search-index.json.ts`](https://github.com/gauravagarwalgarg/blog/blob/main/src/pages/search-index.json.ts)
 
 **How it works**:
 1. A JSON endpoint generates a search index at build time
@@ -255,8 +255,8 @@ fonts: [{
 **What**: Automatically extracts headings from blog posts and renders a navigable ToC.
 
 **Where implemented**:
-- Component: [`src/components/TableOfContents.astro`](../../src/components/TableOfContents.astro)
-- Used in: [`src/layouts/BlogPost.astro`](../../src/layouts/BlogPost.astro)
+- Component: [`src/components/TableOfContents.astro`](https://github.com/gauravagarwalgarg/blog/blob/main/src/components/TableOfContents.astro)
+- Used in: [`src/layouts/BlogPost.astro`](https://github.com/gauravagarwalgarg/blog/blob/main/src/layouts/BlogPost.astro)
 
 **How it works**:
 1. Astro's `render()` function returns `headings` array from Markdown
@@ -270,7 +270,7 @@ fonts: [{
 
 **What**: Shows relevant posts at the bottom of each article.
 
-**Where implemented**: [`src/components/RelatedPosts.astro`](../../src/components/RelatedPosts.astro)
+**Where implemented**: [`src/components/RelatedPosts.astro`](https://github.com/gauravagarwalgarg/blog/blob/main/src/components/RelatedPosts.astro)
 
 **Scoring algorithm**:
 - Category match: +2 points

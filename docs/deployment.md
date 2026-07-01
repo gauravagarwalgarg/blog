@@ -7,7 +7,7 @@ Push to GitHub → Cloudflare Pages detects change → Builds with Node 22
 → Deploys static assets to 300+ edge locations → Live in ~30 seconds
 ```
 
-**Live URL**: `https://gauravagarwalgarg.pages.dev`
+**Live URL**: `https://gauravagarwal.pages.dev`
 
 ---
 
@@ -68,7 +68,7 @@ git push origin feature/first-blog-page-with-astro
 1. [Cloudflare Dashboard](https://dash.cloudflare.com) → **Workers & Pages** → **Create** → **Pages** tab
 2. Connect your GitHub account
 3. Select repository: `gauravagarwalgarg/blog`
-4. **Project name**: `gauravagarwalgarg` (this becomes `gauravagarwalgarg.pages.dev`)
+4. **Project name**: `gauravagarwal` (this becomes `gauravagarwal.pages.dev`)
 
 ### 3.2 Build Configuration
 
@@ -93,13 +93,13 @@ Click **Save and Deploy**. Cloudflare will:
 3. Run `npm run build` (outputs to `./dist`)
 4. Serve `./dist` at the edge
 
-Live at: **`https://gauravagarwalgarg.pages.dev`**
+Live at: **`https://gauravagarwal.pages.dev`**
 
 ---
 
 ## Step 4: Verify Production
 
-- [ ] Site loads at `https://gauravagarwalgarg.pages.dev`
+- [ ] Site loads at `https://gauravagarwal.pages.dev`
 - [ ] CSS and fonts load properly
 - [ ] All pages accessible
 - [ ] RSS feed at `/rss.xml`
@@ -119,7 +119,7 @@ No CI/CD config needed on your side. Cloudflare handles the entire pipeline.
 
 ### Preview Deployments
 
-Every push to a non-production branch creates a preview at a unique URL (e.g., `abc123.gauravagarwalgarg.pages.dev`). Useful for reviewing before merging.
+Every push to a non-production branch creates a preview at a unique URL (e.g., `abc123.gauravagarwal.pages.dev`). Useful for reviewing before merging.
 
 ---
 

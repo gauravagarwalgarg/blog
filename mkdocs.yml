@@ -1,0 +1,56 @@
+site_name: "Gaurav's Blog Docs"
+site_url: https://gauravagarwalgarg.github.io/blog/
+site_description: "Developer documentation for Gaurav's Engineering Blog"
+site_author: Gaurav Agarwal
+
+repo_name: gauravagarwalgarg/blog
+repo_url: https://github.com/gauravagarwalgarg/blog
+
+theme:
+  name: material
+  palette:
+    - scheme: slate
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+    - scheme: default
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.expand
+    - toc.integrate
+    - search.suggest
+    - content.code.copy
+
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - Customization: customization.md
+  - Adding Content: adding-content.md
+  - Deployment: deployment.md
+  - Design:
+    - Architecture: design/architecture.md
+    - Features: design/features.md
+    - Style Guide: design/style-guide.md
+  - Future:
+    - Roadmap: future/roadmap.md
+    - Deferred Features: future/deferred-features.md

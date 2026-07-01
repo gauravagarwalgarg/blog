@@ -1,36 +1,42 @@
-# 🚫 Intentionally Deferred Features
+# Deferred Features
 
-> Features we consciously chose NOT to add yet, and the reasoning behind each decision.
+Features intentionally not added yet. Each has a clear trigger, cost analysis, and implementation path for when the time comes.
 
 ---
 
-## Philosophy
+## Decision Framework
 
-Every feature has a cost: complexity, maintenance, bundle size, or cognitive load. We defer features until the **pain of not having them** exceeds the **cost of adding them**.
+Before adding any feature:
+
+1. **Does it serve the reader?** Not just the author's ego.
+2. **Does it justify its weight?** KB of JS, hours of maintenance.
+3. **Can it be an Island?** Don't pollute the static shell.
+4. **Is there a simpler alternative?** CSS > JS, static > dynamic.
+5. **What's the maintenance cost?** Dependencies rot. Fewer = better.
 
 ---
 
 ## 1. Tailwind CSS
 
-**Status**: Intentionally excluded
+**Status**: Excluded
 
 **Why not**:
 - Adds build complexity (PostCSS pipeline, purging)
 - Utility classes bloat HTML readability
-- For a blog with ~15 components, semantic CSS is more maintainable
+- For a blog with ~20 components, semantic CSS is more maintainable
 - Fewer dependencies = fewer security updates
 - Pure CSS achieves 100/100 Lighthouse without a framework
 - No learning curve for contributors
 
-**When to reconsider**: If the site grows to 50+ components with complex responsive layouts.
+**Reconsider when**: Site grows to 50+ components with complex responsive layouts.
 
-**If added**: Use `@astrojs/tailwind` integration. One command: `npx astro add tailwind`.
+**If added**: `npx astro add tailwind` one command.
 
 ---
 
 ## 2. Comments System (Giscus/Utterances)
 
-**Status**: Deferred until traffic justifies moderation overhead
+**Status**: Deferred
 
 **Why not now**:
 - Adds external dependency (GitHub API)
@@ -38,14 +44,14 @@ Every feature has a cost: complexity, maintenance, bundle size, or cognitive loa
 - Low-traffic blogs get spam, not engagement
 - Adds ~30KB client JS (Giscus iframe)
 
-**When to add**: When posts consistently get 500+ views and readers ask for discussion.
+**Trigger**: Posts consistently get 500+ views and readers ask for discussion.
 
-**Best approach**:
+**Implementation**:
 ```astro
 <!-- Add as Island in BlogPost.astro -->
 <Giscus
   client:visible
-  repo="GauravAgarwalGarg/Blog"
+  repo="gauravagarwalgarg/blog"
   repoId="..."
   category="Blog Comments"
   categoryId="..."
@@ -56,25 +62,33 @@ Every feature has a cost: complexity, maintenance, bundle size, or cognitive loa
 
 **Estimated effort**: 1 hour (including GitHub Discussions setup).
 
+**Cost**: $0 (GitHub Discussions is free).
+
 ---
 
 ## 3. Newsletter / Email Subscription
 
-**Status**: Deferred until consistent publishing cadence established
+**Status**: Deferred
 
 **Why not now**:
 - Requires email service (cost at scale)
 - GDPR compliance (consent, unsubscribe, data deletion)
-- Subscribers expect regular content don't start until you can deliver
+- Subscribers expect regular content don't start until cadence is proven
 
-**When to add**: After 3 months of consistent weekly publishing.
+**Trigger**: After 3 months of consistent weekly publishing.
 
-**Best approach**:
-- [Buttondown](https://buttondown.email/) Free up to 100 subscribers, Markdown-native
-- Embed as static HTML form (no Island needed, no client JS)
-- Or [Resend](https://resend.com/) for custom transactional emails
+**Options**:
 
-**Cost**: Free → $9/month at scale.
+| Provider | Free Tier | Notes |
+|----------|-----------|-------|
+| [Buttondown](https://buttondown.email/) | 100 subscribers | Markdown-native, simple |
+| [Resend](https://resend.com/) | 100 emails/day | Custom transactional |
+| [ConvertKit](https://convertkit.com/) | 1000 subscribers | Creator-focused |
+| [Substack](https://substack.com/) | Unlimited | But hosts content externally |
+
+**Best approach**: Buttondown embed as static HTML form (no Island needed, no client JS).
+
+**Estimated cost**: Free → $9/month at scale.
 
 ---
 
@@ -87,18 +101,67 @@ Every feature has a cost: complexity, maintenance, bundle size, or cognitive loa
 - Most analytics are vanity metrics early on
 - Adds external script (even if lightweight)
 
-**When to add**: When you want data-driven content decisions (which topics resonate).
+**Trigger**: Need data-driven content decisions (which topics resonate, where traffic comes from).
 
-**Best approach**:
-- [Plausible](https://plausible.io/) 1KB script, GDPR-compliant, no cookies
-- Or [Umami](https://umami.is/) Self-hosted, free, open source
-- Add as `<script>` in BaseHead (no Island needed)
+**Options**:
 
-**Cost**: Plausible $9/month. Umami self-hosted = $0.
+| Provider | Cost | Script Size | Privacy |
+|----------|------|-------------|---------|
+| [Plausible](https://plausible.io/) | $9/mo | 1KB | GDPR-compliant, no cookies |
+| [Umami](https://umami.is/) | $0 (self-hosted) | 2KB | Open source, no cookies |
+| [Fathom](https://usefathom.com/) | $14/mo | 1KB | Privacy-focused |
+| Google Analytics | $0 | 45KB | Privacy nightmare, avoid |
+
+**Best approach**: Plausible or self-hosted Umami. Add as `<script>` in BaseHead (no Island needed).
 
 ---
 
-## 5. i18n (Internationalization)
+## 5. Pagefind (Full-Text Search Upgrade)
+
+**Status**: Deferred current JSON search works for < 50 posts
+
+**Why not now**:
+- Current search (JSON index + fuzzy match) is ~0KB added JS (lazy-loaded)
+- Pagefind adds WASM binary (~150KB) + build step
+- Overkill for current content volume
+
+**Trigger**: 50+ posts where simple search feels slow or inaccurate.
+
+**Migration path**:
+```bash
+npm install pagefind
+# Add to build script:
+"build": "astro build && npx pagefind --site dist"
+```
+Replace `Search.astro` internals with Pagefind's API. UI stays the same.
+
+**Estimated effort**: 2 hours.
+
+---
+
+## 6. CMS (Content Management System)
+
+**Status**: Excluded
+
+**Why not**:
+- Git + Markdown IS the CMS
+- No database to maintain
+- No admin panel to secure
+- VS Code + Astro extension = best editing experience
+- Version control for free (git history)
+
+**If ever needed**:
+
+| CMS | Type | Notes |
+|-----|------|-------|
+| [Tina CMS](https://tina.io/) | Git-based | Visual editing, free tier |
+| [Decap CMS](https://decapcms.org/) | Git-based | Open source, no server |
+| [Sanity](https://www.sanity.io/) | Headless | Overkill for a blog |
+| [Strapi](https://strapi.io/) | Headless | Requires hosting |
+
+---
+
+## 7. i18n (Internationalization)
 
 **Status**: Not planned
 
@@ -108,26 +171,11 @@ Every feature has a cost: complexity, maintenance, bundle size, or cognitive loa
 - Translation maintenance is a full-time job
 - Audience is global English-speaking developers
 
-**When to reconsider**: Never, unless pivoting to a non-English audience.
+**Reconsider**: Never, unless pivoting to a non-English audience.
 
 ---
 
-## 6. CMS (Content Management System)
-
-**Status**: Intentionally excluded
-
-**Why not**:
-- Git + Markdown IS the CMS
-- No database to maintain
-- No admin panel to secure
-- VS Code + Astro extension = best editing experience
-- Version control for free (git history)
-
-**If needed later**: [Tina CMS](https://tina.io/) or [Decap CMS](https://decapcms.org/) both work with Git-based content.
-
----
-
-## 7. Authentication / Gated Content
+## 8. Authentication / Gated Content
 
 **Status**: Not planned
 
@@ -137,11 +185,11 @@ Every feature has a cost: complexity, maintenance, bundle size, or cognitive loa
 - Adds server-side complexity (sessions, tokens)
 - Would require SSR mode (currently static)
 
-**When to reconsider**: If launching a paid course or premium content tier.
+**Reconsider**: If launching a paid course or premium content tier.
 
 ---
 
-## 8. E-commerce / Payments
+## 9. E-commerce / Payments
 
 **Status**: Not planned
 
@@ -150,27 +198,7 @@ Every feature has a cost: complexity, maintenance, bundle size, or cognitive loa
 - Payment processing adds PCI compliance burden
 - Would require SSR + database
 
-**If needed**: Use [Stripe](https://stripe.com/) + [Astro SSR](https://docs.astro.build/en/guides/server-side-rendering/) + `@astrojs/node` adapter.
-
----
-
-## 9. Full-Text Search (Pagefind)
-
-**Status**: Deferred in favor of simple client-side search
-
-**Why not now**:
-- Current search (JSON index + fuzzy match) works for < 50 posts
-- Pagefind adds a WASM binary (~150KB) and build step
-- Overkill for current content volume
-
-**When to add**: When you have 50+ posts and simple search feels inadequate.
-
-**Migration path**:
-```bash
-npm install pagefind
-# Add to build script: "build": "astro build && npx pagefind --site dist"
-```
-Then replace the Search component internals with Pagefind's API. The UI stays the same.
+**If ever needed**: [Stripe](https://stripe.com/) + Astro SSR + `@astrojs/node` adapter.
 
 ---
 
@@ -183,20 +211,30 @@ Then replace the Search component internals with Pagefind's API. The UI stays th
 - Fancy sun/moon animations add complexity for minimal UX gain
 - Current implementation: 0 bytes of animation JS
 
-**If desired**: Add CSS `transition` on the SVG icons with `transform: rotate()`.
+**If desired**: Add CSS `transition` on the SVG icons with `transform: rotate()`. ~10 lines of CSS.
 
 ---
 
-## Decision Framework
+## 11. View Transitions Customization
 
-Before adding any feature, ask:
+**Status**: Using defaults
 
-1. **Does it serve the reader?** (Not just the author's ego)
-2. **Does it justify its weight?** (KB of JS, hours of maintenance)
-3. **Can it be an Island?** (Don't pollute the static shell)
-4. **Is there a simpler alternative?** (CSS > JS, static > dynamic)
-5. **What's the maintenance cost?** (Dependencies rot. Fewer = better)
+**Why not custom**:
+- Default fade transition works well for a blog
+- Custom animations (slide, morph) add complexity
+- Risk of motion sickness for users with `prefers-reduced-motion`
+
+**If desired**: Add `transition:animate` directives per element in layouts.
 
 ---
 
-*Cross-references: [Roadmap](./roadmap.md) · [Architecture](../design/architecture.md) · [Features](../design/features.md)*
+## 12. PWA (Progressive Web App)
+
+**Status**: Not planned
+
+**Why not**:
+- Blog is read-and-leave, not an app people install
+- Service workers add caching complexity
+- Offline reading is niche for a tech blog
+
+**Reconsider**: If mobile readership exceeds 70% and users request offline access.
