@@ -1,0 +1,1112 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Developer documentation for Gaurav's Engineering Blog">
+      
+      
+        <meta name="author" content="Gaurav Agarwal">
+      
+      
+        <link rel="canonical" href="https://gauravagarwalgarg.github.io/blog/design/features/">
+      
+      
+        <link rel="prev" href="../architecture/">
+      
+      
+        <link rel="next" href="../style-guide/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Features - Gaurav's Blog Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#feature-reference-astro-features-in-use" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Gaurav&#39;s Blog Docs" class="md-header__button md-logo" aria-label="Gaurav's Blog Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Gaurav's Blog Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Features
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/gauravagarwalgarg/blog" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    gauravagarwalgarg/blog
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Gaurav&#39;s Blog Docs" class="md-nav__button md-logo" aria-label="Gaurav's Blog Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Gaurav's Blog Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/gauravagarwalgarg/blog" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    gauravagarwalgarg/blog
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Customization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adding-content/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Adding Content
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Design
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Features
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Features
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-content-collections-type-safe-content" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Content Collections (Type-Safe Content)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-view-transitions-api-spa-like-navigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. View Transitions API (SPA-like Navigation)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-islands-architecture-partial-hydration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Islands Architecture (Partial Hydration)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-image-optimization-astroassets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Image Optimization (astro:assets)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-mdx-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. MDX Integration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-prefetching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Prefetching
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-local-fonts-zero-cls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Local Fonts (Zero CLS)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-sitemap-rss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Sitemap &amp; RSS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-search-client-side-island" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Search (Client-Side Island)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-table-of-contents-auto-generated" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Table of Contents (Auto-Generated)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-related-posts-tagcategory-scoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Related Posts (Tag/Category Scoring)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../style-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Style Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Future
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Future
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../future/roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../future/deferred-features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deferred Features
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="feature-reference-astro-features-in-use">🧩 Feature Reference Astro Features in Use<a class="headerlink" href="#feature-reference-astro-features-in-use" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>Every Astro feature leveraged in this blog, how it's implemented, and why.</p>
+</blockquote>
+<hr />
+<h2 id="1-content-collections-type-safe-content">1. Content Collections (Type-Safe Content)<a class="headerlink" href="#1-content-collections-type-safe-content" title="Permanent link">&para;</a></h2>
+<p><strong>What</strong>: Astro's built-in system for managing structured content with TypeScript schema validation.</p>
+<p><strong>Where implemented</strong>: 
+- Schema: <a href="https://github.com/gauravagarwalgarg/blog/blob/main/src/content.config.ts"><code>src/content.config.ts</code></a>
+- Blog posts: <code>src/content/blog/*.md</code> / <code>*.mdx</code>
+- Micro posts: <code>src/content/micro/*.md</code></p>
+<p><strong>How it works</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// content.config.ts</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">blog</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">defineCollection</span><span class="p">({</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nx">loader</span><span class="o">:</span><span class="w"> </span><span class="kt">glob</span><span class="p">({</span><span class="w"> </span><span class="nx">base</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;./src/content/blog&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">pattern</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;**/*.{md,mdx}&#39;</span><span class="w"> </span><span class="p">}),</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="nx">schema</span><span class="o">:</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">image</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">z</span><span class="p">.</span><span class="nx">object</span><span class="p">({</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="kt">z.string</span><span class="p">(),</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="kt">z.string</span><span class="p">(),</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="nx">pubDate</span><span class="o">:</span><span class="w"> </span><span class="kt">z.coerce.date</span><span class="p">(),</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="nx">heroImage</span><span class="o">:</span><span class="w"> </span><span class="kt">z.optional</span><span class="p">(</span><span class="nx">image</span><span class="p">()),</span><span class="w">  </span><span class="c1">// ← validated image reference</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="nx">category</span><span class="o">:</span><span class="w"> </span><span class="kt">z.string</span><span class="p">().</span><span class="k">default</span><span class="p">(</span><span class="s1">&#39;software-engineering&#39;</span><span class="p">),</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="nx">tags</span><span class="o">:</span><span class="w"> </span><span class="kt">z.array</span><span class="p">(</span><span class="nx">z</span><span class="p">.</span><span class="kt">string</span><span class="p">()).</span><span class="k">default</span><span class="p">([]),</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="nx">draft</span><span class="o">:</span><span class="w"> </span><span class="kt">z.boolean</span><span class="p">().</span><span class="k">default</span><span class="p">(</span><span class="kc">false</span><span class="p">),</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">  </span><span class="p">}),</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="p">});</span>
+</code></pre></div></p>
+<p><strong>Why this matters</strong>:
+- If you forget a <code>title</code> or misspell <code>category</code>, the <strong>build fails</strong> not the user's browser
+- TypeScript autocompletion for frontmatter fields
+- Image references are validated at build time
+- Default values reduce boilerplate in every post</p>
+<p><strong>Astro docs</strong>: <a href="https://docs.astro.build/en/guides/content-collections/">Content Collections</a></p>
+<hr />
+<h2 id="2-view-transitions-api-spa-like-navigation">2. View Transitions API (SPA-like Navigation)<a class="headerlink" href="#2-view-transitions-api-spa-like-navigation" title="Permanent link">&para;</a></h2>
+<p><strong>What</strong>: Native browser View Transitions for seamless page navigation without a JavaScript framework.</p>
+<p><strong>Where implemented</strong>: <a href="https://github.com/gauravagarwalgarg/blog/blob/main/src/components/BaseHead.astro"><code>src/components/BaseHead.astro</code></a></p>
+<p><strong>How it works</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>import { ViewTransitions } from &#39;astro:transitions&#39;;
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>&lt;!-- One line. That&#39;s it. --&gt;
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>&lt;ViewTransitions /&gt;
+</code></pre></div></p>
+<p><strong>What happens under the hood</strong>:
+1. User clicks a link
+2. Astro intercepts the click (no full page reload)
+3. Fetches the next page in the background
+4. Diffs the DOM between current and next page
+5. Animates the transition using the browser's View Transitions API
+6. Updates the URL and history</p>
+<p><strong>Why this matters</strong>:
+- SPA-like feel without shipping React/Vue/Svelte router (~0KB client JS for navigation)
+- Dark mode state persists across navigations (no flash)
+- Scroll position handled automatically
+- Prefetched pages feel instant</p>
+<p><strong>Astro docs</strong>: <a href="https://docs.astro.build/en/guides/view-transitions/">View Transitions</a></p>
+<hr />
+<h2 id="3-islands-architecture-partial-hydration">3. Islands Architecture (Partial Hydration)<a class="headerlink" href="#3-islands-architecture-partial-hydration" title="Permanent link">&para;</a></h2>
+<p><strong>What</strong>: Render pages as static HTML, hydrate only interactive components ("islands") with JavaScript.</p>
+<p><strong>Where implemented</strong>:
+- Search component: <a href="https://github.com/gauravagarwalgarg/blog/blob/main/src/components/Search.astro"><code>src/components/Search.astro</code></a> hydrated in Header
+- Dark mode toggle: <a href="https://github.com/gauravagarwalgarg/blog/blob/main/src/components/Header.astro"><code>src/components/Header.astro</code></a> inline script
+- Table of Contents: <a href="https://github.com/gauravagarwalgarg/blog/blob/main/src/components/TableOfContents.astro"><code>src/components/TableOfContents.astro</code></a> scroll observer</p>
+<p><strong>Hydration directives used</strong>:
+| Directive | Used For | Behavior |
+|-----------|----------|----------|
+| <code>client:load</code> | Dark mode toggle | Hydrate immediately on page load |
+| <code>client:visible</code> | Search, ToC | Hydrate when scrolled into viewport |
+| <code>client:idle</code> | (Future: analytics) | Hydrate when browser is idle |</p>
+<p><strong>Why this matters</strong>:
+- A blog is 95% static content no reason to ship a full framework
+- Only ~2KB of JS for search + dark mode toggle
+- Each island is independent one failing doesn't break the page
+- Lighthouse TBT (Total Blocking Time) stays at 0ms for most pages</p>
+<p><strong>Astro docs</strong>: <a href="https://docs.astro.build/en/concepts/islands/">Islands Architecture</a></p>
+<hr />
+<h2 id="4-image-optimization-astroassets">4. Image Optimization (<code>astro:assets</code>)<a class="headerlink" href="#4-image-optimization-astroassets" title="Permanent link">&para;</a></h2>
+<p><strong>What</strong>: Build-time image processing via Sharp converts, resizes, and optimizes images automatically.</p>
+<p><strong>Where implemented</strong>:
+- Blog post hero images: <a href="https://github.com/gauravagarwalgarg/blog/blob/main/src/layouts/BlogPost.astro"><code>src/layouts/BlogPost.astro</code></a>
+- Config: <a href="https://github.com/gauravagarwalgarg/blog/blob/main/astro.config.mjs"><code>astro.config.mjs</code></a> → <code>image.service</code></p>
+<p><strong>How it works</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>import { Image } from &#39;astro:assets&#39;;
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>&lt;Image width={960} height={480} src={heroImage} alt={title} /&gt;
+</code></pre></div></p>
+<p><strong>What happens at build time</strong>:
+1. Sharp processes the source image
+2. Converts to WebP (smaller, widely supported)
+3. Generates <code>width</code> and <code>height</code> attributes (prevents CLS)
+4. Adds <code>loading="lazy"</code> for below-fold images
+5. Outputs optimized file to <code>dist/</code></p>
+<p><strong>Why this matters</strong>:
+- Perfect CLS (Cumulative Layout Shift) score dimensions are known at build time
+- 40-70% smaller file sizes vs unoptimized JPEG/PNG
+- No runtime processing all done at build
+- No external image CDN needed (Cloudinary, imgix, etc.)</p>
+<p><strong>Astro docs</strong>: <a href="https://docs.astro.build/en/guides/images/">Images</a></p>
+<hr />
+<h2 id="5-mdx-integration">5. MDX Integration<a class="headerlink" href="#5-mdx-integration" title="Permanent link">&para;</a></h2>
+<p><strong>What</strong>: Write Markdown with embedded JSX components interactive content inside blog posts.</p>
+<p><strong>Where implemented</strong>:
+- Config: <a href="https://github.com/gauravagarwalgarg/blog/blob/main/astro.config.mjs"><code>astro.config.mjs</code></a> → <code>integrations: [mdx()]</code>
+- Example post: <a href="https://github.com/gauravagarwalgarg/blog/blob/main/src/content/blog/using-mdx.mdx"><code>src/content/blog/using-mdx.mdx</code></a></p>
+<p><strong>How it works</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>---
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>title: &quot;Interactive Post&quot;
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>---
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>import Chart from &#39;../../components/Chart.astro&#39;;
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>Regular Markdown paragraph.
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>&lt;Chart data={[1, 2, 3]} client:visible /&gt;
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>Back to regular Markdown.
+</code></pre></div></p>
+<p><strong>Why this matters</strong>:
+- Embed interactive charts, code playgrounds, polls directly in posts
+- Components are Islands only hydrated when needed
+- Full Markdown syntax still works (no compromise)
+- Import any Astro, React, Vue, or Svelte component</p>
+<p><strong>Astro docs</strong>: <a href="https://docs.astro.build/en/guides/integrations-guide/mdx/">MDX</a></p>
+<hr />
+<h2 id="6-prefetching">6. Prefetching<a class="headerlink" href="#6-prefetching" title="Permanent link">&para;</a></h2>
+<p><strong>What</strong>: Automatically prefetch links in the viewport for instant navigation.</p>
+<p><strong>Where implemented</strong>: <a href="https://github.com/gauravagarwalgarg/blog/blob/main/astro.config.mjs"><code>astro.config.mjs</code></a></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nx">prefetch</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="nx">prefetchAll</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="nx">defaultStrategy</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;viewport&#39;</span><span class="p">,</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="p">}</span>
+</code></pre></div>
+<p><strong>How it works</strong>:
+1. Astro observes which links are in the viewport
+2. Prefetches those pages in the background (low priority)
+3. When user clicks, the page is already in browser cache
+4. Combined with View Transitions → feels instant</p>
+<p><strong>Why this matters</strong>:
+- Zero perceived latency for navigation
+- No wasted bandwidth (only prefetches visible links)
+- Works with View Transitions for seamless experience</p>
+<hr />
+<h2 id="7-local-fonts-zero-cls">7. Local Fonts (Zero CLS)<a class="headerlink" href="#7-local-fonts-zero-cls" title="Permanent link">&para;</a></h2>
+<p><strong>What</strong>: Self-hosted fonts loaded via Astro's font system no external requests, no layout shift.</p>
+<p><strong>Where implemented</strong>: <a href="https://github.com/gauravagarwalgarg/blog/blob/main/astro.config.mjs"><code>astro.config.mjs</code></a> → <code>fonts</code> config</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nx">fonts</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="nx">provider</span><span class="o">:</span><span class="w"> </span><span class="nx">fontProviders</span><span class="p">.</span><span class="nx">local</span><span class="p">(),</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Atkinson&#39;</span><span class="p">,</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span><span class="nx">cssVariable</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;--font-atkinson&#39;</span><span class="p">,</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">  </span><span class="nx">options</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="nx">variants</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nx">src</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;./src/assets/fonts/atkinson-regular.woff&#39;</span><span class="p">],</span><span class="w"> </span><span class="nx">weight</span><span class="o">:</span><span class="w"> </span><span class="mf">400</span><span class="p">,</span><span class="w"> </span><span class="nx">display</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;swap&#39;</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nx">src</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;./src/assets/fonts/atkinson-bold.woff&#39;</span><span class="p">],</span><span class="w"> </span><span class="nx">weight</span><span class="o">:</span><span class="w"> </span><span class="mf">700</span><span class="p">,</span><span class="w"> </span><span class="nx">display</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;swap&#39;</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">    </span><span class="p">],</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="p">}]</span>
+</code></pre></div>
+<p><strong>Why Atkinson Hyperlegible</strong>:
+- Designed for readability (distinguishes Il1, O0)
+- Perfect for code-adjacent content
+- Open source, no licensing issues
+- Small file size (.woff format)</p>
+<hr />
+<h2 id="8-sitemap-rss">8. Sitemap &amp; RSS<a class="headerlink" href="#8-sitemap-rss" title="Permanent link">&para;</a></h2>
+<p><strong>What</strong>: Auto-generated sitemap.xml and RSS feed for SEO and syndication.</p>
+<p><strong>Where implemented</strong>:
+- Sitemap: <code>@astrojs/sitemap</code> integration (auto-generates from pages)
+- RSS: <a href="https://github.com/gauravagarwalgarg/blog/blob/main/src/pages/rss.xml.js"><code>src/pages/rss.xml.js</code></a></p>
+<p><strong>Why this matters</strong>:
+- Search engines discover all pages via sitemap
+- RSS readers can subscribe to your blog
+- Both generated at build time zero runtime cost</p>
+<hr />
+<h2 id="9-search-client-side-island">9. Search (Client-Side Island)<a class="headerlink" href="#9-search-client-side-island" title="Permanent link">&para;</a></h2>
+<p><strong>What</strong>: Fuzzy search over all blog posts, loaded as an Astro Island.</p>
+<p><strong>Where implemented</strong>:
+- Component: <a href="https://github.com/gauravagarwalgarg/blog/blob/main/src/components/Search.astro"><code>src/components/Search.astro</code></a>
+- Index endpoint: <a href="https://github.com/gauravagarwalgarg/blog/blob/main/src/pages/search-index.json.ts"><code>src/pages/search-index.json.ts</code></a></p>
+<p><strong>How it works</strong>:
+1. A JSON endpoint generates a search index at build time
+2. The Search component lazy-loads the index on first focus
+3. Client-side fuzzy matching (no server needed)
+4. Keyboard shortcut: <code>⌘K</code> / <code>Ctrl+K</code></p>
+<p><strong>Why not Pagefind?</strong>:
+- Pagefind is better for 100+ posts (generates a WASM-based index)
+- For &lt; 50 posts, a simple JSON index + client-side filter is lighter
+- Can upgrade to Pagefind later without changing the UI</p>
+<hr />
+<h2 id="10-table-of-contents-auto-generated">10. Table of Contents (Auto-Generated)<a class="headerlink" href="#10-table-of-contents-auto-generated" title="Permanent link">&para;</a></h2>
+<p><strong>What</strong>: Automatically extracts headings from blog posts and renders a navigable ToC.</p>
+<p><strong>Where implemented</strong>:
+- Component: <a href="https://github.com/gauravagarwalgarg/blog/blob/main/src/components/TableOfContents.astro"><code>src/components/TableOfContents.astro</code></a>
+- Used in: <a href="https://github.com/gauravagarwalgarg/blog/blob/main/src/layouts/BlogPost.astro"><code>src/layouts/BlogPost.astro</code></a></p>
+<p><strong>How it works</strong>:
+1. Astro's <code>render()</code> function returns <code>headings</code> array from Markdown
+2. ToC component filters to h2/h3 depth
+3. IntersectionObserver highlights the active section on scroll
+4. Only shown for posts with 3+ headings</p>
+<hr />
+<h2 id="11-related-posts-tagcategory-scoring">11. Related Posts (Tag/Category Scoring)<a class="headerlink" href="#11-related-posts-tagcategory-scoring" title="Permanent link">&para;</a></h2>
+<p><strong>What</strong>: Shows relevant posts at the bottom of each article.</p>
+<p><strong>Where implemented</strong>: <a href="https://github.com/gauravagarwalgarg/blog/blob/main/src/components/RelatedPosts.astro"><code>src/components/RelatedPosts.astro</code></a></p>
+<p><strong>Scoring algorithm</strong>:
+- Category match: +2 points
+- Each overlapping tag: +1 point
+- Shows top 3 by score
+- Excludes current post</p>
+<p><strong>Why this matters</strong>:
+- Increases time on site
+- Helps readers discover related content
+- Fully static computed at build time, no client JS</p>
+<hr />
+<p><em>Cross-references: <a href="../architecture/">Architecture</a> · <a href="../../future/roadmap/">Future Plans</a> · <a href="../../getting-started/">Getting Started</a></em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "toc.integrate", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

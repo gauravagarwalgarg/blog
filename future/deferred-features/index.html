@@ -1,0 +1,1164 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Developer documentation for Gaurav's Engineering Blog">
+      
+      
+        <meta name="author" content="Gaurav Agarwal">
+      
+      
+        <link rel="canonical" href="https://gauravagarwalgarg.github.io/blog/future/deferred-features/">
+      
+      
+        <link rel="prev" href="../roadmap/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Deferred Features - Gaurav's Blog Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#deferred-features" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Gaurav&#39;s Blog Docs" class="md-header__button md-logo" aria-label="Gaurav's Blog Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Gaurav's Blog Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Deferred Features
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/gauravagarwalgarg/blog" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    gauravagarwalgarg/blog
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Gaurav&#39;s Blog Docs" class="md-nav__button md-logo" aria-label="Gaurav's Blog Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Gaurav's Blog Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/gauravagarwalgarg/blog" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    gauravagarwalgarg/blog
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Customization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adding-content/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Adding Content
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Design
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design/architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design/features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Features
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design/style-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Style Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Future
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Future
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deferred Features
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deferred Features
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#decision-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Decision Framework
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-tailwind-css" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Tailwind CSS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-comments-system-giscusutterances" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Comments System (Giscus/Utterances)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-newsletter-email-subscription" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Newsletter / Email Subscription
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Analytics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-pagefind-full-text-search-upgrade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Pagefind (Full-Text Search Upgrade)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-cms-content-management-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. CMS (Content Management System)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-i18n-internationalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. i18n (Internationalization)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-authentication-gated-content" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Authentication / Gated Content
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-e-commerce-payments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. E-commerce / Payments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-dark-mode-toggle-animation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Dark Mode Toggle Animation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-view-transitions-customization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. View Transitions Customization
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-pwa-progressive-web-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. PWA (Progressive Web App)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="deferred-features">Deferred Features<a class="headerlink" href="#deferred-features" title="Permanent link">&para;</a></h1>
+<p>Features intentionally not added yet. Each has a clear trigger, cost analysis, and implementation path for when the time comes.</p>
+<hr />
+<h2 id="decision-framework">Decision Framework<a class="headerlink" href="#decision-framework" title="Permanent link">&para;</a></h2>
+<p>Before adding any feature:</p>
+<ol>
+<li><strong>Does it serve the reader?</strong> Not just the author's ego.</li>
+<li><strong>Does it justify its weight?</strong> KB of JS, hours of maintenance.</li>
+<li><strong>Can it be an Island?</strong> Don't pollute the static shell.</li>
+<li><strong>Is there a simpler alternative?</strong> CSS &gt; JS, static &gt; dynamic.</li>
+<li><strong>What's the maintenance cost?</strong> Dependencies rot. Fewer = better.</li>
+</ol>
+<hr />
+<h2 id="1-tailwind-css">1. Tailwind CSS<a class="headerlink" href="#1-tailwind-css" title="Permanent link">&para;</a></h2>
+<p><strong>Status</strong>: Excluded</p>
+<p><strong>Why not</strong>:
+- Adds build complexity (PostCSS pipeline, purging)
+- Utility classes bloat HTML readability
+- For a blog with ~20 components, semantic CSS is more maintainable
+- Fewer dependencies = fewer security updates
+- Pure CSS achieves 100/100 Lighthouse without a framework
+- No learning curve for contributors</p>
+<p><strong>Reconsider when</strong>: Site grows to 50+ components with complex responsive layouts.</p>
+<p><strong>If added</strong>: <code>npx astro add tailwind</code> one command.</p>
+<hr />
+<h2 id="2-comments-system-giscusutterances">2. Comments System (Giscus/Utterances)<a class="headerlink" href="#2-comments-system-giscusutterances" title="Permanent link">&para;</a></h2>
+<p><strong>Status</strong>: Deferred</p>
+<p><strong>Why not now</strong>:
+- Adds external dependency (GitHub API)
+- Requires moderation time
+- Low-traffic blogs get spam, not engagement
+- Adds ~30KB client JS (Giscus iframe)</p>
+<p><strong>Trigger</strong>: Posts consistently get 500+ views and readers ask for discussion.</p>
+<p><strong>Implementation</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>&lt;!-- Add as Island in BlogPost.astro --&gt;
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>&lt;Giscus
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>  client:visible
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  repo=&quot;gauravagarwalgarg/blog&quot;
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>  repoId=&quot;...&quot;
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>  category=&quot;Blog Comments&quot;
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>  categoryId=&quot;...&quot;
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>  mapping=&quot;pathname&quot;
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>  theme=&quot;preferred_color_scheme&quot;
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>/&gt;
+</code></pre></div></p>
+<p><strong>Estimated effort</strong>: 1 hour (including GitHub Discussions setup).</p>
+<p><strong>Cost</strong>: $0 (GitHub Discussions is free).</p>
+<hr />
+<h2 id="3-newsletter-email-subscription">3. Newsletter / Email Subscription<a class="headerlink" href="#3-newsletter-email-subscription" title="Permanent link">&para;</a></h2>
+<p><strong>Status</strong>: Deferred</p>
+<p><strong>Why not now</strong>:
+- Requires email service (cost at scale)
+- GDPR compliance (consent, unsubscribe, data deletion)
+- Subscribers expect regular content don't start until cadence is proven</p>
+<p><strong>Trigger</strong>: After 3 months of consistent weekly publishing.</p>
+<p><strong>Options</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Provider</th>
+<th>Free Tier</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://buttondown.email/">Buttondown</a></td>
+<td>100 subscribers</td>
+<td>Markdown-native, simple</td>
+</tr>
+<tr>
+<td><a href="https://resend.com/">Resend</a></td>
+<td>100 emails/day</td>
+<td>Custom transactional</td>
+</tr>
+<tr>
+<td><a href="https://convertkit.com/">ConvertKit</a></td>
+<td>1000 subscribers</td>
+<td>Creator-focused</td>
+</tr>
+<tr>
+<td><a href="https://substack.com/">Substack</a></td>
+<td>Unlimited</td>
+<td>But hosts content externally</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Best approach</strong>: Buttondown embed as static HTML form (no Island needed, no client JS).</p>
+<p><strong>Estimated cost</strong>: Free → $9/month at scale.</p>
+<hr />
+<h2 id="4-analytics">4. Analytics<a class="headerlink" href="#4-analytics" title="Permanent link">&para;</a></h2>
+<p><strong>Status</strong>: Deferred (privacy-first default)</p>
+<p><strong>Why not now</strong>:
+- No tracking by default is a feature, not a bug
+- Most analytics are vanity metrics early on
+- Adds external script (even if lightweight)</p>
+<p><strong>Trigger</strong>: Need data-driven content decisions (which topics resonate, where traffic comes from).</p>
+<p><strong>Options</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Provider</th>
+<th>Cost</th>
+<th>Script Size</th>
+<th>Privacy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://plausible.io/">Plausible</a></td>
+<td>$9/mo</td>
+<td>1KB</td>
+<td>GDPR-compliant, no cookies</td>
+</tr>
+<tr>
+<td><a href="https://umami.is/">Umami</a></td>
+<td>$0 (self-hosted)</td>
+<td>2KB</td>
+<td>Open source, no cookies</td>
+</tr>
+<tr>
+<td><a href="https://usefathom.com/">Fathom</a></td>
+<td>$14/mo</td>
+<td>1KB</td>
+<td>Privacy-focused</td>
+</tr>
+<tr>
+<td>Google Analytics</td>
+<td>$0</td>
+<td>45KB</td>
+<td>Privacy nightmare, avoid</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Best approach</strong>: Plausible or self-hosted Umami. Add as <code>&lt;script&gt;</code> in BaseHead (no Island needed).</p>
+<hr />
+<h2 id="5-pagefind-full-text-search-upgrade">5. Pagefind (Full-Text Search Upgrade)<a class="headerlink" href="#5-pagefind-full-text-search-upgrade" title="Permanent link">&para;</a></h2>
+<p><strong>Status</strong>: Deferred current JSON search works for &lt; 50 posts</p>
+<p><strong>Why not now</strong>:
+- Current search (JSON index + fuzzy match) is ~0KB added JS (lazy-loaded)
+- Pagefind adds WASM binary (~150KB) + build step
+- Overkill for current content volume</p>
+<p><strong>Trigger</strong>: 50+ posts where simple search feels slow or inaccurate.</p>
+<p><strong>Migration path</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>npm<span class="w"> </span>install<span class="w"> </span>pagefind
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1"># Add to build script:</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="s2">&quot;build&quot;</span>:<span class="w"> </span><span class="s2">&quot;astro build &amp;&amp; npx pagefind --site dist&quot;</span>
+</code></pre></div>
+Replace <code>Search.astro</code> internals with Pagefind's API. UI stays the same.</p>
+<p><strong>Estimated effort</strong>: 2 hours.</p>
+<hr />
+<h2 id="6-cms-content-management-system">6. CMS (Content Management System)<a class="headerlink" href="#6-cms-content-management-system" title="Permanent link">&para;</a></h2>
+<p><strong>Status</strong>: Excluded</p>
+<p><strong>Why not</strong>:
+- Git + Markdown IS the CMS
+- No database to maintain
+- No admin panel to secure
+- VS Code + Astro extension = best editing experience
+- Version control for free (git history)</p>
+<p><strong>If ever needed</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>CMS</th>
+<th>Type</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://tina.io/">Tina CMS</a></td>
+<td>Git-based</td>
+<td>Visual editing, free tier</td>
+</tr>
+<tr>
+<td><a href="https://decapcms.org/">Decap CMS</a></td>
+<td>Git-based</td>
+<td>Open source, no server</td>
+</tr>
+<tr>
+<td><a href="https://www.sanity.io/">Sanity</a></td>
+<td>Headless</td>
+<td>Overkill for a blog</td>
+</tr>
+<tr>
+<td><a href="https://strapi.io/">Strapi</a></td>
+<td>Headless</td>
+<td>Requires hosting</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7-i18n-internationalization">7. i18n (Internationalization)<a class="headerlink" href="#7-i18n-internationalization" title="Permanent link">&para;</a></h2>
+<p><strong>Status</strong>: Not planned</p>
+<p><strong>Why not</strong>:
+- Blog is English-only by design
+- i18n adds routing complexity (<code>/en/blog/...</code>, <code>/hi/blog/...</code>)
+- Translation maintenance is a full-time job
+- Audience is global English-speaking developers</p>
+<p><strong>Reconsider</strong>: Never, unless pivoting to a non-English audience.</p>
+<hr />
+<h2 id="8-authentication-gated-content">8. Authentication / Gated Content<a class="headerlink" href="#8-authentication-gated-content" title="Permanent link">&para;</a></h2>
+<p><strong>Status</strong>: Not planned</p>
+<p><strong>Why not</strong>:
+- Blog is public by default
+- Gated content reduces reach and SEO
+- Adds server-side complexity (sessions, tokens)
+- Would require SSR mode (currently static)</p>
+<p><strong>Reconsider</strong>: If launching a paid course or premium content tier.</p>
+<hr />
+<h2 id="9-e-commerce-payments">9. E-commerce / Payments<a class="headerlink" href="#9-e-commerce-payments" title="Permanent link">&para;</a></h2>
+<p><strong>Status</strong>: Not planned</p>
+<p><strong>Why not</strong>:
+- Blog is not a store
+- Payment processing adds PCI compliance burden
+- Would require SSR + database</p>
+<p><strong>If ever needed</strong>: <a href="https://stripe.com/">Stripe</a> + Astro SSR + <code>@astrojs/node</code> adapter.</p>
+<hr />
+<h2 id="10-dark-mode-toggle-animation">10. Dark Mode Toggle Animation<a class="headerlink" href="#10-dark-mode-toggle-animation" title="Permanent link">&para;</a></h2>
+<p><strong>Status</strong>: Kept simple (instant swap)</p>
+<p><strong>Why not animated</strong>:
+- CSS transitions on <code>background</code> already provide smooth feel
+- Fancy sun/moon animations add complexity for minimal UX gain
+- Current implementation: 0 bytes of animation JS</p>
+<p><strong>If desired</strong>: Add CSS <code>transition</code> on the SVG icons with <code>transform: rotate()</code>. ~10 lines of CSS.</p>
+<hr />
+<h2 id="11-view-transitions-customization">11. View Transitions Customization<a class="headerlink" href="#11-view-transitions-customization" title="Permanent link">&para;</a></h2>
+<p><strong>Status</strong>: Using defaults</p>
+<p><strong>Why not custom</strong>:
+- Default fade transition works well for a blog
+- Custom animations (slide, morph) add complexity
+- Risk of motion sickness for users with <code>prefers-reduced-motion</code></p>
+<p><strong>If desired</strong>: Add <code>transition:animate</code> directives per element in layouts.</p>
+<hr />
+<h2 id="12-pwa-progressive-web-app">12. PWA (Progressive Web App)<a class="headerlink" href="#12-pwa-progressive-web-app" title="Permanent link">&para;</a></h2>
+<p><strong>Status</strong>: Not planned</p>
+<p><strong>Why not</strong>:
+- Blog is read-and-leave, not an app people install
+- Service workers add caching complexity
+- Offline reading is niche for a tech blog</p>
+<p><strong>Reconsider</strong>: If mobile readership exceeds 70% and users request offline access.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "toc.integrate", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
