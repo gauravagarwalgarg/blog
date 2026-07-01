@@ -1,7 +1,7 @@
 ---
 title: 'Keychron Q1 Pro 6 Months Later'
 description: 'A long-term review of the Keychron Q1 Pro as a daily driver for software development build quality, typing feel, and QMK/VIA.'
-pubDate: 2024-06-20
+pubDate: 2026-04-20
 category: 'reviews'
 tags: ['mechanical-keyboard', 'keychron', 'developer-tools', 'review']
 draft: false

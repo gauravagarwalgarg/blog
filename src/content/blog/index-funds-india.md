@@ -1,7 +1,7 @@
 ---
 title: 'Index Funds in India The Boring Path to Wealth'
 description: 'Why passive index investing beats stock picking for most engineers, and how to get started with Nifty 50 and S&P 500 funds.'
-pubDate: 2024-05-15
+pubDate: 2026-03-15
 category: 'personal-finance'
 tags: ['index-funds', 'investing', 'nifty-50', 'personal-finance', 'india']
 draft: false

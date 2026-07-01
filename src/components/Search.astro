@@ -23,7 +23,6 @@
       aria-label="Search blog posts"
       autocomplete="off"
     />
-    <kbd class="search-kbd">⌘K</kbd>
   </div>
   <div id="search-results" class="search-results" aria-live="polite" role="listbox"></div>
 </div>
@@ -100,6 +99,9 @@
     renderResults(results);
   });
 
+  // Preload search index on page load (fixes first-time search not working)
+  loadSearchIndex();
+
   // Close on click outside
   document.addEventListener('click', (e) => {
     if (!island.contains(e.target as Node)) {
@@ -157,19 +159,6 @@
   }
   #search-input::placeholder {
     color: var(--text-muted);
-  }
-  .search-kbd {
-    font-size: 0.7rem;
-    padding: 0.15rem 0.4rem;
-    border-radius: 4px;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    color: var(--text-muted);
-    font-family: inherit;
-    display: none;
-  }
-  @media (min-width: 769px) {
-    .search-kbd { display: inline; }
   }
   .search-results {
     position: absolute;

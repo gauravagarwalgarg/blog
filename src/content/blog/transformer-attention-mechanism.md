@@ -1,7 +1,7 @@
 ---
 title: 'Transformer Attention Mechanism from Scratch'
 description: 'Building the multi-head self-attention mechanism from first principles in NumPy, then PyTorch derstanding every matrix multiplication.'
-pubDate: 2024-06-01
+pubDate: 2026-04-01
 category: 'machine-learning'
 tags: ['transformers', 'attention', 'deep-learning', 'pytorch', 'nlp']
 draft: false

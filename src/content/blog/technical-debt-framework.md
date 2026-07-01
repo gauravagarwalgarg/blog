@@ -1,7 +1,7 @@
 ---
 title: 'The Taxonomy of Technical Debt: A Quantitative Framework for Prioritization'
 description: 'A structured approach to classifying, measuring, and paying down technical debt with metrics that translate engineering pain into business language.'
-pubDate: 2024-07-01
+pubDate: 2026-05-01
 category: 'product-management'
 tags: ['technical-debt', 'product-management', 'engineering-leadership', 'metrics']
 draft: false

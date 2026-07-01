@@ -1,7 +1,7 @@
 ---
 title: 'RTOS Task Scheduling: Preemptive vs Cooperative'
 description: 'Understanding the difference between preemptive and cooperative scheduling in real-time operating systems, with practical FreeRTOS examples on STM32.'
-pubDate: 2024-04-15
+pubDate: 2026-03-15
 category: 'embedded-systems'
 tags: ['rtos', 'freertos', 'stm32', 'scheduling', 'embedded']
 draft: false

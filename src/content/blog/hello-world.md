@@ -1,7 +1,7 @@
 ---
 title: 'Hello World Why This Blog Exists'
 description: 'A curated space for writing about software engineering, electronics, and everything in between.'
-pubDate: 2024-01-15
+pubDate: 2026-01-15
 category: 'software-engineering'
 tags: ['meta', 'writing', 'engineering']
 draft: false

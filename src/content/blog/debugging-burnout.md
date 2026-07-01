@@ -1,7 +1,7 @@
 ---
 title: 'Debugging Burnout: Applying Systems Thinking to Cognitive Fatigue'
 description: 'Burnout is not a character flaw it is a systems failure. Here is a structured framework for diagnosing, preventing, and recovering from engineering burnout.'
-pubDate: 2024-07-05
+pubDate: 2026-05-05
 category: 'developer-wellness'
 tags: ['burnout', 'productivity', 'mental-models', 'systems-thinking']
 draft: false

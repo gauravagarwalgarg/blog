@@ -1,7 +1,7 @@
 ---
 title: 'The Mind as a System: Implementing Observer Mode via Advaita Vedanta'
 description: 'A non-dogmatic, engineering-first approach to emotional regulation using the observer-witness framework from Advaita Vedanta reframed as a runtime architecture for consciousness.'
-pubDate: 2024-07-10
+pubDate: 2026-05-10
 category: 'spirituality'
 tags: ['advaita-vedanta', 'mindfulness', 'mental-models', 'flow-state', 'productivity']
 draft: false

@@ -1,7 +1,7 @@
 ---
 title: 'Python Memory Management: Under the Hood'
 description: 'How CPython manages memory ference counting, garbage collection, memory pools, and why your Python program uses more RAM than you expect.'
-pubDate: 2024-05-12
+pubDate: 2026-03-12
 category: 'programming-languages'
 tags: ['python', 'memory-management', 'cpython', 'internals', 'performance']
 draft: false

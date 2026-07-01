@@ -1,7 +1,7 @@
 ---
 title: '10 Vim Tricks That Changed How I Code'
 description: 'Practical Vim tips that compound over time macros, text objects, registers, and the dot command.'
-pubDate: 2024-05-01
+pubDate: 2026-03-01
 category: 'tech-tips'
 tags: ['vim', 'productivity', 'developer-tools', 'workflow']
 draft: false

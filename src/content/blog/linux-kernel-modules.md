@@ -1,7 +1,7 @@
 ---
 title: 'Writing Your First Linux Kernel Module'
 description: 'A practical guide to writing, building, and loading a Linux kernel module from hello world to character devices.'
-pubDate: 2024-03-20
+pubDate: 2026-02-20
 category: 'infrastructure'
 tags: ['linux-kernel', 'kernel-modules', 'device-drivers', 'systems-programming']
 draft: false

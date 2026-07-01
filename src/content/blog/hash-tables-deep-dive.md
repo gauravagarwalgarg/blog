@@ -1,7 +1,7 @@
 ---
 title: 'Hash Tables: The Data Structure That Powers Everything'
 description: 'From collision resolution to load factors y hash tables give O(1) average time and what happens when they don not.'
-pubDate: 2024-04-28
+pubDate: 2026-03-28
 category: 'computer-science'
 tags: ['data-structures', 'hash-tables', 'algorithms', 'performance']
 draft: false

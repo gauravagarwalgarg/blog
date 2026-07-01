@@ -1,7 +1,7 @@
 ---
 title: 'The Compiler Speaks'
 description: 'A poem about the silent conversation between programmer and machine.'
-pubDate: 2024-07-01
+pubDate: 2026-05-01
 category: 'poems'
 tags: ['poetry', 'code', 'creative-writing']
 draft: false

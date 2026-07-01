@@ -1,7 +1,7 @@
 ---
 title: 'Backpropagation: The Algorithm That Trains Neural Networks'
 description: 'A clear, math-first walkthrough of backpropagation ain rule, computational graphs, and why gradients flow backward.'
-pubDate: 2024-06-20
+pubDate: 2026-04-20
 category: 'machine-learning'
 tags: ['neural-networks', 'backpropagation', 'deep-learning', 'optimization', 'calculus']
 draft: false

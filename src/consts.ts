@@ -1,8 +1,8 @@
-export const SITE_TITLE = "Gaurav's Engineering Log";
-export const SITE_DESCRIPTION = 'Devices to Cloud software engineering, embedded systems, and everything in between.';
+export const SITE_TITLE = "Articles & Blog";
+export const SITE_DESCRIPTION = 'Explore a blend of cutting-edge technology, product design, and engineering, paired with personal growth insights into wellness, finance, and creativity. From systems building to history, culinary arts, and poetry.';
 export const SITE_AUTHOR = 'Gaurav Agarwal';
 export const SITE_TAGLINE = 'Building from Silicon to Cloud';
-export const SITE_BIO = 'Software engineer spanning the full spectrum from bare-metal firmware and kernel drivers to cloud-native distributed systems. Perpetually exploring the boundary between hardware registers and microservices.';
+export const SITE_BIO = 'Explore a blend of cutting-edge technology, product design, and engineering, paired with personal growth insights into wellness, finance, and creativity. From systems building from scratch to history, culinary arts, and poetry discover practical real-world insights and mindful perspectives.';
 
 // Ordered categories
 export const CATEGORIES = [

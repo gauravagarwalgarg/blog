@@ -1,7 +1,7 @@
 ---
 title: 'The Perfect Dal Makhani Slow and Low'
 description: 'A recipe for restaurant-style dal makhani that requires patience, whole spices, and 6 hours of slow cooking.'
-pubDate: 2024-06-10
+pubDate: 2026-04-10
 category: 'culinary'
 tags: ['recipe', 'indian-food', 'dal', 'slow-cooking']
 draft: false

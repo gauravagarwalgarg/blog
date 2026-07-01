@@ -1,7 +1,7 @@
 ---
 title: 'Distributed Systems: What I Wish I Knew Earlier'
 description: 'Key concepts every engineer should internalize before building distributed systems CAP theorem, consensus protocols, failure modes, and the mental models that actually matter in production.'
-pubDate: 2024-02-10
+pubDate: 2026-01-10
 category: 'software-engineering'
 tags: ['distributed-systems', 'architecture', 'consensus', 'cap-theorem']
 draft: false

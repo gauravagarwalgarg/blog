@@ -1,7 +1,7 @@
 ---
 title: 'DO-178C Software in the Sky'
 description: 'An overview of DO-178C certification for airborne software: what it requires, why it matters, and how it shapes how we write code.'
-pubDate: 2024-04-12
+pubDate: 2026-03-12
 category: 'aerospace'
 tags: ['do-178c', 'safety-critical', 'avionics', 'certification', 'flight-software']
 draft: false

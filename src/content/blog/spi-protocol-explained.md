@@ -1,7 +1,7 @@
 ---
 title: 'SPI Protocol: A Complete Guide for Embedded Engineers'
 description: 'Master the SPI bus ock polarity, phase modes, DMA transfers, and common pitfalls when interfacing with sensors and peripherals.'
-pubDate: 2024-05-20
+pubDate: 2026-03-20
 category: 'embedded-systems'
 tags: ['spi', 'embedded', 'protocols', 'stm32', 'hardware']
 draft: false

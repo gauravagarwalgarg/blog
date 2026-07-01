@@ -1,7 +1,7 @@
 ---
 title: 'Engineering Marvels of the Indus Valley'
 description: 'How a 5000-year-old civilization built standardized bricks, grid cities, and the world''s first urban drainage system.'
-pubDate: 2024-06-01
+pubDate: 2026-04-01
 category: 'history'
 tags: ['civilization', 'ancient-engineering', 'urban-planning', 'indus-valley']
 draft: false
