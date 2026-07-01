@@ -26,8 +26,8 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 
     <!-- Hero banner -->
     <section class="articles-hero">
-      <h1>Technical Articles & Blog</h1>
-      <p>Deep dive into embedded systems, software engineering, and machine learning. Expert insights on firmware, distributed systems, and practical implementation details from real-world projects.</p>
+      <h1>Articles & Blog</h1>
+      <p>Explore a blend of cutting-edge technology, product design, and engineering, paired with personal growth insights into wellness, finance, and creativity. From systems building from scratch to history, culinary arts, and poetry, discover practical real-world insights and mindful perspectives.</p>
     </section>
 
     <!-- Category filter nav -->
@@ -78,9 +78,6 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
               </div>
               <a href={`${baseUrl}/posts/${post.id}/`} class="read-link">Read article →</a>
             </div>
-          </div>
-          <div class="article-card-icon">
-            <span class="category-dot"></span>
           </div>
         </article>
       ))}
@@ -248,19 +245,6 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
     color: var(--accent);
     white-space: nowrap;
     flex-shrink: 0;
-  }
-
-  .article-card-icon {
-    margin-left: 1rem;
-    flex-shrink: 0;
-  }
-  .category-dot {
-    display: block;
-    width: 32px;
-    height: 32px;
-    background: var(--accent-dim);
-    border-radius: 50%;
-    border: 2px solid var(--accent);
   }
 
   .empty {
