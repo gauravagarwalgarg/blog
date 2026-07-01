@@ -1,12 +1,18 @@
-# Adding New Content
+# Adding Content
 
-## Write a New Blog Post
+Everything you need to add articles, categories, and topics without touching the Astro layout or component code.
+
+---
+
+## Adding a New Article
 
 ### 1. Create the file
 
 ```bash
 touch src/content/blog/your-post-slug.md
 ```
+
+Use lowercase, hyphenated slugs: `distributed-systems-primer.md`, `debugging-burnout.md`
 
 ### 2. Add frontmatter
 
@@ -40,42 +46,168 @@ git commit -m "feat: add post Your Title Here"
 git push
 ```
 
-Cloudflare auto-deploys on push.
+Cloudflare auto-deploys on push. Live in ~30 seconds.
 
 ---
 
-## Available Categories
+## Adding a New Category
 
-| Category | Slug | Use For |
-|----------|------|---------|
-| Software Engineering | `software-engineering` | Architecture, distributed systems, design patterns |
-| Embedded Systems | `embedded-systems` | Firmware, RTOS, STM32, bare-metal |
-| Machine Learning | `machine-learning` | Neural networks, transformers, ML infra |
-| Computer Science | `computer-science` | Algorithms, data structures, theory |
-| Programming Languages | `programming-languages` | C++, Python, Go, Rust, Java idioms |
-| Electronics | `electronics` | Circuits, PCBs, signal processing |
-| Product Management | `product-management` | Roadmaps, tech debt, shipping decisions |
-| Developer Wellness | `developer-wellness` | Burnout, productivity, cognitive load |
-| Spirituality & Flow | `spirituality` | Flow states, meditation, deep work |
-| Infrastructure | `infrastructure` | Linux, Docker, K8s, cloud |
-| Aerospace | `aerospace` | DO-178C, avionics, safety-critical |
-| Tech Tips | `tech-tips` | Vim, tools, productivity hacks |
-| Personal Finance | `personal-finance` | Investing, index funds, tax |
-| History | `history` | Engineering history, civilizations |
-| Culinary | `culinary` | Recipes, food science |
-| Reviews | `reviews` | Hardware, books, tools |
-| Poems | `poems` | Creative writing |
+Categories control the Concepts page grid, the filter nav on Articles, and the category archive pages. All managed in one file.
 
-## Tag Guidelines
+### Step 1: Add to the CATEGORIES array
 
-- Use lowercase, hyphenated tags: `distributed-systems`, `c++`, `python`
-- Limit to 3–5 tags per post
-- Reuse existing tags when possible (check other posts)
-- Tags power the search and related posts features
+Edit `src/consts.ts`:
+
+```typescript
+export const CATEGORIES = [
+  'software-engineering',
+  'embedded-systems',
+  // ... existing categories
+  'your-new-category',   // ← add here
+  'micro',               // keep micro last
+] as const;
+```
+
+### Step 2: Add a label
+
+```typescript
+export const CATEGORY_LABELS: Record<Category, string> = {
+  // ... existing
+  'your-new-category': 'Your New Category',
+};
+```
+
+### Step 3: Add a description (optional but recommended)
+
+```typescript
+export const CATEGORY_DESCRIPTIONS: Partial<Record<Category, string>> = {
+  // ... existing
+  'your-new-category': 'One-line description for the Concepts page card.',
+};
+```
+
+### Step 4: Add an icon code (optional)
+
+```typescript
+export const CATEGORY_ICONS: Partial<Record<Category, string>> = {
+  // ... existing
+  'your-new-category': 'NC',  // 2-letter code shown in the badge
+};
+```
+
+### That's it.
+
+No page creation needed. The following all auto-generate:
+- `/posts/category/your-new-category` archive page (via `[category].astro`)
+- Concepts page grid card (if posts exist in that category)
+- Filter nav on Articles page
+- Homepage "Browse by Category" section
+
+---
+
+## Adding Tags to a Post
+
+Tags are free-form strings in the frontmatter array:
+
+```markdown
+tags: ["distributed-systems", "architecture", "consensus"]
+```
+
+**Guidelines:**
+- Lowercase, hyphenated: `machine-learning` not `Machine Learning`
+- 3–5 tags per post
+- Reuse existing tags (check other posts) for better Related Posts matching
+- Tags power: search results, related posts scoring, tag display on cards
+
+No config change needed tags are extracted automatically.
+
+---
+
+## Adding a New Project
+
+Edit the `PROJECTS` array in `src/consts.ts`:
+
+```typescript
+export const PROJECTS: Project[] = [
+  // ... existing projects
+  {
+    title: 'My New Project',
+    description: 'One-line description of what it does.',
+    url: 'https://github.com/gauravagarwalgarg/my-project',
+    docs: 'https://gauravagarwalgarg.github.io/my-project/',  // optional
+    tags: ['python', 'cli', 'automation'],
+    category: 'tools',  // must match a ProjectCategory
+  },
+];
+```
+
+**Available project categories:** `interview`, `languages`, `systems`, `tools`, `learning`, `apps`
+
+To add a new project category, add it to:
+1. `ProjectCategory` type union
+2. `PROJECT_CATEGORY_LABELS` record
+
+---
+
+## Adding a Nav Link
+
+Edit `NAV_LINKS` in `src/consts.ts`:
+
+```typescript
+export const NAV_LINKS = [
+  { href: '/posts', label: 'Articles' },
+  { href: '/concepts', label: 'Concepts' },
+  // ... existing
+  { href: '/new-page', label: 'New Page' },  // ← add here
+] as const;
+```
+
+Then create the page at `src/pages/new-page.astro`. The header and footer nav update automatically.
+
+---
+
+## Content Workflow Summary
+
+| Task | File to Edit | Pages Auto-Updated |
+|------|-------------|-------------------|
+| New article | Create `src/content/blog/slug.md` | Articles, Category, Homepage, Summary, Search, RSS |
+| New category | `src/consts.ts` (4 places) | Concepts, Articles filter, Category archive |
+| New project | `src/consts.ts` (PROJECTS array) | Projects page |
+| New tag | Just add to post frontmatter | Search, Related Posts |
+| New nav link | `src/consts.ts` (NAV_LINKS) + create page | Header, Footer, Mobile menu |
+
+---
+
+## Frontmatter Reference
+
+| Field | Required | Default | Type | Description |
+|-------|----------|---------|------|-------------|
+| `title` | ✅ | | string | Post title |
+| `description` | ✅ | | string | SEO description (< 160 chars) |
+| `pubDate` | ✅ | | date | Publication date (YYYY-MM-DD) |
+| `category` | ❌ | `software-engineering` | string | Must match a CATEGORIES entry |
+| `tags` | ❌ | `[]` | string[] | Searchable tags |
+| `draft` | ❌ | `false` | boolean | `true` = hidden from all listings |
+| `heroImage` | ❌ | | image path | Hero image (auto-optimized by Sharp) |
+| `updatedDate` | ❌ | | date | Last update date |
+| `readingTime` | ❌ | | string | Override auto-calculated reading time |
+
+---
 
 ## Draft Mode
 
-Set `draft: true` in frontmatter to write without publishing. Draft posts are excluded from all listings, RSS, and sitemap but still render at their URL for preview.
+Set `draft: true` to write without publishing:
+
+```markdown
+---
+title: "Work in Progress"
+draft: true
+---
+```
+
+Draft posts are excluded from: listings, RSS, sitemap, search index, related posts. They still render at their URL for personal preview.
+
+---
 
 ## Using MDX (Interactive Posts)
 
@@ -84,10 +216,26 @@ Rename to `.mdx` and import components:
 ```mdx
 ---
 title: "Interactive Demo"
+category: "software-engineering"
 ---
 import MyComponent from '../../components/MyComponent.astro';
 
 Regular markdown here.
 
 <MyComponent client:visible />
+
+Back to markdown.
 ```
+
+---
+
+## Quick Checklist Before Publishing
+
+- [ ] Title is descriptive and specific (not clickbait)
+- [ ] Description is < 160 chars and hooks the reader
+- [ ] Category matches an existing entry in `CATEGORIES`
+- [ ] Tags are lowercase, hyphenated, 3–5 per post
+- [ ] `draft: false` (or removed)
+- [ ] Content starts with thesis, not fluff
+- [ ] Code blocks have language specified (```python, ```bash, etc.)
+- [ ] Runs locally without errors (`npm run build`)
