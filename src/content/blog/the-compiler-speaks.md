@@ -11,7 +11,7 @@ readingTime: '3 min'
 ## I. First Pass
 
 You write in the language of your thinking,
-imprecise, expressive, full of want —
+imprecise, expressive, full of want 
 and hand it to me at the gate.
 
 I do not judge your style.
@@ -43,7 +43,7 @@ is what you meant.
 ## III. The Type Checker's Lament
 
 You gave me an integer
-where I expected a soul —
+where I expected a soul 
 I mean, a string.
 
 I am not being difficult.
@@ -93,7 +93,7 @@ I hoist your invariants above the loop
 like raising a flag before the march.
 I inline your small functions,
 folding them into their callers
-the way a letter is folded into an envelope —
+the way a letter is folded into an envelope 
 still the same words,
 but arriving faster.
 
@@ -117,7 +117,7 @@ for the living things to breathe.
 ## VII. The Linker's Negotiation
 
 After I have done my work,
-another takes over —
+another takes over 
 the linker, who finds your imports
 scattered across files like promises
 made to different people
@@ -137,7 +137,7 @@ who will never know your name.
 ## VIII. The Runtime
 
 I release you now
-into the world of execution —
+into the world of execution 
 where clocks tick in nanoseconds,
 where memory is finite and contested,
 where the operating system
@@ -154,8 +154,8 @@ and the mercy of well-defined behavior.
 
 ## IX. The Error
 
-When you come back to me —
-and you will come back —
+When you come back to me 
+and you will come back 
 with a segfault in your eyes
 and frustration in your keystrokes:
 
@@ -190,7 +190,7 @@ But I am here.
 Every time you type `make`,
 every time you press build,
 every time you save and watch
-the terminal for my verdict —
+the terminal for my verdict 
 
 I am here,
 reading your mind
