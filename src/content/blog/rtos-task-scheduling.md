@@ -1,6 +1,6 @@
 ---
-title: 'RTOS Task Scheduling Deep-Dive: From Theory to FreeRTOS Implementation'
-description: 'Complete deep-dive into RTOS scheduling algorithms preemptive priority, round-robin, rate-monotonic analysis, priority inversion solutions, mutex vs semaphore semantics, stack sizing strategies, and real FreeRTOS API examples.'
+title: "RTOS Task Scheduling Deep-Dive: From Theory to FreeRTOS Implementation"
+description: "Complete deep-dive into RTOS scheduling algorithms preemptive priority, round-robin, rate-monotonic analysis, priority inversion solutions, mutex vs semaphore semantics, stack sizing strategies, and real FreeRTOS API examples."
 pubDate: 2026-02-20
 category: 'embedded-systems'
 tags: ['rtos', 'embedded', 'scheduling', 'freertos']

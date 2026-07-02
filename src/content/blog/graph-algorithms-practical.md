@@ -1,6 +1,6 @@
 ---
-title: 'Graph Algorithms You Actually Use in Production'
-description: 'BFS, DFS, Dijkstra, topological sort e graph algorithms that show up in real systems, not just interviews.'
+title: "Graph Algorithms You Actually Use in Production"
+description: "BFS, DFS, Dijkstra, topological sort e graph algorithms that show up in real systems, not just interviews."
 pubDate: 2026-02-28
 category: 'computer-science'
 tags: ['algorithms', 'graphs', 'data-structures', 'systems-design']

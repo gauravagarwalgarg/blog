@@ -1,6 +1,6 @@
 ---
-title: 'Keychron Q1 Pro: 6 Months with a Programmable Mechanical Keyboard'
-description: 'Detailed 6-month review of the Keychron Q1 Pro build quality and gasket mount analysis, Gateron Pro Brown switch rationale, QMK/VIA layer configuration with actual keymaps, tap-hold programming patterns, typing ergonomics for programmers, sound profile mods, and comparison to stock office keyboards.'
+title: "Keychron Q1 Pro: 6 Months with a Programmable Mechanical Keyboard"
+description: "Detailed 6-month review of the Keychron Q1 Pro build quality and gasket mount analysis, Gateron Pro Brown switch rationale, QMK/VIA layer configuration with actual keymaps, tap-hold programming patterns, typing ergonomics for programmers, sound profile mods, and comparison to stock office keyboards."
 pubDate: 2026-02-15
 category: 'reviews'
 tags: ['mechanical-keyboards', 'keychron', 'developer-tools', 'hardware']

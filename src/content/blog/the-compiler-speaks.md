@@ -1,6 +1,6 @@
 ---
-title: 'The Compiler Speaks'
-description: 'A poem about the silent conversation between programmer and compiler optimization passes as meditation, warnings as hard-won wisdom, type checking as a dance of trust, and the invisible labor of translation from intention to instruction.'
+title: "The Compiler Speaks"
+description: "A poem about the silent conversation between programmer and compiler optimization passes as meditation, warnings as hard-won wisdom, type checking as a dance of trust, and the invisible labor of translation from intention to instruction."
 pubDate: 2026-01-18
 category: 'poems'
 tags: ['poetry', 'creative-writing', 'programming']

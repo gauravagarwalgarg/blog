@@ -1,6 +1,6 @@
 ---
-title: '10 Vim Tricks That Compound: A Plugin-Free Productivity System'
-description: 'Deep-dive into Vim mechanics that compound over time macros, text objects, registers, the dot command, marks, quickfix lists, netrw, splits, and a complete plugin-free workflow with actual key sequences and real-world use cases.'
+title: "10 Vim Tricks That Compound: A Plugin-Free Productivity System"
+description: "Deep-dive into Vim mechanics that compound over time macros, text objects, registers, the dot command, marks, quickfix lists, netrw, splits, and a complete plugin-free workflow with actual key sequences and real-world use cases."
 pubDate: 2026-03-01
 category: 'tech-tips'
 tags: ['vim', 'productivity', 'developer-tools']

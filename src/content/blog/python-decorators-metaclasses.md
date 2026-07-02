@@ -1,6 +1,6 @@
 ---
-title: 'Python Decorators and Metaclasses: Advanced Patterns'
-description: 'Going beyond @property iting decorators with arguments, class decorators, and when metaclasses are actually the right tool.'
+title: "Python Decorators and Metaclasses: Advanced Patterns"
+description: "Going beyond @property iting decorators with arguments, class decorators, and when metaclasses are actually the right tool."
 pubDate: 2026-03-28
 category: 'programming-languages'
 tags: ['python', 'decorators', 'metaclasses', 'advanced', 'design-patterns']

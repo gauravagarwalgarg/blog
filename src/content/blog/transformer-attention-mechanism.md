@@ -1,6 +1,6 @@
 ---
-title: 'Attention Is All You Need: The Mechanism from Scratch'
-description: 'Building the transformer attention mechanism from first principles scaled dot-product attention, multi-head attention, positional encoding, why self-attention replaces recurrence, O(n²) complexity analysis, and key/query/value intuition with full matrix math.'
+title: "Attention Is All You Need: The Mechanism from Scratch"
+description: "Building the transformer attention mechanism from first principles scaled dot-product attention, multi-head attention, positional encoding, why self-attention replaces recurrence, O(n²) complexity analysis, and key/query/value intuition with full matrix math."
 pubDate: 2026-03-10
 category: 'machine-learning'
 tags: ['transformers', 'attention', 'deep-learning', 'nlp']

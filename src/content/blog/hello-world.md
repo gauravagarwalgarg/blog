@@ -1,6 +1,6 @@
 ---
-title: 'Hello World: Why This Blog Exists'
-description: 'The case for engineers writing publicly what this blog covers, the tech stack choice (Astro + static Markdown), publishing philosophy (content-first, no tracking, ship static), and why writing is a career multiplier for technical professionals.'
+title: "Hello World: Why This Blog Exists"
+description: "The case for engineers writing publicly what this blog covers, the tech stack choice (Astro + static Markdown), publishing philosophy (content-first, no tracking, ship static), and why writing is a career multiplier for technical professionals."
 pubDate: 2026-01-15
 category: 'software-engineering'
 tags: ['meta', 'blog', 'writing']

@@ -1,6 +1,6 @@
 ---
-title: 'Backpropagation: Chain Rule, Computational Graphs, and Modern Training'
-description: 'Backpropagation from first principles the chain rule applied to computational graphs, vanishing and exploding gradients, gradient clipping, batch normalization, skip connections, and how automatic differentiation engines like PyTorch autograd actually work.'
+title: "Backpropagation: Chain Rule, Computational Graphs, and Modern Training"
+description: "Backpropagation from first principles the chain rule applied to computational graphs, vanishing and exploding gradients, gradient clipping, batch normalization, skip connections, and how automatic differentiation engines like PyTorch autograd actually work."
 pubDate: 2026-03-05
 category: 'machine-learning'
 tags: ['neural-networks', 'backpropagation', 'deep-learning', 'calculus']

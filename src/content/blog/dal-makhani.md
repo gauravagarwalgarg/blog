@@ -1,6 +1,6 @@
 ---
-title: 'Restaurant-Style Dal Makhani: The Science of Slow Cooking'
-description: 'Restaurant-quality dal makhani recipe with science the Maillard reaction on lentils, ingredient rationale for each component, the traditional 6-hour dum method, pressure cooker shortcut, the definitive doneness test, and techniques from professional Punjabi kitchens.'
+title: "Restaurant-Style Dal Makhani: The Science of Slow Cooking"
+description: "Restaurant-quality dal makhani recipe with science the Maillard reaction on lentils, ingredient rationale for each component, the traditional 6-hour dum method, pressure cooker shortcut, the definitive doneness test, and techniques from professional Punjabi kitchens."
 pubDate: 2026-02-05
 category: 'culinary'
 tags: ['recipe', 'indian-cuisine', 'slow-cooking']
