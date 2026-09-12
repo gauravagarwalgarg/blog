@@ -34,3 +34,9 @@ pnpm-debug.log*
 
 # MkDocs build output
 site/
+
+# LLM Helpers Context
+.agents/
+brain/
+.antigravity_instructions.md
+.gemini/
