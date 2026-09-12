@@ -10,7 +10,7 @@ const currentPath = Astro.url.pathname;
   <div class="container header-inner">
     <!-- Avatar / Logo -->
     <a href={`${baseUrl}/`} class="logo-link" aria-label="Home">
-      <span class="logo-avatar">🚀</span>
+      <span class="nav-logo">gaurav<span class="nav-logo-tld">.blog</span><span class="nav-logo-cursor">_</span></span>
     </a>
 
     <!-- Desktop nav -->
@@ -29,6 +29,10 @@ const currentPath = Astro.url.pathname;
       <div class="search-desktop">
         <Search />
       </div>
+      <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme">
+        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
       <!-- Mobile hamburger -->
       <button id="menu-toggle" aria-label="Open menu" class="menu-btn">
         <svg class="menu-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
@@ -66,8 +70,25 @@ const currentPath = Astro.url.pathname;
     const menuToggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
 
-    // Always dark theme
-    html.setAttribute('data-theme', 'dark');
+    // Theme logic
+    const storedTheme = localStorage.getItem('theme');
+    const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const theme = storedTheme ?? (systemDark ? 'dark' : 'light');
+    html.setAttribute('data-theme', theme);
+
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+      // Clean up old listener to prevent duplicates on navigation
+      const newToggle = themeToggle.cloneNode(true);
+      themeToggle.parentNode?.replaceChild(newToggle, themeToggle);
+      
+      newToggle.addEventListener('click', () => {
+        const currentTheme = html.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+      });
+    }
 
     // Mobile menu
     menuToggle?.addEventListener('click', () => {
@@ -124,14 +145,22 @@ const currentPath = Astro.url.pathname;
     align-items: center;
     text-decoration: none;
   }
-  .logo-avatar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    font-size: 1.2rem;
-    line-height: 1;
+  .nav-logo {
+    font-weight: 700;
+    font-size: 1.25rem;
+    font-family: var(--font-mono);
+    color: var(--text);
+  }
+  .nav-logo-tld {
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+  .nav-logo-cursor {
+    color: var(--accent);
+    animation: blink 1s step-end infinite;
+  }
+  @keyframes blink {
+    50% { opacity: 0; }
   }
 
   /* Desktop nav */
@@ -167,6 +196,27 @@ const currentPath = Astro.url.pathname;
     z-index: 101;
     position: relative;
   }
+  .theme-toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    color: var(--text-secondary);
+    transition: background 0.2s, color 0.2s;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+  .theme-toggle-btn:hover {
+    background: var(--bg-secondary);
+    color: var(--text);
+  }
+  :global([data-theme='dark']) .sun-icon { display: block; }
+  :global([data-theme='dark']) .moon-icon { display: none; }
+  :global([data-theme='light']) .sun-icon { display: none; }
+  :global([data-theme='light']) .moon-icon { display: block; }
   .menu-btn {
     display: flex;
     align-items: center;
