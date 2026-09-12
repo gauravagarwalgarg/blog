@@ -12,7 +12,9 @@ We spent the last ten years violently dismantling monolithic application archite
 
 So, we broke them down. We refactored them into hundreds of elegant, decoupled microservices. We packaged them in containers. We orchestrated them with Kubernetes. We patted ourselves on the back for achieving true architectural independence.
 
-But there is a glaring architectural irony hidden at the bottom of our tech stacks. Where do all these independent, lightweight, highly-decoupled microservices actually run? 
+But there is a glaring architectural irony hidden at the bottom of our tech stacks. Abstractions are undeniably a blessing—they allow us to reason about complex, distributed systems without descending into the madness of hardware interrupts and memory page tables. However, this blessing has blinded us. We have abstracted away the operating system so thoroughly that we forgot it is still there, quietly holding the entire house of cards together.
+
+Where do all these independent, lightweight, highly-decoupled microservices actually run? 
 
 They run directly on top of a 30-million-line, 30-year-old monolithic C program: the Linux kernel.
 
@@ -54,7 +56,7 @@ If containers aren't real, how do we get the illusion of isolation? The Linux ke
 ### Namespaces: What You Can See
 Namespaces dictate what a process is allowed to see. When a process is put into a PID (Process ID) namespace, it thinks it is PID 1. It cannot see processes running outside of its namespace. Similarly, Network namespaces give the process its own virtual network stack, and Mount namespaces give it a unique view of the filesystem.
 
-You don't need Docker to create a container. You can isolate a process right now using the `unshare` command, which directly calls the `unshare()` system call [^1] to detach the process from the host's namespaces:
+You don't need Docker to create a container. You can isolate a process right now using the `unshare` command, which directly calls the [unshare()](https://man7.org/linux/man-pages/man2/unshare.2.html) system call [^1] to detach the process from the host's namespaces:
 
 ```bash
 # Create a new process with its own PID, Network, and Mount namespace
@@ -70,7 +72,7 @@ Because every microservice on a Kubernetes node shares the same monolithic kerne
 
 If a microservice triggers a rare kernel bug that causes a kernel panic, the host OS crashes. Every single "isolated" container on that node goes down with it. 
 
-More dangerously, this shared architecture creates security vulnerabilities. Container escape attacks—like the famous CVE-2022-0185 (a heap-based buffer overflow in the Linux kernel's "File System Context" component)—allow an attacker who compromises a single, low-privilege microservice to interact maliciously with the shared kernel and gain root access to the entire host.
+More dangerously, this shared architecture creates security vulnerabilities. Container escape attacks—like the famous [CVE-2022-0185](https://nvd.nist.gov/vuln/detail/CVE-2022-0185) (a heap-based buffer overflow in the Linux kernel's "File System Context" component)—allow an attacker who compromises a single, low-privilege microservice to interact maliciously with the shared kernel and gain root access to the entire host.
 
 ```mermaid
 sequenceDiagram
@@ -94,11 +96,11 @@ This is the noisy neighbor problem taken to its logical extreme. We decoupled ou
 
 The industry is slowly waking up to the fact that running untrusted or highly critical code on a shared kernel is a massive liability. We are looking for ways to actually isolate our microservices without paying the heavy tax of booting a full traditional VM for every service.
 
-**MicroVMs (Firecracker):** AWS built Firecracker to solve this exact problem for AWS Lambda. Firecracker boots a stripped-down Linux microVM in roughly 125 milliseconds. It provides the hardware-level isolation of a VM with the speed and overhead of a container.
+**MicroVMs (Firecracker):** AWS built [Firecracker](https://firecracker-microvm.github.io/) to solve this exact problem for AWS Lambda. Firecracker boots a stripped-down Linux microVM in roughly 125 milliseconds. It provides the hardware-level isolation of a VM with the speed and overhead of a container.
 
-**Unikernels:** Why run a general-purpose OS at all? Unikernels compile your application code together with only the specific OS drivers it actually needs into a single, specialized, bootable machine image. 
+**Unikernels:** Why run a general-purpose OS at all? [Unikernels](https://unikernel.org/) compile your application code together with only the specific OS drivers it actually needs into a single, specialized, bootable machine image. 
 
-**WebAssembly (Wasm):** Wasm is emerging as the ultimate lightweight sandbox. Wasm modules run in a highly restricted memory sandbox and must explicitly request capabilities (like file or network access) via WASI (WebAssembly System Interface) [^3]. They don't share a kernel; they share a highly secure, mathematically verified runtime.
+**WebAssembly (Wasm):** [WebAssembly (Wasm)](https://webassembly.org/) is emerging as the ultimate lightweight sandbox. Wasm modules run in a highly restricted memory sandbox and must explicitly request capabilities (like file or network access) via WASI (WebAssembly System Interface) [^3]. They don't share a kernel; they share a highly secure, mathematically verified runtime.
 
 We spent the 2010s breaking the application monolith into microservices. The defining architectural shift of the late 2020s will be breaking our dependency on the monolithic kernel. 
 
