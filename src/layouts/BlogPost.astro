@@ -83,9 +83,39 @@ const readingTime = Math.max(1, Math.ceil(words / 200));
     </article>
   </main>
   <Footer />
+
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    
+    mermaid.initialize({ startOnLoad: false, theme: 'dark' });
+
+    document.addEventListener("DOMContentLoaded", async () => {
+      const mermaidBlocks = document.querySelectorAll('pre code.language-mermaid');
+      
+      mermaidBlocks.forEach((codeBlock) => {
+        const graphDefinition = codeBlock.textContent;
+        const pre = codeBlock.parentElement;
+        
+        const mermaidDiv = document.createElement('div');
+        mermaidDiv.className = 'mermaid';
+        mermaidDiv.style.textAlign = 'center';
+        mermaidDiv.style.margin = '2rem 0';
+        mermaidDiv.textContent = graphDefinition;
+        
+        if (pre && pre.parentNode) {
+          pre.parentNode.replaceChild(mermaidDiv, pre);
+        }
+      });
+
+      if (document.querySelectorAll('.mermaid').length > 0) {
+        await mermaid.run({
+          querySelector: '.mermaid',
+        });
+      }
+    });
+  </script>
 </body>
 </html>
-
 <style>
   .article {
     max-width: 720px;
