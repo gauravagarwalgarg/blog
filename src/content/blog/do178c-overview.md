@@ -1,7 +1,7 @@
 ---
 title: "DO-178C: What Safety-Critical Software Certification Actually Means for Engineers"
 description: "Comprehensive guide to DO-178C aerospace software certification DAL levels A through E, MC/DC coverage requirements, traceability matrices, tool qualification (TQL), the daily engineering impact of certification, and comparison with IEC 61508 for automotive/industrial."
-pubDate: 2026-02-01
+pubDate: 2026-01-25
 category: 'aerospace'
 tags: ['do-178c', 'aerospace', 'safety-critical', 'certification']
 draft: false

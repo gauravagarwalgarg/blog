@@ -1,7 +1,7 @@
 ---
 title: "Index Fund Investing in India: The Engineer's Guide to Passive Wealth"
 description: "Complete guide to index fund investing in IndiaNifty 50 vs S&P 500, SIP compounding math, expense ratios, LTCG/STCG tax rules, and why passive beats active."
-pubDate: 2026-01-20
+pubDate: 2026-02-22
 category: 'personal-finance'
 tags: ['investing', 'index-funds', 'india', 'personal-finance']
 draft: false

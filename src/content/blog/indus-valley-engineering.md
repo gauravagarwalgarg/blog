@@ -1,7 +1,7 @@
 ---
 title: "Engineering of the Indus Valley Civilization: Standardization Before the Alphabet"
 description: "Deep analysis of Indus Valley Civilization engineering achievements standardized brick ratios (4:2:1), grid-based urban planning with orientation, hydraulic engineering and drainage systems, Great Bath waterproofing techniques, the weights and measures system, and comparisons to contemporary Mesopotamian and Egyptian civilizations."
-pubDate: 2026-01-25
+pubDate: 2026-03-01
 category: 'history'
 tags: ['history', 'engineering', 'urban-planning', 'ancient-civilizations']
 draft: false

@@ -1,7 +1,7 @@
 ---
 title: "Python Memory Management: Why Your Script Eats RAM"
 description: "CPython reference counting, the generational garbage collector, memory pools, and practical strategies for controlling memory in production Python services."
-pubDate: 2024-05-12
+pubDate: 2026-04-12
 category: 'programming-languages'
 tags: ['python', 'memory-management', 'cpython', 'internals', 'performance']
 draft: false

@@ -1,7 +1,7 @@
 ---
 title: "SPI Protocol: Clock Modes, Multi-Slave Topologies, and Signal Integrity"
 description: "Complete SPI protocol deep-dive covering CPOL/CPHA clock modes, full-duplex data flow, multi-slave topologies (independent vs daisy-chain), DMA integration patterns, signal integrity at high clock rates, and debugging with logic analyzers."
-pubDate: 2026-02-10
+pubDate: 2026-04-26
 category: 'embedded-systems'
 tags: ['spi', 'protocols', 'embedded', 'hardware']
 draft: false
