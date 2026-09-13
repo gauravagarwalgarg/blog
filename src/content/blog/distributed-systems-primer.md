@@ -41,6 +41,21 @@ In practice, network partitions *always* happen. So you're really choosing betwe
 | **CP** | Rejects writes to preserve consistency | ZooKeeper, etcd, Consul, CockroachDB |
 | **AP** | Accepts writes, resolves conflicts later | Cassandra, DynamoDB, Riak |
 
+```mermaid
+graph TD
+    Client((Client)) --> LB[Load Balancer]
+    LB --> NodeA[Node A (Primary)]
+    LB --> NodeB[Node B (Replica)]
+    LB --> NodeC[Node C (Replica)]
+    
+    NodeA -.-x|Network Partition| NodeB
+    NodeA -.-x|Network Partition| NodeC
+    
+    style NodeA fill:#1E4D2B,stroke:#4CAF50
+    style NodeB fill:#4A1C1C,stroke:#F44336
+    style NodeC fill:#4A1C1C,stroke:#F44336
+```
+
 **The nuance nobody tells you**: CAP is a spectrum, not a binary choice. Most production systems are CP for some operations and AP for others. DynamoDB is AP for writes but offers strongly-consistent reads as an option. PostgreSQL with synchronous replication is CP but can be configured for async (AP-like) behavior.
 
 ## Consensus: The Hardest Problem in Distributed Computing
@@ -55,17 +70,22 @@ Lamport's Paxos is provably correct but notoriously difficult to implement. Goog
 
 Designed explicitly for understandability. Same guarantees as Paxos, but with a clear leader election → log replication → safety proof structure.
 
-```
-┌─────────────────────────────────────────┐
-│  Client → Leader → Followers (majority)  │
-│         ← Commit  ← ACK                 │
-└─────────────────────────────────────────┘
+```mermaid
+sequenceDiagram
+    participant Client
+    participant Leader
+    participant Follower1 as Follower A
+    participant Follower2 as Follower B
 
-1. Client sends write to leader
-2. Leader appends to local log
-3. Leader replicates to followers
-4. Majority ACK → committed
-5. Leader responds to client
+    Client->>Leader: 1. Send Write Request
+    Note right of Leader: 2. Append to local log
+    Leader->>Follower1: 3. Replicate (AppendEntries)
+    Leader->>Follower2: 3. Replicate (AppendEntries)
+    Follower1-->>Leader: 4. ACK (Log appended)
+    Follower2-->>Leader: 4. ACK (Log appended)
+    Note right of Leader: Majority reached
+    Leader->>Leader: Commit locally
+    Leader-->>Client: 5. Respond Success
 ```
 
 **Use existing implementations**: etcd (Raft), CockroachDB (Multi-Raft), Consul (Raft). Writing your own consensus protocol is a multi-year project with subtle correctness bugs.

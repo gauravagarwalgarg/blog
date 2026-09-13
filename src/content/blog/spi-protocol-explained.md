@@ -25,9 +25,24 @@ SPI (Serial Peripheral Interface) is a synchronous, full-duplex, master-slave pr
 
 Every SPI transfer is a *simultaneous exchange*. The master's shift register and slave's shift register form a circular buffer:
 
-```
-Master SR: [D7 D6 D5 D4 D3 D2 D1 D0] ──MOSI──► [D7 D6 D5 D4 D3 D2 D1 D0] :Slave SR
-           ◄──MISO──
+```mermaid
+sequenceDiagram
+    participant M as Master Shift Register
+    participant S as Slave Shift Register
+    
+    Note over M,S: Clock Edge 1
+    M->>S: MOSI (D7 out)
+    S->>M: MISO (D7 out)
+    
+    Note over M,S: Clock Edge 2
+    M->>S: MOSI (D6 out)
+    S->>M: MISO (D6 out)
+    
+    Note over M,S: ... Clock Edges 3-7 ...
+    
+    Note over M,S: Clock Edge 8
+    M->>S: MOSI (D0 out)
+    S->>M: MISO (D0 out)
 ```
 
 On each clock edge, one bit shifts out from each side and one bit shifts in. After 8 clocks, the registers have swapped contents. This means:

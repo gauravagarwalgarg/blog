@@ -248,23 +248,17 @@ printf("Task '%s': %u words free\n", pcTaskGetName(xTaskHandle), uxHighWaterMark
 
 ## FreeRTOS Task States and Transitions
 
-```
-                    ┌─────────────┐
-                    │   Running   │ (one task per core)
-                    └──────┬──────┘
-                 preempted │ ▲ scheduled
-                           ▼ │
-                    ┌─────────────┐
-          ┌────────│    Ready     │◄────────┐
-          │        └─────────────┘         │
-          │ event wait              event/  │
-          ▼                        timeout  │
-   ┌─────────────┐              ┌─────────────┐
-   │   Blocked   │─────────────►│  Suspended  │
-   └─────────────┘   vTaskSuspend└─────────────┘
-         (waiting on              (explicit suspend,
-          queue/semaphore/         only vTaskResume
-          delay)                   restores)
+```mermaid
+stateDiagram-v2
+    [*] --> Ready
+    Ready --> Running : Scheduled
+    Running --> Ready : Preempted
+    Running --> Blocked : Event wait (queue/sem/delay)
+    Blocked --> Ready : Event / timeout
+    Running --> Suspended : vTaskSuspend
+    Blocked --> Suspended : vTaskSuspend
+    Ready --> Suspended : vTaskSuspend
+    Suspended --> Ready : vTaskResume
 ```
 
 ## Task Notification Lightweight IPC

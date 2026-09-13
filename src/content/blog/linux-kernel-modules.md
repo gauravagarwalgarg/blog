@@ -13,6 +13,21 @@ The rules are different here. No libc. No `malloc`. One bug doesn't segfault you
 
 ## The Minimum Viable Module
 
+```mermaid
+graph TD
+    Load[sudo insmod module.ko] --> Init[module_init]
+    Init --> Register[Register devices/hooks]
+    Register --> |Success| Running[Module Active in Kernel]
+    Register -.-> |Failure| Fail[Return negative errno]
+    Fail --> UnloadClean[Clean up partial state]
+    
+    Running --> Unload[sudo rmmod module]
+    Unload --> Exit[module_exit]
+    Exit --> Unregister[Unregister devices/hooks]
+    Unregister --> Removed[Module Removed from Kernel]
+```
+
+
 ```c
 // hello.c smallest possible kernel module
 #include <linux/init.h>

@@ -1,0 +1,29 @@
+name: Cross-post Blog Articles
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/content/blog/**.md'
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  crosspost:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Parked Feature Notice
+        run: |
+          echo "Cross-posting to Substack, Hashnode, Dev.to, Medium, Fediverse is currently parked."
+          echo "See docs/cross-posting.md for the step-by-step implementation plan."
+          
+      # TODO: Implement cross-posting targets when active:
+      # - Substack (via RSS to email / automation)
+      # - Hashnode (via Hashnode API)
+      # - Dev.to (via Forem API)
+      # - Medium (via Medium API)
+      # - Fediverse (via Mastodon API)

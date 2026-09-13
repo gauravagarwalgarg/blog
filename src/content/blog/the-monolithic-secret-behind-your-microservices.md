@@ -12,7 +12,7 @@ We spent the last ten years violently dismantling monolithic application archite
 
 So, we broke them down. We refactored them into hundreds of elegant, decoupled microservices. We packaged them in containers. We orchestrated them with Kubernetes. We patted ourselves on the back for achieving true architectural independence.
 
-But there is a glaring architectural irony hidden at the bottom of our tech stacks. Abstractions are undeniably a blessing—they allow us to reason about complex, distributed systems without descending into the madness of hardware interrupts and memory page tables. However, this blessing has blinded us. We have abstracted away the operating system so thoroughly that we forgot it is still there, quietly holding the entire house of cards together.
+But there is a glaring architectural irony hidden at the bottom of our tech stacks. Abstractions are undeniably a blessing they allow us to reason about complex, distributed systems without descending into the madness of hardware interrupts and memory page tables. However, this blessing has blinded us. We have abstracted away the operating system so thoroughly that we forgot it is still there, quietly holding the entire house of cards together.
 
 Where do all these independent, lightweight, highly-decoupled microservices actually run? 
 
@@ -72,7 +72,7 @@ Because every microservice on a Kubernetes node shares the same monolithic kerne
 
 If a microservice triggers a rare kernel bug that causes a kernel panic, the host OS crashes. Every single "isolated" container on that node goes down with it. 
 
-More dangerously, this shared architecture creates security vulnerabilities. Container escape attacks—like the famous [CVE-2022-0185](https://nvd.nist.gov/vuln/detail/CVE-2022-0185) (a heap-based buffer overflow in the Linux kernel's "File System Context" component)—allow an attacker who compromises a single, low-privilege microservice to interact maliciously with the shared kernel and gain root access to the entire host.
+More dangerously, this shared architecture creates security vulnerabilities. Container escape attacks like the famous [CVE-2022-0185](https://nvd.nist.gov/vuln/detail/CVE-2022-0185) (a heap-based buffer overflow in the Linux kernel's "File System Context" component) allow an attacker who compromises a single, low-privilege microservice to interact maliciously with the shared kernel and gain root access to the entire host.
 
 ```mermaid
 sequenceDiagram

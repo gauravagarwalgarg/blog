@@ -1,6 +1,6 @@
 ---
 title: "Restaurant-Style Dal Makhani: The Science of Slow Cooking"
-description: "Why your home dal makhani tastes like health food, and the actual science—starch gelatinization, Maillard browning, fat emulsification—required to fix it."
+description: "Why your home dal makhani tastes like health food, and the actual science starch gelatinization, Maillard browning, fat emulsification required to fix it."
 pubDate: 2026-01-04
 category: 'culinary'
 tags: ['recipe', 'indian-cuisine', 'slow-cooking']
@@ -31,7 +31,7 @@ This is exactly why a 90-minute dal makhani tastes fundamentally different from 
 
 ### Maillard Reaction on Lentils
 
-The dark color of restaurant dal makhani doesn't come from excess spices or food coloring. It's Maillard browning—the reaction between amino acids and reducing sugars at the surface of kidney beans and urad dal.
+The dark color of restaurant dal makhani doesn't come from excess spices or food coloring. It's Maillard browning the reaction between amino acids and reducing sugars at the surface of kidney beans and urad dal.
 
 Requirements for Maillard in dal:
 - Temperature: >100°C (this happens at the pot surface, not in the liquid)
@@ -92,9 +92,9 @@ Mechanical action (stirring) + heat + natural emulsifiers (dal proteins)
 
 | Addition | Purpose |
 |----------|---------|
-| Charcoal smoke (dhungar) | Smoky depth—heated charcoal with ghee placed inside covered pot for 2 min |
-| Kasoori methi | Bitter-sweet herbal note—crushed and added in last 10 min |
-| Overnight soaking liquid | Contains water-soluble proteins—use it as your cooking liquid |
+| Charcoal smoke (dhungar) | Smoky depth heated charcoal with ghee placed inside covered pot for 2 min |
+| Kasoori methi | Bitter-sweet herbal note crushed and added in last 10 min |
+| Overnight soaking liquid | Contains water-soluble proteins use it as your cooking liquid |
 | Butter staging | 1 tbsp at start, 2 tbsp at midpoint, 1 tbsp at end |
 
 ## The 6-Hour Method (Traditional)
@@ -104,7 +104,7 @@ Mechanical action (stirring) + heat + natural emulsifiers (dal proteins)
 ```text
 1. Wash urad dal and rajma separately (3-4 rinses until water runs clear)
 2. Soak overnight (8-12 hours) in 3× volume of water
-3. Do not discard soaking water—it contains soluble proteins
+3. Do not discard soaking water it contains soluble proteins
 ```
 
 ### Cooking Day
@@ -116,28 +116,28 @@ Mechanical action (stirring) + heat + natural emulsifiers (dal proteins)
 2. Pressure cook with 4 cups fresh water + 1 cup soaking liquid
 3. Cook for 6-7 whistles (about 25 minutes at pressure)
 4. Natural release (15-20 min)
-5. Dal should be soft but not mushy—grains intact
+5. Dal should be soft but not mushy grains intact
 ```
 
 **Step 2: Tempering**
 
 ```text
 1. Heat ghee in a heavy-bottomed pot (cast iron or thick steel)
-2. Add cumin seeds—wait for crackle
-3. Add dried chillies—10 seconds
-4. Add hing—3 seconds (burns quickly)
-5. Add ginger-garlic paste—cook until raw smell goes (2 min)
-6. Add tomato puree—cook until oil separates (8-10 min)
-7. Add chilli powder + coriander powder—1 minute
+2. Add cumin seeds wait for crackle
+3. Add dried chillies 10 seconds
+4. Add hing 3 seconds (burns quickly)
+5. Add ginger-garlic paste cook until raw smell goes (2 min)
+6. Add tomato puree cook until oil separates (8-10 min)
+7. Add chilli powder + coriander powder 1 minute
 ```
 
 **Step 3: The Slow Simmer (4-6 hours)**
 
 ```text
 1. Add pressure-cooked dal to the tempering pot
-2. Add 2-3 cups water (thin consistency—it will reduce)
+2. Add 2-3 cups water (thin consistency it will reduce)
 3. Add 2 tbsp butter, salt, sugar
-4. Bring to gentle simmer—NOT a rolling boil
+4. Bring to gentle simmer NOT a rolling boil
 5. Partially cover (lid slightly ajar)
 6. Simmer on LOWEST heat for 4-6 hours
 7. Stir every 30 minutes, scrape bottom
@@ -161,17 +161,17 @@ Mechanical action (stirring) + heat + natural emulsifiers (dal proteins)
 Visual: The gravy coats the back of a spoon and doesn't "weep" (separate into
         water and thick parts). It should look like a single unified liquid.
 
-Texture: Take a spoonful—it should flow slowly, not run. Individual grains
+Texture: Take a spoonful it should flow slowly, not run. Individual grains
          should be identifiable but very soft, with many having dissolved.
 
 Color: Deep brown-black, not the orange-brown of freshly cooked dal.
        The Maillard darkening is unmistakable.
 
-Taste: No "raw" pulse taste, no graininess on tongue. Balanced—rich but not
+Taste: No "raw" pulse taste, no graininess on tongue. Balanced rich but not
        cloying, spiced but not sharp. You should taste butter AND lentil equally.
 
 The "trail test": Drag a spoon across the surface. The trail should fill in
-slowly (3-4 seconds)—not immediately.
+slowly (3-4 seconds) not immediately.
 ```
 
 ## Pressure Cooker Shortcut (90 Minutes Total)
@@ -184,7 +184,7 @@ This gets you 80% of the way. The remaining 20% is the Maillard depth and full s
 3. Mash 30% of dal with back of ladle (simulates starch release)
 4. Prepare tempering as above
 5. Combine and simmer for 45-60 min on low (not 4-6 hours)
-6. Add ¼ tsp baking soda (accelerates breakdown—use sparingly)
+6. Add ¼ tsp baking soda (accelerates breakdown use sparingly)
 7. Stir more frequently (every 10 min) to develop contact browning
 8. Finish with cream, butter, kasoori methi
 ```
@@ -222,7 +222,7 @@ Total fat per serving in restaurant dal makhani? About 25-35g. This is why it ta
 
 ### The Reheating Advantage
 
-Dal makhani objectively improves on day two. Overnight in the fridge, the starches retrograde partially, then re-gelatinize on reheating—creating a thicker, more cohesive texture. Restaurants often serve yesterday's dal as today's special.
+Dal makhani objectively improves on day two. Overnight in the fridge, the starches retrograde partially, then re-gelatinize on reheating creating a thicker, more cohesive texture. Restaurants often serve yesterday's dal as today's special.
 
 ## Serving
 
@@ -238,7 +238,7 @@ Garnish:
   - Pinch of kasoori methi
   - Optional: julienned ginger
 
-Temperature: Serve bubbling hot—the emulsion is most stable when hot.
+Temperature: Serve bubbling hot the emulsion is most stable when hot.
 Cold dal makhani separates (fat solidifies).
 ```
 

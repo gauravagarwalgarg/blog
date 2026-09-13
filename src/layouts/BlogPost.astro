@@ -89,12 +89,14 @@ const readingTime = Math.max(1, Math.ceil(words / 200));
     
     mermaid.initialize({ startOnLoad: false, theme: 'dark' });
 
-    document.addEventListener("DOMContentLoaded", async () => {
-      const mermaidBlocks = document.querySelectorAll('pre code.language-mermaid');
+    const renderMermaid = async () => {
+      const mermaidBlocks = document.querySelectorAll('pre[data-language="mermaid"]');
       
-      mermaidBlocks.forEach((codeBlock) => {
-        const graphDefinition = codeBlock.textContent;
-        const pre = codeBlock.parentElement;
+      mermaidBlocks.forEach((pre) => {
+        // Extract the raw text before Shiki adds too many spans, though textContent is usually fine
+        let graphDefinition = pre.textContent;
+        // Fix for potential HTML entities if any
+        graphDefinition = graphDefinition.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
         
         const mermaidDiv = document.createElement('div');
         mermaidDiv.className = 'mermaid';
@@ -112,7 +114,9 @@ const readingTime = Math.max(1, Math.ceil(words / 200));
           querySelector: '.mermaid',
         });
       }
-    });
+    };
+
+    renderMermaid();
   </script>
 </body>
 </html>

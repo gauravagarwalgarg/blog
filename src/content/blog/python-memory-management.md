@@ -79,10 +79,21 @@ gc.collect()  # Returns number of unreachable objects found
 
 CPython doesn't call `malloc()` for every 28-byte integer. Instead, it uses a **three-level memory hierarchy**:
 
-```
-Arena (256 KB)
-  └── Pool (4 KB, one per size class)
-       └── Block (8, 16, 24, ... 512 bytes)
+```mermaid
+graph TD
+    A[Arena: 256 KB] --> P1[Pool: 4 KB]
+    A --> P2[Pool: 4 KB]
+    A --> P3[Pool: 4 KB]
+    P1 --> B1[Block: 8 bytes]
+    P1 --> B2[Block: 8 bytes]
+    P2 --> B3[Block: 16 bytes]
+    P2 --> B4[Block: 16 bytes]
+    P3 --> B5[Block: 512 bytes]
+
+    style A fill:#2B3A42,stroke:#3F5765
+    style P1 fill:#3F5765,stroke:#BDD4DE
+    style P2 fill:#3F5765,stroke:#BDD4DE
+    style P3 fill:#3F5765,stroke:#BDD4DE
 ```
 
 - **Blocks**: Fixed-size chunks. Size classes from 8 to 512 bytes (in 8-byte increments = 64 size classes).

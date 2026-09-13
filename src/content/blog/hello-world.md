@@ -34,7 +34,7 @@ Three compounding returns that aren't just hype:
 └── Creative                poems, short-form writing
 ```
 
-It's deliberately broad. Engineers aren't monolithic—we have interests outside our IDEs. The constraint here is depth, not topic.
+It's deliberately broad. Engineers aren't monolithic we have interests outside our IDEs. The constraint here is depth, not topic.
 
 ## The Stack (Because Engineers Always Ask)
 

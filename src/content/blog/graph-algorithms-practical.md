@@ -95,6 +95,19 @@ def topological_sort(graph):
 
 When edges have different weights (costs, latencies):
 
+```mermaid
+graph LR
+    A((A)) -- 4 --> B((B))
+    A -- 2 --> C((C))
+    B -- 5 --> C
+    B -- 10 --> D((D))
+    C -- 3 --> E((E))
+    E -- 4 --> D
+    
+    style A fill:#4CAF50,stroke:#388E3C
+    style D fill:#F44336,stroke:#D32F2F
+```
+
 ```python
 import heapq
 

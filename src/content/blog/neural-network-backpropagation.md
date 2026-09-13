@@ -43,22 +43,31 @@ dL/db = dL/da × da/dz × dz/db = 2(a-y) × σ(z)(1-σ(z)) × 1
 
 A computational graph makes backprop mechanical. Each node is an operation; edges are data flow.
 
-```
-Forward:
-x ──┐
-    ├── [×] ── z₁ ──┐
-w ──┘                 ├── [+] ── z₂ ── [σ] ── a ── [L] ── loss
-              b ─────┘
+```mermaid
+graph LR
+    x[x] --> Mul1((×))
+    w[w] --> Mul1
+    Mul1 -->|z₁| Add1((+))
+    b[b] --> Add1
+    Add1 -->|z₂| Sigmoid((σ))
+    Sigmoid -->|a| LossFn((L))
+    y[y] --> LossFn
+    LossFn -->|loss| Output((loss))
 
-Backward (reverse topological order):
-loss ← dloss/dloss = 1
-a    ← dloss/da = 2(a - y)
-z₂   ← dloss/dz₂ = dloss/da × da/dz₂ = 2(a-y) × σ'(z₂)
-b    ← dloss/db = dloss/dz₂ × 1
-z₁   ← dloss/dz₁ = dloss/dz₂ × 1
-w    ← dloss/dw = dloss/dz₁ × x
-x    ← dloss/dx = dloss/dz₁ × w
+    style Mul1 fill:#2C3E50,stroke:#34495E
+    style Add1 fill:#2C3E50,stroke:#34495E
+    style Sigmoid fill:#8E44AD,stroke:#9B59B6
+    style LossFn fill:#C0392B,stroke:#E74C3C
 ```
+
+**Backward (reverse topological order):**
+- `loss` ← dloss/dloss = 1
+- `a`    ← dloss/da = 2(a - y)
+- `z₂`   ← dloss/dz₂ = dloss/da × da/dz₂ = 2(a-y) × σ'(z₂)
+- `b`    ← dloss/db = dloss/dz₂ × 1
+- `z₁`   ← dloss/dz₁ = dloss/dz₂ × 1
+- `w`    ← dloss/dw = dloss/dz₁ × x
+- `x`    ← dloss/dx = dloss/dz₁ × w
 
 ### Key Insight: Fan-Out Nodes
 

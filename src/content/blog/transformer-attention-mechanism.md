@@ -77,13 +77,31 @@ output = attention_weights @ V  # (3, 4) contextualized representations
 
 ### Matrix Dimensions at Each Step
 
-```
-X:               (n, d_model)     = (3, 4)
-W_Q, W_K, W_V:  (d_model, d_k)   = (4, 4)
-Q, K, V:        (n, d_k)          = (3, 4)
-QK^T:           (n, n)            = (3, 3)  ← attention matrix
-softmax(QK^T):  (n, n)            = (3, 3)  ← attention weights
-Output:         (n, d_k)          = (3, 4)  ← contextualized tokens
+```mermaid
+graph TD
+    X[Input X <br> n × d_model] --> WQ[W_Q <br> d_model × d_k]
+    X --> WK[W_K <br> d_model × d_k]
+    X --> WV[W_V <br> d_model × d_k]
+    
+    WQ --> Q[Q <br> n × d_k]
+    WK --> K[K <br> n × d_k]
+    WV --> V[V <br> n × d_k]
+    
+    Q --> DotProd((@))
+    K --> Transpose[K.T <br> d_k × n]
+    Transpose --> DotProd
+    
+    DotProd --> Scale[Scale by 1/√d_k]
+    Scale --> Softmax[Softmax]
+    Softmax --> AttnWeights[Attention Weights <br> n × n]
+    
+    AttnWeights --> FinalDotProd((@))
+    V --> FinalDotProd
+    
+    FinalDotProd --> Output[Output <br> n × d_k]
+    
+    style AttnWeights fill:#8E44AD,stroke:#9B59B6
+    style Output fill:#2C3E50,stroke:#34495E
 ```
 
 ### Why Scale by √d_k?
