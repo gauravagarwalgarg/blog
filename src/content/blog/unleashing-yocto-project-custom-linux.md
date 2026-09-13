@@ -9,7 +9,7 @@ tags: ["yocto", "linux", "buildroot", "embedded"]
 
 If you've spent more than a week in embedded Linux, you've probably had the "build system" argument. It usually starts when someone suggests just throwing an Ubuntu image onto an SD card and shipping it. Next, someone pitches [Buildroot](https://buildroot.org/) because it's fast and easy. Finally, someone begrudgingly whispers about the [Yocto Project](https://www.yoctoproject.org/), and half the room groans about the learning curve.
 
-I've built systems across this entire spectrum—from quick-and-dirty [debootstrap](https://wiki.debian.org/Debootstrap) chroots to container-heavy runtimes like [BalenaOS](https://www.balena.io/os/). But when the stakes are high, when you are shipping 100,000 edge devices that will live in the field for ten years without physical access, I reach for Yocto. 
+I've built systems across this entire spectrum from quick-and-dirty [debootstrap](https://wiki.debian.org/Debootstrap) chroots to container-heavy runtimes like [BalenaOS](https://www.balena.io/os/). But when the stakes are high, when you are shipping 100,000 edge devices that will live in the field for ten years without physical access, I reach for Yocto. 
 
 Here is a candid, deeply technical breakdown of why Yocto wins in the enterprise, where it falls flat on its face, and why building your own distribution is worth the pain.
 
@@ -103,6 +103,6 @@ The BitBake syntax is esoteric. Debugging a fetcher failure or deciphering why a
 - **Choose Debian/Ubuntu if:** You are building an edge-gateway on an x86/ARM64 IPC, you have plenty of storage and RAM, you are deploying over a secure network, and you need data scientists to effortlessly `apt install` their Python dependencies in the field.
 - **Choose BalenaOS if:** Your core competency is the containerized application, you lack kernel engineers, and you want fleet management and OTA updates solved out of the box with zero configuration.
 
-Yocto is an industrial machine press. It takes significant time and capital to set up the tooling, but once it is dialed in, it stamps out flawless, identical, secure parts forever. If your product roadmap spans multiple hardware architectures and a decade of field deployments, Yocto isn't just the best choice—it's the only choice.
+Yocto is an industrial machine press. It takes significant time and capital to set up the tooling, but once it is dialed in, it stamps out flawless, identical, secure parts forever. If your product roadmap spans multiple hardware architectures and a decade of field deployments, Yocto isn't just the best choice it's the only choice.
 
 *(If you want to see what this looks like in practice, check out my [Yocto Playground on GitHub](https://github.com/gauravagarwalgarg/yocto-playground), where I experiment with minimal layers and custom configurations.)*
