@@ -208,6 +208,29 @@ src/
 
 ---
 
+## Agentic Workflow & Second Brain Architecture
+
+We have established a "Second Brain" architecture inside the `.agents/` and `brain/` directories to facilitate an automated blogging swarm.
+
+### The Swarm Model
+Our workflow is driven by specialized AI agents defined in `.agents/rules/blogging.md`:
+- **The Radar**: Scans for trending tech topics (via `tech_radar.py`), scoring them and pitching them into the `ideas_backlog.md`.
+- **The Interviewer**: Acts as the primary orchestrator to brainstorm with the author, maintaining a "raw human touch".
+- **The Scholar**: Conducts deep technical research and retrieves references (GitHub commits, API docs) to ground the essays.
+- **The Cartographer**: Determines where the piece fits within our macro-narrative (`concept_map.md`) and handles SEO.
+- **The Slicer**: Repurposes long-form blog posts into Twitter and LinkedIn threads, outputting to `social_drafts.md`.
+- **The Syndicate**: Automates cross-posting to DEV.to, Medium, and Hashnode.
+- **CI/CD Gatekeeper**: Reviews PRs to ensure tone guidelines (`my_voice.md`) are strictly met before deployment.
+
+### Knowledge Base
+- `brain/my_voice.md`: Strict tone guidelines enforcing a raw, opinionated engineering voice (no "AI slop").
+- `brain/concept_map.md`: A macro-narrative map for linking blog topics.
+- `brain/memory-bank.md`: Core architectural decisions and history.
+
+This architecture treats the blog as a living product maintained by autonomous, persona-driven agents rather than a standard static site.
+
+---
+
 ## Performance Budget
 
 | Metric | Target | How |

@@ -40,3 +40,6 @@ site/
 brain/
 .antigravity_instructions.md
 .gemini/
+
+# Python Virtual Environments
+venv/

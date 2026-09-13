@@ -283,6 +283,27 @@ fonts: [{
 - Helps readers discover related content
 - Fully static computed at build time, no client JS
 
+## 12. Interactive Architecture Diagrams (Mermaid.js)
+
+**What**: Native, client-side rendering of Mermaid.js diagrams inside blog posts.
+
+**Where implemented**:
+- Integration: [`src/layouts/BlogPost.astro`](https://github.com/gauravagarwalgarg/blog/blob/main/src/layouts/BlogPost.astro)
+- Example usage: Inside any Markdown post using the `mermaid` code block.
+
+**How it works**:
+1. The post contains a standard ```mermaid code block.
+2. The `BlogPost.astro` layout detects if the post contains Mermaid syntax.
+3. If true, it dynamically loads the Mermaid.js CDN via a `<script type="module">`.
+4. A client-side script initializes Mermaid with the currently active theme (light or dark) and calls `mermaid.run()` to render the SVGs in place.
+5. HTML entities in the code block are sanitized to ensure Mermaid parses the diagram correctly.
+
+**Why this matters**:
+- Visualizing complex system architectures natively without image exports.
+- Zero server-side rendering overhead for diagrams.
+- Diagrams adapt to dark/light mode seamlessly.
+- Ships the Mermaid library *only* when a post actually needs it.
+
 ---
 
 *Cross-references: [Architecture](./architecture.md) · [Future Plans](../future/roadmap.md) · [Getting Started](../getting-started.md)*
