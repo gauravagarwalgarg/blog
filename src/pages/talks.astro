@@ -1,0 +1,285 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SOCIAL_LINKS } from '../consts';
+
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const talks = [
+  {
+    title: 'Harness Engineering: Building Industrial-Strength AI Agent Runtimes',
+    event: 'AI Systems & Architecture Summit',
+    year: '2026',
+    description: 'Why prompt engineering fails in enterprise automation, and how deterministic harnesses, AST context engines, and adversarial verifiers deliver 99%+ agent reliability.',
+    tags: ['AI Agents', 'Harness Engineering', 'System Design'],
+    slides: '#',
+    video: '#',
+  },
+  {
+    title: 'Model Context Protocol (MCP): The Zero-Trust Interface for Everything',
+    event: 'Autonomous Developer Ecosystem Conference',
+    year: '2026',
+    description: 'An architectural deep dive into JSON-RPC 2.0 primitives, capability negotiation, and why MCP replaces ad-hoc API wrappers for LLM tool use.',
+    tags: ['MCP', 'Protocols', 'APIs'],
+    slides: '#',
+    video: '#',
+  },
+  {
+    title: 'Deterministic Real-Time Systems with Modern C++ & RTOS',
+    event: 'Embedded Systems & Aerospace Software Workshop',
+    year: '2025',
+    description: 'Zero-overhead abstractions, lock-free queues, priority inheritance protocols, and DO-178C compliance for mission-critical avionics.',
+    tags: ['C++', 'Embedded', 'RTOS', 'Aerospace'],
+    slides: '#',
+    video: '#',
+  },
+  {
+    title: 'The Monolithic Secret: Re-Architecting Microservices for Low Latency',
+    event: 'Distributed Systems & Cloud Architecture Forum',
+    year: '2025',
+    description: 'A quantitative analysis of network serialization overhead, gRPC tax, distributed transactions, and the pragmatic path to modular monoliths.',
+    tags: ['Microservices', 'Distributed Systems', 'Performance'],
+    slides: '#',
+    video: '#',
+  },
+];
+---
+
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <BaseHead title={`Talks & Presentations | ${SITE_TITLE}`} description="Technical talks, conference keynotes, engineering presentations, and architecture slide decks." />
+</head>
+<body>
+  <Header />
+  <main class="container">
+    <section class="page-header">
+      <div class="header-badge">🎤 Keynotes & Workshops</div>
+      <h1>Talks & Presentations</h1>
+      <p>Technical conference sessions, internal engineering masterclasses, and slide decks on systems programming, agent harnesses, and low-latency infrastructure.</p>
+    </section>
+
+    <div class="talks-grid">
+      {talks.map(talk => (
+        <article class="talk-card">
+          <div class="talk-header">
+            <span class="talk-event">{talk.event}</span>
+            <span class="talk-year">{talk.year}</span>
+          </div>
+          <h2 class="talk-title">{talk.title}</h2>
+          <p class="talk-desc">{talk.description}</p>
+          <div class="talk-tags">
+            {talk.tags.map(tag => <span class="tag">{tag}</span>)}
+          </div>
+          <div class="talk-footer">
+            <a href={talk.slides} class="talk-btn primary">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+              <span>Slides & Notes</span>
+            </a>
+            <a href={`${baseUrl}/posts`} class="talk-btn secondary">
+              <span>Related Article →</span>
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- Speaking Inquiries Box -->
+    <section class="speaking-cta">
+      <div class="cta-content">
+        <h3>Invite for a Keynote or Technical Workshop</h3>
+        <p>I frequently speak on autonomous agent runtime harnesses, modern C++ low-latency patterns, and distributed systems architecture.</p>
+      </div>
+      <a href={SOCIAL_LINKS.linkedin} target="_blank" rel="noopener" class="cta-btn">
+        Connect on LinkedIn ↗
+      </a>
+    </section>
+  </main>
+  <Footer />
+</body>
+</html>
+
+<style>
+  .page-header {
+    background: var(--hero-gradient);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2.5rem;
+    margin: 2rem 0 2.5rem;
+  }
+  .header-badge {
+    display: inline-block;
+    padding: 0.25rem 0.65rem;
+    background: var(--accent-dim);
+    color: var(--accent);
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+  }
+  .page-header h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+  }
+  .page-header p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    max-width: 620px;
+    margin: 0;
+  }
+
+  .talks-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 3rem;
+  }
+  .talk-card {
+    display: flex;
+    flex-direction: column;
+    padding: 1.75rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    transition: all 0.2s ease;
+  }
+  .talk-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  }
+  .talk-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.6rem;
+    font-size: 0.8rem;
+  }
+  .talk-event {
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .talk-year {
+    color: var(--text-muted);
+    font-family: var(--font-mono, monospace);
+  }
+  .talk-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.6rem;
+    line-height: 1.4;
+  }
+  .talk-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+  }
+  .talk-tags {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.25rem;
+  }
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.2rem 0.55rem;
+    border-radius: 6px;
+    font-size: 0.72rem;
+    font-weight: 500;
+    background: var(--bg-secondary);
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+  }
+  .talk-footer {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+  .talk-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 0.85rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.15s ease;
+  }
+  .talk-btn.primary {
+    background: var(--accent-dim);
+    color: var(--accent);
+    border: 1px solid var(--accent);
+  }
+  .talk-btn.primary:hover {
+    background: var(--accent);
+    color: #fff;
+  }
+  .talk-btn.secondary {
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+  }
+  .talk-btn.secondary:hover {
+    color: var(--text);
+    border-color: var(--border-hover);
+  }
+
+  .speaking-cta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+  .cta-content h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.4rem;
+  }
+  .cta-content p {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.5;
+  }
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.6rem 1.25rem;
+    border-radius: 8px;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+  .cta-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 768px) {
+    .page-header { padding: 1.75rem 1.25rem; }
+    .page-header h1 { font-size: 1.6rem; }
+    .speaking-cta { flex-direction: column; align-items: flex-start; padding: 1.5rem; }
+  }
+</style>

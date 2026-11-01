@@ -194,7 +194,7 @@ This is an architectural disaster for two reasons:
 2. **Inference Economics and Latency:** Attention mechanisms scale quadratically ($O(N^2)$) in compute cost or linearly with KV-cache memory pressure. Flooding an agent with 100,000 tokens of boilerplate code balloons Time-to-First-Token (TTFT) by over 1,500ms per step, while burning cash on every trivial reasoning cycle.
 
 ```mermaid
-graph LR
+graph TD
     subgraph Bad["Context Flooding (Brittle)"]
         RawDump["Dump 50 source files<br/>(120,000 tokens)"] --> LLM1["Model Context"]
         LLM1 --> AttentionDecay["High Attention Diffusion<br/>Degraded Reasoning<br/>$0.80 per step"]
@@ -540,7 +540,7 @@ Every line of system prompt instructions:
 **If a rule can be enforced by software, it does not belong in a prompt.**
 
 ```mermaid
-graph LR
+graph TD
     subgraph AntiPattern["Anti-Pattern: Prompt Enforced"]
         Prompt["Prompt: 'Please format with Black'"] --> LLM["LLM (91% compliance)"]
         LLM --> DirtyCode["Dirty Code Merged"]

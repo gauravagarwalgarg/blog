@@ -32,7 +32,7 @@ Gold is globally priced in US Dollars per **Troy Ounce** ($1 \text{ oz t} = 31.1
 The domestic price is not an arbitrary number set by local cartels. It is a strict mathematical derivative of international spot prices, currency exchange rates, government import tariffs, and local supply-demand basis.
 
 ```mermaid
-graph LR
+graph TD
     subgraph International["Global Spot Market"]
         XAU["XAU/USD Spot<br/>(e.g., $2,650 / oz)"]
         USDINR["USD/INR Exchange Rate<br/>(e.g., ₹84.10)"]
@@ -152,18 +152,18 @@ For a swing trader or a 6-month tactical allocator, Gold ETFs are perfectly adeq
 **For a serious, multi-decade capital preservationist, Gold ETFs are an illusion of security.**
 
 ```mermaid
-graph TB
-    subgraph PaperSystem["The Paper Gold Chain (Layered Counterparty Risk)"]
-        Investor["Investor"] --> Broker["Demat / Broker (Zerodha/Groww)"]
-        Broker --> Depository["Depository (NSDL / CDSL)"]
-        Depository --> AMC["Asset Management Company (Nippon/HDFC/SBI)"]
-        AMC --> Trustee["Trustee Company"]
-        Trustee --> Custodian["Third-Party Custodian Vault (Brink's / Sequel)"]
-        Custodian --> GoldBar["Allocated 1kg Gold Bars"]
+graph TD
+    subgraph PhysicalBullion["The Physical Bullion Model (Zero Counterparty Risk)"]
+        Holder["Sovereign Individual"] --> PhysicalCoin["Physical 24K Minted Coin / Bar<br/>(Held in Direct Private Possession)"]
     end
 
-    subgraph PhysicalBullion["The Physical Bullion Model (Zero Counterparty Risk)"]
-        Holder["Sovereign Individual"] --> PhysicalCoin["Physical 24K Minted Coin / Bar<br/>(Held in Direct Possession)"]
+    subgraph PaperSystem["The Paper Gold Chain (Layered Intermediary & Counterparty Risk)"]
+        Investor["Investor (Beneficiary Claim)"] --> Broker["Demat / Broker (Zerodha / Groww)"]
+        Broker --> Depository["Depository (NSDL / CDSL)"]
+        Depository --> AMC["Asset Management Company (Nippon / HDFC / SBI)"]
+        AMC --> Trustee["Trustee Company (Legal Oversight)"]
+        Trustee --> Custodian["Third-Party Custodian Vault (Brink's / Sequel)"]
+        Custodian --> GoldBar["Allocated 1kg Gold Bars (Under Vault Custody)"]
     end
 ```
 

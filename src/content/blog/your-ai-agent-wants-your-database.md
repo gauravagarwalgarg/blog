@@ -207,7 +207,7 @@ SELECT column_name, data_type FROM information_schema.columns WHERE table_name L
 ```
 
 ```mermaid
-graph LR
+graph TD
     subgraph Naive["Naive Agent Catalog Exploration"]
         Explore["Agent queries information_schema<br/>(1,200 tables, 15,000 columns)"] --> Bloat["Context Window Flooding<br/>80,000 tokens of raw DDL"]
         Bloat --> Failure["High Latency (12s per turn)<br/>Attention Drift<br/>Hallucinated Column Names"]

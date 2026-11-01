@@ -8,6 +8,7 @@ import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import TableOfContents from '../components/TableOfContents.astro';
 import RelatedPosts from '../components/RelatedPosts.astro';
+import DiagramLightbox from '../components/DiagramLightbox.astro';
 import { CATEGORY_LABELS } from '../consts';
 import type { Category } from '../consts';
 
@@ -84,39 +85,142 @@ const readingTime = Math.max(1, Math.ceil(words / 200));
   </main>
   <Footer />
 
+  <!-- Fullscreen Interactive Lightbox Modal with Zoom & Pan -->
+  <DiagramLightbox />
+
   <script type="module">
     import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
     
-    mermaid.initialize({ startOnLoad: false, theme: 'dark' });
+    mermaid.initialize({ 
+      startOnLoad: false, 
+      theme: 'dark',
+      securityLevel: 'loose',
+      fontFamily: 'Inter, system-ui, -apple-system, sans-serif',
+      themeVariables: {
+        darkMode: true,
+        background: '#0d1117',
+        primaryColor: '#10b981',
+        primaryTextColor: '#f3f4f6',
+        primaryBorderColor: '#059669',
+        lineColor: '#6ee7b7',
+        secondaryColor: '#1f2937',
+        tertiaryColor: '#111827'
+      }
+    });
 
     const renderMermaid = async () => {
       const mermaidBlocks = document.querySelectorAll('pre[data-language="mermaid"]');
-      
-      mermaidBlocks.forEach((pre) => {
-        // Extract the raw text before Shiki adds too many spans, though textContent is usually fine
-        let graphDefinition = pre.textContent;
-        // Fix for potential HTML entities if any
+      if (mermaidBlocks.length === 0) {
+        // Still bind images if any
+        bindImagesToLightbox();
+        return;
+      }
+
+      mermaidBlocks.forEach((pre, idx) => {
+        let graphDefinition = pre.textContent || '';
         graphDefinition = graphDefinition.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
-        
+
+        // Construct interactive container card
+        const wrapper = document.createElement('div');
+        wrapper.className = 'diagram-wrapper';
+
+        const toolbar = document.createElement('div');
+        toolbar.className = 'diagram-toolbar';
+        toolbar.innerHTML = `
+          <div class="diagram-info">
+            <svg class="diagram-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+              <path d="M3 9h18M9 21V9"></path>
+            </svg>
+            <span class="diagram-title-text">Interactive Diagram</span>
+          </div>
+          <div class="diagram-actions">
+            <span class="diagram-hint">Click diagram to zoom</span>
+            <button type="button" class="diagram-zoom-btn" title="Open Fullscreen Inspector (Zoom & Pan)" aria-label="Zoom diagram">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                <line x1="11" y1="8" x2="11" y2="14"></line>
+                <line x1="8" y1="11" x2="14" y2="11"></line>
+              </svg>
+              <span>Zoom</span>
+            </button>
+          </div>
+        `;
+
+        const scrollCanvas = document.createElement('div');
+        scrollCanvas.className = 'diagram-scroll-canvas';
+
         const mermaidDiv = document.createElement('div');
         mermaidDiv.className = 'mermaid';
-        mermaidDiv.style.textAlign = 'center';
-        mermaidDiv.style.margin = '2rem 0';
+        mermaidDiv.id = `mermaid-node-${idx}`;
         mermaidDiv.textContent = graphDefinition;
-        
+
+        scrollCanvas.appendChild(mermaidDiv);
+        wrapper.appendChild(toolbar);
+        wrapper.appendChild(scrollCanvas);
+
         if (pre && pre.parentNode) {
-          pre.parentNode.replaceChild(mermaidDiv, pre);
+          pre.parentNode.replaceChild(wrapper, pre);
         }
       });
 
-      if (document.querySelectorAll('.mermaid').length > 0) {
+      try {
         await mermaid.run({
           querySelector: '.mermaid',
         });
+      } catch (err) {
+        console.error('Mermaid render failure:', err);
       }
+
+      // Sizing optimization and zoom trigger binding
+      document.querySelectorAll('.diagram-wrapper').forEach((wrapper) => {
+        const svg = wrapper.querySelector('.mermaid svg');
+        const zoomBtn = wrapper.querySelector('.diagram-zoom-btn');
+        const scrollCanvas = wrapper.querySelector('.diagram-scroll-canvas');
+
+        if (svg) {
+          // Check native viewBox
+          const vb = svg.viewBox?.baseVal;
+          if (vb && vb.width > 680) {
+            // Keep wide diagrams legible with smooth horizontal scrolling inside the card
+            svg.style.minWidth = Math.min(vb.width, 920) + 'px';
+            wrapper.classList.add('has-overflow');
+          }
+
+          const triggerZoom = () => {
+            if (window.__diagramLightbox) {
+              window.__diagramLightbox.open(svg, 'Architecture Diagram');
+            }
+          };
+
+          zoomBtn?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            triggerZoom();
+          });
+
+          scrollCanvas?.addEventListener('click', () => {
+            triggerZoom();
+          });
+        }
+      });
+
+      bindImagesToLightbox();
     };
 
+    function bindImagesToLightbox() {
+      document.querySelectorAll('.prose img').forEach((img) => {
+        img.style.cursor = 'zoom-in';
+        img.addEventListener('click', () => {
+          if (window.__diagramLightbox) {
+            window.__diagramLightbox.open(img, img.alt || 'Post Image');
+          }
+        });
+      });
+    }
+
     renderMermaid();
+    document.addEventListener('astro:after-swap', renderMermaid);
   </script>
 </body>
 </html>
@@ -167,6 +271,113 @@ const readingTime = Math.max(1, Math.ceil(words / 200));
   .updated { font-style: italic; }
   hr { margin: 2rem 0; }
 
+  /* Diagram card styles */
+  :global(.diagram-wrapper) {
+    margin: 2.25rem 0;
+    background: rgba(13, 16, 24, 0.75);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  :global(.diagram-wrapper:hover) {
+    border-color: rgba(16, 185, 129, 0.4);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+  }
+  :global(.diagram-toolbar) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.55rem 1rem;
+    background: rgba(18, 22, 34, 0.9);
+    border-bottom: 1px solid var(--border);
+    font-size: 0.8rem;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+  :global(.diagram-info) {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+  }
+  :global(.diagram-icon) {
+    color: var(--accent);
+  }
+  :global(.diagram-actions) {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  :global(.diagram-hint) {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+  }
+  :global(.diagram-zoom-btn) {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.25rem 0.65rem;
+    border-radius: 6px;
+    background: var(--accent-dim);
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  :global(.diagram-zoom-btn:hover) {
+    background: var(--accent);
+    color: #fff;
+    transform: translateY(-1px);
+  }
+  :global(.diagram-scroll-canvas) {
+    position: relative;
+    padding: 1.5rem 1rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    text-align: center;
+    cursor: zoom-in;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(16, 185, 129, 0.3) rgba(255, 255, 255, 0.05);
+  }
+  :global(.diagram-scroll-canvas::-webkit-scrollbar) {
+    height: 6px;
+  }
+  :global(.diagram-scroll-canvas::-webkit-scrollbar-track) {
+    background: rgba(255, 255, 255, 0.03);
+  }
+  :global(.diagram-scroll-canvas::-webkit-scrollbar-thumb) {
+    background: rgba(16, 185, 129, 0.3);
+    border-radius: 3px;
+  }
+  :global(.diagram-scroll-canvas::-webkit-scrollbar-thumb:hover) {
+    background: rgba(16, 185, 129, 0.6);
+  }
+  :global(.mermaid) {
+    display: inline-block;
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  :global(.mermaid svg) {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    transition: opacity 0.2s;
+  }
+  :global(.prose img) {
+    cursor: zoom-in;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  :global(.prose img:hover) {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  }
+
   @media (max-width: 768px) {
     .article { padding: 1rem 0; }
     .article-header h1 { font-size: 1.5rem; }
@@ -179,5 +390,6 @@ const readingTime = Math.max(1, Math.ceil(words / 200));
     .article-tags { gap: 0.5rem; }
     .hero-image { margin-bottom: 1.5rem; }
     .hero-image img { border-radius: 8px; }
+    :global(.diagram-hint) { display: none; }
   }
 </style>
