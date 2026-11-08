@@ -113,7 +113,7 @@ Unlike the WAL, the MemTable maintains all entries in strictly **sorted order** 
 
 Because standard arrays or B-Trees require heavy rebalancing locks during concurrent insertions, modern production engines (such as RocksDB and Pebble) implement the MemTable using a **Concurrent SkipList** (or a lock-free cache-conscious SkipList). 
 
-A SkipList provides $O(\log N)$ probabilistic insertion, deletion, and lookup time without requiring massive subtree locks. Multiple writer threads can insert keys concurrently using atomic compare-and-swap (CAS) operations on forward pointers, avoiding the heavy mutex contention that throttles traditional B-Tree buffer pools under high core counts—a dynamic we analyzed in our [systems guide on multi-core topologies and weak memory models](/posts/when-to-choose-x86-64-vs-aarch64).
+A SkipList provides $O(\log N)$ probabilistic insertion, deletion, and lookup time without requiring massive subtree locks. Multiple writer threads can insert keys concurrently using atomic compare-and-swap (CAS) operations on forward pointers, avoiding the heavy mutex contention that throttles traditional B-Tree buffer pools under high core counts a dynamic we analyzed in our [systems guide on multi-core topologies and weak memory models](/posts/when-to-choose-x86-64-vs-aarch64).
 
 ### 3. The Flush: From RAM to SSTable
 A MemTable cannot grow indefinitely; it is typically capped at 32MB, 64MB, or 128MB. 
@@ -393,9 +393,9 @@ The B-Tree is far from dead; it remains the most battle-tested, versatile data s
 
 But the era of its universal monopoly has passed. 
 
-The modern computing landscape—defined by non-volatile flash memory, massive distributed topologies, and unprecedented write volumes—belongs to the architecture that embraced the physics of immutability. 
+The modern computing landscape defined by non-volatile flash memory, massive distributed topologies, and unprecedented write volumes belongs to the architecture that embraced the physics of immutability. 
 
-By treating updates as history rather than overwrites, the LSM-Tree unlocked the true potential of solid-state hardware. Understanding its inner mechanics—the dance between MemTables, SSTables, Bloom filters, and compaction—is how you ensure your storage architecture doesn't just write fast, but survives the weight of its own history.
+By treating updates as history rather than overwrites, the LSM-Tree unlocked the true potential of solid-state hardware. Understanding its inner mechanics the dance between MemTables, SSTables, Bloom filters, and compaction is how you ensure your storage architecture doesn't just write fast, but survives the weight of its own history.
 
 ---
 
@@ -406,3 +406,4 @@ By treating updates as history rather than overwrites, the LSM-Tree unlocked the
 3. **Athanassoulis, M., Kester, M. S., Maas, L. M., Stoica, R., Idreos, S., Ailamaki, A., & Callaghan, M.** (2016). *"Designing Access Methods: The RUM Conjecture"*. *EDBT: 19th International Conference on Extending Database Technology*, 217–228. [Harvard DASH Repository](https://dash.harvard.edu/handle/1/28552579)
 4. **Dong, S., Callaghan, M., Galanis, L., Borthakur, D., Sankar, T., & Akyildiz, S.** (2017). *"Optimizing Space Amplification in RocksDB"*. *CIDR: Conference on Innovative Data Systems Research*. [CIDR Paper](http://cidrdb.org/cidr2017/papers/p82-dong-rocksdb-final.pdf)
 5. **Bayer, R., & McCreight, E.** (1970). *"Organization and Maintenance of Large Ordered Indices"*. *Record of the 1970 ACM SIGFIDET Workshop on Data Description, Access and Control*, 107–141. [ACM Digital Library](https://doi.org/10.1145/1734663.1734671)
+

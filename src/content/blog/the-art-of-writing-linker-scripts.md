@@ -158,7 +158,7 @@ Look at the wildcards:
 
 ## 3. The Location Counter (`.`): The Treacherous Variable
 
-The single most consequential—and frequently misunderstood—primitive in linker scripts is the **Location Counter**, represented simply by a period: `.`.
+The single most consequential and frequently misunderstood primitive in linker scripts is the **Location Counter**, represented simply by a period: `.`.
 
 The location counter is an internal cursor that tracks the current virtual memory address during the linking process. You can inspect it, assign to it, and increment it:
 
@@ -486,7 +486,7 @@ Any section mapped to `/DISCARD/` is permanently evicted from the output binary.
 
 ## 7. A Masterclass Technique: Distributed Registration Arrays
 
-The most elegant pattern made possible by custom linker scripts is the **Zero-Overhead Static Registration Array**—the exact architectural pattern that powers:
+The most elegant pattern made possible by custom linker scripts is the **Zero-Overhead Static Registration Array** the exact architectural pattern that powers:
 - The Linux kernel's `__initcall` and `module_init` system.
 - Embedded command-line shells (CLI command registries).
 - Custom unit test runners (registering tests without manual central lists).
@@ -713,7 +713,7 @@ When your autonomous rover loses telemetry on Mars, when an automotive braking E
 
 It is almost always a failure of the last mile: an unaligned word boundary, a memory section collision, an interrupt vector stripped by an aggressive optimization flag, or a pointer dereferencing an unmapped address.
 
-To write a linker script is to look physical silicon in the eye and state with mathematical certainty where every byte must live. It is a craft of absolute accountability—a discipline that no software engineer who truly loves the machine should ever surrender.
+To write a linker script is to look physical silicon in the eye and state with mathematical certainty where every byte must live. It is a craft of absolute accountability a discipline that no software engineer who truly loves the machine should ever surrender.
 
 ---
 
@@ -724,3 +724,4 @@ To write a linker script is to look physical silicon in the eye and state with m
 3. **Levine, John R.** (2000). *Linkers and Loaders*. Morgan Kaufmann Publishers. (The classic, definitive textbook on binary file formats, relocation tables, and linker mechanics).
 4. **Tool Interface Standard (TIS) Committee.** (1995). *Executable and Linking Format (ELF) Specification Version 1.2*. [Refspecs Linux Foundation](https://refspecs.linuxfoundation.org/elf/elf.pdf)
 5. **ARM Limited.** (2020). *Arm Cortex-M4 Processor Technical Reference Manual*. ARM DDI 0439D. [ARM Developer Documentation](https://developer.arm.com/)
+
