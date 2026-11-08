@@ -62,7 +62,7 @@ graph TB
 
 ---
 
-## Paradigm 1: Standard PostgreSQL — The Volcano Iterator
+## Paradigm 1: Standard PostgreSQL The Volcano Iterator
 
 On a single, monolithic PostgreSQL instance, our query executes inside a single OS process spawned by `postmaster`. The query lifecycle follows a battle-tested pipeline that has evolved over thirty years:
 
@@ -174,7 +174,7 @@ Declarative partitioning gives you 90% of the benefits of sharding with 0% of th
 
 ---
 
-## Paradigm 3: Sharded PostgreSQL — The Proxy Façade
+## Paradigm 3: Sharded PostgreSQL The Proxy Façade
 
 When does single-node declarative partitioning finally fail?
 

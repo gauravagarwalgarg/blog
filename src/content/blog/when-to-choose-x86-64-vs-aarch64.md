@@ -291,10 +291,10 @@ Stop choosing instance types based on the price-per-hour column in your cloud bi
 
 ## Authoritative References & Further Reading
 
-1. **Arm Architecture Reference Manual Armv9-A** — Arm Ltd. *Section B2: The AArch64 Application-Level Memory Model* (Detailed semantics of `LDAR`, `STLR`, and weakly-ordered memory barriers).
-2. **Intel 64 and IA-32 Architectures Software Developer’s Manual** — Intel Corp. *Volume 3A, Chapter 8.2: Memory Ordering* (Formal specification of Intel Total Store Order / TSO).
-3. **AWS Graviton4 Architecture Whitepaper** — Annapurna Labs & Amazon Web Services (2024). *Neoverse V2 implementation, 2MB private L2 cache hierarchy, and core scaling*.
-4. **Linux Kernel Documentation** — Howells, D., McKenney, P. E., et al. *Linux Kernel Memory Barriers (`Documentation/memory-barriers.txt`)*. [kernel.org](https://www.kernel.org/doc/Documentation/memory-barriers.txt).
-5. **PostgreSQL Bug Fix Commit `E1tlXkn-000VZr-2D`** — Tom Lane (2024). *Fix `pg_trgm` sign-extension bugs on architectures where `char` is unsigned*. [PostgreSQL Git](https://git.postgresql.org/gitweb/?p=postgresql.git;a=commit;h=efa08fda).
-6. **Jemalloc Issue Tracker #1301** — *Memory overhead and fragmentation on systems configured with 64KB page sizes*. [GitHub jemalloc/jemalloc](https://github.com/jemalloc/jemalloc/issues/1301).
+1. **Arm Architecture Reference Manual Armv9-A** Arm Ltd. *Section B2: The AArch64 Application-Level Memory Model* (Detailed semantics of `LDAR`, `STLR`, and weakly-ordered memory barriers).
+2. **Intel 64 and IA-32 Architectures Software Developer’s Manual** Intel Corp. *Volume 3A, Chapter 8.2: Memory Ordering* (Formal specification of Intel Total Store Order / TSO).
+3. **AWS Graviton4 Architecture Whitepaper** Annapurna Labs & Amazon Web Services (2024). *Neoverse V2 implementation, 2MB private L2 cache hierarchy, and core scaling*.
+4. **Linux Kernel Documentation** Howells, D., McKenney, P. E., et al. *Linux Kernel Memory Barriers (`Documentation/memory-barriers.txt`)*. [kernel.org](https://www.kernel.org/doc/Documentation/memory-barriers.txt).
+5. **PostgreSQL Bug Fix Commit `E1tlXkn-000VZr-2D`** Tom Lane (2024). *Fix `pg_trgm` sign-extension bugs on architectures where `char` is unsigned*. [PostgreSQL Git](https://git.postgresql.org/gitweb/?p=postgresql.git;a=commit;h=efa08fda).
+6. **Jemalloc Issue Tracker #1301** *Memory overhead and fragmentation on systems configured with 64KB page sizes*. [GitHub jemalloc/jemalloc](https://github.com/jemalloc/jemalloc/issues/1301).
 7. **Lemire, D., & Langdale, G.** (2019). *Parsing Gigabytes of JSON per Second*. The VLDB Journal (Deep breakdown of SIMD vector register utilization in `simdjson`).

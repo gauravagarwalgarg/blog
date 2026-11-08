@@ -1,5 +1,5 @@
 ---
-title: "In the World of Tokens, MCP Is the New Interface for Everything — And That Should Terrify You"
+title: "In the World of Tokens, MCP Is the New Interface for Everything And That Should Terrify You"
 description: "Model Context Protocol is turning every SaaS product into a headless JSON-RPC endpoint. But handing nondeterministic token predictors ambient system authority is an architectural disaster waiting to happen."
 pubDate: 2026-10-04
 category: 'software-engineering'
