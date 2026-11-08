@@ -70,7 +70,7 @@ Computer science borrowed this maritime metaphor twice, creating a permanent lin
 
 When you plug a network cable into your laptop, you are plugging into a **Physical Port** (the 8P8C modular connector of an Ethernet interface). That connector links physical copper wires to your computer's **Network Interface Card (NIC)**. The NIC converts physical electromagnetic fluctuations into digital raw bits (`0`s and `1`s).
 
-Once those bits cross from the hardware wires into the operating system, the physical world ends. From that moment forward, every "port" discussed in computer networking is a **Software Port**—a logical addressing construct created by the transport layer protocols of the internet.
+Once those bits cross from the hardware wires into the operating system, the physical world ends. From that moment forward, every "port" discussed in computer networking is a **Software Port** a logical addressing construct created by the transport layer protocols of the internet.
 
 ---
 
@@ -153,7 +153,7 @@ What is `localhost`?
 
 $$\text{IPv4: } 127.0.0.1 \quad \mid \quad \text{IPv6: } ::1$$
 
-In the early IPv4 address space allocation (formalized in RFC 1122), the entire Class A network block `127.0.0.0/8`—consisting of over sixteen million IP addresses (`127.0.0.1` through `127.255.255.254`)—was set aside permanently for **Loopback**.
+In the early IPv4 address space allocation (formalized in RFC 1122), the entire Class A network block `127.0.0.0/8` consisting of over sixteen million IP addresses (`127.0.0.1` through `127.255.255.254`) was set aside permanently for **Loopback**.
 
 When your browser connects to `127.0.0.1`, something remarkable occurs inside the operating system kernel: **the packets never touch a wire.**
 
@@ -266,7 +266,7 @@ When you type `https://github.com`, your browser does not make you type `https:/
 - **Port 20 & 21**: FTP (File Transfer Protocol)
 - **Port 22**: SSH (Secure Shell for remote terminal access)
 - **Port 25**: SMTP (Simple Mail Transfer Protocol for sending email)
-- **Port 53**: DNS (Domain Name System—translating `google.com` to an IP address)
+- **Port 53**: DNS (Domain Name System translating `google.com` to an IP address)
 - **Port 80**: HTTP (Standard unencrypted web traffic)
 - **Port 443**: HTTPS (Web traffic encrypted via TLS/SSL)
 
@@ -457,7 +457,7 @@ A port is not a door. **A port is an index key into a kernel hash table of socke
 
 There is one final, magnificent architectural trick that makes the global internet possible, and it relies entirely on ports: **Network Address Translation (NAT)** and **Port Address Translation (PAT)**.
 
-In the late 1980s, computer scientists realized that IPv4's 32-bit address space—which caps out at roughly **4.29 billion addresses**—was rapidly running out. With billions of laptops, smartphones, tablets, and smart appliances coming online, how could every device have its own public IP address?
+In the late 1980s, computer scientists realized that IPv4's 32-bit address space which caps out at roughly **4.29 billion addresses** was rapidly running out. With billions of laptops, smartphones, tablets, and smart appliances coming online, how could every device have its own public IP address?
 
 The solution was formalized in RFC 1631 and RFC 3022: **Private IP Spaces** and **PAT**.
 
@@ -538,3 +538,4 @@ The next time you spin up a server, write `app.listen(8080)`, and open `localhos
 5. **Cotton, M., Eggert, L., Touch, J., Westerlund, M., & Cheshire, S.** (2011). *"Internet Assigned Numbers Authority (IANA) Procedures for the Management of the Service Name and Transport Protocol Port Number Registry"*. *IETF Best Current Practice RFC 6335*. [RFC Editor](https://www.rfc-editor.org/rfc/rfc6335.html).
 6. **Egevang, K., & Francis, P.** (1994). *"The IP Network Address Translator (NAT)"*. *IETF RFC 1631*. [RFC Editor](https://www.rfc-editor.org/rfc/rfc1631.html) *(The historical specification that introduced port-based translation to overcome IPv4 exhaustion).*
 7. **Stevens, W. Richard.** (1994). *TCP/IP Illustrated, Volume 1: The Protocols*. Addison-Wesley. *(The definitive textbook on transport layer protocols, packet structure, and socket architecture).*
+
