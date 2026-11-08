@@ -20,9 +20,9 @@ If you have ever attempted to write a high-throughput storage engine, an ultra-l
 
 In 2019, Jens Axboe merged `io_uring` into Linux 5.1. It is not an incremental optimization of `epoll`. It is a total architectural repudiation of how user space and kernel space communicate.
 
-By placing dual lockless ring buffers in shared memory, `io_uring` enables asynchronous disk and network I/O with unified semantics—and, under the right configuration, drops the number of system calls required to process millions of I/O operations to precisely zero.
+By placing dual lockless ring buffers in shared memory, `io_uring` enables asynchronous disk and network I/O with unified semantics and, under the right configuration, drops the number of system calls required to process millions of I/O operations to precisely zero.
 
-Yet, when you bring `io_uring` into Rust, you immediately hit a brick wall. The fundamental abstraction that powers async Rust—`Future::poll(&mut Context)`—was tailor-made for readiness-based `epoll`. When forced into the completion-based world of `io_uring`, Rust’s borrow checker does not just complain; it violently clashes with kernel-space memory guarantees.
+Yet, when you bring `io_uring` into Rust, you immediately hit a brick wall. The fundamental abstraction that powers async Rust `Future::poll(&mut Context)` was tailor-made for readiness-based `epoll`. When forced into the completion-based world of `io_uring`, Rust’s borrow checker does not just complain; it violently clashes with kernel-space memory guarantees.
 
 Here is the unvarnished systems engineering breakdown of how `io_uring` actually works beneath the libc wrappers, why it breaks the standard Tokio mental model, and how to harness it safely in production Rust.
 
@@ -83,7 +83,7 @@ tokio::fs::read("heavy_database.bin").await?;
 
 Tokio's `spawn_blocking` pushes the blocking file operation onto a thread pool (which defaults to up to 512 threads). This introduces context switches, thread stack allocations (typically 2MB per thread), thread synchronization lock contention, and L1/L2 cache pollution. 
 
-Linux did have an asynchronous storage API—POSIX AIO and kernel AIO (`io_submit`)—but it was an operational nightmare. It only functioned if you opened files with `O_DIRECT` (bypassing page cache entirely), required sector-aligned memory buffers, and could still block unpredictably if an inode metadata lock was contested.
+Linux did have an asynchronous storage API POSIX AIO and kernel AIO (`io_submit`) but it was an operational nightmare. It only functioned if you opened files with `O_DIRECT` (bypassing page cache entirely), required sector-aligned memory buffers, and could still block unpredictably if an inode metadata lock was contested.
 
 ### 3. Syscall Amplification & Buffer Pinning
 Every traditional read or write requires the kernel to look up the file descriptor in the process's file table (`fget()`), verify memory access boundaries, allocate an internal kernel buffer or lock physical memory pages (`get_user_pages()`), copy data across the protection boundary, and drop the reference (`fput()`). 
@@ -226,7 +226,7 @@ This kernel thread runs an aggressive polling loop directly over the shared memo
 
 The moment your Rust application updates the `SQ->tail` pointer with an atomic store, the kernel thread detects the delta, grabs the SQE, and submits the command to the block layer or network driver. When hardware DMA completes, the kernel thread writes the CQE to the completion ring.
 
-Your application submits operations, processes completions, streams gigabytes of data to disk, and accepts thousands of network connections—**without executing a single system call**.
+Your application submits operations, processes completions, streams gigabytes of data to disk, and accepts thousands of network connections **without executing a single system call**.
 
 ### The Brutal Tradeoff of SQPOLL
 Engineering offers no free lunches. The tradeoff of `SQPOLL` is pure CPU consumption. 
@@ -265,7 +265,7 @@ Look at the buffer argument: `buf: &mut ReadBuf<'_>`. It passes a **temporary, b
 In `epoll`, this is completely fine:
 1. `poll_read` calls `epoll_wait`. If the socket isn't ready, it registers the `Waker` and returns `Poll::Pending`.
 2. The user still owns the buffer.
-3. If the user decides to cancel the future—say, via `tokio::time::timeout`—the future is dropped. The borrowed buffer goes out of scope and gets safely deallocated or reused. No harm done.
+3. If the user decides to cancel the future say, via `tokio::time::timeout` the future is dropped. The borrowed buffer goes out of scope and gets safely deallocated or reused. No harm done.
 
 ### 2. The Completion Trap: Use-After-Free
 Now consider what happens if you attempt to wrap `io_uring` inside that exact same borrowed interface:

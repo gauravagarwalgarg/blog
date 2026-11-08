@@ -36,9 +36,9 @@ To see inside without a scalpel, you must take hundreds of separate 2D projectio
 
 And you have to spin them fast.
 
-Early CT scanners from the 1970s (the EMI-Scanner developed by Godfrey Hounsfield) took minutes to capture a single slice. The gantry moved linearly across the patient, rotated one degree, and translated back—the classic "translate-rotate" geometry. The patient had to hold still for half an hour. Respiratory motion, intestinal peristalsis, and cardiovascular pulsation turned images into unreadable smears of motion artifacts.
+Early CT scanners from the 1970s (the EMI-Scanner developed by Godfrey Hounsfield) took minutes to capture a single slice. The gantry moved linearly across the patient, rotated one degree, and translated back the classic "translate-rotate" geometry. The patient had to hold still for half an hour. Respiratory motion, intestinal peristalsis, and cardiovascular pulsation turned images into unreadable smears of motion artifacts.
 
-To freeze cardiac motion without stopping the heart, a modern scanner gantry must complete a full 360-degree rotation in **0.25 to 0.28 seconds**. That is four complete revolutions per second—roughly **240 to 250 RPM**.
+To freeze cardiac motion without stopping the heart, a modern scanner gantry must complete a full 360-degree rotation in **0.25 to 0.28 seconds**. That is four complete revolutions per second roughly **240 to 250 RPM**.
 
 ```mermaid
 graph TB
@@ -91,7 +91,7 @@ An X-ray tube weighing 50 kilograms on a bench suddenly weighs the equivalent of
 
 Until the late 1980s, CT gantries could not rotate continuously. They had thick umbilical cables connecting the rotating equipment to stationary wall power and control systems. The gantry would spin 360 degrees clockwise, stop, reverse, and spin 360 degrees counterclockwise while the patient table stepped forward slice by slice ("axial step-and-shoot"). It was slow, mechanically clunky, and wasted most of the scan time decelerating and accelerating.
 
-Continuous rotation—and the invention of **helical (spiral) CT**, where the table moves smoothly through the bore while the tube spins continuously—required eliminating the cables entirely.
+Continuous rotation and the invention of **helical (spiral) CT**, where the table moves smoothly through the bore while the tube spins continuously required eliminating the cables entirely.
 
 Power is transferred using **low-voltage slip rings**. High-grade electro-graphite or silver-alloy brushes ride along stationary bronze and copper concentric slip rings built into the frame circumference. The machine feeds 400 to 480 volts of three-phase AC across the sliding brushes. The heavy step-up transformers that convert that 480V into the 120,000 volts required by the X-ray tube are mounted directly onto the spinning rotor itself.
 
@@ -113,7 +113,7 @@ You cannot take high-speed burst photos of dense human bone without an absurd qu
 
 To generate diagnostic X-rays, you shoot a focused beam of electrons across a vacuum gap into a dense metal target (typically an alloy of 90% tungsten, 5% rhenium, backed by molybdenum and graphite). As high-energy electrons (accelerated through a potential difference of 70 to 140 kilovolts) crash into the tungsten atoms, they decelerate violently in the nuclear electric fields of the heavy tungsten nuclei. 
 
-This deceleration converts kinetic energy into photons—a phenomenon known as **Bremsstrahlung** ("braking radiation")—alongside characteristic X-ray emission lines from knocked-out inner-shell electrons.
+This deceleration converts kinetic energy into photons a phenomenon known as **Bremsstrahlung** ("braking radiation" alongside characteristic X-ray emission lines from knocked-out inner-shell electrons.
 
 ```
        [ Cathode Filament ]
@@ -141,7 +141,7 @@ The thermodynamic problem is horrific: **Bremsstrahlung is roughly 1% efficient.
 
 Over 99% of the electrical energy injected into the tube does not become X-rays. It converts instantaneously into pure, unadulterated thermal energy at the microscopic electron focal spot (a rectangle as small as $0.6 \times 0.7\text{ mm}$).
 
-A high-end chest or trauma scan runs the tube at 120 kV and 800 milliamps. That is **96 kilowatts of instantaneous power**—roughly the power consumption of fifty residential homes—dumped into an area smaller than the head of a match.
+A high-end chest or trauma scan runs the tube at 120 kV and 800 milliamps. That is **96 kilowatts of instantaneous power** roughly the power consumption of fifty residential homes dumped into an area smaller than the head of a match.
 
 If the electron beam struck a stationary piece of tungsten, the metal would liquefy and vaporize in less than five milliseconds, destroying the vacuum tube.
 
@@ -159,7 +159,7 @@ The tube does not just rotate on its internal bearings; the entire tube housing 
 
 On the other side of the patient, opposite the tube, sits the detector array. 
 
-In a modern 64-, 128-, or 320-slice scanner, this is not a single camera sensor. It is an arc of thousands of discrete solid-state detector elements arranged in a two-dimensional matrix. In a 320-slice scanner (such as the Canon Aquilion ONE), the detector is 16 centimeters wide along the patient's $z$-axis, containing 320 rows of roughly 900 detector channels each—nearly **300,000 individual detector elements**.
+In a modern 64-, 128-, or 320-slice scanner, this is not a single camera sensor. It is an arc of thousands of discrete solid-state detector elements arranged in a two-dimensional matrix. In a 320-slice scanner (such as the Canon Aquilion ONE), the detector is 16 centimeters wide along the patient's $z$-axis, containing 320 rows of roughly 900 detector channels each nearly **300,000 individual detector elements**.
 
 A 16 cm wide detector can cover an entire adult human heart or whole brain in a single 250 ms revolution without the table moving at all.
 
@@ -198,9 +198,9 @@ sequenceDiagram
 
 How does each microscopic element detect an X-ray photon?
 
-1. **Scintillation Crystal**: High-energy X-ray photons cannot be directly measured by standard silicon without rapid radiation damage. Instead, the incoming photon strikes an ultra-fast ceramic scintillator—typically **Gadolinium Oxysulfide ($Gd_2O_2S$)** doped with rare-earth activators (Praseodymium, Cerium, Fluorine) or **Cadmium Tungstate ($CdWO_4$)**. The crystal absorbs the high-energy X-ray photon and re-emits its energy as a burst of hundreds of visible-spectrum green photons within nanoseconds.
+1. **Scintillation Crystal**: High-energy X-ray photons cannot be directly measured by standard silicon without rapid radiation damage. Instead, the incoming photon strikes an ultra-fast ceramic scintillator typically **Gadolinium Oxysulfide ($Gd_2O_2S$)** doped with rare-earth activators (Praseodymium, Cerium, Fluorine) or **Cadmium Tungstate ($CdWO_4$)**. The crystal absorbs the high-energy X-ray photon and re-emits its energy as a burst of hundreds of visible-spectrum green photons within nanoseconds.
 2. **Photodiode Array**: Directly beneath each crystal sits a high-efficiency silicon PIN photodiode. When the green scintillation photons strike the depletion region, they generate electron-hole pairs, producing a tiny, analog electric current proportional to the intensity of the received X-rays.
-3. **The Multi-Channel ASIC DAS (Data Acquisition System)**: The currents coming out of the photodiodes are microscopic—fractions of a nanoampere down to picoamperes. The DAS consists of custom mixed-signal ASICs mounted directly behind the photodiodes. Each ASIC integrates charge, amplifies the signal, applies temperature compensation, and converts the analog current into a high-precision digital value using an **18-bit to 24-bit Analog-to-Digital Converter (ADC)**.
+3. **The Multi-Channel ASIC DAS (Data Acquisition System)**: The currents coming out of the photodiodes are microscopic fractions of a nanoampere down to picoamperes. The DAS consists of custom mixed-signal ASICs mounted directly behind the photodiodes. Each ASIC integrates charge, amplifies the signal, applies temperature compensation, and converts the analog current into a high-precision digital value using an **18-bit to 24-bit Analog-to-Digital Converter (ADC)**.
 
 This conversion does not happen at 60 frames per second. 
 
@@ -244,7 +244,7 @@ $$p = \ln\left(\frac{I_0}{I}\right) = \int_{L} \mu(x, y) \, ds$$
 
 The value $p$ measured by every single detector channel at every single angular view is nothing more than the **line integral of tissue attenuation** along that specific ray.
 
-In mathematics, the mapping of a 2D function $f(x,y)$ to its set of line integrals across all angles $\theta$ and radial offsets $s$ is known as the **Radon Transform**, formulated by Austrian mathematician Johann Radon in 1917—fifty-five years before the first physical CT scanner existed:
+In mathematics, the mapping of a 2D function $f(x,y)$ to its set of line integrals across all angles $\theta$ and radial offsets $s$ is known as the **Radon Transform**, formulated by Austrian mathematician Johann Radon in 1917 fifty-five years before the first physical CT scanner existed:
 
 $$R[f](s, \theta) = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(x, y) \, \delta(x\cos\theta + y\sin\theta - s) \, dx \, dy$$
 
@@ -300,7 +300,7 @@ The math executed for every slice is:
 
 $$f(x, y) = \int_0^{\pi} \tilde{p}(x\cos\theta + y\sin\theta, \theta) \, d\theta$$
 
-For 3D cone-beam geometry (where wide multi-row detectors capture rays that diverge along the patient's longitudinal axis like a cone rather than a flat fan), this is extended into the **Feldkamp-Davis-Kress (FDK)** algorithm—a 3D weighted backprojection that handles rays intersecting the tilted detector planes.
+For 3D cone-beam geometry (where wide multi-row detectors capture rays that diverge along the patient's longitudinal axis like a cone rather than a flat fan), this is extended into the **Feldkamp-Davis-Kress (FDK)** algorithm a 3D weighted backprojection that handles rays intersecting the tilted detector planes.
 
 ### The Modern Shift: Iterative Reconstruction & Neural Denoising
 
@@ -308,7 +308,7 @@ For thirty years, FBP reigned supreme because it was computationally cheap: a se
 
 The fatal flaw of FBP is that it assumes an idealized mathematical universe. It assumes zero noise, infinitely small focal spots, and monochromatic X-ray spectra. When photon counts drop (which happens when you lower the radiation dose to protect the patient), Poisson quantum noise explodes. In FBP, that noise turns into harsh, streaky artifacts that obscure tumors.
 
-Today, high-end scanners use **Model-Based Iterative Reconstruction (MBIR)**—marketed under names like GE's ASiR-V, Siemens' ADMIRE, and Canon's AIDR 3D—and deep learning reconstruction engines (GE TrueFidelity, Philips Precise Image).
+Today, high-end scanners use **Model-Based Iterative Reconstruction (MBIR)** marketed under names like GE's ASiR-V, Siemens' ADMIRE, and Canon's AIDR 3D and deep learning reconstruction engines (GE TrueFidelity, Philips Precise Image).
 
 ```mermaid
 graph LR
@@ -390,7 +390,7 @@ In older CT systems, slices were thick. A voxel might measure $0.5\text{ mm} \ti
 
 Modern multi-detector scanners achieve **sub-millimeter isotropic resolution**. 
 
-A voxel is a perfect mathematical cube—for example, exactly $0.4\text{ mm} \times 0.4\text{ mm} \times 0.4\text{ mm}$. 
+A voxel is a perfect mathematical cube for example, exactly $0.4\text{ mm} \times 0.4\text{ mm} \times 0.4\text{ mm}$. 
 
 Because the voxels are isotropic cubes, the 3D volume in GPU memory has no preferred spatial orientation. The workstation can slice through the data along any arbitrary plane in three dimensions with zero interpolation distortion:
 
@@ -454,8 +454,8 @@ For all its engineering triumphs, computed tomography is locked in an unrelentin
     Cardiac Freezing)             Cancer Risk)
 ```
 
-1. **The Dose Dilemma (ALARA)**: Unlike MRI (which uses radiofrequency pulses and magnetic fields) or Ultrasound (sound waves), CT uses ionizing X-radiation. High-energy photons strip electrons from atoms, creating free radicals that can break DNA strands. Clinical scanning is strictly bound by the ALARA principle: *As Low As Reasonably Achievable*. You can achieve razor-sharp, zero-noise images simply by cranking the tube current to 1,000 mA, but at the cost of unacceptable patient cancer risk. Every algorithm introduced in the last two decades—from bowtie filters that attenuate peripheral rays, to automatic tube current modulation ($z$-axis auto-mA that dims the beam over lungs and brightens it over dense pelvic bone), to deep learning reconstruction—exists to lower photon dose without losing diagnostic signal.
-2. **Beam Hardening & Metal Artifacts**: A real-world X-ray tube produces a polychromatic spectrum of photon energies (from 30 keV up to the peak 120 keV). As the beam passes through human tissue, lower-energy ("soft") photons are absorbed much more rapidly than higher-energy ("hard") photons. The average energy of the beam increases—it "hardens"—as it penetrates deeper. This creates dark streaking artifacts between dense bones. Worse, if a patient has a titanium hip replacement or dental amalgam, the metal absorbs nearly 100% of the photons across all projection angles. The sinogram values hit zero (total photon starvation), producing dramatic, blinding starburst streaks across the reconstructed slice.
+1. **The Dose Dilemma (ALARA)**: Unlike MRI (which uses radiofrequency pulses and magnetic fields) or Ultrasound (sound waves), CT uses ionizing X-radiation. High-energy photons strip electrons from atoms, creating free radicals that can break DNA strands. Clinical scanning is strictly bound by the ALARA principle: *As Low As Reasonably Achievable*. You can achieve razor-sharp, zero-noise images simply by cranking the tube current to 1,000 mA, but at the cost of unacceptable patient cancer risk. Every algorithm introduced in the last two decades from bowtie filters that attenuate peripheral rays, to automatic tube current modulation ($z$-axis auto-mA that dims the beam over lungs and brightens it over dense pelvic bone), to deep learning reconstruction exists to lower photon dose without losing diagnostic signal.
+2. **Beam Hardening & Metal Artifacts**: A real-world X-ray tube produces a polychromatic spectrum of photon energies (from 30 keV up to the peak 120 keV). As the beam passes through human tissue, lower-energy ("soft") photons are absorbed much more rapidly than higher-energy ("hard") photons. The average energy of the beam increases it "hardens" as it penetrates deeper. This creates dark streaking artifacts between dense bones. Worse, if a patient has a titanium hip replacement or dental amalgam, the metal absorbs nearly 100% of the photons across all projection angles. The sinogram values hit zero (total photon starvation), producing dramatic, blinding starburst streaks across the reconstructed slice.
 3. **The Mechanical Ceiling**: Can we spin the gantry at 10 revolutions per second (600 RPM) to freeze ventricular heart motion even cleaner? Probably not with mechanical gantries. Centripetal force scales with the **square** of rotational velocity ($\omega^2$). Doubling the rotation speed quadruples the G-forces, pushing outer components past 150 Gs. The structural mass required to contain an accidental rotor burst at those speeds would make scanners prohibitively heavy for hospital floors.
 
 ### The Next Frontier: Photon-Counting Detectors

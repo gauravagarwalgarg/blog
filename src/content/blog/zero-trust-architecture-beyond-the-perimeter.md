@@ -183,7 +183,7 @@ Identity is worthless if the machine hosting the identity is compromised.
 If an engineer with valid corporate credentials accesses internal systems from a personal laptop infected with a kernel keylogger or infostealer malware, MFA and mTLS will happily authenticate the malware.
 
 In true Zero-Trust:
-- The device itself must possess a hardware-backed cryptographic identity—typically an X.509 certificate stored in a **Trusted Platform Module (TPM 2.0)** or Apple Secure Enclave.
+- The device itself must possess a hardware-backed cryptographic identity typically an X.509 certificate stored in a **Trusted Platform Module (TPM 2.0)** or Apple Secure Enclave.
 - Before access to the network or proxy is granted, the device must submit health telemetry (disk encryption status, active EDR agent, patched OS kernel version). If the device deviates from the compliance baseline, access is revoked instantly, regardless of valid user credentials.
 
 ### 2. Token Exchange & Downstream Delegation (RFC 8693)
@@ -214,7 +214,7 @@ Notice the `act` (actor) claim:
 If `order-service` attempts to use this token to debit `Bob`, or charge \$10,000, `payment-service` rejects the request locally at the policy evaluation layer. Even if an attacker gains arbitrary code execution inside `order-service`, they cannot perform actions beyond the narrow cryptographic scopes delegated by active user transactions.
 
 ### 3. Decoupled Fine-Grained Authorization (ReBAC & ABAC)
-Hardcoding authorization logic into application code—`if user.is_admin()`—is where security architectures go to die. Authorization policies must be centralized, declarative, and evaluated locally in microsecond timeframes.
+Hardcoding authorization logic into application code `if user.is_admin()` is where security architectures go to die. Authorization policies must be centralized, declarative, and evaluated locally in microsecond timeframes.
 
 Modern architectures separate authorization into two distinct models:
 
@@ -265,7 +265,7 @@ If your services establish short-lived HTTP connections instead of persistent, m
 ### 3. The Modern Solution: eBPF-Based Kernel Bypassing
 The infrastructure world is actively re-architecting the Zero-Trust data plane to eliminate the sidecar proxy entirely.
 
-Using **eBPF (Extended Berkeley Packet Filter)**—pioneered by projects like **Cilium**—the Linux kernel can inspect sockets and enforce identity-based network policies directly inside kernel space at the socket layer (`sockops`).
+Using **eBPF (Extended Berkeley Packet Filter)** pioneered by projects like **Cilium** the Linux kernel can inspect sockets and enforce identity-based network policies directly inside kernel space at the socket layer (`sockops`).
 
 ```mermaid
 graph TB
@@ -327,3 +327,4 @@ You have simply traded an honest, visible wall for an invisible, expensive maze 
 3. **SPIFFE / SPIRE Project Authors.** (2023). *The Secure Production Identity Framework for Everyone (SPIFFE) Specification*. [SPIFFE Standard Specs](https://github.com/spiffe/spiffe)
 4. **Hardt, D., Jones, M., & Nadalin, A.** (2020). *OAuth 2.0 Token Exchange (RFC 8693)*. Internet Engineering Task Force (IETF). [RFC 8693](https://www.rfc-editor.org/rfc/rfc8693)
 5. **Pang, R., et al.** (2019). *"Zanzibar: Google’s Consistent, Global Authorization System"*. *USENIX Annual Technical Conference (ATC 19)*, 921–935. [USENIX Zanzibar Paper](https://www.usenix.org/conference/atc19/presentation/pang)
+

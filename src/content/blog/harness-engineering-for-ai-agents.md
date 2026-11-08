@@ -18,7 +18,7 @@ In classical systems engineering, whether you are designing flight control compu
 
 The foundational truth of autonomous systems is simple: **The model is not the agent.**
 
-The model is merely the computational core—an approximate, nondeterministic processing unit. The agent is the entire enclosing system: the runtime, the environment abstractions, the memory stores, the verification pipelines, and the execution boundaries. 
+The model is merely the computational core an approximate, nondeterministic processing unit. The agent is the entire enclosing system: the runtime, the environment abstractions, the memory stores, the verification pipelines, and the execution boundaries. 
 
 We call this discipline **Harness Engineering**.
 
@@ -92,7 +92,7 @@ If your agent framework consists of an LLM query loop wrapped around a naive `wh
 
 To understand why harnesses are mathematically mandatory, consider the trajectory failure curve of autonomous workflows.
 
-Assume an agent is tasked with a multi-step workflow—for example, reproducing an issue, locating relevant source files, creating a reproduction test, applying a patch, and verifying the regression test suite. Suppose this requires $N$ discrete steps.
+Assume an agent is tasked with a multi-step workflow for example, reproducing an issue, locating relevant source files, creating a reproduction test, applying a patch, and verifying the regression test suite. Suppose this requires $N$ discrete steps.
 
 If the model and environment combined have an independent step fidelity probability $p$ of executing each tool invocation without state corruption, semantic hallucination, or tool argument drift:
 
@@ -311,7 +311,7 @@ By decoupling the Brain from the Hands, your primary planner context stays under
 
 ## 6. Memory Must Become Durable State, Not Transcript Accumulation
 
-In natural language, people say "the model remembered." In systems engineering, we know that transformers don't remember anything across invocations—they merely condition on tokens currently in their KV-cache.
+In natural language, people say "the model remembered." In systems engineering, we know that transformers don't remember anything across invocations they merely condition on tokens currently in their KV-cache.
 
 Relying on chat history as memory is equivalent to building an operating system where memory management is just concatenating every system interrupt into a global string buffer.
 
@@ -395,7 +395,7 @@ In aviation safety, medical devices, and high-reliability software engineering, 
 
 Why? Because the human brain has an innate confirmation bias. 
 
-Large Language Models have an even worse vulnerability: **in-context sycophancy**. Research evaluating LLM self-critique shows that when a model is asked to evaluate its own code within the same context window, it exhibits an **82.4% false-positive confirmation bias**—agreeing with its own logic and overlooking subtle edge cases it previously generated.
+Large Language Models have an even worse vulnerability: **in-context sycophancy**. Research evaluating LLM self-critique shows that when a model is asked to evaluate its own code within the same context window, it exhibits an **82.4% false-positive confirmation bias** agreeing with its own logic and overlooking subtle edge cases it previously generated.
 
 To build reliable agents, you must decouple the worker from the evaluator:
 
@@ -806,7 +806,7 @@ $$\text{Efficiency} = \frac{\text{Accepted Units of Work}}{\text{Human Review Mi
 | **Silent Regression Rate** | 18.5% | **< 1.2%** |
 | **Net Operational Cost per Accepted PR** | High (human debugging overhead) | **Low (amortized across verified autonomy)** |
 
-When you invest in harness engineering, you are not increasing overhead—you are radically driving down the total cost of ownership of autonomous AI systems.
+When you invest in harness engineering, you are not increasing overhead you are radically driving down the total cost of ownership of autonomous AI systems.
 
 ---
 
@@ -836,4 +836,4 @@ But as we transition from chat interfaces to autonomous agents that act on behal
 
 You cannot prompt away an unhandled exception. You cannot prompt away a race condition. You cannot prompt away a Confused Deputy vulnerability.
 
-The future of autonomous systems will not belong to whoever writes the cleverest prompt. It will belong to the engineers who master **Harness Engineering**—those who treat foundation models with the same healthy skepticism we bring to any powerful, nondeterministic component, surrounding them with the defensive architecture, durable state machines, and rigorous verification required to build software that simply does not fall apart.
+The future of autonomous systems will not belong to whoever writes the cleverest prompt. It will belong to the engineers who master **Harness Engineering** those who treat foundation models with the same healthy skepticism we bring to any powerful, nondeterministic component, surrounding them with the defensive architecture, durable state machines, and rigorous verification required to build software that simply does not fall apart.

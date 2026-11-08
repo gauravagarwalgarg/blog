@@ -223,7 +223,7 @@ graph TD
 This pattern triggers severe architectural pathologies:
 1. **Context Window Flooding:** Ingesting raw DDL for dozens of tables burns tens of thousands of tokens per turn. As we covered in our context engineering analysis, attention fidelity degrades sharply when prompt size balloons with low-signal schema noise.
 2. **Schema Brute-Forcing:** The agent spends 8 to 12 inference cycles simply attempting to deduce the foreign key relationships between tables before it ever attempts to answer the user's question.
-3. **Hallucinated Joins:** Faced with multiple tables that contain a `customer_id` column, the model guesses the join path—often joining through intermediate staging or archive tables that contain stale or duplicated records.
+3. **Hallucinated Joins:** Faced with multiple tables that contain a `customer_id` column, the model guesses the join path often joining through intermediate staging or archive tables that contain stale or duplicated records.
 
 ### The Fix: Semantic Schema Annotations and Scoped Catalogs
 
@@ -545,10 +545,10 @@ graph TB
 
 The fundamental rule of distributed systems engineering has not changed in forty years: **Never trust the client.**
 
-A Large Language Model is simply a client—an exceptionally articulate, highly capable, but fundamentally nondeterministic client. You would never build an e-commerce platform that allows a web browser to send arbitrary SQL directly to your primary database over an open TCP socket.
+A Large Language Model is simply a client an exceptionally articulate, highly capable, but fundamentally nondeterministic client. You would never build an e-commerce platform that allows a web browser to send arbitrary SQL directly to your primary database over an open TCP socket.
 
 Why would you allow an AI agent to do it?
 
 When you replace ambient authority with capability-based security, replace raw ad-hoc SQL with vetted reports as tools, and anchor your authorization rules inside the database kernel with Row-Level Security, you eliminate the risks of data corruption, performance starvation, and prompt injection.
 
-Your AI agent gets the data it needs to drive incredible business value—and your database stays firmly, deterministically locked down.
+Your AI agent gets the data it needs to drive incredible business value and your database stays firmly, deterministically locked down.

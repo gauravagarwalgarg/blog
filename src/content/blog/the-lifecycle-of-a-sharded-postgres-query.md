@@ -16,11 +16,11 @@ Then the product scales. Your `orders` table crosses 100 million rows. Disk I/O 
 
 At this point, someone in an architecture review inevitably drops the buzzword: *"We need to shard."*
 
-Before you dismantle your relational database into a distributed cluster of sixteen independent nodes, you need to understand what you are actually trading away. Moving from single-node PostgreSQL to a sharded architecture is not just adding more servers—it is replacing an elegant, hardware-optimized local iterator engine with a distributed systems coordinator operating over lossy network sockets.
+Before you dismantle your relational database into a distributed cluster of sixteen independent nodes, you need to understand what you are actually trading away. Moving from single-node PostgreSQL to a sharded architecture is not just adding more servers  it is replacing an elegant, hardware-optimized local iterator engine with a distributed systems coordinator operating over lossy network sockets.
 
 To see why, let's trace the execution of a standard relational query across the three fundamental stages of PostgreSQL scaling: **Normal (Single-Node)**, **Declarative Partitioning**, and **Multi-Node Sharding**.
 
-Here is our benchmark query—a standard analytical join between customers and recent orders:
+Here is our benchmark query  a standard analytical join between customers and recent orders:
 
 ```sql
 SELECT customers.name, orders.total, orders.created_at
@@ -80,7 +80,7 @@ PostgreSQL implements the **Volcano iterator model** (pioneered by Goetz Graefe 
 TupleTableSlot* ExecProcNode(PlanState *node);
 ```
 
-The execution engine is demand-driven. The top-level node in our plan—a `Hash Join`—calls `ExecProcNode()` on its children to pull tuples on demand:
+The execution engine is demand-driven. The top-level node in our plan  a `Hash Join`  calls `ExecProcNode()` on its children to pull tuples on demand:
 
 ```text
                   -> Hash Join (Join orders.customer_id = customers.id)
@@ -98,7 +98,7 @@ The execution engine is demand-driven. The top-level node in our plan—a `Hash 
 
 ### Why This Is Ridiculously Fast
 
-Everything lives in a single shared-memory address space. If the data is cached in `shared_buffers` or the operating system's page cache, tuple transfers happen at memory bus speeds—tens of gigabytes per second with zero network latency. If an index fits in L3 cache, lookups take nanoseconds.
+Everything lives in a single shared-memory address space. If the data is cached in `shared_buffers` or the operating system's page cache, tuple transfers happen at memory bus speeds  tens of gigabytes per second with zero network latency. If an index fits in L3 cache, lookups take nanoseconds.
 
 Transactions are coordinated locally via atomic instructions and shared locks (`LWLock`), and data durability is guaranteed by a single, append-only Write-Ahead Log (WAL) streaming sequentially to NVMe storage.
 
@@ -367,7 +367,7 @@ graph TB
 When tables are **co-located**:
 - Customer Alice and every single order Alice has ever placed are guaranteed to live on the exact same PostgreSQL shard.
 - The router no longer needs to scatter, buffer, and join rows in memory.
-- The router pushes the *entire* SQL query—joins, where clauses, aggregations—down into the physical PostgreSQL instances intact.
+- The router pushes the *entire* SQL query  joins, where clauses, aggregations  down into the physical PostgreSQL instances intact.
 
 Each shard executes the join locally in C using its native Volcano engine, and streams fully joined result rows back to the router. The router acts as a pure passthrough multiplexer, saving thousands of CPU cycles and gigabytes of memory.
 
@@ -408,7 +408,7 @@ Save sharding for when the laws of physics give you no other choice.
 
 ## Authoritative References & Further Reading
 
-1. **Graefe, G.** (1994). *Volcano—An Extensible and Parallel Query Evaluation System*. IEEE Transactions on Knowledge and Data Engineering. [IEEE Xplore](https://ieeexplore.ieee.org/document/277772).
+1. **Graefe, G.** (1994). *Volcano  An Extensible and Parallel Query Evaluation System*. IEEE Transactions on Knowledge and Data Engineering. [IEEE Xplore](https://ieeexplore.ieee.org/document/277772).
 2. **PostgreSQL Global Development Group**. *PostgreSQL Source Code: `src/backend/executor/execProcnode.c` (The Executor Engine)*. [git.postgresql.org](https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/executor/execProcnode.c).
 3. **PostgreSQL Documentation**. *Chapter 5.11: Table Partitioning and Constraint Exclusion*. [PostgreSQL Manual](https://www.postgresql.org/docs/current/ddl-partitioning.html).
 4. **Darwich, A.** (2026). *The Lifecycle of a Sharded Postgres Query*. PlanetScale Engineering Blog. [planetscale.com](https://planetscale.com/blog/the-lifecycle-of-a-sharded-postgres-query).

@@ -10,7 +10,7 @@ readingTime: '10 min'
 
 Cloud management consoles have pulled off a brilliant marketing trick: they convinced the software industry that compute is a fungible commodity.
 
-Open the AWS, GCP, or Azure console, and you are presented with a clean table of options: 4 vCPUs, 16 GB of RAM, $0.16 per hour. Next to it sits an alternative with the exact same numbers, but powered by an ARM-based chip—AWS Graviton, GCP Axion, or Ampere Altra—priced 15% to 20% lower. The documentation suggests you can swap between x86-64 and aarch64 as effortlessly as changing a DNS record. Just recompile your Docker container, redeploy your pods, and pocket the margin.
+Open the AWS, GCP, or Azure console, and you are presented with a clean table of options: 4 vCPUs, 16 GB of RAM, $0.16 per hour. Next to it sits an alternative with the exact same numbers, but powered by an ARM-based chip AWS Graviton, GCP Axion, or Ampere Altra priced 15% to 20% lower. The documentation suggests you can swap between x86-64 and aarch64 as effortlessly as changing a DNS record. Just recompile your Docker container, redeploy your pods, and pocket the margin.
 
 If your entire workload consists of a stateless Python CRUD service or a Node.js API processing twenty requests a second, that abstraction holds up fine. You can stop reading here, pick the cheaper instance, and go enjoy your weekend.
 
@@ -24,7 +24,7 @@ Here is the unvarnished systems engineering breakdown of what actually changes w
 
 The single biggest operational difference between cloud x86-64 and ARM instances is something most engineers never see in `top`: how a "vCPU" is mapped to physical silicon.
 
-On conventional x86 cloud instances (Intel Xeon and standard AMD EPYC), one vCPU is almost never an entire CPU core. It is an **SMT (Simultaneous Multi-Threading)** hardware thread—what Intel branded as Hyper-Threading. A single physical CPU core houses multiple execution units (ALUs, FPUs, vector pipelines), but a single instruction stream rarely keeps all of them saturated. Memory stalls and branch mispredictions leave execution ports idling. SMT exploits this by keeping two separate architectural register states on one physical core, interleaving instructions from two threads into the same execution pipeline.
+On conventional x86 cloud instances (Intel Xeon and standard AMD EPYC), one vCPU is almost never an entire CPU core. It is an **SMT (Simultaneous Multi-Threading)** hardware thread what Intel branded as Hyper-Threading. A single physical CPU core houses multiple execution units (ALUs, FPUs, vector pipelines), but a single instruction stream rarely keeps all of them saturated. Memory stalls and branch mispredictions leave execution ports idling. SMT exploits this by keeping two separate architectural register states on one physical core, interleaving instructions from two threads into the same execution pipeline.
 
 Think of two line cooks working in a single kitchen. They can produce more meals per hour than one cook, but they are sharing the exact same stove, refrigerator, and cutting board. When Cook A starts searing eight pans of steaks at once, Cook B stands there holding a spatula, waiting for a burner to open up.
 
@@ -68,7 +68,7 @@ graph TB
 
 On an x86 cloud instance with SMT, your two vCPUs share execution units and, more importantly, share L1 and L2 caches. If the noisy neighbor running on sibling thread B triggers cache thrashing, thread A's L1 cache lines get evicted.
 
-ARM server chips—specifically AWS Graviton (built on Arm Neoverse cores) and Google Axion—eschewed SMT entirely. **Every vCPU you buy on Graviton is a complete, unshared physical core.** Each core has its own private execution units, its own branch predictor, and its own private **2 MB L2 cache** (on Graviton4's Neoverse V2, doubled from Graviton3).
+ARM server chips specifically AWS Graviton (built on Arm Neoverse cores) and Google Axion eschewed SMT entirely. **Every vCPU you buy on Graviton is a complete, unshared physical core.** Each core has its own private execution units, its own branch predictor, and its own private **2 MB L2 cache** (on Graviton4's Neoverse V2, doubled from Graviton3).
 
 ### Why This Reshapes Tail Latency (p99)
 
@@ -100,7 +100,7 @@ The only reordering x86 hardware permits is that a local load can execute before
 
 ### AArch64: Weak Memory Ordering
 
-AArch64 employs a **weakly ordered memory model**. The CPU pipeline is allowed to reorder almost *any* memory access—loads with loads, stores with stores, loads with stores—provided that single-threaded program logic (data dependency) is respected.
+AArch64 employs a **weakly ordered memory model**. The CPU pipeline is allowed to reorder almost *any* memory access loads with loads, stores with stores, loads with stores provided that single-threaded program logic (data dependency) is respected.
 
 If two writes touch different memory addresses, the ARM out-of-order execution engine and store buffers can commit them to the cache hierarchy in whatever sequence maximizes pipeline efficiency.
 
@@ -184,7 +184,7 @@ This register disparity is not academic; it dictates database query speed:
 
 There is, however, an architectural catch to x86 vector prowess. 
 
-Firing up 512-bit execution units requires massive amounts of electrical current. On older Intel architectures (Haswell through Skylake/Cascade Lake), executing AVX-512 instructions forced the processor to drop its core clock frequency—sometimes by up to 20%—to stay within its thermal power budget (TDP). Worse, that frequency penalty affected *all* scalar code running on that core for several milliseconds after the vector instruction completed.
+Firing up 512-bit execution units requires massive amounts of electrical current. On older Intel architectures (Haswell through Skylake/Cascade Lake), executing AVX-512 instructions forced the processor to drop its core clock frequency sometimes by up to 20% to stay within its thermal power budget (TDP). Worse, that frequency penalty affected *all* scalar code running on that core for several milliseconds after the vector instruction completed.
 
 Modern AMD Zen 4/Zen 5 architectures and the latest Intel Xeon 6 chips have largely neutralized this frequency downclocking by implementing AVX-512 via dual 256-bit execution pipes or advanced power delivery. But the principle remains: **x86 owns raw SIMD vector throughput; ARM owns thermal consistency.**
 
@@ -196,17 +196,17 @@ On AArch64, the hardware Memory Management Unit (MMU) natively supports three di
 
 Why would anyone want a 64 KB page size? **TLB efficiency.**
 
-The Translation Lookaside Buffer (TLB) is a fast, hardware-managed cache inside the CPU core that stores virtual-to-physical address mappings. When an application accesses memory that is not cached in the TLB, the CPU must halt and execute a "page table walk"—traversing up to four levels of page directory tables in main memory to translate the address.
+The Translation Lookaside Buffer (TLB) is a fast, hardware-managed cache inside the CPU core that stores virtual-to-physical address mappings. When an application accesses memory that is not cached in the TLB, the CPU must halt and execute a "page table walk" traversing up to four levels of page directory tables in main memory to translate the address.
 
 If you have a 128 GB Redis instance running on 4 KB pages, the operating system must track **33,554,432 distinct pages**. No TLB on earth can cache that. The CPU spends a huge percentage of its cycles stalled on page table walks.
 
-By switching the Linux kernel to `CONFIG_ARM64_64K_PAGES`, that same 128 GB footprint requires only **2,097,152 pages**—a 16x reduction in page count. For database workloads with massive, continuous memory allocations, 64 KB pages can produce a 10% to 15% throughput improvement. This is why Red Hat Enterprise Linux (RHEL) and certain early AWS Graviton kernel builds opted for 64 KB page configurations by default.
+By switching the Linux kernel to `CONFIG_ARM64_64K_PAGES`, that same 128 GB footprint requires only **2,097,152 pages** a 16x reduction in page count. For database workloads with massive, continuous memory allocations, 64 KB pages can produce a 10% to 15% throughput improvement. This is why Red Hat Enterprise Linux (RHEL) and certain early AWS Graviton kernel builds opted for 64 KB page configurations by default.
 
 ### The Microservice Disaster: Internal Fragmentation
 
 For small workloads, 64 KB pages are an absolute disaster.
 
-Memory cannot be allocated in fractions of a page. If a lightweight Go microservice requests 6 KB of memory from the OS via `mmap`, the kernel must allocate an entire 64 KB page. The remaining 58 KB is dead space—a phenomenon known as **internal fragmentation**.
+Memory cannot be allocated in fractions of a page. If a lightweight Go microservice requests 6 KB of memory from the OS via `mmap`, the kernel must allocate an entire 64 KB page. The remaining 58 KB is dead space a phenomenon known as **internal fragmentation**.
 
 ```
 4 KB Page Granule (Standard x86):
@@ -256,7 +256,7 @@ When a team set up a secondary replica on ARM64 and streamed write-ahead logs (W
 
 This illustrates an immutable rule of systems architecture: **you cannot safely perform physical, byte-for-byte disk or WAL replication across different CPU architectures.** If you migrate databases between x86 and aarch64, you must use **logical replication**, forcing the destination system to re-index rows using its own local collation and comparison semantics.
 
-As I documented in [Unleashing the Power of the Yocto Project](/posts/unleashing-yocto-project-custom-linux), cross-compilation across ISAs isn't just about targeting a new instruction set—it is about managing thousands of subtle ABI assumptions embedded across your toolchain and runtime libraries.
+As I documented in [Unleashing the Power of the Yocto Project](/posts/unleashing-yocto-project-custom-linux), cross-compilation across ISAs isn't just about targeting a new instruction set it is about managing thousands of subtle ABI assumptions embedded across your toolchain and runtime libraries.
 
 ## The Architectural Decision Matrix
 
@@ -277,11 +277,11 @@ When you strip away cloud marketing and vendor benchmarks, the decision between 
 
 In [The Monolithic Secret Behind Your Microservices](/posts/the-monolithic-secret-behind-your-microservices), I wrote about the architectural irony of the modern cloud: we spent fifteen years creating lightweight, decoupled, abstracted containers, only to run every single one of them on top of a shared monolithic Linux kernel.
 
-The "vCPU" is the next layer of that same cognitive dissonance. We treat cloud compute as an abstract utility—a fungible dial we can twist to add more raw horsepower to our systems.
+The "vCPU" is the next layer of that same cognitive dissonance. We treat cloud compute as an abstract utility a fungible dial we can twist to add more raw horsepower to our systems.
 
 It isn't.
 
-Hardware is not an invisible implementation detail. The physical arrangement of your silicon—whether two threads share an execution port, whether stores commit in program order, whether a page granule is 4 KB or 64 KB—dictates the stability, predictability, and correctness of the software you run on top of it.
+Hardware is not an invisible implementation detail. The physical arrangement of your silicon whether two threads share an execution port, whether stores commit in program order, whether a page granule is 4 KB or 64 KB dictates the stability, predictability, and correctness of the software you run on top of it.
 
 ARM has conquered mobile, edge computing, and is systematically eating the multi-tenant cloud because its lack of SMT and superior power efficiency make it a peerless engine for high-concurrency scale. But x86 remains an astonishingly powerful, specialized beast for raw vector crunching, single-threaded dominance, and strong memory guarantees.
 

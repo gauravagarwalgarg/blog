@@ -87,7 +87,7 @@ Overnight, the landed cost equation contracted by $9\%$.
 
 Even though international gold in London held steady at $\$2,400/\text{oz}$, domestic gold prices on the MCX plunged from $\approx ₹73,500/10\text{g}$ to $\approx ₹68,000/10\text{g}$ in a matter of hours. Investors who did not understand the tariff component of the formula were baffled by why their gold "crashed" during an international bull market.
 
-If you invest in gold in India, you are not just taking a position on international gold—you are implicitly taking a position on Indian customs duty policy.
+If you invest in gold in India, you are not just taking a position on international gold you are implicitly taking a position on Indian customs duty policy.
 
 ---
 
@@ -99,7 +99,7 @@ Yet, during that exact same 30-year window, domestic gold denominated in Indian 
 
 Where did that extra ~4% annual return come from? 
 
-It came from the **Rupee Cushion**—the relentless, structural depreciation of the Indian Rupee against the US Dollar.
+It came from the **Rupee Cushion** the relentless, structural depreciation of the Indian Rupee against the US Dollar.
 
 ```mermaid
 graph TD
@@ -221,7 +221,7 @@ For years, Sovereign Gold Bonds (SGBs) issued by the Reserve Bank of India were 
 
 However, the Indian Government recognized what economists pointed out from day one: **SGBs were a massive fiscal liability for the sovereign balance sheet.** 
 
-Paying sovereign debt interest while underwriting 100% of gold's capital appreciation—unbacked by actual physical gold reserves in RBI vaults—was fiscally unsustainable. The government has ceased issuing new SGB tranches. 
+Paying sovereign debt interest while underwriting 100% of gold's capital appreciation unbacked by actual physical gold reserves in RBI vaults was fiscally unsustainable. The government has ceased issuing new SGB tranches. 
 
 With SGBs off the table for fresh allocations, the choice reverts to its historical purity: liquid paper proxies (ETFs) for short-term speculation, or physical bullion for sovereign generational wealth.
 
@@ -263,7 +263,7 @@ graph TD
 
 1. **The Purity Illusion (The 7.5% Base Metal Haircut):**
    - Pure silver (Fine Silver) is denoted as **999 (99.9%)** or **999.9 (99.99%)**. It is chemically soft and ductile.
-   - **Sterling Silver is 925 (92.5% silver)**. The remaining 7.5% is an alloy—typically copper, nickel, or zinc—added to give mechanical rigidity so utensils and jewelry hold their shape.
+   - **Sterling Silver is 925 (92.5% silver)**. The remaining 7.5% is an alloy typically copper, nickel, or zinc added to give mechanical rigidity so utensils and jewelry hold their shape.
    - Yet, local jeweller associations routinely display a single "Silver Rate" that reflects pure bullion, while charging that full price for 925 items!
 2. **The Making Charge Racket:**
    - On gold jewelry, making charges range from 6% to 14%.
@@ -326,7 +326,7 @@ graph LR
 
 Silver possesses the highest electrical conductivity, thermal conductivity, and optical reflectivity of any metal in the periodic table. It cannot be substituted in mission-critical electronics without severe performance degradation:
 1. **Photovoltaic Solar Cells:** Every solar panel manufactured globally uses silver paste to conduct electrical charges. Modern N-type TOPCon and HJT solar cells require 30% to 80% *more* silver per watt than legacy P-type cells.
-2. **Electric Vehicles (EVs):** An electric vehicle uses roughly 25 to 50 grams of silver—more than double the silver content of an internal combustion engine car—for battery management systems, power electronics, and sensor switches.
+2. **Electric Vehicles (EVs):** An electric vehicle uses roughly 25 to 50 grams of silver more than double the silver content of an internal combustion engine car for battery management systems, power electronics, and sensor switches.
 3. **AI Data Centers and High-Speed Computing:** Server switches, PCB connectors, and high-frequency communication relays rely on silver plating to prevent latency and signal degradation under high thermal loads.
 
 ### The Structural Supply Deficit
@@ -354,7 +354,7 @@ When the GSR spikes above $85:1$, silver is historically cheap relative to gold.
 If you are structuring a physical precious metals allocation in India, execute with institutional discipline:
 
 ### 1. Purity and Certification Standards
-* **Gold:** Insist on **24 Karat 999.9 purity** minted bars or coins with official **BIS Hallmarking** (featuring the 6-digit alphanumeric HUID—Hallmark Unique Identification Number). Ensure the bar is encased in tamper-proof certicard packaging from an accredited refinery (e.g., MMTC-PAMP, BRPL, Kundan, or state-run refiners).
+* **Gold:** Insist on **24 Karat 999.9 purity** minted bars or coins with official **BIS Hallmarking** (featuring the 6-digit alphanumeric HUID Hallmark Unique Identification Number). Ensure the bar is encased in tamper-proof certicard packaging from an accredited refinery (e.g., MMTC-PAMP, BRPL, Kundan, or state-run refiners).
 * **Silver:** Buy only **999.0 or 999.9 Fine Silver cast bars** with a stamped refinery weight, serial number, and purity assay certificate. Never purchase unhallmarked silver rounds from local bazaar jewellers.
 
 ### 2. Sizing and Liquidity Optimization
@@ -382,7 +382,7 @@ In an era of sovereign debt expansion, central bank digital currencies (CBDCs), 
 
 Gold is not an investment to make you rich overnight. It is an insurance policy that guarantees you will never be poor.
 
-Silver is its high-beta, industrial counterpart—an indispensable technological element trading at an asymmetric historical discount to its sister metal.
+Silver is its high-beta, industrial counterpart an indispensable technological element trading at an asymmetric historical discount to its sister metal.
 
 If you choose to participate in this market:
 - **Discard the paper illusion:** Avoid ETF expense ratios and custodial traps for long-term multi-decade reserves.
