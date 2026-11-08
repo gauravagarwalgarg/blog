@@ -22,7 +22,7 @@ To most people, this feels like software magic: text goes into a cloud server, a
 
 If you peel back the layers, however, those eleven words are the culmination of the most sophisticated, high-density, multi-billion-dollar engineering stack ever constructed in human history. 
 
-In that fraction of a second, your prompt traversed fiber-optic transoceanic cables, terminated at an API gateway, was routed to an inference cluster, was sliced across multiple GPUs over a 900 GB/s NVLink interconnect, and executed roughly **eighty trillion mathematical operations** on microscopic silicon transistors etched at the scale of human DNA—all before your thumb even lifted off the keyboard.
+In that fraction of a second, your prompt traversed fiber-optic transoceanic cables, terminated at an API gateway, was routed to an inference cluster, was sliced across multiple GPUs over a 900 GB/s NVLink interconnect, and executed roughly **eighty trillion mathematical operations** on microscopic silicon transistors etched at the scale of human DNA all before your thumb even lifted off the keyboard.
 
 How does an electric charge traveling through etched silicon turn into a coherent English sentence on your screen?
 
@@ -119,7 +119,7 @@ CPU Architecture:                              GPU Architecture:
 ```
 
 ### Inside the Tensor Core
-Standard ALUs process one calculation at a time. In 2017, computer architects introduced **Tensor Cores**—specialized execution units hardwired directly into the silicon to perform matrix multiplication in hardware.
+Standard ALUs process one calculation at a time. In 2017, computer architects introduced **Tensor Cores** specialized execution units hardwired directly into the silicon to perform matrix multiplication in hardware.
 
 A 4th-Generation Tensor Core on an H100 does not calculate numbers one by one. In a single clock cycle, it loads a $4 \times 4$ matrix $A$, a $4 \times 4$ matrix $B$, and a $4 \times 4$ matrix $C$, and computes:
 
@@ -165,7 +165,7 @@ The wires connecting HBM to the GPU are microscopic and measured in millimeters,
 
 How does software command this massive engine?
 
-When your operating system boots, the Linux kernel loads `nvidia.ko`—the proprietary kernel module that establishes memory mappings over the PCI Express (PCIe Gen 5) bus using **Base Address Registers (BAR)**. 
+When your operating system boots, the Linux kernel loads `nvidia.ko` the proprietary kernel module that establishes memory mappings over the PCI Express (PCIe Gen 5) bus using **Base Address Registers (BAR)**. 
 
 ### The CUDA Programming Model
 Developers do not write machine code directly for the GPU. They write in **CUDA** (or high-level compilers like OpenAI's **Triton**).
@@ -193,7 +193,7 @@ CUDA organizes execution into a three-tier hierarchy:
 ### The On-Chip Memory Hierarchy
 Just like a CPU, the GPU has its own internal memory tiers:
 - **Registers**: Ultra-fast storage directly inside each SM (hundreds of KB per SM, single-cycle latency).
-- **Shared Memory (SRAM)**: A dedicated, software-managed scratchpad memory built directly on each SM (up to 228 KB per SM on Hopper). It boasts an astonishing aggregate bandwidth of **~30 Terabytes per second**—ten times faster than HBM3e!
+- **Shared Memory (SRAM)**: A dedicated, software-managed scratchpad memory built directly on each SM (up to 228 KB per SM on Hopper). It boasts an astonishing aggregate bandwidth of **~30 Terabytes per second** ten times faster than HBM3e!
 - **L2 Cache**: A 50MB on-chip cache shared across all SMs (~12 TB/s).
 - **HBM3e (Global Memory)**: The off-chip 80GB pool (3.35 TB/s, ~200-cycle latency).
 
@@ -353,7 +353,7 @@ This AllReduce operation must execute **twice per transformer layer**. With 80 l
 
 If this synchronization occurred over a standard PCIe bus (which tops out at ~64 GB/s), the communication latency would choke performance. 
 
-Instead, GPUs within a server communicate over **NVLink 4**. An H100 provides 18 fourth-gen NVLink links delivering **900 Gigabytes per second of bidirectional bandwidth**—nearly fourteen times faster than PCIe Gen 5. 
+Instead, GPUs within a server communicate over **NVLink 4**. An H100 provides 18 fourth-gen NVLink links delivering **900 Gigabytes per second of bidirectional bandwidth** nearly fourteen times faster than PCIe Gen 5. 
 
 Cross-GPU communication becomes as fast as reading internal memory.
 
@@ -504,7 +504,7 @@ To FlashAttention and PagedAttention orchestrating SRAM tiles and virtual memory
 To optical transceivers flashing infrared pulses across 900 GB/s NVLink fabrics...  
 To gRPC network sockets and HTTP streaming connections delivering tokens straight into your browser's memory.
 
-It is a machine comprising billions of parts, operating across nanoseconds, spanning continents—and it worked flawlessly, just to answer your question.
+It is a machine comprising billions of parts, operating across nanoseconds, spanning continents and it worked flawlessly, just to answer your question.
 
 ---
 
