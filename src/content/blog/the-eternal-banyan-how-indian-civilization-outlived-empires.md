@@ -24,7 +24,7 @@ The morning mist lifts over the arc of the river. A Brahmin youth, waist-deep in
 
 > ॐ भूर्भुवः स्वः तत्सवितुर्वरेण्यं भर्गो देवस्य धीमहि धियो यो नः प्रचोदयात् ॥  
 > *"O Splendor of the Cosmos, source of all illumination, we meditate upon Thy supreme light; may it awaken and inspire our intellect."*  
-> — *Rig Veda (3.62.10)*
+> *Rig Veda (3.62.10)*
 
 That verse was not excavated from a tomb by archaeologists. It was not deciphered through comparative philology. It has been recited in an unbroken oral chain along the banks of Indian rivers every single morning since the Bronze Age—chanted with the precise Vedic pitch (*Udātta*, *Anudātta*, *Svarita*) formulated along the Saraswati river when bronze was a cutting-edge technological alloy.
 
@@ -120,7 +120,7 @@ Because truth was experiential rather than institutional, the Rig Veda could utt
 
 > एकं सद्विप्रा बहुधा वदन्ति अग्निं यमं मातरिश्वानमाहुः ॥  
 > *"Truth is One; the wise speak of it in varied ways—calling it Agni, Yama, or Mātariśvan."*  
-> — *Rig Veda (1.164.46)*
+> *Rig Veda (1.164.46)*
 
 This was not a reluctant political compromise or modern secular tolerance; it was an ontological axiom. If the Divine is infinite, non-dual, and omnipresent, then no single human vocabulary, no solitary prophet, no exclusive tribe, and no historical book can exhaust its infinite facets. 
 
@@ -436,9 +436,10 @@ It burns still. It will burn forever.
 
 1. **Eck, Diana L.** (2012). *India: A Sacred Geography*. Harmony/Random House. (The seminal work on the continental pilgrimage grid and the cultural geography of Bharatavarsha).
 2. **Dharampal.** (1983). *The Beautiful Tree: Indigenous Indian Education in the Eighteenth Century*. Biblia Impex / Other India Press. (Archival documentation of the destruction of the decentralized Indian education network).
-3. **Durant, Will.** (1935). *The Story of Civilization: Vol. I — Our Oriental Heritage*. Simon & Schuster. (A sweeping philosophical recognition of India's foundational contributions to global civilization).
+3. **Durant, Will.** (1935). *The Story of Civilization: Vol. I Our Oriental Heritage*. Simon & Schuster. (A sweeping philosophical recognition of India's foundational contributions to global civilization).
 4. **Sri Aurobindo.** (1920 / 1953). *The Foundations of Indian Culture*. Sri Aurobindo Ashram, Pondicherry. (The definitive defense of the spiritual and institutional architecture of Indic civilization).
 5. **Majumdar, R. C.** (Gen. Ed.). (1951–1977). *The History and Culture of the Indian People* (Vols. I–XI). Bharatiya Vidya Bhavan, Bombay. (The monumental, multi-volume authoritative history of India's intellectual, cultural, and military resilience).
 6. **Tulsidas, Goswami.** (c. 1576 CE). *Ramcharitmanas*. (The Awadhi vernacular epic that sustained Northern Indian cultural memory across centuries of institutional iconoclasm).
 7. **Patnaik, Utsa.** (2018). *"Revisiting the Drain, or Transfer from India to Britain in the Context of Global Diffusion of Capitalism"*. Columbia University Press. (Empirical documentation of the $45 trillion colonial extraction).
 8. **Vanamali.** (2023). *"Why We Celebrate Diwali"*. *The Adiveda Newsletter*, Substack. (Spiritual and philosophical unpacking of Deepavali and the triumph of inner illumination).
+
