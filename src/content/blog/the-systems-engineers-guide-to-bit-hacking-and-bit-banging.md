@@ -171,7 +171,7 @@ What happens when a caller asks for all 32 bits (`n = 32`)?
 Under the ISO C specification (ISO/IEC 9899:2011, Section 6.5.7):
 > *"If the value of the right operand is negative or is greater than or equal to the width of the promoted left operand, the behavior is undefined."*
 
-On x86 hardware, the `SHL` assembly instruction masks the shift count by `0x1F` (31 for 32-bit registers). Shifting by 32 evaluates to `SHL x, 0`—the shift is a **no-op**!
+On x86 hardware, the `SHL` assembly instruction masks the shift count by `0x1F` (31 for 32-bit registers). Shifting by 32 evaluates to `SHL x, 0` the shift is a **no-op**!
 
 `~0U << 32` does not become `0`; it remains `0xFFFFFFFF`. Inverting it yields `0x00000000`, completely destroying your mask!
 
@@ -252,7 +252,7 @@ When you reach the Senior level, bit hacking ceases to be an academic puzzle. It
 
 ### 1. Branchless Operations: Defeating the CPU Branch Predictor
 
-Modern out-of-order CPU pipelines (such as modern x86 cores or Apple Silicon) use deep execution pipelines (15 to 20 stages). When an `if-else` branch cannot be predicted, the CPU flushes the pipeline, incurring a **15 to 20 cycle penalty**—a dynamic we analyzed in our [guide on x86 vs. ARM microarchitectures](/posts/when-to-choose-x86-64-vs-aarch64).
+Modern out-of-order CPU pipelines (such as modern x86 cores or Apple Silicon) use deep execution pipelines (15 to 20 stages). When an `if-else` branch cannot be predicted, the CPU flushes the pipeline, incurring a **15 to 20 cycle penalty** a dynamic we analyzed in our [guide on x86 vs. ARM microarchitectures](/posts/when-to-choose-x86-64-vs-aarch64).
 
 Bit manipulation allows you to write branch-free mathematical logic.
 
@@ -566,7 +566,7 @@ MISO:     ======( Sample In )===( Sample In )===( Sample In )===
               Sample Point    Sample Point    Sample Point
 ```
 
-Every single protocol powering modern electronics—**I2C, UART, JTAG, 1-Wire, CAN bus**—can be bit-banged using these exact principles:
+Every single protocol powering modern electronics **I2C, UART, JTAG, 1-Wire, CAN bus** can be bit-banged using these exact principles:
 - Respecting setup and hold timing windows.
 - Shifting bytes bit-by-bit from MSB to LSB.
 - Managing open-drain states (emulating bidirectional buses by switching pin modes between output-low and input-floating with pull-ups).
@@ -620,7 +620,7 @@ What used to require 25 lines of loops, shifts, and masks is now computed in **o
 The journey from junior developer to systems architect is defined by how you view the machine:
 
 1. **A junior engineer** writes bitwise operations to show off, ignoring integer promotion, signed shifts, and undefined behavior.
-2. **A senior engineer** writes clean, branchless bitwise algorithms to eliminate latency spikes, pack memory buffers, and protect cache lines—relying on standard compiler intrinsics (`__builtin_popcount`, `__builtin_ctz`) for maximum portability and speed.
+2. **A senior engineer** writes clean, branchless bitwise algorithms to eliminate latency spikes, pack memory buffers, and protect cache lines relying on standard compiler intrinsics (`__builtin_popcount`, `__builtin_ctz`) for maximum portability and speed.
 3. **A staff engineer** knows where software stops and physical silicon begins. They understand that writing to a register alters physical voltages, that atomicity requires hardware-assisted set/reset registers (BSRR), and that bit banging is the ultimate bridge between software and bare-metal reality.
 
 Treat every bit with respect. When you control the bits with mathematical precision, you control the machine.
@@ -633,5 +633,5 @@ Treat every bit with respect. When you control the bits with mathematical precis
 2. **Intel Corporation.** (2024). *Intel 64 and IA-32 Architectures Software Developer’s Manual, Volume 2: Instruction Set Reference (BMI1 and BMI2 Instructions)*. [Intel Technical Documentation](https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html).
 3. **ARM Limited.** (2020). *ARM Cortex-M4 Devices Generic User Guide (Bit Banding and BSRR Register Mechanics)*. ARM DUI 0553B. [ARM Developer Documentation](https://developer.arm.com/).
 4. **Knuth, Donald E.** (2011). *The Art of Computer Programming, Volume 4A: Combinatorial Algorithms, Part 1 (Section 7.1.3: Bitwise Tricks and Techniques)*. Addison-Wesley.
-5. **International Organization for Standardization.** (2018). *ISO/IEC 9899:2018 (Information technology — Programming languages — C)*. *(Standard specification detailing integer promotion, shift constraints, and undefined behavior boundaries).*
+5. **International Organization for Standardization.** (2018). *ISO/IEC 9899:2018 (Information technology   Programming languages   C)*. *(Standard specification detailing integer promotion, shift constraints, and undefined behavior boundaries).*
 6. **Kernighan, Brian W., & Ritchie, Dennis M.** (1988). *The C Programming Language* (2nd ed.). Prentice Hall. *(The foundational text formalizing bitwise masking and bit-field manipulation).*
