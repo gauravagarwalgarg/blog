@@ -82,7 +82,7 @@ sequenceDiagram
 
 ### The Three Deadly Flaws of Process-Shared Mutexes
 
-1. **Context-Switching Jitter**: As soon as contention occurs, the CPU drops into kernel mode (`FUTEX_WAIT`). Halting a thread, scheduling a replacement task, and later waking the thread up introduces **2 to 15 microseconds** of latency—an eternity when your entire latency budget is 500 nanoseconds.
+1. **Context-Switching Jitter**: As soon as contention occurs, the CPU drops into kernel mode (`FUTEX_WAIT`). Halting a thread, scheduling a replacement task, and later waking the thread up introduces **2 to 15 microseconds** of latency an eternity when your entire latency budget is 500 nanoseconds.
 2. **Cache Line Thrashing**: Mutex acquisition relies on atomic read-modify-write instructions (`LOCK CMPXCHG` on x86). When multiple CPU cores hammer the same mutex variable, the CPU cache coherence protocol (MESI) constantly invalidates the cache lines across cores, saturating the inter-core interconnect (UPI or Infinity Fabric).
 3. **The Abandoned Mutex Disaster (Process Death)**:
    What happens if the Producer process encounters a segmentation fault, receives a `SIGKILL`, or crashes while holding the mutex?
@@ -234,7 +234,7 @@ if (ring->tail > ring->head) {
 The Consumer sees `tail` advance, reads the payload slot, and **reads uninitialized or corrupt garbage bytes** because the payload writes are still sitting in the Producer's store buffer!
 
 ### The Hardware Divergence: x86 TSO vs. ARM Weak Memory
-The severity of memory reordering depends on the physical processor architecture—a distinction we analyzed in our [guide on x86-64 vs. ARM64 systems architectures](/posts/when-to-choose-x86-64-vs-aarch64):
+The severity of memory reordering depends on the physical processor architecture a distinction we analyzed in our [guide on x86-64 vs. ARM64 systems architectures](/posts/when-to-choose-x86-64-vs-aarch64):
 
 - **x86-64 (Total Store Order / TSO)**: x86 hardware provides strong memory guarantees. Hardware will never reorder a Store after a Store (StoreStore order is preserved). However, **the optimizing C compiler** (GCC/Clang) does not know another process is watching shared memory! The compiler can reorder instructions during optimization unless instructed otherwise.
 - **ARM64 / Apple Silicon / RISC-V (Weakly Ordered)**: ARM hardware allows the CPU execution unit to reorder Stores with Stores, and Loads with Loads! Without hardware memory barrier instructions (`DMB`, `STLR`, `LDAR`), your lock-free ring buffer will corrupt data on ARM within seconds.
@@ -245,7 +245,7 @@ The severity of memory reordering depends on the physical processor architecture
 
 The C11 standard (`stdatomic.h`) introduced a formalized mathematical memory model to solve this portably.
 
-Instead of heavy sequential consistency (`memory_order_seq_cst`)—which emits expensive bus-locking instructions like `MFENCE` on x86—we use the mathematically optimal **Release-Acquire pairing**:
+Instead of heavy sequential consistency (`memory_order_seq_cst`) which emits expensive bus-locking instructions like `MFENCE` on x86 we use the mathematically optimal **Release-Acquire pairing**:
 
 ```mermaid
 sequenceDiagram
